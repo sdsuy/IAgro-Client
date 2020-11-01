@@ -29,5 +29,9 @@ public class AuthBo {
 	public Usuario getAuthUser() {
 		return authBean.getAuthUser();
 	}
+	
+	public void bootstrap() {
+		authBean.bootstrap();
+	}
 
 }
