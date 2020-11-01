@@ -6,15 +6,20 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 public class Login {
 
 	private JFrame frame;
+	private JTextField textFieldUser;
+	private JPasswordField passwordFieldPass;
 
 	/**
 	 * Launch the application.
@@ -49,6 +54,20 @@ public class Login {
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		textFieldUser = new JTextField();
+		textFieldUser.setBounds(339, 223, 92, 24);
+		desktopPane.add(textFieldUser);
+		textFieldUser.setColumns(10);
+		
+		passwordFieldPass = new JPasswordField();
+		passwordFieldPass.setColumns(10);
+		passwordFieldPass.setBounds(339, 259, 92, 24);
+		desktopPane.add(passwordFieldPass);
+		
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(331, 335, 89, 23);
+		desktopPane.add(btnEntrar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login colaborativo.png")));
