@@ -77,25 +77,25 @@ public class MenuPrincipal {
 		desktopPaneFormularios.setBounds(321, 210, 100, 81);
 		desktopPane.add(desktopPaneFormularios);
 		
-		JButton btnCrearFormularios = new JButton("Crear");
-		btnCrearFormularios.setBounds(6, 11, 89, 23);
-		desktopPaneFormularios.add(btnCrearFormularios);
+		JButton btnCrearFuncionalidades = new JButton("Crear");
+		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
+		desktopPaneFormularios.add(btnCrearFuncionalidades);
 		
-		JButton btnListarFormularios = new JButton("Listar");
-		btnListarFormularios.setBounds(6, 45, 89, 23);
-		desktopPaneFormularios.add(btnListarFormularios);
+		JButton btnListarFuncionalidades = new JButton("Listar");
+		btnListarFuncionalidades.setBounds(6, 45, 89, 23);
+		desktopPaneFormularios.add(btnListarFuncionalidades);
 		
 		JDesktopPane desktopPaneCasillas = new JDesktopPane();
 		desktopPaneCasillas.setBounds(562, 210, 127, 81);
 		desktopPane.add(desktopPaneCasillas);
 		
-		JButton btnCrearCasillas = new JButton("Crear");
-		btnCrearCasillas.setBounds(10, 11, 107, 23);
-		desktopPaneCasillas.add(btnCrearCasillas);
+		JButton btnCrearRoles = new JButton("Crear");
+		btnCrearRoles.setBounds(10, 11, 107, 23);
+		desktopPaneCasillas.add(btnCrearRoles);
 		
-		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(10, 45, 107, 23);
-		desktopPaneCasillas.add(btnListar);
+		JButton btnListarRoles = new JButton("Listar");
+		btnListarRoles.setBounds(10, 45, 107, 23);
+		desktopPaneCasillas.add(btnListarRoles);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBounds(635, 11, 89, 23);
