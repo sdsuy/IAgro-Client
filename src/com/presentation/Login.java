@@ -3,6 +3,14 @@ package com.presentation;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JDesktopPane;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Login {
 
@@ -38,6 +46,13 @@ public class Login {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 750, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login colaborativo.png")));
+		lblFondo.setBounds(0, 0, 734, 461);
+		desktopPane.add(lblFondo);
 	}
-
 }
