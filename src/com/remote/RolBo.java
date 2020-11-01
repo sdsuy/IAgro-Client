@@ -12,7 +12,7 @@ public class RolBo {
 	
 	public RolBo() throws NamingException {
 		super();
-		context = "";
+		context = "ejb:/IAgro-Server/RolBean!com.service.RolBeanRemote";
 		rolBean = (RolBeanRemote)InitialContext.doLookup(context);
 	}
 	

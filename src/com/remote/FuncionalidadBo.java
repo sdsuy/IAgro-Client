@@ -13,7 +13,7 @@ public class FuncionalidadBo {
 	
 	public FuncionalidadBo() throws NamingException {
 		super();
-		context="";
+		context="ejb:/IAgro-Server/FuncionalidadBean!com.service.FuncionalidadBeanRemote";
 		funcionalidadBean = (FuncionalidadBeanRemote)InitialContext.doLookup(context);
 	}
 

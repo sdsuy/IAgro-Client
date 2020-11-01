@@ -12,7 +12,7 @@ public class UsuarioBo {
 
 	public UsuarioBo() throws NamingException {
 		super();
-		context = "";
+		context = "ejb:/IAgro-Server/UsuarioBean!com.service.UsuarioBeanRemote";
 		usuarioBean = (UsuarioBeanRemote)InitialContext.doLookup(context);
 	}
 	
