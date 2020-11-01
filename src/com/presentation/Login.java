@@ -12,6 +12,9 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.application.IAgro;
+
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -22,6 +25,8 @@ public class Login {
 	private JFrame frame;
 	private JTextField textFieldUser;
 	private JPasswordField passwordFieldPass;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -38,11 +43,36 @@ public class Login {
 			}
 		});
 	}
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Login
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public Login() {
+		initialize();
+	}
+	
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public Login(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
