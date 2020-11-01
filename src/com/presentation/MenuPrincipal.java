@@ -96,5 +96,9 @@ public class MenuPrincipal {
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(10, 45, 107, 23);
 		desktopPaneCasillas.add(btnListar);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBounds(635, 11, 89, 23);
+		desktopPane.add(btnLogout);
 	}
 }
