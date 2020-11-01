@@ -55,13 +55,14 @@ public class ListarUsuarios {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
+		table = new JTable();
+		table.setBounds(10, 246, 633, 161);
+		
+		
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setBounds(10, 246, 633, 161);
 		desktopPane.add(scrollPane);
-		
-		table = new JTable();
-		table.setBounds(10, 246, 633, 161);
-		desktopPane.add(table);
+		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.setBounds(10, 11, 59, 23);
