@@ -1,13 +1,20 @@
 package com.application;
 
+import java.util.List;
+
 import com.entities.Usuario;
 import com.presentation.Login;
 import com.remote.AuthBo;
+import com.remote.UsuarioBo;
 
 public class IAgro {
 	
 	private Login login; // capa presentacion de login
+	
 	private AuthBo auth; // capa de negocios de autenticacion de usuarios
+	private UsuarioBo usuarioBo; // capa de negocios de usuarios
+	
+	private List<Usuario> usuarios; // listado de usuarios del sistema
 
 	public static void main(String[] args) {
 		IAgro iagro = new IAgro(); // Se crea una instancia
@@ -28,6 +35,9 @@ public class IAgro {
 	 */
 	private void start() {
 		auth = new AuthBo();
+		usuarioBo = new UsuarioBo();
+		refreshUsuarios();
+		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
 	}
 	
@@ -45,6 +55,15 @@ public class IAgro {
 	
 	public Usuario getAuthUser() {
 		return auth.getAuthUser();
+	}
+	
+	public void refreshUsuarios() {
+		usuarios = usuarioBo.getUsuarios(); // actualizo la lista usuarios local
+	}
+	
+	public void bootstrap() {
+		auth.bootstrap();
+		refreshUsuarios();
 	}
 
 }
