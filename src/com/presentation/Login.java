@@ -98,6 +98,7 @@ public class Login {
 		passwordFieldPass.setColumns(10);
 		passwordFieldPass.setBounds(339, 259, 92, 24);
 		desktopPane.add(passwordFieldPass);
+		passwordFieldPass.setEchoChar('*');
 		
 		JLabel lblError = new JLabel("Error: Usuario o Contrase\u00F1a incorrectos");
 		lblError.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -122,6 +123,27 @@ public class Login {
 		});
 		btnEntrar.setBounds(331, 335, 89, 23);
 		desktopPane.add(btnEntrar);
+		
+		JCheckBox chckbxPass = new JCheckBox("Mostrar la contrase\u00F1a");
+		chckbxPass.setForeground(Color.LIGHT_GRAY);
+		chckbxPass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if (chckbxPass.isSelected()) {
+					
+					passwordFieldPass.setEchoChar((char)0);
+				}
+				
+				else {
+					passwordFieldPass.setEchoChar('*');
+				}
+				
+				
+			}
+		});
+		chckbxPass.setBounds(311, 294, 131, 23);
+		desktopPane.add(chckbxPass);
+		chckbxPass.setOpaque(false);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 10));
