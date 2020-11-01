@@ -19,6 +19,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Login {
 
@@ -96,6 +98,14 @@ public class Login {
 		passwordFieldPass.setColumns(10);
 		passwordFieldPass.setBounds(339, 259, 92, 24);
 		desktopPane.add(passwordFieldPass);
+		passwordFieldPass.setEchoChar('*');
+		
+		JLabel lblError = new JLabel("Error: Usuario o Contrase\u00F1a incorrectos");
+		lblError.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(285, 198, 235, 14);
+		desktopPane.add(lblError);
+		lblError.setVisible(false);
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
@@ -106,8 +116,7 @@ public class Login {
 				if(iagro.getAuthUser() != null) { // si se encuentra un usuario
 					System.out.println(iagro.getAuthUser().getNombre());
 				} else {
-					// TODO:
-					// error en caso de no encontrar un usuario
+					lblError.setVisible(true);
 					System.out.println("Usuario no encontrado");
 				}
 			}
@@ -115,7 +124,29 @@ public class Login {
 		btnEntrar.setBounds(331, 335, 89, 23);
 		desktopPane.add(btnEntrar);
 		
+		JCheckBox chckbxPass = new JCheckBox("Mostrar la contrase\u00F1a");
+		chckbxPass.setForeground(Color.LIGHT_GRAY);
+		chckbxPass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if (chckbxPass.isSelected()) {
+					
+					passwordFieldPass.setEchoChar((char)0);
+				}
+				
+				else {
+					passwordFieldPass.setEchoChar('*');
+				}
+				
+				
+			}
+		});
+		chckbxPass.setBounds(311, 294, 131, 23);
+		desktopPane.add(chckbxPass);
+		chckbxPass.setOpaque(false);
+		
 		JLabel lblFondo = new JLabel("");
+		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login colaborativo.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);

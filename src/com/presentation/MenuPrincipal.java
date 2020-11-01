@@ -10,10 +10,15 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPrincipal {
 
 	private JFrame frame;
+	JDesktopPane desktopPaneUsuarios;
+	JDesktopPane desktopPaneFuncionalidades;
+	JDesktopPane desktopPaneRoles;
 
 	/**
 	 * Launch the application.
@@ -49,21 +54,21 @@ public class MenuPrincipal {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		JButton btnUsuarios = new JButton("Usuarios");
-		btnUsuarios.setBounds(30, 133, 182, 59);
-		desktopPane.add(btnUsuarios);
-		
-		JButton btnFuncionalidades = new JButton("Funcionalidades");
-		btnFuncionalidades.setBounds(279, 133, 182, 59);
-		desktopPane.add(btnFuncionalidades);
-		
-		JButton btnRoles = new JButton("Roles");
-		btnRoles.setBounds(527, 133, 182, 59);
-		desktopPane.add(btnRoles);
-		
-		JDesktopPane desktopPaneUsuarios = new JDesktopPane();
+		desktopPaneUsuarios = new JDesktopPane();
 		desktopPaneUsuarios.setBounds(75, 210, 100, 81);
 		desktopPane.add(desktopPaneUsuarios);
+		desktopPaneUsuarios.setVisible(false);
+		
+		JButton btnUsuarios = new JButton("Usuarios");
+		btnUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				visibilidad(desktopPaneUsuarios);
+				
+			}
+		});
+		btnUsuarios.setBounds(30, 133, 182, 59);
+		desktopPane.add(btnUsuarios);
 		
 		JButton btnAltaUsuario = new JButton("Alta");
 		btnAltaUsuario.setBounds(6, 11, 89, 23);
@@ -73,28 +78,68 @@ public class MenuPrincipal {
 		btnListarUsuarios.setBounds(6, 45, 89, 23);
 		desktopPaneUsuarios.add(btnListarUsuarios);
 		
-		JDesktopPane desktopPaneFormularios = new JDesktopPane();
-		desktopPaneFormularios.setBounds(321, 210, 100, 81);
-		desktopPane.add(desktopPaneFormularios);
+		desktopPaneFuncionalidades = new JDesktopPane();
+		desktopPaneFuncionalidades.setBounds(321, 210, 100, 81);
+		desktopPane.add(desktopPaneFuncionalidades);
+		desktopPaneFuncionalidades.setVisible(false);
 		
-		JButton btnCrearFormularios = new JButton("Crear");
-		btnCrearFormularios.setBounds(6, 11, 89, 23);
-		desktopPaneFormularios.add(btnCrearFormularios);
+		JButton btnFuncionalidades = new JButton("Funcionalidades");
+		btnFuncionalidades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				visibilidad(desktopPaneFuncionalidades);
+				
+			}
+		});
+		btnFuncionalidades.setBounds(279, 133, 182, 59);
+		desktopPane.add(btnFuncionalidades);
 		
-		JButton btnListarFormularios = new JButton("Listar");
-		btnListarFormularios.setBounds(6, 45, 89, 23);
-		desktopPaneFormularios.add(btnListarFormularios);
+		JButton btnCrearFuncionalidades = new JButton("Crear");
+		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
+		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
 		
-		JDesktopPane desktopPaneCasillas = new JDesktopPane();
-		desktopPaneCasillas.setBounds(562, 210, 127, 81);
-		desktopPane.add(desktopPaneCasillas);
+		JButton btnListarFuncionalidades = new JButton("Listar");
+		btnListarFuncionalidades.setBounds(6, 45, 89, 23);
+		desktopPaneFuncionalidades.add(btnListarFuncionalidades);
 		
-		JButton btnCrearCasillas = new JButton("Crear");
-		btnCrearCasillas.setBounds(10, 11, 107, 23);
-		desktopPaneCasillas.add(btnCrearCasillas);
+		desktopPaneRoles = new JDesktopPane();
+		desktopPaneRoles.setBounds(562, 210, 127, 81);
+		desktopPane.add(desktopPaneRoles);
+		desktopPaneRoles.setVisible(false);
 		
-		JButton btnListar = new JButton("Listar");
-		btnListar.setBounds(10, 45, 107, 23);
-		desktopPaneCasillas.add(btnListar);
+		JButton btnRoles = new JButton("Roles");
+		btnRoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				visibilidad(desktopPaneRoles);
+				
+			}
+		});
+		btnRoles.setBounds(527, 133, 182, 59);
+		desktopPane.add(btnRoles);
+		
+		JButton btnCrearRoles = new JButton("Crear");
+		btnCrearRoles.setBounds(10, 11, 107, 23);
+		desktopPaneRoles.add(btnCrearRoles);
+		
+		JButton btnListarRoles = new JButton("Listar");
+		btnListarRoles.setBounds(10, 45, 107, 23);
+		desktopPaneRoles.add(btnListarRoles);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBounds(635, 11, 89, 23);
+		desktopPane.add(btnLogout);
+		
+		
+		
+	}
+	
+	public void visibilidad(JDesktopPane visible) {
+		
+		desktopPaneUsuarios.setVisible(false);
+		desktopPaneFuncionalidades.setVisible(false);
+		desktopPaneRoles.setVisible(false);
+		visible.setVisible(true);
+
 	}
 }

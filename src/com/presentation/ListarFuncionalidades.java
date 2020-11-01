@@ -13,13 +13,11 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
-public class ListarUsuarios {
+public class ListarFuncionalidades {
 
 	private JFrame frame;
 	private JTable table;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -28,7 +26,7 @@ public class ListarUsuarios {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListarUsuarios window = new ListarUsuarios();
+					ListarFuncionalidades window = new ListarFuncionalidades();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +38,7 @@ public class ListarUsuarios {
 	/**
 	 * Create the application.
 	 */
-	public ListarUsuarios() {
+	public ListarFuncionalidades() {
 		initialize();
 	}
 
@@ -68,7 +66,7 @@ public class ListarUsuarios {
 		btnMenu.setBounds(10, 11, 59, 23);
 		desktopPane.add(btnMenu);
 		
-		JButton btnListarTodo = new JButton("Listar Todos");
+		JButton btnListarTodo = new JButton("Listar Todas");
 		btnListarTodo.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnListarTodo);
 		
@@ -85,58 +83,20 @@ public class ListarUsuarios {
 		lblNombre.setBounds(10, 33, 100, 14);
 		desktopPaneFiltros.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(10, 57, 100, 14);
-		desktopPaneFiltros.add(lblApellido);
-		
-		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario:");
-		lblNombreDeUsuario.setBounds(10, 82, 100, 14);
-		desktopPaneFiltros.add(lblNombreDeUsuario);
-		
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(114, 30, 86, 20);
 		desktopPaneFiltros.add(textField);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(114, 54, 86, 20);
-		desktopPaneFiltros.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(114, 79, 86, 20);
-		desktopPaneFiltros.add(textField_2);
-		
 		JButton btnBuscar1 = new JButton("Buscar");
 		btnBuscar1.setBounds(210, 29, 89, 23);
 		desktopPaneFiltros.add(btnBuscar1);
 		
-		JButton btnBuscar2 = new JButton("Buscar");
-		btnBuscar2.setBounds(210, 53, 89, 23);
-		desktopPaneFiltros.add(btnBuscar2);
-		
-		JButton btnBuscar3 = new JButton("Buscar");
-		btnBuscar3.setBounds(210, 78, 89, 23);
-		desktopPaneFiltros.add(btnBuscar3);
-		
-		JLabel lblRol = new JLabel("Rol:");
-		lblRol.setBounds(10, 107, 100, 14);
-		desktopPaneFiltros.add(lblRol);
-		
-		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setBounds(114, 103, 86, 22);
-		desktopPaneFiltros.add(comboBoxRol);
-		
-		JButton btnBuscar4 = new JButton("Buscar");
-		btnBuscar4.setBounds(210, 103, 89, 23);
-		desktopPaneFiltros.add(btnBuscar4);
-		
-		JButton btnEliminar = new JButton("Eliminar Seleccionado");
+		JButton btnEliminar = new JButton("Eliminar Seleccionada");
 		btnEliminar.setBounds(497, 136, 146, 23);
 		desktopPane.add(btnEliminar);
 		
-		JButton btnModificar = new JButton("Modificar Seleccionado");
+		JButton btnModificar = new JButton("Modificar Seleccionada");
 		btnModificar.setBounds(497, 194, 146, 23);
 		desktopPane.add(btnModificar);
 	}
