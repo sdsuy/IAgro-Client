@@ -100,7 +100,16 @@ public class Login {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String username = textFieldUser.getText();
+				String password = passwordFieldPass.getText();
+				iagro.login(username, password); // seteo el usuario autenticado
+				if(iagro.getAuthUser() != null) { // si se encuentra un usuario
+					System.out.println(iagro.getAuthUser().getNombre());
+				} else {
+					// TODO:
+					// error en caso de no encontrar un usuario
+					System.out.println("Usuario no encontrado");
+				}
 			}
 		});
 		btnEntrar.setBounds(331, 335, 89, 23);
