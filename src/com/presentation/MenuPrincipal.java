@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.JPanel;
 
-public class V2VentanaMenu {
+public class MenuPrincipal {
 
 	private JFrame frame;
 
@@ -22,7 +22,7 @@ public class V2VentanaMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					V2VentanaMenu window = new V2VentanaMenu();
+					MenuPrincipal window = new MenuPrincipal();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class V2VentanaMenu {
 	/**
 	 * Create the application.
 	 */
-	public V2VentanaMenu() {
+	public MenuPrincipal() {
 		initialize();
 	}
 
