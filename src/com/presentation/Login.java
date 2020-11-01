@@ -21,12 +21,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JTextArea;
 
 public class Login {
 
 	private JFrame frame;
 	private JTextField textFieldUser;
 	private JPasswordField passwordFieldPass;
+	JTextArea textArea;
 	
 	private IAgro iagro;
 
@@ -145,10 +147,26 @@ public class Login {
 		desktopPane.add(chckbxPass);
 		chckbxPass.setOpaque(false);
 		
+		textArea = new JTextArea();
+		textArea.setForeground(Color.BLUE);
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
+		textArea.setBounds(0, 0, 209, 46);
+		desktopPane.add(textArea);
+		textArea.setOpaque(false);
+		textArea.setVisible(false);
+		
+		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login colaborativo.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
+	}
+	
+	public void mensajeEditarAdminPassword() {
+		
+		textArea.setVisible(true);
+		textArea.setText("Administrador Default: admin "+ "\r\nContrase\u00F1a Default: 1234 " );
+		
 	}
 }
