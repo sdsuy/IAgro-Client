@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
 import com.application.IAgro;
+import com.entities.Funcionalidad;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -88,9 +89,19 @@ public class CrearFuncionalidad {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				if(textNombre.getText().isEmpty() || textArea.getText().isEmpty()) {
 	
 					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					Funcionalidad funcionalidad = new Funcionalidad();
+					funcionalidad.setNombre(textNombre.getText().toUpperCase());
+					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
+					iagro.createFuncionalidad(funcionalidad);
+					
+					
 				}
 			}
 		});
