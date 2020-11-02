@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
 import com.application.IAgro;
+import com.entities.Rol;
+import com.entities.Usuario;
+import com.service.RolBean;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -15,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
@@ -30,6 +34,7 @@ public class AltaUsuario {
 	private JTextField textFieldRepetirContrasenia;
 	
 	private IAgro iagro;
+	private RolBean rol;
 
 	/**
 	 * Launch the application.
@@ -96,6 +101,12 @@ public class AltaUsuario {
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
+		rol.readAll();
+		List<Rol> roles = rol.readAll();
+		for (Rol rol : roles) {
+			comboBoxRol.addItem(rol.getNombre());
+		}
+		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,7 +145,11 @@ public class AltaUsuario {
 
 		        }
 		        else {
+		        	String repClave = "";
 		        	
+		        	String nomRol = comboBoxRol.getSelectedItem().toString();
+		        	
+		        	iagro.createUsuario(nomRol);
 		        }
 			}
 		});
