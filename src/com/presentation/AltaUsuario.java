@@ -8,7 +8,6 @@ import javax.swing.JToolBar;
 import com.application.IAgro;
 import com.entities.Rol;
 import com.entities.Usuario;
-import com.service.RolBean;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -163,6 +162,8 @@ public class AltaUsuario {
 		        	user.setClave(textFieldPass.getText());
 		        	user.setNickname(textFieldNickname.getText());
 		        	iagro.createUsuario(user);
+		        	limpiar();
+		        	
 		        	
 		        }
 			}
@@ -235,5 +236,16 @@ public class AltaUsuario {
 		JLabel lblNewLabel = new JLabel("Nickname");
 		lblNewLabel.setBounds(98, 282, 61, 16);
 		desktopPane.add(lblNewLabel);
+	}
+	
+	public void limpiar() {
+		textFieldNickname.setText("");
+		textFieldCedula.setText("");
+		textFieldPass.setText("");
+		textFieldRepetirContrasenia.setText("");
+		textFieldEmail.setText("");
+		textApellido.setText("");
+		textNombre.setText("");
+		
 	}
 }
