@@ -176,5 +176,7 @@ public class Login {
 		
 		textFieldUser.setText("");
 		passwordFieldPass.setText("");
+		textArea.setVisible(false);
+		
 	}
 }

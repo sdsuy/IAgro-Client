@@ -99,6 +99,11 @@ public class MenuPrincipal {
 		desktopPane.add(btnUsuarios);
 		
 		JButton btnAltaUsuario = new JButton("Alta");
+		btnAltaUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.altaUsuario();
+			}
+		});
 		btnAltaUsuario.setBounds(6, 11, 89, 23);
 		desktopPaneUsuarios.add(btnAltaUsuario);
 		

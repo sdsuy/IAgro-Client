@@ -3,8 +3,12 @@ package com.application;
 import java.util.List;
 
 import com.entities.Usuario;
+<<<<<<< HEAD
 import com.presentation.CrearFuncionalidad;
 import com.presentation.CrearRol;
+=======
+import com.presentation.AltaUsuario;
+>>>>>>> d167de756ff046365799dd633bfec463d21387b2
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
@@ -12,13 +16,27 @@ import com.remote.UsuarioBo;
 
 public class IAgro {
 	
+<<<<<<< HEAD
 	private Login login; // capa presentacion de login
 	private MenuPrincipal principal; // capa presentacion de menu principal
 	private CrearRol crearRol; // capa presentacion de menu crear rol
 	private CrearFuncionalidad crearFuncionalidad; // capa presentacion de menu crear rol
+=======
+	//***********************************************
+	// Atributos para el manejo de la capa presentacion
+	//***********************************************
 	
-	private AuthBo auth; // capa de negocios de autenticacion de usuarios
-	private UsuarioBo usuarioBo; // capa de negocios de usuarios
+	private Login login; // login
+	private MenuPrincipal principal; // menu principal
+	private AltaUsuario altaUsuario; // alta usuario
+	
+	//***********************************************
+	// Atributos para el manejo de la capa negocios
+	//***********************************************
+>>>>>>> d167de756ff046365799dd633bfec463d21387b2
+	
+	private AuthBo auth; // autenticacion de usuarios
+	private UsuarioBo usuarioBo; // usuarios
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 
@@ -54,6 +72,11 @@ public class IAgro {
 	public void menuPrincipal() {
 		principal = new MenuPrincipal(this);
 		principal.start();
+	}
+	
+	public void altaUsuario() {
+		altaUsuario = new AltaUsuario(this);
+		altaUsuario.start();
 	}
 	
 	//**********************************************
