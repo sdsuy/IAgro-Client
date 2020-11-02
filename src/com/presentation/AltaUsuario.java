@@ -105,11 +105,17 @@ public class AltaUsuario {
 		                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		        
 		        Matcher mather = pattern.matcher(textFieldEmail.getText());
-		        
+		      
+		        //controlamos si hay algun campo vacio
 		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
 		        		textFieldPass.getText().isEmpty() || textFieldRepetirContrasenia.getText().isEmpty() ||
 		        		comboBoxRol.getToolkit().equals("")) {
+		        	
 		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+		       
+		        }//controlamos si el mail tiene un formato invalido
+		        else if (mather.find() == false) {
+					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
 		        }
 			}
 		});
