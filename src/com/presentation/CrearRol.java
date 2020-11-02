@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
@@ -122,6 +123,22 @@ public class CrearRol {
 		lblFuncionalidades.setBounds(291, 108, 132, 14);
 		desktopPane.add(lblFuncionalidades);
 		
+		DefaultListModel<String> listModel = new DefaultListModel<>();
+		for(Funcionalidad funcionalidad: iagro.getFuncionalidades()) {
+			listModel.addElement(funcionalidad.getNombre());
+		}
+		
+		JList listFuncionalidades = new JList(listModel);
+		listFuncionalidades.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if(!e.getValueIsAdjusting()) {
+					selectedNombresFuncionalidades = listFuncionalidades.getSelectedValuesList();
+				}					
+			}
+		});
+		listFuncionalidades.setBounds(291, 135, 170, 148);
+		desktopPane.add(listFuncionalidades);
+		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -145,20 +162,6 @@ public class CrearRol {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(315, 295, 89, 37);
 		desktopPane.add(btnCancelar);
-		
-		JList listFuncionalidades = new JList();
-		listFuncionalidades.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				if(!e.getValueIsAdjusting()) {
-					
-					selectedNombresFuncionalidades = listFuncionalidades.getSelectedValuesList();
-
-				}
-					
-			}
-		});
-		listFuncionalidades.setBounds(291, 135, 170, 148);
-		desktopPane.add(listFuncionalidades);
 	}
 	private LinkedList<Funcionalidad> selectedFuncionalidades(List<String> listaNombresFuncionalidades){
     	LinkedList<Funcionalidad> funcionalidades = new LinkedList<>();

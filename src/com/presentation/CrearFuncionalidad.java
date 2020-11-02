@@ -99,7 +99,7 @@ public class CrearFuncionalidad {
 		lblNewLabel.setBounds(224, 111, 60, 14);
 		desktopPane.add(lblNewLabel);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(177, 131, 154, 120);
 		desktopPane.add(textArea);
 		
