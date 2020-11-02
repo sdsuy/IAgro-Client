@@ -96,34 +96,10 @@ public class CrearRol {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 579, 377);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
-		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(textFieldNombre.getText().isEmpty() || textAreaDescripcion.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "No tiene todos los campos","Error",JOptionPane.ERROR_MESSAGE);
-				}
-				else {
-					Rol rol = new Rol();
-					rol.setNombre(textFieldNombre.getText().toUpperCase());
-					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
-					rol.setFuncionalidades(null);
-					iagro.createRol(rol);
-				
-				}
-			}
-		});
-		btnGuardar.setBounds(149, 295, 106, 37);
-		desktopPane.add(btnGuardar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(315, 295, 89, 37);
-		desktopPane.add(btnCancelar);
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setBounds(131, 108, 124, 20);
@@ -145,6 +121,30 @@ public class CrearRol {
 		JLabel lblFuncionalidades = new JLabel("Funcionalidades:");
 		lblFuncionalidades.setBounds(291, 108, 132, 14);
 		desktopPane.add(lblFuncionalidades);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(textFieldNombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos los campos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					Rol rol = new Rol();
+					rol.setNombre(textFieldNombre.getText().toUpperCase());
+					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
+					rol.setFuncionalidades(null);
+					iagro.createRol(rol);
+				
+				}
+			}
+		});
+		btnGuardar.setBounds(149, 295, 106, 37);
+		desktopPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(315, 295, 89, 37);
+		desktopPane.add(btnCancelar);
 		
 		JList listFuncionalidades = new JList();
 		listFuncionalidades.addListSelectionListener(new ListSelectionListener() {
