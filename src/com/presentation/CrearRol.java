@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+
+import com.application.IAgro;
+
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -16,6 +19,8 @@ public class CrearRol {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -32,11 +37,36 @@ public class CrearRol {
 			}
 		});
 	}
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Login
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public CrearRol() {
+		initialize();
+	}
+	
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public CrearRol(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
