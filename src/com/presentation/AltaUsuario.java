@@ -105,11 +105,36 @@ public class AltaUsuario {
 		                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		        
 		        Matcher mather = pattern.matcher(textFieldEmail.getText());
-		        
+		      
+		        //controlamos si hay algun campo vacio
 		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
 		        		textFieldPass.getText().isEmpty() || textFieldRepetirContrasenia.getText().isEmpty() ||
 		        		comboBoxRol.getToolkit().equals("")) {
+		        	
 		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+		       
+		        }//controlamos si el mail tiene un formato invalido
+		        else if (mather.find() == false) {
+					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
+		        }
+		        
+		        else if(textFieldPass.getText().length()<8 || !(
+		        		textFieldPass.getText().contains("0") ||
+		        		textFieldPass.getText().contains("1") ||
+		        		textFieldPass.getText().contains("2") ||
+		        		textFieldPass.getText().contains("3") ||
+		        		textFieldPass.getText().contains("4") ||
+		        		textFieldPass.getText().contains("5") ||
+		        		textFieldPass.getText().contains("6") ||
+		        		textFieldPass.getText().contains("7") ||
+		        		textFieldPass.getText().contains("8") ||
+		        		textFieldPass.getText().contains("9"))) {
+		        	
+					JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
+
+		        }
+		        else {
+		        	
 		        }
 			}
 		});
