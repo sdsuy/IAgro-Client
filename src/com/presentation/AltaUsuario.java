@@ -34,7 +34,7 @@ public class AltaUsuario {
 	private JTextField textFieldRepetirContrasenia;
 	
 	private IAgro iagro;
-	private RolBean rol;
+	
 
 	/**
 	 * Launch the application.
@@ -101,8 +101,8 @@ public class AltaUsuario {
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
-		rol.readAll();
-		List<Rol> roles = rol.readAll();
+		iagro.refreshRoles();//trae en memoria
+		List<Rol> roles = iagro.getRoles();
 		for (Rol rol : roles) {
 			comboBoxRol.addItem(rol.getNombre());
 		}
@@ -149,7 +149,7 @@ public class AltaUsuario {
 		        	
 		        	String nomRol = comboBoxRol.getSelectedItem().toString();
 		        	
-		        	iagro.createUsuario(nomRol);
+		        	
 		        }
 			}
 		});
