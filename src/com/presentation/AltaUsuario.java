@@ -34,6 +34,7 @@ public class AltaUsuario {
 	private JTextField textFieldRepetirContrasenia;
 	
 	private IAgro iagro;
+	private JTextField textFieldNickname;
 	
 
 	/**
@@ -87,11 +88,12 @@ public class AltaUsuario {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 430, 377);
+		frame.setBounds(100, 100, 631, 460);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		desktopPane.setLayout(null);
 		
 		JLabel lblRol = new JLabel("Rol:");
 		lblRol.setBounds(149, 83, 25, 14);
@@ -108,6 +110,7 @@ public class AltaUsuario {
 		}
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(149, 365, 106, 37);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -120,7 +123,7 @@ public class AltaUsuario {
 		        //controlamos si hay algun campo vacio
 		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
 		        		textFieldPass.getText().isEmpty() || textFieldRepetirContrasenia.getText().isEmpty() ||
-		        		comboBoxRol.getToolkit().equals("")) {
+		        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
 		        	
 		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 		       
@@ -158,17 +161,13 @@ public class AltaUsuario {
 		        	user.setClave(textFieldPass.getText());
 		        	user.setEmail(textFieldEmail.getText());
 		        	user.setClave(textFieldPass.getText());
-		        	
+		        	user.setNickname(textFieldNickname.getText());
+		        	iagro.createUsuario(user);
 		        	
 		        }
 			}
 		});
-		btnGuardar.setBounds(149, 295, 106, 37);
 		desktopPane.add(btnGuardar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(315, 309, 89, 23);
-		desktopPane.add(btnCancelar);
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(178, 108, 98, 20);
@@ -223,5 +222,18 @@ public class AltaUsuario {
 		textFieldCedula.setBounds(178, 192, 98, 20);
 		desktopPane.add(textFieldCedula);
 		textFieldCedula.setColumns(10);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(300, 365, 106, 37);
+		desktopPane.add(btnCancelar);
+		
+		textFieldNickname = new JTextField();
+		textFieldNickname.setColumns(10);
+		textFieldNickname.setBounds(178, 280, 98, 20);
+		desktopPane.add(textFieldNickname);
+		
+		JLabel lblNewLabel = new JLabel("Nickname");
+		lblNewLabel.setBounds(98, 282, 61, 16);
+		desktopPane.add(lblNewLabel);
 	}
 }
