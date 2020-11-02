@@ -11,6 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.application.IAgro;
+
 import javax.swing.JComboBox;
 
 public class ListarRoles {
@@ -18,6 +21,8 @@ public class ListarRoles {
 	private JFrame frame;
 	private JTable table;
 	private JTextField textField;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -34,6 +39,22 @@ public class ListarRoles {
 			}
 		});
 	}
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Login
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -41,6 +62,17 @@ public class ListarRoles {
 	public ListarRoles() {
 		initialize();
 	}
+	
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 * @return 
+	 */
+	public void Login(IAgro iagro) {
+		this.iagro = iagro;
+		initialize();
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
