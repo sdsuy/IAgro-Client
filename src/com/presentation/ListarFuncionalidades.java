@@ -11,6 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.application.IAgro;
+
 import javax.swing.JComboBox;
 
 public class ListarFuncionalidades {
@@ -18,6 +21,8 @@ public class ListarFuncionalidades {
 	private JFrame frame;
 	private JTable table;
 	private JTextField textField;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -34,11 +39,36 @@ public class ListarFuncionalidades {
 			}
 		});
 	}
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Listar Funcionalidades
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public ListarFuncionalidades() {
+		initialize();
+	}
+	
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public void Login(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 

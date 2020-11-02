@@ -42,7 +42,7 @@ public class ListarRoles {
 	
 	/**
 	 * 
-	 * Hago visible la ventana de Login
+	 * Hago visible la ventana de Listar Roles
 	 */
 	public void start() {
 		EventQueue.invokeLater(new Runnable() {
