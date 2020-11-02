@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+
+import com.application.IAgro;
+
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -16,6 +19,8 @@ public class CrearFuncionalidad {
 
 	private JFrame frame;
 	private JTextField textNombre;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -32,11 +37,36 @@ public class CrearFuncionalidad {
 			}
 		});
 	}
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Login
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public CrearFuncionalidad() {
+		initialize();
+	}
+	
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public CrearFuncionalidad(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
