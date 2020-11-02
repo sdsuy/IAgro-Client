@@ -115,6 +115,8 @@ public class Login {
 				iagro.login(username, password); // seteo el usuario autenticado
 				if(iagro.getAuthUser() != null) { // si se encuentra un usuario
 					System.out.println(iagro.getAuthUser().getNombre());
+					iagro.menuPrincipal(); // abro la Ventana Principal
+					frame.dispose(); // cierro login
 				} else {
 					lblError.setVisible(true);
 					System.out.println("Usuario no encontrado");
