@@ -133,39 +133,57 @@ public class IAgro {
 	}
 	
 	public boolean createUsuario(Usuario usuario) {
-		return usuarioBo.createUsuario(usuario);
+		boolean result = usuarioBo.createUsuario(usuario);
+		if(result) refreshUsuarios();
+		return result;
 	}
 	
 	public boolean createRol(Rol rol) {
-		return rolBo.createRol(rol);
+		boolean result = rolBo.createRol(rol);
+		if(result) refreshRoles();
+		return result;
 	}
 	
 	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
-		return funcionalidadBo.createFuncionalidad(funcionalidad);
+		boolean result = funcionalidadBo.createFuncionalidad(funcionalidad);
+		if(result) refreshFuncionalidades();
+		return result;
 	}
 	
 	public boolean updateUsuario(Usuario usuario) {
-		return usuarioBo.updateUsuario(usuario);
+		boolean result = usuarioBo.updateUsuario(usuario);
+		if(result) refreshUsuarios();
+		return result;
 	}
 	
 	public boolean updateRol(Rol rol) {
-		return rolBo.updateRol(rol);
+		boolean result = rolBo.updateRol(rol);
+		if(result) refreshRoles();
+		return result;
 	}
 	
 	public boolean updateFuncionalidad(Funcionalidad funcionalidad) {
-		return funcionalidadBo.updateFuncionalidad(funcionalidad);
+		boolean result = funcionalidadBo.updateFuncionalidad(funcionalidad);
+		if(result) refreshFuncionalidades();
+		return result;
 	}
 	
 	public boolean deleteUsuario(Long id) {
-		return usuarioBo.deleteUsuario(id);
+		boolean result = usuarioBo.deleteUsuario(id);
+		if(result) refreshUsuarios();
+		return result;
 	}
 	
 	public boolean deleteRol(Long id) {
-		return rolBo.deleteRol(id);
+		boolean result = rolBo.deleteRol(id);
+		if(result) refreshRoles();
+		return result;
 	}
 	
 	public boolean deleteFuncionalidad(Long id) {
-		return funcionalidadBo.deleteFuncionalidad(id);
+		boolean result = funcionalidadBo.deleteFuncionalidad(id);
+		if(result) refreshFuncionalidades();
+		return result;
 	}
 	
 	public List<Usuario> getUsuarios() {
