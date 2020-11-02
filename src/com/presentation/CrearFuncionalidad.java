@@ -126,7 +126,17 @@ public class CrearFuncionalidad {
 		desktopPane.add(textArea);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiar();
+			}
+		});
 		btnCancelar.setBounds(228, 290, 106, 37);
 		desktopPane.add(btnCancelar);
+	}
+	
+	public void limpiar() {
+		textArea.setText("");
+		textNombre.setText("");
 	}
 }
