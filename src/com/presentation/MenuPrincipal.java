@@ -3,16 +3,12 @@ package com.presentation;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JButton;
-import javax.swing.UIManager;
 
 import com.application.IAgro;
 
-import java.awt.Font;
-import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -101,7 +97,7 @@ public class MenuPrincipal {
 		JButton btnAltaUsuario = new JButton("Alta");
 		btnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iagro.altaUsuario();
+				iagro.showAltaUsuario();
 			}
 		});
 		btnAltaUsuario.setBounds(6, 11, 89, 23);
@@ -128,6 +124,11 @@ public class MenuPrincipal {
 		desktopPane.add(btnFuncionalidades);
 		
 		JButton btnCrearFuncionalidades = new JButton("Crear");
+		btnCrearFuncionalidades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showCrearFuncionalidad();
+			}
+		});
 		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
 		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
 		
@@ -152,6 +153,11 @@ public class MenuPrincipal {
 		desktopPane.add(btnRoles);
 		
 		JButton btnCrearRoles = new JButton("Crear");
+		btnCrearRoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showCrearRol();
+			}
+		});
 		btnCrearRoles.setBounds(10, 11, 107, 23);
 		desktopPaneRoles.add(btnCrearRoles);
 		

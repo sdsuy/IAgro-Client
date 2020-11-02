@@ -68,17 +68,17 @@ public class IAgro {
 		principal.start();
 	}
 	
-	public void altaUsuario() {
+	public void showAltaUsuario() {
 		altaUsuario = new AltaUsuario(this);
 		altaUsuario.start();
 	}
 	
-	public void crearRol() {
+	public void showCrearRol() {
 		crearRol = new CrearRol(this);
 		crearRol.start();
 	}
 	
-	public void crearFuncionalidad() {
+	public void showCrearFuncionalidad() {
 		crearFuncionalidad = new CrearFuncionalidad(this);
 		crearFuncionalidad.start();
 	}
