@@ -149,6 +149,16 @@ public class AltaUsuario {
 		        	
 		        	String nomRol = comboBoxRol.getSelectedItem().toString();
 		        	
+		        	iagro.readRol(nomRol);
+		        	Usuario user = new Usuario();
+		        	user.setRol(iagro.readRol(nomRol));
+		        	user.setApellido(textApellido.getText());
+		        	user.setNombre(textNombre.getText());
+		        	user.setDocumento(textFieldCedula.getText());
+		        	user.setClave(textFieldPass.getText());
+		        	user.setEmail(textFieldEmail.getText());
+		        	user.setClave(textFieldPass.getText());
+		        	
 		        	
 		        }
 			}
