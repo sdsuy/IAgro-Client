@@ -41,12 +41,8 @@ public class ListarRoles {
 	}
 	
 	/**
-	 * 
-<<<<<<< HEAD
-	 * Hago visible la ventana de Login
-=======
+	 *
 	 * Hago visible la ventana de Listar Roles
->>>>>>> origin/master
 	 */
 	public void start() {
 		EventQueue.invokeLater(new Runnable() {
