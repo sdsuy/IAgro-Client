@@ -81,10 +81,27 @@ public class CrearFuncionalidad {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 357, 377);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		textNombre = new JTextField();
+		textNombre.setBounds(10, 133, 98, 20);
+		desktopPane.add(textNombre);
+		textNombre.setColumns(10);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(37, 111, 46, 14);
+		desktopPane.add(lblNombre);
+		
+		JLabel lblNewLabel = new JLabel("Descripcion:");
+		lblNewLabel.setBounds(224, 111, 60, 14);
+		desktopPane.add(lblNewLabel);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(177, 131, 154, 120);
+		desktopPane.add(textArea);
 		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
@@ -107,23 +124,6 @@ public class CrearFuncionalidad {
 		});
 		btnGuardar.setBounds(110, 290, 106, 37);
 		desktopPane.add(btnGuardar);
-		
-		textNombre = new JTextField();
-		textNombre.setBounds(10, 133, 98, 20);
-		desktopPane.add(textNombre);
-		textNombre.setColumns(10);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(37, 111, 46, 14);
-		desktopPane.add(lblNombre);
-		
-		JLabel lblNewLabel = new JLabel("Descripcion:");
-		lblNewLabel.setBounds(224, 111, 60, 14);
-		desktopPane.add(lblNewLabel);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(177, 131, 154, 120);
-		desktopPane.add(textArea);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
