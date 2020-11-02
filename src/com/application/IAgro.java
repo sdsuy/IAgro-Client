@@ -122,5 +122,17 @@ public class IAgro {
 	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
 		return false;
 	}
+	
+	public List<Usuario> getUsuarios() {
+		return null;
+	}
+	
+	public List<Rol> getRoles() {
+		return null;
+	}
+	
+	public List<Funcionalidad> getFuncionalidades() {
+		return null;
+	}
 
 }
