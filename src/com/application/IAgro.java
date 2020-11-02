@@ -1,6 +1,7 @@
 package com.application;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.entities.Funcionalidad;
 import com.entities.Rol;
@@ -177,6 +178,30 @@ public class IAgro {
 	
 	public List<Funcionalidad> getFuncionalidades() {
 		return funcionalidades;
+	}
+	
+	public Usuario readUsuario(String nombre) {
+		Usuario usuario = usuarios.stream()
+				.filter(u -> u.getNombre().equals(nombre))
+				.collect(Collectors.toList())
+				.get(0);
+		return usuario;
+	}
+	
+	public Rol readRol(String nombre) {
+		Rol rol = roles.stream()
+				.filter(r -> r.getNombre().equals(nombre))
+				.collect(Collectors.toList())
+				.get(0);
+		return rol;
+	}
+	
+	public Funcionalidad readFuncionalidad(String nombre) {
+		Funcionalidad funcionalidad = funcionalidades.stream()
+				.filter(f -> f.getNombre().equals(nombre))
+				.collect(Collectors.toList())
+				.get(0);
+		return funcionalidad;
 	}
 
 }
