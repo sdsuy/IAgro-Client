@@ -3,6 +3,8 @@ package com.application;
 import java.util.List;
 
 import com.entities.Usuario;
+import com.presentation.CrearFuncionalidad;
+import com.presentation.CrearRol;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
@@ -12,6 +14,8 @@ public class IAgro {
 	
 	private Login login; // capa presentacion de login
 	private MenuPrincipal principal; // capa presentacion de menu principal
+	private CrearRol crearRol; // capa presentacion de menu crear rol
+	private CrearFuncionalidad crearFuncionalidad; // capa presentacion de menu crear rol
 	
 	private AuthBo auth; // capa de negocios de autenticacion de usuarios
 	private UsuarioBo usuarioBo; // capa de negocios de usuarios
@@ -58,6 +62,11 @@ public class IAgro {
 	
 	public void login(String username, String password) {
 		auth.login(username, password);
+	}
+	
+	public void crearRol() {
+		crearRol = new CrearRol(this);
+		crearRol.start();
 	}
 	
 	public void logout() {
