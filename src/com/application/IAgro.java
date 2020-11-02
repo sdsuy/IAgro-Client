@@ -141,6 +141,18 @@ public class IAgro {
 		return funcionalidadBo.updateFuncionalidad(funcionalidad);
 	}
 	
+	public boolean deleteUsuario(Long id) {
+		return usuarioBo.deleteUsuario(id);
+	}
+	
+	public boolean deleteRol(Long id) {
+		return rolBo.deleteRol(id);
+	}
+	
+	public boolean deleteFuncionalidad(Long id) {
+		return funcionalidadBo.deleteFuncionalidad(id);
+	}
+	
 	public List<Usuario> getUsuarios() {
 		return usuarioBo.getUsuarios();
 	}

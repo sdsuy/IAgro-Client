@@ -32,6 +32,10 @@ public class RolBo {
 		return rolBean.update(rol);
 	}
 	
+	public boolean deleteRol(Long id) {
+		return rolBean.delete(id);
+	}
+	
 	public List<Rol> getRoles() {
 		return rolBean.readAll();
 	}

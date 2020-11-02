@@ -33,6 +33,10 @@ public class FuncionalidadBo {
 		return funcionalidadBean.update(funcionalidad);
 	}
 	
+	public boolean deleteFuncionalidad(Long id) {
+		return funcionalidadBean.delete(id);
+	}
+	
 	public List<Funcionalidad> getFuncionalidades() {
 		return funcionalidadBean.readAll();
 	}

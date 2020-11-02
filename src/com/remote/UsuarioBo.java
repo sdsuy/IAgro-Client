@@ -32,6 +32,10 @@ public class UsuarioBo {
 		return usuarioBean.update(usuario);
 	}
 	
+	public boolean deleteUsuario(Long id) {
+		return usuarioBean.delete(id);
+	}
+	
 	public List<Usuario> getUsuarios() {
 		return usuarioBean.readAll();
 	}
