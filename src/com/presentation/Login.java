@@ -2,6 +2,7 @@ package com.presentation;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
@@ -28,7 +29,8 @@ public class Login {
 	private JFrame frame;
 	private JTextField textFieldUser;
 	private JPasswordField passwordFieldPass;
-	JTextArea textArea;
+	private JTextArea textArea;
+	private JLabel lblError;
 	
 	private IAgro iagro;
 
@@ -108,6 +110,7 @@ public class Login {
 		lblError.setBounds(285, 198, 235, 14);
 		desktopPane.add(lblError);
 		lblError.setVisible(false);
+
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
@@ -171,12 +174,12 @@ public class Login {
 		textArea.setText("Administrador Default: admin "+ "\r\nContrase\u00F1a Default: 1234 " );
 		
 	}
-	
 	public void limpiar() {
 		
 		textFieldUser.setText("");
 		passwordFieldPass.setText("");
 		textArea.setVisible(false);
-		
+		lblError.setVisible(false);
 	}
+	
 }
