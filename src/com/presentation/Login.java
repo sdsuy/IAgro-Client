@@ -119,6 +119,7 @@ public class Login {
 					System.out.println(iagro.getAuthUser().getNombre());
 					iagro.menuPrincipal(); // abro la Ventana Principal
 					frame.dispose(); // cierro login
+					limpiar();//metodo limpiar textfield
 				} else {
 					lblError.setVisible(true);
 					System.out.println("Usuario no encontrado");
