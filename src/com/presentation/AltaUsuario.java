@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+
+import com.application.IAgro;
+
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -20,6 +23,8 @@ public class AltaUsuario {
 	private JTextField textFieldPass;
 	private JTextField textFieldCedula;
 	private JTextField textFieldRepetirContrasenia;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -36,11 +41,34 @@ public class AltaUsuario {
 			}
 		});
 	}
+	
+	/**
+	 * Start the application.
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public AltaUsuario() {
+		initialize();
+	}
+	
+	/**
+	 * Create the application with IAgro.
+	 */
+	public AltaUsuario(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
@@ -50,7 +78,7 @@ public class AltaUsuario {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 430, 377);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);

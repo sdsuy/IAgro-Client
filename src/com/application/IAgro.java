@@ -3,6 +3,7 @@ package com.application;
 import java.util.List;
 
 import com.entities.Usuario;
+import com.presentation.AltaUsuario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
@@ -10,11 +11,20 @@ import com.remote.UsuarioBo;
 
 public class IAgro {
 	
-	private Login login; // capa presentacion de login
-	private MenuPrincipal principal; // capa presentacion de menu principal
+	//***********************************************
+	// Atributos para el manejo de la capa presentacion
+	//***********************************************
 	
-	private AuthBo auth; // capa de negocios de autenticacion de usuarios
-	private UsuarioBo usuarioBo; // capa de negocios de usuarios
+	private Login login; // login
+	private MenuPrincipal principal; // menu principal
+	private AltaUsuario altaUsuario; // alta usuario
+	
+	//***********************************************
+	// Atributos para el manejo de la capa negocios
+	//***********************************************
+	
+	private AuthBo auth; // autenticacion de usuarios
+	private UsuarioBo usuarioBo; // usuarios
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 
@@ -50,6 +60,11 @@ public class IAgro {
 	public void menuPrincipal() {
 		principal = new MenuPrincipal(this);
 		principal.start();
+	}
+	
+	public void altaUsuario() {
+		altaUsuario = new AltaUsuario(this);
+		altaUsuario.start();
 	}
 	
 	//**********************************************
