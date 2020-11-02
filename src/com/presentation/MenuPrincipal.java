@@ -124,6 +124,11 @@ public class MenuPrincipal {
 		desktopPane.add(btnFuncionalidades);
 		
 		JButton btnCrearFuncionalidades = new JButton("Crear");
+		btnCrearFuncionalidades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showCrearFuncionalidad();
+			}
+		});
 		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
 		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
 		
@@ -148,6 +153,11 @@ public class MenuPrincipal {
 		desktopPane.add(btnRoles);
 		
 		JButton btnCrearRoles = new JButton("Crear");
+		btnCrearRoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showCrearRol();
+			}
+		});
 		btnCrearRoles.setBounds(10, 11, 107, 23);
 		desktopPaneRoles.add(btnCrearRoles);
 		
