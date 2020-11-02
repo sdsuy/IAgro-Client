@@ -118,7 +118,6 @@ public class CrearFuncionalidad {
 					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
 					iagro.createFuncionalidad(funcionalidad);
 					
-					
 				}
 			}
 		});
@@ -136,7 +135,7 @@ public class CrearFuncionalidad {
 	}
 	
 	public void limpiar() {
-		textArea.setText("");
 		textNombre.setText("");
+		textArea.setText("");
 	}
 }
