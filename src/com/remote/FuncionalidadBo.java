@@ -1,8 +1,11 @@
 package com.remote;
 
+import java.util.List;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import com.entities.Funcionalidad;
 import com.service.FuncionalidadBeanRemote;
 
 public class FuncionalidadBo {
@@ -11,10 +14,23 @@ public class FuncionalidadBo {
 	
 	private FuncionalidadBeanRemote funcionalidadBean;
 	
-	public FuncionalidadBo() throws NamingException {
+	public FuncionalidadBo() {
 		super();
 		context="ejb:/IAgro-Server/FuncionalidadBean!com.service.FuncionalidadBeanRemote";
-		funcionalidadBean = (FuncionalidadBeanRemote)InitialContext.doLookup(context);
+		try {
+			funcionalidadBean = (FuncionalidadBeanRemote)InitialContext.doLookup(context);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
+		return funcionalidadBean.create(funcionalidad);
+	}
+	
+	public List<Funcionalidad> getFuncionalidades() {
+		return funcionalidadBean.readAll();
 	}
 
 }
