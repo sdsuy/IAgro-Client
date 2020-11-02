@@ -39,10 +39,7 @@ public class IAgro {
 		auth = new AuthBo();
 		usuarioBo = new UsuarioBo();
 		refreshUsuarios();
-		if(usuarios.size() < 1) {
-			bootstrap();
-			
-		}
+		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
 	}
 	
@@ -79,6 +76,7 @@ public class IAgro {
 	public void bootstrap() {
 		auth.bootstrap();
 		refreshUsuarios();
+		login.mensajeEditarAdminPassword();
 	}
 
 }
