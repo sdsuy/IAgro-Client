@@ -10,15 +10,19 @@ import com.application.IAgro;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearFuncionalidad {
 
 	private JFrame frame;
 	private JTextField textNombre;
+	private JTextArea textArea;
 	
 	private IAgro iagro;
 
@@ -82,6 +86,14 @@ public class CrearFuncionalidad {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textNombre.getText().isEmpty() || textArea.getText().isEmpty()) {
+	
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnGuardar.setBounds(110, 290, 106, 37);
 		desktopPane.add(btnGuardar);
 		
