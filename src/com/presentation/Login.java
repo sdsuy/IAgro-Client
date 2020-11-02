@@ -171,4 +171,10 @@ public class Login {
 		textArea.setText("Administrador Default: admin "+ "\r\nContrase\u00F1a Default: 1234 " );
 		
 	}
+	
+	public void limpiar() {
+		
+		textFieldUser.setText("");
+		passwordFieldPass.setText("");
+	}
 }
