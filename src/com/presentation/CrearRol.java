@@ -150,7 +150,7 @@ public class CrearRol {
 					Rol rol = new Rol();
 					rol.setNombre(textFieldNombre.getText().toUpperCase());
 					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
-					rol.setFuncionalidades(null);
+					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					iagro.createRol(rol);
 				
 				}
@@ -163,12 +163,10 @@ public class CrearRol {
 		btnCancelar.setBounds(315, 295, 89, 37);
 		desktopPane.add(btnCancelar);
 	}
-	private LinkedList<Funcionalidad> selectedFuncionalidades(List<String> listaNombresFuncionalidades){
-    	LinkedList<Funcionalidad> funcionalidades = new LinkedList<>();
-    	for(String nombreFuncionalidad: listaNombresFuncionalidades) {
-    		//iagro.(nombreFuncionalidad);
-    		//funcionalidades.add(funcionalidad);
-    	}
+	
+	private List<Funcionalidad> selectedFuncionalidades(List<String> listaNombresFuncionalidades){
+    	List<Funcionalidad> funcionalidades = new ArrayList<>();
+    	for(String nombreFuncionalidad: listaNombresFuncionalidades) funcionalidades.add(iagro.readFuncionalidad(nombreFuncionalidad));
     	return funcionalidades;
     }
 
