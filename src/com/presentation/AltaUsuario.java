@@ -162,6 +162,7 @@ public class AltaUsuario {
 		        	user.setClave(textFieldPass.getText());
 		        	user.setNickname(textFieldNickname.getText());
 		        	iagro.createUsuario(user);
+		        	JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Listo",JOptionPane.DEFAULT_OPTION);
 		        	limpiar();
 		        	
 		        	
@@ -225,6 +226,11 @@ public class AltaUsuario {
 		textFieldCedula.setColumns(10);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiar();
+			}
+		});
 		btnCancelar.setBounds(300, 365, 106, 37);
 		desktopPane.add(btnCancelar);
 		
