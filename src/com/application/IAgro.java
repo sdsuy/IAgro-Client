@@ -69,6 +69,11 @@ public class IAgro {
 		crearRol.start();
 	}
 	
+	public void crearFuncionalidad() {
+		crearFuncionalidad = new CrearFuncionalidad(this);
+		crearFuncionalidad.start();
+	}
+	
 	public void logout() {
 		auth.logout();
 		login.start();
