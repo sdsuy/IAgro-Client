@@ -108,5 +108,9 @@ public class IAgro {
 		refreshUsuarios();
 		login.mensajeEditarAdminPassword();
 	}
+	
+	public boolean createUsuario(Usuario usuario) {
+		return false;
+	}
 
 }
