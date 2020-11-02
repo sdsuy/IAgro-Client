@@ -2,6 +2,8 @@ package com.application;
 
 import java.util.List;
 
+import com.entities.Funcionalidad;
+import com.entities.Rol;
 import com.entities.Usuario;
 import com.presentation.CrearFuncionalidad;
 import com.presentation.CrearRol;
@@ -110,6 +112,14 @@ public class IAgro {
 	}
 	
 	public boolean createUsuario(Usuario usuario) {
+		return false;
+	}
+	
+	public boolean createRol(Rol rol) {
+		return false;
+	}
+	
+	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
 		return false;
 	}
 
