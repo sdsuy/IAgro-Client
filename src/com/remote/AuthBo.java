@@ -26,6 +26,10 @@ public class AuthBo {
 		authBean.login(username, password);
 	}
 	
+	public void logout() {
+		authBean.logout();
+	}
+	
 	public Usuario getAuthUser() {
 		return authBean.getAuthUser();
 	}
