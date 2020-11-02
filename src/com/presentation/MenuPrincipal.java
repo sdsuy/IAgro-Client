@@ -8,6 +8,9 @@ import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+
+import com.application.IAgro;
+
 import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
@@ -19,6 +22,8 @@ public class MenuPrincipal {
 	JDesktopPane desktopPaneUsuarios;
 	JDesktopPane desktopPaneFuncionalidades;
 	JDesktopPane desktopPaneRoles;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -35,11 +40,34 @@ public class MenuPrincipal {
 			}
 		});
 	}
+	
+	/**
+	 * Hago visible la ventana de Principal
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public MenuPrincipal() {
+		initialize();
+	}
+	
+	/**
+	 * Create the application.
+	 */
+	public MenuPrincipal(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
@@ -127,6 +155,12 @@ public class MenuPrincipal {
 		desktopPaneRoles.add(btnListarRoles);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.logout();
+				frame.dispose(); // cierro principal
+			}
+		});
 		btnLogout.setBounds(635, 11, 89, 23);
 		desktopPane.add(btnLogout);
 		
