@@ -29,6 +29,10 @@ public class FuncionalidadBo {
 		return funcionalidadBean.create(funcionalidad);
 	}
 	
+	public boolean updateFuncionalidad(Funcionalidad funcionalidad) {
+		return funcionalidadBean.update(funcionalidad);
+	}
+	
 	public List<Funcionalidad> getFuncionalidades() {
 		return funcionalidadBean.readAll();
 	}

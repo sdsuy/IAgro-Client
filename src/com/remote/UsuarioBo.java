@@ -28,6 +28,10 @@ public class UsuarioBo {
 		return usuarioBean.create(usuario);
 	}
 	
+	public boolean updateUsuario(Usuario usuario) {
+		return usuarioBean.update(usuario);
+	}
+	
 	public List<Usuario> getUsuarios() {
 		return usuarioBean.readAll();
 	}

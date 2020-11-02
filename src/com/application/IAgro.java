@@ -118,15 +118,27 @@ public class IAgro {
 	}
 	
 	public boolean createUsuario(Usuario usuario) {
-		return false;
+		return usuarioBo.createUsuario(usuario);
 	}
 	
 	public boolean createRol(Rol rol) {
-		return false;
+		return rolBo.createRol(rol);
 	}
 	
 	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
-		return false;
+		return funcionalidadBo.createFuncionalidad(funcionalidad);
+	}
+	
+	public boolean updateUsuario(Usuario usuario) {
+		return usuarioBo.updateUsuario(usuario);
+	}
+	
+	public boolean updateRol(Rol rol) {
+		return rolBo.updateRol(rol);
+	}
+	
+	public boolean updateFuncionalidad(Funcionalidad funcionalidad) {
+		return funcionalidadBo.updateFuncionalidad(funcionalidad);
 	}
 	
 	public List<Usuario> getUsuarios() {

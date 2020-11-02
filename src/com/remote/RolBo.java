@@ -28,6 +28,10 @@ public class RolBo {
 		return rolBean.create(rol);
 	}
 	
+	public boolean updateRol(Rol rol) {
+		return rolBean.update(rol);
+	}
+	
 	public List<Rol> getRoles() {
 		return rolBean.readAll();
 	}
