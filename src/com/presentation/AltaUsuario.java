@@ -10,9 +10,14 @@ import com.application.IAgro;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.awt.event.ActionEvent;
 
 public class AltaUsuario {
 
@@ -92,6 +97,22 @@ public class AltaUsuario {
 		desktopPane.add(comboBoxRol);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// Patr�n para validar el email
+		        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		        
+		        Matcher mather = pattern.matcher(textFieldEmail.getText());
+		        
+		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+		        		textFieldPass.getText().isEmpty() || textFieldRepetirContrasenia.getText().isEmpty() ||
+		        		comboBoxRol.getToolkit().equals("")) {
+		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+		        }
+			}
+		});
 		btnGuardar.setBounds(149, 295, 106, 37);
 		desktopPane.add(btnGuardar);
 		
