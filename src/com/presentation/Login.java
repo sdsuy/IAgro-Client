@@ -10,9 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.application.IAgro;
 
@@ -104,7 +101,7 @@ public class Login {
 		desktopPane.add(passwordFieldPass);
 		passwordFieldPass.setEchoChar('*');
 		
-		JLabel lblError = new JLabel("Error: Usuario o Contrase\u00F1a incorrectos");
+		lblError = new JLabel("Error: Usuario o Contrase\u00F1a incorrectos");
 		lblError.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblError.setForeground(Color.RED);
 		lblError.setBounds(285, 198, 235, 14);
