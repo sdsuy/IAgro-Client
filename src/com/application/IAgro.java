@@ -35,8 +35,14 @@ public class IAgro {
 	private UsuarioBo usuarioBo; // usuarios
 	private RolBo rolBo; // roles
 	private FuncionalidadBo funcionalidadBo; // funcionalidades
+
+	//***********************************************
+	// Listados ultra pesados con todos los datos para que la busqueda sea rapida
+	//***********************************************
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
+	private List<Rol> roles; // listado de roles del sistema
+	private List<Funcionalidad> funcionalidades; // listado de funcionalidades del sistema
 
 	public static void main(String[] args) {
 		IAgro iagro = new IAgro(); // Se crea una instancia
@@ -111,6 +117,14 @@ public class IAgro {
 		usuarios = usuarioBo.getUsuarios(); // actualizo la lista usuarios local
 	}
 	
+	public void refreshRoles() {
+		roles = rolBo.getRoles(); // actualizo la lista roles local
+	}
+	
+	public void refreshFuncionalidades() {
+		funcionalidades = funcionalidadBo.getFuncionalidades(); // actualizo la lista funcionalidades local
+	}
+	
 	public void bootstrap() {
 		auth.bootstrap();
 		refreshUsuarios();
@@ -154,15 +168,15 @@ public class IAgro {
 	}
 	
 	public List<Usuario> getUsuarios() {
-		return usuarioBo.getUsuarios();
+		return usuarios;
 	}
 	
 	public List<Rol> getRoles() {
-		return rolBo.getRoles();
+		return roles;
 	}
 	
 	public List<Funcionalidad> getFuncionalidades() {
-		return funcionalidadBo.getFuncionalidades();
+		return funcionalidades;
 	}
 
 }
