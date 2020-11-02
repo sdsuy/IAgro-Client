@@ -77,6 +77,7 @@ public class IAgro {
 	
 	public void logout() {
 		auth.logout();
+		login.limpiar();
 		login.start();
 	}
 	
