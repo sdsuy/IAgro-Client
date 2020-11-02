@@ -11,6 +11,8 @@ import com.presentation.AltaUsuario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
+import com.remote.FuncionalidadBo;
+import com.remote.RolBo;
 import com.remote.UsuarioBo;
 
 public class IAgro {
@@ -31,6 +33,8 @@ public class IAgro {
 	
 	private AuthBo auth; // autenticacion de usuarios
 	private UsuarioBo usuarioBo; // usuarios
+	private RolBo rolBo; // roles
+	private FuncionalidadBo funcionalidadBo; // funcionalidades
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 
@@ -54,6 +58,8 @@ public class IAgro {
 	private void start() {
 		auth = new AuthBo();
 		usuarioBo = new UsuarioBo();
+		rolBo = new RolBo();
+		funcionalidadBo = new FuncionalidadBo();
 		refreshUsuarios();
 		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
@@ -124,15 +130,15 @@ public class IAgro {
 	}
 	
 	public List<Usuario> getUsuarios() {
-		return null;
+		return usuarioBo.getUsuarios();
 	}
 	
 	public List<Rol> getRoles() {
-		return null;
+		return rolBo.getRoles();
 	}
 	
 	public List<Funcionalidad> getFuncionalidades() {
-		return null;
+		return funcionalidadBo.getFuncionalidades();
 	}
 
 }
