@@ -78,6 +78,8 @@ public class IAgro {
 	
 	public void menuPrincipal() {
 		principal = new MenuPrincipal(this);
+		refreshRoles();
+		refreshFuncionalidades();
 		principal.start();
 	}
 	
