@@ -85,10 +85,6 @@ public class CrearFuncionalidad {
 		btnGuardar.setBounds(110, 290, 106, 37);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(252, 304, 89, 23);
-		desktopPane.add(btnCancelar);
-		
 		textNombre = new JTextField();
 		textNombre.setBounds(10, 133, 98, 20);
 		desktopPane.add(textNombre);
@@ -105,5 +101,9 @@ public class CrearFuncionalidad {
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(177, 131, 154, 120);
 		desktopPane.add(textArea);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(228, 290, 106, 37);
+		desktopPane.add(btnCancelar);
 	}
 }
