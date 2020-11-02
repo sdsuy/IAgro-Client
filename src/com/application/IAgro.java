@@ -4,11 +4,15 @@ import java.util.List;
 
 import com.entities.Usuario;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.presentation.CrearFuncionalidad;
 import com.presentation.CrearRol;
 =======
 import com.presentation.AltaUsuario;
 >>>>>>> d167de756ff046365799dd633bfec463d21387b2
+=======
+import com.presentation.AltaUsuario;
+>>>>>>> origin/master
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
@@ -17,11 +21,14 @@ import com.remote.UsuarioBo;
 public class IAgro {
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private Login login; // capa presentacion de login
 	private MenuPrincipal principal; // capa presentacion de menu principal
 	private CrearRol crearRol; // capa presentacion de menu crear rol
 	private CrearFuncionalidad crearFuncionalidad; // capa presentacion de menu crear rol
 =======
+=======
+>>>>>>> origin/master
 	//***********************************************
 	// Atributos para el manejo de la capa presentacion
 	//***********************************************
@@ -33,7 +40,10 @@ public class IAgro {
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
 	//***********************************************
+<<<<<<< HEAD
 >>>>>>> d167de756ff046365799dd633bfec463d21387b2
+=======
+>>>>>>> origin/master
 	
 	private AuthBo auth; // autenticacion de usuarios
 	private UsuarioBo usuarioBo; // usuarios
@@ -99,6 +109,7 @@ public class IAgro {
 	
 	public void logout() {
 		auth.logout();
+		login.limpiar();
 		login.start();
 	}
 	
