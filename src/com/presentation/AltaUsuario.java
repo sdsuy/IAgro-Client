@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class AltaUsuario implements IFrame {
 
@@ -93,6 +96,7 @@ public class AltaUsuario implements IFrame {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		desktopPane.setLayout(null);
 		
@@ -258,6 +262,16 @@ public class AltaUsuario implements IFrame {
 		JLabel lblNombreDeUsuario = new JLabel("lNombre De Usuario:");
 		lblNombreDeUsuario.setBounds(39, 282, 129, 16);
 		desktopPane.add(lblNombreDeUsuario);
+		
+		JLabel lblTitulo = new JLabel("Alta de Usuario");
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setBounds(112, 15, 256, 57);
+		desktopPane.add(lblTitulo);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 416, 421);
+		desktopPane.add(lblFondo);
 	}
 	
 	public void limpiar() {
