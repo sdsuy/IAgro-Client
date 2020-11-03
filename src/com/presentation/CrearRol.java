@@ -29,7 +29,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
-public class CrearRol {
+public class CrearRol implements IFrame {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;

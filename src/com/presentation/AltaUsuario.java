@@ -22,7 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
-public class AltaUsuario {
+public class AltaUsuario implements IFrame {
 
 	private JFrame frame;
 	private JTextField textNombre;

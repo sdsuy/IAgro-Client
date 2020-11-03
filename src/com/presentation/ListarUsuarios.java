@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class ListarUsuarios {
+public class ListarUsuarios implements IFrame {
 
 	private JFrame frame;
 	private JTable table;

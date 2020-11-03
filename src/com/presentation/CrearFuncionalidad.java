@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class CrearFuncionalidad {
+public class CrearFuncionalidad implements IFrame {
 
 	private JFrame frame;
 	private JTextField textNombre;

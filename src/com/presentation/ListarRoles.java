@@ -16,7 +16,7 @@ import com.application.IAgro;
 
 import javax.swing.JComboBox;
 
-public class ListarRoles {
+public class ListarRoles implements IFrame {
 
 	private JFrame frame;
 	private JTable table;

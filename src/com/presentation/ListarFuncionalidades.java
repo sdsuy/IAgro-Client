@@ -16,7 +16,7 @@ import com.application.IAgro;
 
 import javax.swing.JComboBox;
 
-public class ListarFuncionalidades {
+public class ListarFuncionalidades implements IFrame {
 
 	private JFrame frame;
 	private JTable table;
