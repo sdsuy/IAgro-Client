@@ -28,6 +28,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class CrearRol implements IFrame {
 
@@ -100,6 +104,7 @@ public class CrearRol implements IFrame {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textFieldNombre = new JTextField();
@@ -169,6 +174,17 @@ public class CrearRol implements IFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(315, 295, 89, 37);
 		desktopPane.add(btnCancelar);
+		
+		JLabel lblTitulo = new JLabel("Crear Roles");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setBounds(10, 11, 451, 65);
+		desktopPane.add(lblTitulo);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(CrearRol.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 471, 338);
+		desktopPane.add(lblFondo);
 	}
 	
 	private List<Funcionalidad> selectedFuncionalidades(List<String> listaNombresFuncionalidades){

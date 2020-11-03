@@ -145,11 +145,11 @@ public class CrearFuncionalidad implements IFrame {
 		btnCancelar.setBounds(228, 290, 106, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Crear Funcionalidades");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel_1.setBounds(0, 11, 341, 71);
-		desktopPane.add(lblNewLabel_1);
+		JLabel lblTitulo = new JLabel("Crear Funcionalidades");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setBounds(0, 11, 341, 71);
+		desktopPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearFuncionalidad.class.getResource("/img/IAgro icon.png")));
