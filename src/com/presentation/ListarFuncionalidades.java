@@ -130,11 +130,11 @@ public class ListarFuncionalidades implements IFrame {
 		lblNombre.setBounds(189, 161, 100, 14);
 		desktopPane.add(lblNombre);
 		
-		JLabel lblNewLabel = new JLabel("Funcionalidades");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 29));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(151, 15, 350, 94);
-		desktopPane.add(lblNewLabel);
+		JLabel lblTitulo = new JLabel("Funcionalidades");
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(151, 15, 350, 94);
+		desktopPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(ListarFuncionalidades.class.getResource("/img/IAgro icon.png")));
