@@ -161,9 +161,23 @@ public class AltaUsuario {
 		        	user.setEmail(textFieldEmail.getText());
 		        	user.setClave(textFieldPass.getText());
 		        	user.setNickname(textFieldNickname.getText());
-		        	iagro.createUsuario(user);
-		        	JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Listo",JOptionPane.DEFAULT_OPTION);
-		        	limpiar();
+		        	
+		        	//Compruebo que la contrasenias sean iguales.
+		        	repClave=textFieldRepetirContrasenia.getText();
+		        	if(repClave.equals(textFieldPass.getText())){
+		        	
+		        		boolean result = iagro.createUsuario(user);
+		        		if(result) {
+		        		limpiar();
+		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.INFORMATION_MESSAGE);
+		        		}
+		        		else {
+		        		JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+		        		}
+		        	}
+		        	else {
+		        		JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+		        	}
 		        	
 		        	
 		        }
