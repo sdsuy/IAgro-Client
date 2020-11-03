@@ -13,8 +13,12 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import com.application.IAgro;
+import com.entities.Usuario;
 
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.awt.event.ActionEvent;
 
 public class ListarUsuarios {
 
@@ -23,6 +27,7 @@ public class ListarUsuarios {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	List<Usuario> usuarios;
 	
 	IAgro iagro;
 
@@ -99,6 +104,11 @@ public class ListarUsuarios {
 		desktopPane.add(btnMenu);
 		
 		JButton btnListarTodo = new JButton("Listar Todos");
+		btnListarTodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnListarTodo.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnListarTodo);
 		
