@@ -95,7 +95,7 @@ public class ListarRoles {
 		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(10, 11, 59, 23);
+		btnMenu.setBounds(10, 11, 84, 23);
 		desktopPane.add(btnMenu);
 		
 		JButton btnListarTodo = new JButton("Listar Todos");
@@ -125,11 +125,11 @@ public class ListarRoles {
 		desktopPaneFiltros.add(btnBuscar1);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
-		btnEliminar.setBounds(497, 136, 146, 23);
+		btnEliminar.setBounds(478, 136, 165, 23);
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
-		btnModificar.setBounds(497, 194, 146, 23);
+		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 	}
 }

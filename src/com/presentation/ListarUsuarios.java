@@ -95,7 +95,7 @@ public class ListarUsuarios {
 		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(10, 11, 59, 23);
+		btnMenu.setBounds(10, 11, 84, 23);
 		desktopPane.add(btnMenu);
 		
 		JButton btnListarTodo = new JButton("Listar Todos");
@@ -103,7 +103,7 @@ public class ListarUsuarios {
 		desktopPane.add(btnListarTodo);
 		
 		JDesktopPane desktopPaneFiltros = new JDesktopPane();
-		desktopPaneFiltros.setBounds(141, 104, 327, 129);
+		desktopPaneFiltros.setBounds(128, 103, 340, 129);
 		desktopPane.add(desktopPaneFiltros);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
@@ -120,34 +120,34 @@ public class ListarUsuarios {
 		desktopPaneFiltros.add(lblApellido);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario:");
-		lblNombreDeUsuario.setBounds(10, 82, 100, 14);
+		lblNombreDeUsuario.setBounds(10, 82, 125, 14);
 		desktopPaneFiltros.add(lblNombreDeUsuario);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(114, 30, 86, 20);
+		textField.setBounds(145, 31, 86, 20);
 		desktopPaneFiltros.add(textField);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(114, 54, 86, 20);
+		textField_1.setBounds(145, 55, 86, 20);
 		desktopPaneFiltros.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(114, 79, 86, 20);
+		textField_2.setBounds(145, 80, 86, 20);
 		desktopPaneFiltros.add(textField_2);
 		
 		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(210, 29, 89, 23);
+		btnBuscar1.setBounds(241, 30, 89, 23);
 		desktopPaneFiltros.add(btnBuscar1);
 		
 		JButton btnBuscar2 = new JButton("Buscar");
-		btnBuscar2.setBounds(210, 53, 89, 23);
+		btnBuscar2.setBounds(241, 54, 89, 23);
 		desktopPaneFiltros.add(btnBuscar2);
 		
 		JButton btnBuscar3 = new JButton("Buscar");
-		btnBuscar3.setBounds(210, 78, 89, 23);
+		btnBuscar3.setBounds(241, 79, 89, 23);
 		desktopPaneFiltros.add(btnBuscar3);
 		
 		JLabel lblRol = new JLabel("Rol:");
@@ -155,19 +155,19 @@ public class ListarUsuarios {
 		desktopPaneFiltros.add(lblRol);
 		
 		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setBounds(114, 103, 86, 22);
+		comboBoxRol.setBounds(145, 104, 86, 22);
 		desktopPaneFiltros.add(comboBoxRol);
 		
 		JButton btnBuscar4 = new JButton("Buscar");
-		btnBuscar4.setBounds(210, 103, 89, 23);
+		btnBuscar4.setBounds(241, 104, 89, 23);
 		desktopPaneFiltros.add(btnBuscar4);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
-		btnEliminar.setBounds(497, 136, 146, 23);
+		btnEliminar.setBounds(478, 138, 165, 23);
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
-		btnModificar.setBounds(497, 194, 146, 23);
+		btnModificar.setBounds(478, 192, 165, 23);
 		desktopPane.add(btnModificar);
 	}
 }
