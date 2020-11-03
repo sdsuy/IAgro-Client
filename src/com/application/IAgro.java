@@ -18,6 +18,7 @@ import com.remote.AuthBo;
 import com.remote.FuncionalidadBo;
 import com.remote.RolBo;
 import com.remote.UsuarioBo;
+import com.service.IBean;
 
 public class IAgro {
 	
@@ -78,7 +79,7 @@ public class IAgro {
 		usuarioBo = new UsuarioBo();
 		rolBo = new RolBo();
 		funcionalidadBo = new FuncionalidadBo();
-		refreshUsuarios();
+		refresh(Usuario.class);
 		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
 	}
@@ -89,8 +90,8 @@ public class IAgro {
 	
 	public void menuPrincipal() {
 		principal = new MenuPrincipal(this);
-		refreshRoles();
-		refreshFuncionalidades();
+		refresh(Rol.class);
+		refresh(Funcionalidad.class);
 		principal.start();
 	}
 	
@@ -138,80 +139,57 @@ public class IAgro {
 		login.start();
 	}
 	
-	public Usuario getAuthUser() {
-		return auth.getAuthUser();
-	}
-	
-	public void refreshUsuarios() {
-		usuarios = usuarioBo.getUsuarios(); // actualizo la lista usuarios local
-	}
-	
-	public void refreshRoles() {
-		roles = rolBo.getRoles(); // actualizo la lista roles local
-	}
-	
-	public void refreshFuncionalidades() {
-		funcionalidades = funcionalidadBo.getFuncionalidades(); // actualizo la lista funcionalidades local
-	}
-	
 	public void bootstrap() {
 		auth.bootstrap();
-		refreshUsuarios();
+		refresh(Usuario.class);
 		login.mensajeEditarAdminPassword();
 	}
 	
-	public boolean createUsuario(Usuario usuario) {
-		boolean result = usuarioBo.createUsuario(usuario);
-		if(result) refreshUsuarios();
+	public boolean create(Object o) {
+		IBean bean = getBean(o.getClass());
+		boolean result =  bean.create(o);
+		if(result) refresh(o.getClass());
 		return result;
 	}
 	
-	public boolean createRol(Rol rol) {
-		boolean result = rolBo.createRol(rol);
-		if(result) refreshRoles();
+	public boolean update(Object o) {
+		IBean bean = getBean(o.getClass());
+		boolean result =  bean.update(o);
+		if(result) refresh(o.getClass());
 		return result;
 	}
 	
-	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
-		boolean result = funcionalidadBo.createFuncionalidad(funcionalidad);
-		if(result) refreshFuncionalidades();
+	public boolean delete(Long id, Class c) {
+		IBean bean = getBean(c);
+		boolean result =  bean.delete(id);
+		if(result) refresh(c);
 		return result;
 	}
 	
-	public boolean updateUsuario(Usuario usuario) {
-		boolean result = usuarioBo.updateUsuario(usuario);
-		if(result) refreshUsuarios();
-		return result;
+	private void refresh(Class c) {
+		IBean bean = getBean(c);
+		if(c.equals(Usuario.class)) {
+			usuarios = bean.readAll();
+		} else if(c.equals(Rol.class)) {
+			roles = bean.readAll();
+		} else if(c.equals(Funcionalidad.class)) {
+			funcionalidades = bean.readAll();
+		}
 	}
 	
-	public boolean updateRol(Rol rol) {
-		boolean result = rolBo.updateRol(rol);
-		if(result) refreshRoles();
-		return result;
+	private IBean getBean(Class c) {
+		if(c.equals(Usuario.class)) {
+			return usuarioBo;
+		} else if(c.equals(Rol.class)) {
+			return rolBo;
+		} else if(c.equals(Funcionalidad.class)) {
+			return funcionalidadBo;
+		}
+		return null;
 	}
 	
-	public boolean updateFuncionalidad(Funcionalidad funcionalidad) {
-		boolean result = funcionalidadBo.updateFuncionalidad(funcionalidad);
-		if(result) refreshFuncionalidades();
-		return result;
-	}
-	
-	public boolean deleteUsuario(Long id) {
-		boolean result = usuarioBo.deleteUsuario(id);
-		if(result) refreshUsuarios();
-		return result;
-	}
-	
-	public boolean deleteRol(Long id) {
-		boolean result = rolBo.deleteRol(id);
-		if(result) refreshRoles();
-		return result;
-	}
-	
-	public boolean deleteFuncionalidad(Long id) {
-		boolean result = funcionalidadBo.deleteFuncionalidad(id);
-		if(result) refreshFuncionalidades();
-		return result;
+	public Usuario getAuthUser() {
+		return auth.getAuthUser();
 	}
 	
 	public List<Usuario> getUsuarios() {
