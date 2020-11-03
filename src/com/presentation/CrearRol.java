@@ -151,7 +151,14 @@ public class CrearRol {
 					rol.setNombre(textFieldNombre.getText().toUpperCase());
 					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
-					iagro.createRol(rol);
+					boolean result = iagro.createRol(rol);
+					if(result) {
+						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.INFORMATION_MESSAGE);
+						limpiarRol();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "No se pudo crear el Rol","Error", JOptionPane.ERROR_MESSAGE);
+					}
 				
 				}
 			}
@@ -169,6 +176,12 @@ public class CrearRol {
     	for(String nombreFuncionalidad: listaNombresFuncionalidades) funcionalidades.add(iagro.readFuncionalidad(nombreFuncionalidad));
     	return funcionalidades;
     }
+	
+	public void limpiarRol() {
+		textFieldNombre.setText("");
+		textAreaDescripcion.setText("");
+		listFuncionalidades.setToolTipText("");
+	}
 
 	
 }
