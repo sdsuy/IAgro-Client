@@ -8,6 +8,7 @@ import com.entities.Rol;
 import com.entities.Usuario;
 import com.presentation.CrearFuncionalidad;
 import com.presentation.CrearRol;
+import com.presentation.IFrame;
 import com.presentation.ListarFuncionalidades;
 import com.presentation.ListarRoles;
 import com.presentation.ListarUsuarios;
@@ -95,34 +96,32 @@ public class IAgro {
 		principal.start();
 	}
 	
-	public void showAltaUsuario() {
-		altaUsuario = new AltaUsuario(this);
-		altaUsuario.start();
+	public void show(Class c) {
+		IFrame frame = getFrame(c);
+		frame.start();
 	}
 	
-	public void showCrearRol() {
-		crearRol = new CrearRol(this);
-		crearRol.start();
-	}
-	
-	public void showCrearFuncionalidad() {
-		crearFuncionalidad = new CrearFuncionalidad(this);
-		crearFuncionalidad.start();
-	}
-	
-	public void showListarUsuarios() {
-		listarUsuarios = new ListarUsuarios(this);
-		listarUsuarios.start();
-	}
-	
-	public void showListarRoles() {
-		listarRoles = new ListarRoles(this);
-		listarRoles.start();
-	}
-	
-	public void showListarFuncionalidades() {
-		listarFuncionalidades = new ListarFuncionalidades(this);
-		listarFuncionalidades.start();
+	private IFrame getFrame(Class c) {
+		if(c.equals(AltaUsuario.class)) {
+			altaUsuario = new AltaUsuario(this);
+			return altaUsuario;
+		} else if(c.equals(CrearRol.class)) {
+			crearRol = new CrearRol(this);
+			return crearRol;
+		} else if(c.equals(CrearFuncionalidad.class)) {
+			crearFuncionalidad = new CrearFuncionalidad(this);
+			return crearFuncionalidad;
+		} else if(c.equals(ListarUsuarios.class)) {
+			listarUsuarios = new ListarUsuarios(this);
+			return listarUsuarios;
+		} else if(c.equals(ListarRoles.class)) {
+			listarRoles = new ListarRoles(this);
+			return listarRoles;
+		} else if(c.equals(ListarFuncionalidades.class)) {
+			listarFuncionalidades = new ListarFuncionalidades(this);
+			return listarFuncionalidades;
+		}
+		return null;
 	}
 	
 	//**********************************************
