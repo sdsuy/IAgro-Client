@@ -123,6 +123,10 @@ public class IAgro {
 		}
 		return null;
 	}
+	public String [] getColumnas(){
+		String [] columnas = {"ID","NOMBRE","APELLIDO","DOCUMENTO","CLAVE","NICKNAME","EMAIL","ROL"};
+		return columnas;
+	}
 	
 	//**********************************************
 	// Metodos para el manejo de la capa de negocios
