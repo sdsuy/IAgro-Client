@@ -8,6 +8,9 @@ import com.entities.Rol;
 import com.entities.Usuario;
 import com.presentation.CrearFuncionalidad;
 import com.presentation.CrearRol;
+import com.presentation.ListarFuncionalidades;
+import com.presentation.ListarRoles;
+import com.presentation.ListarUsuarios;
 import com.presentation.AltaUsuario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
@@ -27,6 +30,9 @@ public class IAgro {
 	private AltaUsuario altaUsuario; // alta usuario
 	private CrearRol crearRol; // crear rol
 	private CrearFuncionalidad crearFuncionalidad; // crear rol
+	private ListarUsuarios listarUsuarios; // listar usuarios
+	private ListarRoles listarRoles; // listar roles
+	private ListarFuncionalidades listarFuncionalidades; // listar funcionalidades
 	
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
@@ -45,6 +51,11 @@ public class IAgro {
 	private List<Rol> roles; // listado de roles del sistema
 	private List<Funcionalidad> funcionalidades; // listado de funcionalidades del sistema
 
+	/**
+	 * 
+	 * Main IAgro donde todo comienza...
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		IAgro iagro = new IAgro(); // Se crea una instancia
 		iagro.start();
@@ -96,6 +107,21 @@ public class IAgro {
 	public void showCrearFuncionalidad() {
 		crearFuncionalidad = new CrearFuncionalidad(this);
 		crearFuncionalidad.start();
+	}
+	
+	public void showListarUsuarios() {
+		listarUsuarios = new ListarUsuarios(this);
+		listarUsuarios.start();
+	}
+	
+	public void showListarRoles() {
+		listarRoles = new ListarRoles(this);
+		listarRoles.start();
+	}
+	
+	public void showListarFuncionalidades() {
+		listarFuncionalidades = new ListarFuncionalidades(this);
+		listarFuncionalidades.start();
 	}
 	
 	//**********************************************
