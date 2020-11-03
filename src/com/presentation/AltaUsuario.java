@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -28,9 +29,10 @@ public class AltaUsuario implements IFrame {
 	private JTextField textNombre;
 	private JTextField textApellido;
 	private JTextField textFieldEmail;
-	private JTextField textFieldPass;
+	private JPasswordField passwordFieldPass;
+	private JPasswordField passwordFieldRepetirContrasenia;
 	private JTextField textFieldCedula;
-	private JTextField textFieldRepetirContrasenia;
+	
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
@@ -121,7 +123,7 @@ public class AltaUsuario implements IFrame {
 		      
 		        //controlamos si hay algun campo vacio
 		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
-		        		textFieldPass.getText().isEmpty() || textFieldRepetirContrasenia.getText().isEmpty() ||
+		        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
 		        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
 		        	
 		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
@@ -131,17 +133,17 @@ public class AltaUsuario implements IFrame {
 					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
 		        }
 		        
-		        else if(textFieldPass.getText().length()<8 || !(
-		        		textFieldPass.getText().contains("0") ||
-		        		textFieldPass.getText().contains("1") ||
-		        		textFieldPass.getText().contains("2") ||
-		        		textFieldPass.getText().contains("3") ||
-		        		textFieldPass.getText().contains("4") ||
-		        		textFieldPass.getText().contains("5") ||
-		        		textFieldPass.getText().contains("6") ||
-		        		textFieldPass.getText().contains("7") ||
-		        		textFieldPass.getText().contains("8") ||
-		        		textFieldPass.getText().contains("9"))) {
+		        else if(passwordFieldPass.getText().length()<8 || !(
+		        		passwordFieldPass.getText().contains("0") ||
+		        		passwordFieldPass.getText().contains("1") ||
+		        		passwordFieldPass.getText().contains("2") ||
+		        		passwordFieldPass.getText().contains("3") ||
+		        		passwordFieldPass.getText().contains("4") ||
+		        		passwordFieldPass.getText().contains("5") ||
+		        		passwordFieldPass.getText().contains("6") ||
+		        		passwordFieldPass.getText().contains("7") ||
+		        		passwordFieldPass.getText().contains("8") ||
+		        		passwordFieldPass.getText().contains("9"))) {
 		        	
 					JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
 
@@ -157,14 +159,14 @@ public class AltaUsuario implements IFrame {
 		        	user.setApellido(textApellido.getText());
 		        	user.setNombre(textNombre.getText());
 		        	user.setDocumento(textFieldCedula.getText());
-		        	user.setClave(textFieldPass.getText());
+		        	user.setClave(passwordFieldPass.getText());
 		        	user.setEmail(textFieldEmail.getText());
-		        	user.setClave(textFieldPass.getText());
+		        	user.setClave(passwordFieldPass.getText());
 		        	user.setNickname(textFieldNickname.getText());
 		        	
 		        	//Compruebo que la contrasenias sean iguales.
-		        	repClave=textFieldRepetirContrasenia.getText();
-		        	if(repClave.equals(textFieldPass.getText())){
+		        	repClave=passwordFieldRepetirContrasenia.getText();
+		        	if(repClave.equals(passwordFieldPass.getText())){
 		        	
 		        		boolean result = iagro.create(user);
 		        		if(result) {
@@ -216,19 +218,19 @@ public class AltaUsuario implements IFrame {
 		lblContrasenia.setBounds(74, 223, 94, 14);
 		desktopPane.add(lblContrasenia);
 		
-		textFieldPass = new JTextField();
-		textFieldPass.setBounds(178, 220, 98, 20);
-		desktopPane.add(textFieldPass);
-		textFieldPass.setColumns(10);
+		passwordFieldPass = new JPasswordField();
+		passwordFieldPass.setBounds(178, 220, 98, 20);
+		desktopPane.add(passwordFieldPass);
+		passwordFieldPass.setColumns(10);
 		
 		JLabel lblRepetirContrasenia = new JLabel("Repetir Contrase\u00F1a:");
 		lblRepetirContrasenia.setBounds(39, 251, 129, 14);
 		desktopPane.add(lblRepetirContrasenia);
 		
-		textFieldRepetirContrasenia = new JTextField();
-		textFieldRepetirContrasenia.setBounds(178, 248, 98, 20);
-		desktopPane.add(textFieldRepetirContrasenia);
-		textFieldRepetirContrasenia.setColumns(10);
+		passwordFieldRepetirContrasenia = new JPasswordField();
+		passwordFieldRepetirContrasenia.setBounds(178, 248, 98, 20);
+		desktopPane.add(passwordFieldRepetirContrasenia);
+		passwordFieldRepetirContrasenia.setColumns(10);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
 		lblCedula.setBounds(92, 191, 69, 14);
@@ -261,8 +263,8 @@ public class AltaUsuario implements IFrame {
 	public void limpiar() {
 		textFieldNickname.setText("");
 		textFieldCedula.setText("");
-		textFieldPass.setText("");
-		textFieldRepetirContrasenia.setText("");
+		passwordFieldPass.setText("");
+		passwordFieldRepetirContrasenia.setText("");
 		textFieldEmail.setText("");
 		textApellido.setText("");
 		textNombre.setText("");
