@@ -116,7 +116,14 @@ public class CrearFuncionalidad {
 					Funcionalidad funcionalidad = new Funcionalidad();
 					funcionalidad.setNombre(textNombre.getText().toUpperCase());
 					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
-					iagro.createFuncionalidad(funcionalidad);
+					boolean result = iagro.createFuncionalidad(funcionalidad);
+					if(result) {
+						JOptionPane.showMessageDialog(null, "Se creo con exito la funcionalidad","Exito",JOptionPane.INFORMATION_MESSAGE);
+						limpiar();
+					}
+					else {
+						JOptionPane.showMessageDialog(null,"No se pudo crear la funcionalidad","Error", JOptionPane.ERROR_MESSAGE);
+					}
 					
 				}
 			}
