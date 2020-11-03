@@ -107,6 +107,27 @@ public class ListarUsuarios implements IFrame {
 		btnListarTodo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				usuarios = iagro.getUsuarios();
+				String [] columnas = iagro.getColumnas();
+				
+				int x = usuarios.size();
+				int y = columnas.length;
+				
+				Object[][] datos = new Object[x][y];
+				
+				for (Usuario usuario : usuarios) {
+					datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
+					datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
+					datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
+					datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
+					datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
+					datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
+					datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
+					datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
+				}
+				
+				
+				
 			}
 		});
 		btnListarTodo.setBounds(10, 149, 108, 39);
