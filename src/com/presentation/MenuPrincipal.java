@@ -104,6 +104,11 @@ public class MenuPrincipal {
 		desktopPaneUsuarios.add(btnAltaUsuario);
 		
 		JButton btnListarUsuarios = new JButton("Listar");
+		btnListarUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showListarUsuarios();
+			}
+		});
 		btnListarUsuarios.setBounds(6, 45, 89, 23);
 		desktopPaneUsuarios.add(btnListarUsuarios);
 		
@@ -133,6 +138,11 @@ public class MenuPrincipal {
 		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
 		
 		JButton btnListarFuncionalidades = new JButton("Listar");
+		btnListarFuncionalidades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showListarFuncionalidades();
+			}
+		});
 		btnListarFuncionalidades.setBounds(6, 45, 89, 23);
 		desktopPaneFuncionalidades.add(btnListarFuncionalidades);
 		
@@ -162,6 +172,11 @@ public class MenuPrincipal {
 		desktopPaneRoles.add(btnCrearRoles);
 		
 		JButton btnListarRoles = new JButton("Listar");
+		btnListarRoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.showListarRoles();
+			}
+		});
 		btnListarRoles.setBounds(10, 45, 107, 23);
 		desktopPaneRoles.add(btnListarRoles);
 		
