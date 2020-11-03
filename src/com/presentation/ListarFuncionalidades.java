@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import com.application.IAgro;
 
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class ListarFuncionalidades implements IFrame {
 
@@ -81,6 +84,7 @@ public class ListarFuncionalidades implements IFrame {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		table = new JTable();
@@ -100,28 +104,6 @@ public class ListarFuncionalidades implements IFrame {
 		btnListarTodo.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnListarTodo);
 		
-		JDesktopPane desktopPaneFiltros = new JDesktopPane();
-		desktopPaneFiltros.setBounds(141, 104, 327, 129);
-		desktopPane.add(desktopPaneFiltros);
-		
-		JLabel lblFiltros = new JLabel("Filtrar");
-		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFiltros.setBounds(141, 5, 47, 14);
-		desktopPaneFiltros.add(lblFiltros);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 33, 100, 14);
-		desktopPaneFiltros.add(lblNombre);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(114, 30, 86, 20);
-		desktopPaneFiltros.add(textField);
-		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(210, 29, 89, 23);
-		desktopPaneFiltros.add(btnBuscar1);
-		
 		JButton btnEliminar = new JButton("Eliminar Seleccionada");
 		btnEliminar.setBounds(478, 136, 165, 23);
 		desktopPane.add(btnEliminar);
@@ -129,5 +111,34 @@ public class ListarFuncionalidades implements IFrame {
 		JButton btnModificar = new JButton("Modificar Seleccionada");
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
+		
+		JButton btnBuscar1 = new JButton("Buscar");
+		btnBuscar1.setBounds(356, 157, 89, 23);
+		desktopPane.add(btnBuscar1);
+		
+		JLabel lblFiltros = new JLabel("Filtrar");
+		lblFiltros.setBounds(293, 120, 47, 14);
+		desktopPane.add(lblFiltros);
+		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		textField = new JTextField();
+		textField.setBounds(254, 158, 86, 20);
+		desktopPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(189, 161, 100, 14);
+		desktopPane.add(lblNombre);
+		
+		JLabel lblNewLabel = new JLabel("Funcionalidades");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(151, 15, 350, 94);
+		desktopPane.add(lblNewLabel);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(ListarFuncionalidades.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 653, 417);
+		desktopPane.add(lblFondo);
 	}
 }
