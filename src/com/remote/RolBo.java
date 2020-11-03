@@ -6,9 +6,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.entities.Rol;
+import com.service.IBean;
 import com.service.RolBeanRemote;
 
-public class RolBo {
+public class RolBo implements IBean<Rol> {
 	
 	private String context;
 	private RolBeanRemote rolBean;
@@ -23,21 +24,30 @@ public class RolBo {
 			e.printStackTrace();
 		}
 	}
-	
-	public boolean createRol(Rol rol) {
-		return rolBean.create(rol);
+
+	@Override
+	public boolean create(Rol o) {
+		return rolBean.create(o);
 	}
-	
-	public boolean updateRol(Rol rol) {
-		return rolBean.update(rol);
+
+	@Override
+	public Rol read(Long id) {
+		return rolBean.read(id);
 	}
-	
-	public boolean deleteRol(Long id) {
-		return rolBean.delete(id);
-	}
-	
-	public List<Rol> getRoles() {
+
+	@Override
+	public List<Rol> readAll() {
 		return rolBean.readAll();
+	}
+
+	@Override
+	public boolean update(Rol o) {
+		return rolBean.update(o);
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		return rolBean.delete(id);
 	}
 
 }

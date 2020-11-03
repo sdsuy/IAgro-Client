@@ -7,8 +7,9 @@ import javax.naming.NamingException;
 
 import com.entities.Funcionalidad;
 import com.service.FuncionalidadBeanRemote;
+import com.service.IBean;
 
-public class FuncionalidadBo {
+public class FuncionalidadBo implements IBean<Funcionalidad> {
 	
 	private String context;
 	
@@ -24,21 +25,30 @@ public class FuncionalidadBo {
 			e.printStackTrace();
 		}
 	}
-	
-	public boolean createFuncionalidad(Funcionalidad funcionalidad) {
-		return funcionalidadBean.create(funcionalidad);
+
+	@Override
+	public boolean create(Funcionalidad o) {
+		return funcionalidadBean.create(o);
 	}
-	
-	public boolean updateFuncionalidad(Funcionalidad funcionalidad) {
-		return funcionalidadBean.update(funcionalidad);
+
+	@Override
+	public Funcionalidad read(Long id) {
+		return funcionalidadBean.read(id);
 	}
-	
-	public boolean deleteFuncionalidad(Long id) {
-		return funcionalidadBean.delete(id);
-	}
-	
-	public List<Funcionalidad> getFuncionalidades() {
+
+	@Override
+	public List<Funcionalidad> readAll() {
 		return funcionalidadBean.readAll();
+	}
+
+	@Override
+	public boolean update(Funcionalidad o) {
+		return funcionalidadBean.update(o);
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		return funcionalidadBean.delete(id);
 	}
 
 }

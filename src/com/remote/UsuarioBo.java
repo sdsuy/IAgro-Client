@@ -6,9 +6,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.entities.Usuario;
+import com.service.IBean;
 import com.service.UsuarioBeanRemote;
 
-public class UsuarioBo {
+public class UsuarioBo implements IBean<Usuario> {
 	
 	private String context;
 	private UsuarioBeanRemote usuarioBean;
@@ -23,21 +24,30 @@ public class UsuarioBo {
 			e.printStackTrace();
 		}
 	}
-	
-	public boolean createUsuario(Usuario usuario) {
-		return usuarioBean.create(usuario);
+
+	@Override
+	public boolean create(Usuario o) {
+		return usuarioBean.create(o);
 	}
-	
-	public boolean updateUsuario(Usuario usuario) {
-		return usuarioBean.update(usuario);
+
+	@Override
+	public Usuario read(Long id) {
+		return usuarioBean.read(id);
 	}
-	
-	public boolean deleteUsuario(Long id) {
-		return usuarioBean.delete(id);
-	}
-	
-	public List<Usuario> getUsuarios() {
+
+	@Override
+	public List<Usuario> readAll() {
 		return usuarioBean.readAll();
+	}
+
+	@Override
+	public boolean update(Usuario o) {
+		return usuarioBean.update(o);
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		return usuarioBean.delete(id);
 	}
 
 }
