@@ -68,7 +68,7 @@ public class ListarRoles {
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 * @return 
 	 */
-	public void Login(IAgro iagro) {
+	public ListarRoles(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
 	}
@@ -80,7 +80,7 @@ public class ListarRoles {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 669, 456);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);

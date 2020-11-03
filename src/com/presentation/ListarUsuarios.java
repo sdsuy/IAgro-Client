@@ -11,6 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.application.IAgro;
+
 import javax.swing.JComboBox;
 
 public class ListarUsuarios {
@@ -20,6 +23,8 @@ public class ListarUsuarios {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -36,6 +41,21 @@ public class ListarUsuarios {
 			}
 		});
 	}
+	
+	/**
+	 * Launch the application.
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -45,12 +65,22 @@ public class ListarUsuarios {
 	}
 
 	/**
+	 * Create the application.
+	 */
+	public ListarUsuarios(IAgro iagro) {
+		this.iagro = iagro;
+		initialize();
+	}
+	
+	
+
+	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 669, 456);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);

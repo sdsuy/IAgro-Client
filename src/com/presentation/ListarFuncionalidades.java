@@ -67,7 +67,7 @@ public class ListarFuncionalidades {
 	 * 
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
-	public void Login(IAgro iagro) {
+	public ListarFuncionalidades(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
 	}
@@ -78,7 +78,7 @@ public class ListarFuncionalidades {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 669, 456);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
