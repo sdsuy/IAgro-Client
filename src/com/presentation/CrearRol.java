@@ -96,7 +96,7 @@ public class CrearRol {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 579, 377);
+		frame.setBounds(100, 100, 487, 377);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
