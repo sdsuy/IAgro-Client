@@ -87,7 +87,7 @@ public class AltaUsuario {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 631, 460);
+		frame.setBounds(100, 100, 432, 460);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -95,7 +95,7 @@ public class AltaUsuario {
 		desktopPane.setLayout(null);
 		
 		JLabel lblRol = new JLabel("Rol:");
-		lblRol.setBounds(149, 83, 25, 14);
+		lblRol.setBounds(112, 83, 56, 14);
 		desktopPane.add(lblRol);
 		
 		JComboBox comboBoxRol = new JComboBox();
@@ -109,7 +109,7 @@ public class AltaUsuario {
 		}
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(149, 365, 106, 37);
+		btnGuardar.setBounds(74, 365, 106, 37);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -177,11 +177,11 @@ public class AltaUsuario {
 		textNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(128, 111, 46, 14);
+		lblNombre.setBounds(92, 111, 76, 14);
 		desktopPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(128, 138, 46, 14);
+		lblApellido.setBounds(92, 138, 76, 14);
 		desktopPane.add(lblApellido);
 		
 		textApellido = new JTextField();
@@ -190,7 +190,7 @@ public class AltaUsuario {
 		textApellido.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(139, 166, 35, 14);
+		lblEmail.setBounds(102, 166, 66, 14);
 		desktopPane.add(lblEmail);
 		
 		textFieldEmail = new JTextField();
@@ -199,7 +199,7 @@ public class AltaUsuario {
 		textFieldEmail.setColumns(10);
 		
 		JLabel lblContrasenia = new JLabel("Contrase\u00F1a:");
-		lblContrasenia.setBounds(112, 223, 60, 14);
+		lblContrasenia.setBounds(74, 223, 94, 14);
 		desktopPane.add(lblContrasenia);
 		
 		textFieldPass = new JTextField();
@@ -208,7 +208,7 @@ public class AltaUsuario {
 		textFieldPass.setColumns(10);
 		
 		JLabel lblRepetirContrasenia = new JLabel("Repetir Contrase\u00F1a:");
-		lblRepetirContrasenia.setBounds(74, 251, 98, 14);
+		lblRepetirContrasenia.setBounds(39, 251, 129, 14);
 		desktopPane.add(lblRepetirContrasenia);
 		
 		textFieldRepetirContrasenia = new JTextField();
@@ -217,7 +217,7 @@ public class AltaUsuario {
 		textFieldRepetirContrasenia.setColumns(10);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
-		lblCedula.setBounds(132, 195, 37, 14);
+		lblCedula.setBounds(92, 191, 69, 14);
 		desktopPane.add(lblCedula);
 		
 		textFieldCedula = new JTextField();
@@ -231,7 +231,7 @@ public class AltaUsuario {
 				limpiar();
 			}
 		});
-		btnCancelar.setBounds(300, 365, 106, 37);
+		btnCancelar.setBounds(242, 365, 106, 37);
 		desktopPane.add(btnCancelar);
 		
 		textFieldNickname = new JTextField();
@@ -239,9 +239,9 @@ public class AltaUsuario {
 		textFieldNickname.setBounds(178, 280, 98, 20);
 		desktopPane.add(textFieldNickname);
 		
-		JLabel lblNewLabel = new JLabel("Nickname");
-		lblNewLabel.setBounds(98, 282, 61, 16);
-		desktopPane.add(lblNewLabel);
+		JLabel lblNombreDeUsuario = new JLabel("lNombre De Usuario:");
+		lblNombreDeUsuario.setBounds(39, 282, 129, 16);
+		desktopPane.add(lblNombreDeUsuario);
 	}
 	
 	public void limpiar() {
