@@ -102,7 +102,7 @@ public class AltaUsuario {
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
-		iagro.refreshRoles();//trae en memoria
+		// iagro.refresh(Rol.class);//trae en memoria // no seria necesario porque los carga menu principal
 		List<Rol> roles = iagro.getRoles();
 		for (Rol rol : roles) {
 			comboBoxRol.addItem(rol.getNombre());
@@ -166,7 +166,7 @@ public class AltaUsuario {
 		        	repClave=textFieldRepetirContrasenia.getText();
 		        	if(repClave.equals(textFieldPass.getText())){
 		        	
-		        		boolean result = iagro.createUsuario(user);
+		        		boolean result = iagro.create(user);
 		        		if(result) {
 		        		limpiar();
 		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.INFORMATION_MESSAGE);

@@ -151,7 +151,7 @@ public class CrearRol {
 					rol.setNombre(textFieldNombre.getText().toUpperCase());
 					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
-					boolean result = iagro.createRol(rol);
+					boolean result = iagro.create(rol);
 					if(result) {
 						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.INFORMATION_MESSAGE);
 						limpiarRol();
