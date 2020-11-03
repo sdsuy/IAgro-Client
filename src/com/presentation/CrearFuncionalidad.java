@@ -87,16 +87,16 @@ public class CrearFuncionalidad {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textNombre = new JTextField();
-		textNombre.setBounds(10, 133, 98, 20);
+		textNombre.setBounds(10, 133, 113, 31);
 		desktopPane.add(textNombre);
 		textNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(37, 111, 46, 14);
+		lblNombre.setBounds(37, 111, 65, 14);
 		desktopPane.add(lblNombre);
 		
 		JLabel lblNewLabel = new JLabel("Descripcion:");
-		lblNewLabel.setBounds(224, 111, 60, 14);
+		lblNewLabel.setBounds(224, 111, 83, 14);
 		desktopPane.add(lblNewLabel);
 		
 		textArea = new JTextArea();
