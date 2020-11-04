@@ -175,7 +175,7 @@ public class AltaUsuario implements IFrame {
 		        		boolean result = iagro.create(user);
 		        		if(result) {
 		        		limpiar();
-		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.INFORMATION_MESSAGE);
+		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
 		        		}
 		        		else {
 		        		JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
