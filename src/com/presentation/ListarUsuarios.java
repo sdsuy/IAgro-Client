@@ -20,6 +20,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -31,6 +34,8 @@ public class ListarUsuarios implements IFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	List<Usuario> usuarios;
+	private TableRowSorter<ModeloTabla> sorter;
+	private JTable tableUsuarios;
 	
 	IAgro iagro;
 
@@ -90,11 +95,37 @@ public class ListarUsuarios implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		usuarios = iagro.getUsuarios();
+		String [] columnas = iagro.getColumnas();
+		
+		int x = usuarios.size();
+		int y = columnas.length;
+		
+		Object[][] datos = new Object[x][y];
+		
+		for (Usuario usuario : usuarios) {
+			datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
+			datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
+			datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
+			datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
+			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
+			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
+			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
+			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
+		}
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		sorter = new TableRowSorter<ModeloTabla>(model);
+		tableUsuarios = new JTable(model);
+		tableUsuarios.setRowSorter(sorter);
+		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		table = new JTable();
+		table = new JTable(model);
 		table.setBounds(10, 246, 633, 161);
 		
 		
@@ -110,26 +141,6 @@ public class ListarUsuarios implements IFrame {
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				usuarios = iagro.getUsuarios();
-				String [] columnas = iagro.getColumnas();
-				
-				int x = usuarios.size();
-				int y = columnas.length;
-				
-				Object[][] datos = new Object[x][y];
-				
-				for (Usuario usuario : usuarios) {
-					datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
-					datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
-					datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
-					datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
-					datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
-					datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
-					datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-					datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
-				}
-				
 				
 				
 			}
@@ -212,4 +223,31 @@ public class ListarUsuarios implements IFrame {
 		lblFondo.setBounds(0, 0, 653, 417);
 		desktopPane.add(lblFondo);
 	}
+	 class ModeloTabla extends AbstractTableModel {
+	    	
+	    	private String[] columnNames;
+	    	private Object[][] data;
+
+	    	public ModeloTabla(String[] columnNames, Object[][] data) {
+				super();
+				this.columnNames = columnNames;
+				this.data = data;
+			}
+
+			public int getColumnCount() {
+	    		return columnNames.length;
+	    	}
+
+	    	public int getRowCount() {
+	    		return data.length;
+	    	}
+
+	    	public String getColumnName(int col) {
+	    		return columnNames[col];
+	    	}
+
+			public Object getValueAt(int row, int col) {
+	    		return data[row][col];
+	    	}
+	    }
 }
