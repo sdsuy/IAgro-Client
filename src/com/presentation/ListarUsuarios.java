@@ -107,14 +107,14 @@ public class ListarUsuarios implements IFrame {
 		btnMenu.setBounds(10, 11, 84, 23);
 		desktopPane.add(btnMenu);
 		
-		JButton btnListarTodo = new JButton("Listar Todos");
-		btnListarTodo.addActionListener(new ActionListener() {
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnListarTodo.setBounds(10, 149, 108, 39);
-		desktopPane.add(btnListarTodo);
+		btnLimpiar.setBounds(10, 149, 108, 39);
+		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
 		btnEliminar.setBounds(478, 138, 165, 23);
