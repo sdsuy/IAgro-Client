@@ -150,7 +150,7 @@ public class ListarRoles implements IFrame {
 		desktopPane.add(btnModificar);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(258, 174, 86, 20);
+		textFieldNombre.setBounds(320, 174, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
@@ -160,16 +160,8 @@ public class ListarRoles implements IFrame {
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(154, 177, 100, 14);
+		lblNombre.setBounds(190, 174, 100, 14);
 		desktopPane.add(lblNombre);
-		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBuscar1.setBounds(354, 173, 89, 23);
-		desktopPane.add(btnBuscar1);
 		
 		JLabel lblTitulo = new JLabel("Roles");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
