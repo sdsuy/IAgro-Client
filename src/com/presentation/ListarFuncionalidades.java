@@ -11,14 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 
 import com.application.IAgro;
+import com.entities.Funcionalidad;
 
-import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
+
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListarFuncionalidades implements IFrame {
@@ -26,6 +32,8 @@ public class ListarFuncionalidades implements IFrame {
 	private JFrame frame;
 	private JTable table;
 	private JTextField textFieldNombre;
+	List<Funcionalidad> funcionalidades;
+	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
 
@@ -85,11 +93,30 @@ public class ListarFuncionalidades implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		funcionalidades = iagro.getFuncionalidades();
+		String [] columnas = iagro.getColumnasFuncionalidad();
+		
+		int x = funcionalidades.size();
+		int y = columnas.length;
+		
+		Object[][] datos = new Object[x][y];
+		
+		for (Funcionalidad funcionalidad : funcionalidades) {
+			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
+			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
+		}
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		sorter = new TableRowSorter<ModeloTabla>(model);
+		
+		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		table = new JTable();
+		table = new JTable(model);
 		table.setBounds(10, 246, 633, 161);
 		
 		
@@ -152,4 +179,50 @@ public class ListarFuncionalidades implements IFrame {
 	public void limpiarFuncionalidad() {
 		textFieldNombre.setText("");
 	}
+	
+	class ModeloTabla extends AbstractTableModel {
+    	
+    	private String[] columnNames;
+    	private Object[][] data;
+
+    	public ModeloTabla(String[] columnNames, Object[][] data) {
+			super();
+			this.columnNames = columnNames;
+			this.data = data;
+		}
+
+		public int getColumnCount() {
+    		return columnNames.length;
+    	}
+
+    	public int getRowCount() {
+    		return data.length;
+    	}
+
+    	public String getColumnName(int col) {
+    		return columnNames[col];
+    	}
+
+		public Object getValueAt(int row, int col) {
+    		return data[row][col];
+    	}
+    }
+	
+	/** 
+     * Update the row filter regular expression from the expression in
+     * the text box.
+     */
+    private void filterColumns() {
+        RowFilter<ModeloTabla, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
+        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+        	rf = RowFilter.andFilter(filters);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorter.setRowFilter(rf);
+    }
 }
