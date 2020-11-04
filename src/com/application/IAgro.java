@@ -128,8 +128,8 @@ public class IAgro {
 		return columnas;
 	}
 	
-	public String [] getColumnasRoles() {
-		String [] columnas = {"NOMBRE","DESCRIPCION"};
+	public String[] getColumnasRoles() {
+		String[] columnas = {"NOMBRE","DESCRIPCION"};
 		return columnas;
 	}
 	
