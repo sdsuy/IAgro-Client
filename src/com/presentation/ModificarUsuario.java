@@ -26,19 +26,16 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-public class AltaUsuario implements IFrame {
+public class ModificarUsuario implements IFrame {
 
 	private JFrame frame;
 	private JTextField textNombre;
 	private JTextField textApellido;
 	private JTextField textFieldEmail;
-	private JPasswordField passwordFieldPass;
-	private JPasswordField passwordFieldRepetirContrasenia;
 	private JTextField textFieldCedula;
 	
 	
 	private IAgro iagro;
-	private JTextField textFieldNickname;
 	
 
 	/**
@@ -48,7 +45,7 @@ public class AltaUsuario implements IFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AltaUsuario window = new AltaUsuario();
+					ModificarUsuario window = new ModificarUsuario();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,14 +72,14 @@ public class AltaUsuario implements IFrame {
 	/**
 	 * Create the application.
 	 */
-	public AltaUsuario() {
+	public ModificarUsuario() {
 		initialize();
 	}
 	
 	/**
 	 * Create the application with IAgro.
 	 */
-	public AltaUsuario(IAgro iagro) {
+	public ModificarUsuario(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
 	}
@@ -126,9 +123,8 @@ public class AltaUsuario implements IFrame {
 		        Matcher mather = pattern.matcher(textFieldEmail.getText());
 		      
 		        //controlamos si hay algun campo vacio
-		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
-		        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
-		        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
+		        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() || comboBoxRol.getToolkit().equals("")
+		        		  ) {
 		        	
 		        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 		       
@@ -137,21 +133,7 @@ public class AltaUsuario implements IFrame {
 					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
 		        }
 		        
-		        else if(passwordFieldPass.getText().length()<8 || !(
-		        		passwordFieldPass.getText().contains("0") ||
-		        		passwordFieldPass.getText().contains("1") ||
-		        		passwordFieldPass.getText().contains("2") ||
-		        		passwordFieldPass.getText().contains("3") ||
-		        		passwordFieldPass.getText().contains("4") ||
-		        		passwordFieldPass.getText().contains("5") ||
-		        		passwordFieldPass.getText().contains("6") ||
-		        		passwordFieldPass.getText().contains("7") ||
-		        		passwordFieldPass.getText().contains("8") ||
-		        		passwordFieldPass.getText().contains("9"))) {
-		        	
-					JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
-
-		        }
+		        
 		        else {
 		        	String repClave = "";
 		        	
@@ -163,27 +145,11 @@ public class AltaUsuario implements IFrame {
 		        	user.setApellido(textApellido.getText());
 		        	user.setNombre(textNombre.getText());
 		        	user.setDocumento(textFieldCedula.getText());
-		        	user.setClave(passwordFieldPass.getText());
+		        	
 		        	user.setEmail(textFieldEmail.getText());
-		        	user.setClave(passwordFieldPass.getText());
-		        	user.setNickname(textFieldNickname.getText());
 		        	
-		        	//Compruebo que la contrasenias sean iguales.
-		        	repClave=passwordFieldRepetirContrasenia.getText();
-		        	if(repClave.equals(passwordFieldPass.getText())){
 		        	
-		        		boolean result = iagro.create(user);
-		        		if(result) {
-		        		limpiar();
-		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
-		        		}
-		        		else {
-		        		JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-		        		}
-		        	}
-		        	else {
-		        		JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
-		        	}
+		        	
 		        	
 		        	
 		        }
@@ -218,24 +184,6 @@ public class AltaUsuario implements IFrame {
 		desktopPane.add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel lblContrasenia = new JLabel("Contrase\u00F1a:");
-		lblContrasenia.setBounds(74, 223, 94, 14);
-		desktopPane.add(lblContrasenia);
-		
-		passwordFieldPass = new JPasswordField();
-		passwordFieldPass.setBounds(178, 220, 98, 20);
-		desktopPane.add(passwordFieldPass);
-		passwordFieldPass.setColumns(10);
-		
-		JLabel lblRepetirContrasenia = new JLabel("Repetir Contrase\u00F1a:");
-		lblRepetirContrasenia.setBounds(39, 251, 129, 14);
-		desktopPane.add(lblRepetirContrasenia);
-		
-		passwordFieldRepetirContrasenia = new JPasswordField();
-		passwordFieldRepetirContrasenia.setBounds(178, 248, 98, 20);
-		desktopPane.add(passwordFieldRepetirContrasenia);
-		passwordFieldRepetirContrasenia.setColumns(10);
-		
 		JLabel lblCedula = new JLabel("Cedula:");
 		lblCedula.setBounds(92, 191, 69, 14);
 		desktopPane.add(lblCedula);
@@ -254,31 +202,21 @@ public class AltaUsuario implements IFrame {
 		btnCancelar.setBounds(242, 365, 106, 37);
 		desktopPane.add(btnCancelar);
 		
-		textFieldNickname = new JTextField();
-		textFieldNickname.setColumns(10);
-		textFieldNickname.setBounds(178, 280, 98, 20);
-		desktopPane.add(textFieldNickname);
-		
-		JLabel lblNombreDeUsuario = new JLabel("lNombre De Usuario:");
-		lblNombreDeUsuario.setBounds(39, 282, 129, 16);
-		desktopPane.add(lblNombreDeUsuario);
-		
 		JLabel lblTitulo = new JLabel("Alta de Usuario");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(112, 15, 256, 57);
 		desktopPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setIcon(new ImageIcon(ModificarUsuario.class.getResource("/img/IAgro icon.png")));
 		lblFondo.setBounds(0, 0, 416, 421);
 		desktopPane.add(lblFondo);
 	}
 	
 	public void limpiar() {
-		textFieldNickname.setText("");
+		
 		textFieldCedula.setText("");
-		passwordFieldPass.setText("");
-		passwordFieldRepetirContrasenia.setText("");
+		
 		textFieldEmail.setText("");
 		textApellido.setText("");
 		textNombre.setText("");

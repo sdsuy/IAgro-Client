@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class CrearFuncionalidad implements IFrame {
+public class ModificarFuncionalidad implements IFrame {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -38,7 +38,7 @@ public class CrearFuncionalidad implements IFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CrearFuncionalidad window = new CrearFuncionalidad();
+					ModificarFuncionalidad window = new ModificarFuncionalidad();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class CrearFuncionalidad implements IFrame {
 	/**
 	 * Create the application.
 	 */
-	public CrearFuncionalidad() {
+	public ModificarFuncionalidad() {
 		initialize();
 	}
 	
@@ -74,7 +74,7 @@ public class CrearFuncionalidad implements IFrame {
 	 * 
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
-	public CrearFuncionalidad(IAgro iagro) {
+	public ModificarFuncionalidad(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
 	}
@@ -84,7 +84,7 @@ public class CrearFuncionalidad implements IFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 357, 377);
+		frame.setBounds(100, 100, 371, 377);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -101,15 +101,15 @@ public class CrearFuncionalidad implements IFrame {
 		desktopPane.add(lblNombre);
 		
 		JLabel lblNewLabel = new JLabel("Descripcion:");
-		lblNewLabel.setBounds(224, 111, 83, 14);
+		lblNewLabel.setBounds(235, 111, 83, 14);
 		desktopPane.add(lblNewLabel);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(177, 131, 154, 120);
+		textArea.setBounds(191, 136, 154, 120);
 		desktopPane.add(textArea);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(textNombre.getText().isEmpty() || textArea.getText().isEmpty()) {
@@ -133,8 +133,8 @@ public class CrearFuncionalidad implements IFrame {
 				}
 			}
 		});
-		btnGuardar.setBounds(110, 290, 106, 37);
-		desktopPane.add(btnGuardar);
+		btnModificar.setBounds(110, 290, 106, 37);
+		desktopPane.add(btnModificar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -145,15 +145,15 @@ public class CrearFuncionalidad implements IFrame {
 		btnCancelar.setBounds(228, 290, 106, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTitulo = new JLabel("Crear Funcionalidades");
+		JLabel lblTitulo = new JLabel("Modificar Funcionalidades");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
-		lblTitulo.setBounds(0, 11, 341, 71);
+		lblTitulo.setBounds(0, 11, 355, 71);
 		desktopPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(CrearFuncionalidad.class.getResource("/img/IAgro icon.png")));
-		lblFondo.setBounds(0, 0, 341, 338);
+		lblFondo.setIcon(new ImageIcon(ModificarFuncionalidad.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 355, 338);
 		desktopPane.add(lblFondo);
 	}
 	

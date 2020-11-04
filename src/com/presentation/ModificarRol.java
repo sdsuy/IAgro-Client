@@ -33,7 +33,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class CrearRol implements IFrame {
+public class ModificarRol implements IFrame {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
@@ -54,7 +54,7 @@ public class CrearRol implements IFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CrearRol window = new CrearRol();
+					ModificarRol window = new ModificarRol();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,7 +82,7 @@ public class CrearRol implements IFrame {
 	/**
 	 * Create the application.
 	 */
-	public CrearRol() {
+	public ModificarRol() {
 		initialize();
 	}
 	
@@ -90,7 +90,7 @@ public class CrearRol implements IFrame {
 	 * 
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
-	public CrearRol(IAgro iagro) {
+	public ModificarRol(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
 	}
@@ -144,8 +144,8 @@ public class CrearRol implements IFrame {
 		listFuncionalidades.setBounds(291, 135, 170, 148);
 		desktopPane.add(listFuncionalidades);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(textFieldNombre.getText().isEmpty()) {
@@ -168,8 +168,8 @@ public class CrearRol implements IFrame {
 				}
 			}
 		});
-		btnGuardar.setBounds(35, 294, 106, 37);
-		desktopPane.add(btnGuardar);
+		btnModificar.setBounds(149, 295, 106, 37);
+		desktopPane.add(btnModificar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -177,22 +177,17 @@ public class CrearRol implements IFrame {
 				limpiarRol();
 			}
 		});
-		btnCancelar.setBounds(185, 294, 89, 37);
+		btnCancelar.setBounds(315, 295, 89, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTitulo = new JLabel("Crear Roles");
+		JLabel lblTitulo = new JLabel("Modificar Roles");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(10, 11, 451, 65);
 		desktopPane.add(lblTitulo);
 		
-		JButton btnDisponibilidad = new JButton("Chequear disponibilidad");
-		btnDisponibilidad.setToolTipText("Comprobar que la funcionalidad seleccionada esta disponible para mi rol");
-		btnDisponibilidad.setBounds(291, 294, 170, 23);
-		desktopPane.add(btnDisponibilidad);
-		
 		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(CrearRol.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setIcon(new ImageIcon(ModificarRol.class.getResource("/img/IAgro icon.png")));
 		lblFondo.setBounds(0, 0, 471, 338);
 		desktopPane.add(lblFondo);
 	}
@@ -208,4 +203,6 @@ public class CrearRol implements IFrame {
 		textAreaDescripcion.setText("");
 		listFuncionalidades.setToolTipText("");
 	}
+
+	
 }

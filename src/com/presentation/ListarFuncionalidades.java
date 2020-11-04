@@ -5,10 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
-import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -93,6 +94,12 @@ public class ListarFuncionalidades implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
 		funcionalidades = iagro.getFuncionalidades();
 		String [] columnas = iagro.getColumnasFuncionalidad();
 		
@@ -105,25 +112,19 @@ public class ListarFuncionalidades implements IFrame {
 			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
 			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
 		}
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
-		
-		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(new Color(173, 216, 230));
-		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
-		
 		table = new JTable(model);
-		table.setBounds(10, 246, 633, 161);
+		table.setRowSorter(sorter);
 		
 		
-		ScrollPane scrollPane = new ScrollPane();
+		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 246, 633, 161);
 		desktopPane.add(scrollPane);
-		scrollPane.add(table);
+//		scrollPane.add();
 		
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.setBounds(10, 11, 80, 23);
@@ -146,22 +147,18 @@ public class ListarFuncionalidades implements IFrame {
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(356, 157, 89, 23);
-		desktopPane.add(btnBuscar1);
-		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setBounds(293, 120, 47, 14);
 		desktopPane.add(lblFiltros);
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(254, 158, 86, 20);
+		textFieldNombre.setBounds(312, 158, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(189, 161, 100, 14);
+		lblNombre.setBounds(202, 161, 100, 14);
 		desktopPane.add(lblNombre);
 		
 		JLabel lblTitulo = new JLabel("Funcionalidades");
