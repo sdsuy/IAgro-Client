@@ -18,12 +18,14 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarRoles implements IFrame {
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 	
 	private IAgro iagro;
 
@@ -103,6 +105,11 @@ public class ListarRoles implements IFrame {
 		desktopPane.add(btnMenu);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnLimpiar.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnLimpiar);
 		
@@ -114,10 +121,10 @@ public class ListarRoles implements IFrame {
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
-		textField = new JTextField();
-		textField.setBounds(258, 174, 86, 20);
-		desktopPane.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(258, 174, 86, 20);
+		desktopPane.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setBounds(285, 149, 47, 14);
@@ -142,5 +149,9 @@ public class ListarRoles implements IFrame {
 		lblFondo.setIcon(new ImageIcon(ListarRoles.class.getResource("/img/IAgro icon.png")));
 		lblFondo.setBounds(0, 0, 653, 417);
 		desktopPane.add(lblFondo);
+	}
+	
+	public void limpiarRoles() {
+		
 	}
 }
