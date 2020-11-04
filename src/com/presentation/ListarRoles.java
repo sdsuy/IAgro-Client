@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class ListarRoles implements IFrame {
 
@@ -96,8 +97,14 @@ public class ListarRoles implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
 		roles = iagro.getRoles();
-		String [] columnas = iagro.getColumnasRoles();
+		String[] columnas = iagro.getColumnasRoles();
 		
 		int x = roles.size();
 		int y = columnas.length;
@@ -108,25 +115,18 @@ public class ListarRoles implements IFrame {
 			datos[(roles.indexOf(rol))][0] = rol.getNombre();
 			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
 		}
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
-		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(new Color(173, 216, 230));
-		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
-		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		table.setBounds(10, 246, 633, 161);
+//		table.setBounds(10, 246, 633, 161);
 		
-		
-		ScrollPane scrollPane = new ScrollPane();
+		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 246, 633, 161);
+//		scrollPane.add();
 		desktopPane.add(scrollPane);
-		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.setBounds(10, 11, 84, 23);
@@ -228,5 +228,4 @@ public class ListarRoles implements IFrame {
         }
         sorter.setRowFilter(rf);
     }
-    
 }
