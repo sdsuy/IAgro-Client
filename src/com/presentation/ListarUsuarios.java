@@ -146,8 +146,7 @@ public class ListarUsuarios implements IFrame {
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				limpiarFiltros();
 			}
 		});
 		btnLimpiar.setBounds(10, 149, 108, 39);
@@ -275,5 +274,11 @@ public class ListarUsuarios implements IFrame {
 	            return;
 	        }
 	        sorter.setRowFilter(rf);
+	    }
+	    
+	    private void limpiarFiltros() {
+	    	textFieldNombre.setText("");
+	    	textFieldApellido.setText("");
+	    	textFieldNickname.setText("");
 	    }
 }
