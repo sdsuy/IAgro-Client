@@ -18,12 +18,14 @@ import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarFuncionalidades implements IFrame {
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 	
 	private IAgro iagro;
 
@@ -101,6 +103,11 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(btnMenu);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFuncionalidad();
+			}
+		});
 		btnLimpiar.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnLimpiar);
 		
@@ -121,10 +128,10 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(lblFiltros);
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		textField = new JTextField();
-		textField.setBounds(254, 158, 86, 20);
-		desktopPane.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(254, 158, 86, 20);
+		desktopPane.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(189, 161, 100, 14);
@@ -140,5 +147,9 @@ public class ListarFuncionalidades implements IFrame {
 		lblFondo.setIcon(new ImageIcon(ListarFuncionalidades.class.getResource("/img/IAgro icon.png")));
 		lblFondo.setBounds(0, 0, 653, 417);
 		desktopPane.add(lblFondo);
+	}
+	
+	public void limpiarFuncionalidad() {
+		textFieldNombre.setText("");
 	}
 }
