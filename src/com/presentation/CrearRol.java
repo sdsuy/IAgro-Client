@@ -120,7 +120,7 @@ public class CrearRol implements IFrame {
 		lblDescripcion.setBounds(10, 136, 89, 14);
 		desktopPane.add(lblDescripcion);
 		
-		JTextArea textAreaDescripcion = new JTextArea();
+		textAreaDescripcion = new JTextArea();
 		textAreaDescripcion.setBounds(131, 140, 124, 97);
 		desktopPane.add(textAreaDescripcion);
 		
@@ -158,7 +158,7 @@ public class CrearRol implements IFrame {
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result = iagro.create(rol);
 					if(result) {
-						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
 						limpiarRol();
 					}
 					else {
@@ -172,6 +172,11 @@ public class CrearRol implements IFrame {
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarRol();
+			}
+		});
 		btnCancelar.setBounds(315, 295, 89, 37);
 		desktopPane.add(btnCancelar);
 		
