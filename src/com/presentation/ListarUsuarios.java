@@ -165,55 +165,39 @@ public class ListarUsuarios implements IFrame {
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(146, 133, 100, 14);
+		lblNombre.setBounds(202, 132, 100, 14);
 		desktopPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(146, 157, 100, 14);
+		lblApellido.setBounds(202, 156, 100, 14);
 		desktopPane.add(lblApellido);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario:");
-		lblNombreDeUsuario.setBounds(146, 182, 125, 14);
+		lblNombreDeUsuario.setBounds(202, 181, 125, 14);
 		desktopPane.add(lblNombreDeUsuario);
 		
 		JLabel lblRol = new JLabel("Rol:");
-		lblRol.setBounds(146, 207, 100, 14);
+		lblRol.setBounds(202, 206, 100, 14);
 		desktopPane.add(lblRol);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(281, 131, 86, 20);
+		textFieldNombre.setBounds(337, 130, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldApellido = new JTextField();
-		textFieldApellido.setBounds(281, 155, 86, 20);
+		textFieldApellido.setBounds(337, 154, 86, 20);
 		desktopPane.add(textFieldApellido);
 		textFieldApellido.setColumns(10);
 		
 		textFieldNickname = new JTextField();
-		textFieldNickname.setBounds(281, 180, 86, 20);
+		textFieldNickname.setBounds(337, 179, 86, 20);
 		desktopPane.add(textFieldNickname);
 		textFieldNickname.setColumns(10);
 		
 		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setBounds(281, 204, 86, 22);
+		comboBoxRol.setBounds(337, 203, 86, 22);
 		desktopPane.add(comboBoxRol);
-		
-		JButton btnBuscarNombre = new JButton("Buscar");
-		btnBuscarNombre.setBounds(377, 130, 89, 23);
-		desktopPane.add(btnBuscarNombre);
-		
-		JButton btnBuscarApellido = new JButton("Buscar");
-		btnBuscarApellido.setBounds(377, 154, 89, 23);
-		desktopPane.add(btnBuscarApellido);
-		
-		JButton btnBuscarNickname = new JButton("Buscar");
-		btnBuscarNickname.setBounds(377, 179, 89, 23);
-		desktopPane.add(btnBuscarNickname);
-		
-		JButton btnBuscarRol = new JButton("Buscar");
-		btnBuscarRol.setBounds(377, 204, 89, 23);
-		desktopPane.add(btnBuscarRol);
 		
 		JLabel lblTitulo = new JLabel("Usuarios");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
