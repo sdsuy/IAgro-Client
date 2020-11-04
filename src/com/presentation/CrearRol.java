@@ -168,7 +168,7 @@ public class CrearRol implements IFrame {
 				}
 			}
 		});
-		btnGuardar.setBounds(149, 295, 106, 37);
+		btnGuardar.setBounds(35, 294, 106, 37);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -177,7 +177,7 @@ public class CrearRol implements IFrame {
 				limpiarRol();
 			}
 		});
-		btnCancelar.setBounds(315, 295, 89, 37);
+		btnCancelar.setBounds(185, 294, 89, 37);
 		desktopPane.add(btnCancelar);
 		
 		JLabel lblTitulo = new JLabel("Crear Roles");
@@ -185,6 +185,10 @@ public class CrearRol implements IFrame {
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(10, 11, 451, 65);
 		desktopPane.add(lblTitulo);
+		
+		JButton btnNewButton = new JButton("Chequear disponibilidad");
+		btnNewButton.setBounds(291, 294, 170, 23);
+		desktopPane.add(btnNewButton);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearRol.class.getResource("/img/IAgro icon.png")));
@@ -203,6 +207,4 @@ public class CrearRol implements IFrame {
 		textAreaDescripcion.setText("");
 		listFuncionalidades.setToolTipText("");
 	}
-
-	
 }
