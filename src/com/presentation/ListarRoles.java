@@ -164,6 +164,10 @@ public class ListarRoles implements IFrame {
 		desktopPane.add(lblNombre);
 		
 		JButton btnBuscar1 = new JButton("Buscar");
+		btnBuscar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBuscar1.setBounds(354, 173, 89, 23);
 		desktopPane.add(btnBuscar1);
 		
