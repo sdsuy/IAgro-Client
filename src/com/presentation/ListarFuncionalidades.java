@@ -147,22 +147,18 @@ public class ListarFuncionalidades implements IFrame {
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(356, 157, 89, 23);
-		desktopPane.add(btnBuscar1);
-		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setBounds(293, 120, 47, 14);
 		desktopPane.add(lblFiltros);
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(254, 158, 86, 20);
+		textFieldNombre.setBounds(312, 158, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(189, 161, 100, 14);
+		lblNombre.setBounds(202, 161, 100, 14);
 		desktopPane.add(lblNombre);
 		
 		JLabel lblTitulo = new JLabel("Funcionalidades");
