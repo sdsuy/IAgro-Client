@@ -11,12 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 
 import com.application.IAgro;
 import com.entities.Usuario;
 
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
@@ -30,9 +32,9 @@ public class ListarUsuarios implements IFrame {
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldNickname;
 	List<Usuario> usuarios;
 	private TableRowSorter<ModeloTabla> sorter;
 	private JTable tableUsuarios;
@@ -178,20 +180,20 @@ public class ListarUsuarios implements IFrame {
 		lblRol.setBounds(146, 207, 100, 14);
 		desktopPane.add(lblRol);
 		
-		textField = new JTextField();
-		textField.setBounds(281, 131, 86, 20);
-		desktopPane.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(281, 131, 86, 20);
+		desktopPane.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(281, 155, 86, 20);
-		desktopPane.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setBounds(281, 155, 86, 20);
+		desktopPane.add(textFieldApellido);
+		textFieldApellido.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(281, 180, 86, 20);
-		desktopPane.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldNickname = new JTextField();
+		textFieldNickname.setBounds(281, 180, 86, 20);
+		desktopPane.add(textFieldNickname);
+		textFieldNickname.setColumns(10);
 		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setBounds(281, 204, 86, 22);
@@ -250,5 +252,24 @@ public class ListarUsuarios implements IFrame {
 			public Object getValueAt(int row, int col) {
 	    		return data[row][col];
 	    	}
+	    }
+	 
+	 /** 
+	     * Update the row filter regular expression from the expression in
+	     * the text box.
+	     */
+	    private void filterColumns() {
+	        RowFilter<ModeloTabla, Object> rf = null;
+	        //If current expression doesn't parse, don't update.
+	        try {
+	        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(2);
+	        	filters.add(RowFilter.regexFilter(textNombre.getText(), 1));
+	        	filters.add(RowFilter.regexFilter(textApellido.getText(), 2));
+//	            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+	        	rf = RowFilter.andFilter(filters);
+	        } catch (java.util.regex.PatternSyntaxException e) {
+	            return;
+	        }
+	        sorter.setRowFilter(rf);
 	    }
 }
