@@ -123,7 +123,7 @@ public class CrearFuncionalidad implements IFrame {
 					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
 					boolean result = iagro.create(funcionalidad);
 					if(result) {
-						JOptionPane.showMessageDialog(null, "Se creo con exito la funcionalidad","Exito",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Se creo con exito la funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
 						limpiar();
 					}
 					else {
