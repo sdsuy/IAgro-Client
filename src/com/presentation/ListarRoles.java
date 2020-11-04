@@ -11,14 +11,21 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 
 import com.application.IAgro;
+import com.entities.Rol;
+import com.presentation.ListarUsuarios.ModeloTabla;
 
 import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListarRoles implements IFrame {
@@ -26,6 +33,8 @@ public class ListarRoles implements IFrame {
 	private JFrame frame;
 	private JTable table;
 	private JTextField textFieldNombre;
+	List<Rol> roles;
+	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
 
@@ -87,11 +96,30 @@ public class ListarRoles implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		roles = iagro.getRoles();
+		String [] columnas = iagro.getColumnasRoles();
+		
+		int x = roles.size();
+		int y = columnas.length;
+		
+		Object[][] datos = new Object[x][y];
+		
+		for (Rol rol : roles) {
+			datos[(roles.indexOf(rol))][0] = rol.getNombre();
+			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
+		}
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		sorter = new TableRowSorter<ModeloTabla>(model);
+		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		table = new JTable();
+		table = new JTable(model);
+		table.setRowSorter(sorter);
 		table.setBounds(10, 246, 633, 161);
 		
 		
@@ -154,4 +182,51 @@ public class ListarRoles implements IFrame {
 	public void limpiarRoles() {
 		textFieldNombre.setText("");
 	}
+	
+	class ModeloTabla extends AbstractTableModel {
+    	
+    	private String[] columnNames;
+    	private Object[][] data;
+
+    	public ModeloTabla(String[] columnNames, Object[][] data) {
+			super();
+			this.columnNames = columnNames;
+			this.data = data;
+		}
+
+		public int getColumnCount() {
+    		return columnNames.length;
+    	}
+
+    	public int getRowCount() {
+    		return data.length;
+    	}
+
+    	public String getColumnName(int col) {
+    		return columnNames[col];
+    	}
+
+		public Object getValueAt(int row, int col) {
+    		return data[row][col];
+    	}
+    }
+	
+	/** 
+     * Update the row filter regular expression from the expression in
+     * the text box.
+     */
+    private void filterColumns() {
+        RowFilter<ModeloTabla, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
+        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+        	rf = RowFilter.andFilter(filters);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorter.setRowFilter(rf);
+    }
+    
 }
