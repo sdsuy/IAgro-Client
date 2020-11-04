@@ -107,7 +107,7 @@ public class ListarRoles implements IFrame {
 		JButton btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				limpiarRoles();
 			}
 		});
 		btnLimpiar.setBounds(10, 149, 108, 39);
@@ -152,6 +152,6 @@ public class ListarRoles implements IFrame {
 	}
 	
 	public void limpiarRoles() {
-		
+		textFieldNombre.setText("");
 	}
 }
