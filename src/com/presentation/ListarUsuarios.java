@@ -19,6 +19,9 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class ListarUsuarios implements IFrame {
 
@@ -88,6 +91,7 @@ public class ListarUsuarios implements IFrame {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		table = new JTable();
@@ -103,8 +107,8 @@ public class ListarUsuarios implements IFrame {
 		btnMenu.setBounds(10, 11, 84, 23);
 		desktopPane.add(btnMenu);
 		
-		JButton btnListarTodo = new JButton("Listar Todos");
-		btnListarTodo.addActionListener(new ActionListener() {
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				usuarios = iagro.getUsuarios();
@@ -130,68 +134,8 @@ public class ListarUsuarios implements IFrame {
 				
 			}
 		});
-		btnListarTodo.setBounds(10, 149, 108, 39);
-		desktopPane.add(btnListarTodo);
-		
-		JDesktopPane desktopPaneFiltros = new JDesktopPane();
-		desktopPaneFiltros.setBounds(128, 103, 340, 129);
-		desktopPane.add(desktopPaneFiltros);
-		
-		JLabel lblFiltros = new JLabel("Filtrar");
-		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFiltros.setBounds(141, 5, 47, 14);
-		desktopPaneFiltros.add(lblFiltros);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 33, 100, 14);
-		desktopPaneFiltros.add(lblNombre);
-		
-		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(10, 57, 100, 14);
-		desktopPaneFiltros.add(lblApellido);
-		
-		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario:");
-		lblNombreDeUsuario.setBounds(10, 82, 125, 14);
-		desktopPaneFiltros.add(lblNombreDeUsuario);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(145, 31, 86, 20);
-		desktopPaneFiltros.add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(145, 55, 86, 20);
-		desktopPaneFiltros.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(145, 80, 86, 20);
-		desktopPaneFiltros.add(textField_2);
-		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(241, 30, 89, 23);
-		desktopPaneFiltros.add(btnBuscar1);
-		
-		JButton btnBuscar2 = new JButton("Buscar");
-		btnBuscar2.setBounds(241, 54, 89, 23);
-		desktopPaneFiltros.add(btnBuscar2);
-		
-		JButton btnBuscar3 = new JButton("Buscar");
-		btnBuscar3.setBounds(241, 79, 89, 23);
-		desktopPaneFiltros.add(btnBuscar3);
-		
-		JLabel lblRol = new JLabel("Rol:");
-		lblRol.setBounds(10, 107, 100, 14);
-		desktopPaneFiltros.add(lblRol);
-		
-		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setBounds(145, 104, 86, 22);
-		desktopPaneFiltros.add(comboBoxRol);
-		
-		JButton btnBuscar4 = new JButton("Buscar");
-		btnBuscar4.setBounds(241, 104, 89, 23);
-		desktopPaneFiltros.add(btnBuscar4);
+		btnLimpiar.setBounds(10, 149, 108, 39);
+		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
 		btnEliminar.setBounds(478, 138, 165, 23);
@@ -200,5 +144,72 @@ public class ListarUsuarios implements IFrame {
 		JButton btnModificar = new JButton("Modificar Seleccionado");
 		btnModificar.setBounds(478, 192, 165, 23);
 		desktopPane.add(btnModificar);
+		
+		JLabel lblFiltros = new JLabel("Filtrar");
+		lblFiltros.setBounds(277, 105, 47, 14);
+		desktopPane.add(lblFiltros);
+		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(146, 133, 100, 14);
+		desktopPane.add(lblNombre);
+		
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setBounds(146, 157, 100, 14);
+		desktopPane.add(lblApellido);
+		
+		JLabel lblNombreDeUsuario = new JLabel("Nombre de Usuario:");
+		lblNombreDeUsuario.setBounds(146, 182, 125, 14);
+		desktopPane.add(lblNombreDeUsuario);
+		
+		JLabel lblRol = new JLabel("Rol:");
+		lblRol.setBounds(146, 207, 100, 14);
+		desktopPane.add(lblRol);
+		
+		textField = new JTextField();
+		textField.setBounds(281, 131, 86, 20);
+		desktopPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(281, 155, 86, 20);
+		desktopPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(281, 180, 86, 20);
+		desktopPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JComboBox comboBoxRol = new JComboBox();
+		comboBoxRol.setBounds(281, 204, 86, 22);
+		desktopPane.add(comboBoxRol);
+		
+		JButton btnBuscar1 = new JButton("Buscar");
+		btnBuscar1.setBounds(377, 130, 89, 23);
+		desktopPane.add(btnBuscar1);
+		
+		JButton btnBuscar2 = new JButton("Buscar");
+		btnBuscar2.setBounds(377, 154, 89, 23);
+		desktopPane.add(btnBuscar2);
+		
+		JButton btnBuscar3 = new JButton("Buscar");
+		btnBuscar3.setBounds(377, 179, 89, 23);
+		desktopPane.add(btnBuscar3);
+		
+		JButton btnBuscar4 = new JButton("Buscar");
+		btnBuscar4.setBounds(377, 204, 89, 23);
+		desktopPane.add(btnBuscar4);
+		
+		JLabel lblTitulo = new JLabel("Usuarios");
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(120, 38, 412, 56);
+		desktopPane.add(lblTitulo);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 653, 417);
+		desktopPane.add(lblFondo);
 	}
 }
