@@ -118,14 +118,15 @@ public class ListarUsuarios implements IFrame {
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
-		tableUsuarios = new JTable(model);
-		tableUsuarios.setRowSorter(sorter);
+		//tableUsuarios = new JTable(model);
+		//tableUsuarios.setRowSorter(sorter);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		table = new JTable(model);
+		table.setRowSorter(sorter);
 		table.setBounds(10, 246, 633, 161);
 		
 		
@@ -196,21 +197,21 @@ public class ListarUsuarios implements IFrame {
 		comboBoxRol.setBounds(281, 204, 86, 22);
 		desktopPane.add(comboBoxRol);
 		
-		JButton btnBuscar1 = new JButton("Buscar");
-		btnBuscar1.setBounds(377, 130, 89, 23);
-		desktopPane.add(btnBuscar1);
+		JButton btnBuscarNombre = new JButton("Buscar");
+		btnBuscarNombre.setBounds(377, 130, 89, 23);
+		desktopPane.add(btnBuscarNombre);
 		
-		JButton btnBuscar2 = new JButton("Buscar");
-		btnBuscar2.setBounds(377, 154, 89, 23);
-		desktopPane.add(btnBuscar2);
+		JButton btnBuscarApellido = new JButton("Buscar");
+		btnBuscarApellido.setBounds(377, 154, 89, 23);
+		desktopPane.add(btnBuscarApellido);
 		
-		JButton btnBuscar3 = new JButton("Buscar");
-		btnBuscar3.setBounds(377, 179, 89, 23);
-		desktopPane.add(btnBuscar3);
+		JButton btnBuscarNickname = new JButton("Buscar");
+		btnBuscarNickname.setBounds(377, 179, 89, 23);
+		desktopPane.add(btnBuscarNickname);
 		
-		JButton btnBuscar4 = new JButton("Buscar");
-		btnBuscar4.setBounds(377, 204, 89, 23);
-		desktopPane.add(btnBuscar4);
+		JButton btnBuscarRol = new JButton("Buscar");
+		btnBuscarRol.setBounds(377, 204, 89, 23);
+		desktopPane.add(btnBuscarRol);
 		
 		JLabel lblTitulo = new JLabel("Usuarios");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
