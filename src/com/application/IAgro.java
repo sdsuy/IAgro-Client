@@ -128,6 +128,11 @@ public class IAgro {
 		return columnas;
 	}
 	
+	public String [] getColumnasRoles() {
+		String [] columnas = {"NOMBRE","DESCRIPCION",};
+		return columnas;
+	}
+	
 	//**********************************************
 	// Metodos para el manejo de la capa de negocios
 	//**********************************************
