@@ -9,6 +9,8 @@ import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -99,8 +101,14 @@ public class ListarUsuarios implements IFrame {
 		frame.setBounds(100, 100, 669, 456);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
 		usuarios = iagro.getUsuarios();
-		String [] columnas = iagro.getColumnas();
+		String[] columnas = iagro.getColumnas();
 		
 		int x = usuarios.size();
 		int y = columnas.length;
@@ -115,29 +123,20 @@ public class ListarUsuarios implements IFrame {
 			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
 			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
 			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
+			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getNombre();
 		}
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
-		//tableUsuarios = new JTable(model);
-		//tableUsuarios.setRowSorter(sorter);
-		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBackground(new Color(173, 216, 230));
-		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
-		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
 		table.setBounds(10, 246, 633, 161);
 		
-		
-		ScrollPane scrollPane = new ScrollPane();
+		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 246, 633, 161);
 		desktopPane.add(scrollPane);
-		scrollPane.add(table);
+//		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("Menu");
 		btnMenu.setBounds(10, 11, 84, 23);
