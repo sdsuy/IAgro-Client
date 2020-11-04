@@ -18,6 +18,10 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class CrearFuncionalidad implements IFrame {
 
@@ -84,6 +88,7 @@ public class CrearFuncionalidad implements IFrame {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textNombre = new JTextField();
@@ -139,6 +144,17 @@ public class CrearFuncionalidad implements IFrame {
 		});
 		btnCancelar.setBounds(228, 290, 106, 37);
 		desktopPane.add(btnCancelar);
+		
+		JLabel lblTitulo = new JLabel("Crear Funcionalidades");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
+		lblTitulo.setBounds(0, 11, 341, 71);
+		desktopPane.add(lblTitulo);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(CrearFuncionalidad.class.getResource("/img/IAgro icon.png")));
+		lblFondo.setBounds(0, 0, 341, 338);
+		desktopPane.add(lblFondo);
 	}
 	
 	public void limpiar() {
