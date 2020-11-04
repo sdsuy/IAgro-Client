@@ -217,9 +217,9 @@ public class IAgro {
 		return funcionalidades;
 	}
 	
-	public Usuario readUsuario(String nombre) {
+	public Usuario readUsuario(String documento) {
 		Usuario usuario = usuarios.stream()
-				.filter(u -> u.getNombre().equals(nombre))
+				.filter(u -> u.getDocumento().equals(documento))
 				.collect(Collectors.toList())
 				.get(0);
 		return usuario;
