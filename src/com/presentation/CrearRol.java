@@ -186,9 +186,10 @@ public class CrearRol implements IFrame {
 		lblTitulo.setBounds(10, 11, 451, 65);
 		desktopPane.add(lblTitulo);
 		
-		JButton btnNewButton = new JButton("Chequear disponibilidad");
-		btnNewButton.setBounds(291, 294, 170, 23);
-		desktopPane.add(btnNewButton);
+		JButton btnDisponibilidad = new JButton("Chequear disponibilidad");
+		btnDisponibilidad.setToolTipText("Comprobar que la funcionalidad seleccionada esta disponible para mi rol");
+		btnDisponibilidad.setBounds(291, 294, 170, 23);
+		desktopPane.add(btnDisponibilidad);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearRol.class.getResource("/img/IAgro icon.png")));
