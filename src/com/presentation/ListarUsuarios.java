@@ -39,6 +39,8 @@ public class ListarUsuarios implements IFrame {
 	private TableRowSorter<ModeloTabla> sorter;
 	private JTable tableUsuarios;
 	
+	private JComboBox comboBoxRol;
+	
 	IAgro iagro;
 
 	/**
@@ -262,9 +264,11 @@ public class ListarUsuarios implements IFrame {
 	        RowFilter<ModeloTabla, Object> rf = null;
 	        //If current expression doesn't parse, don't update.
 	        try {
-	        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(2);
-	        	filters.add(RowFilter.regexFilter(textNombre.getText(), 1));
-	        	filters.add(RowFilter.regexFilter(textApellido.getText(), 2));
+	        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(4);
+	        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+	        	filters.add(RowFilter.regexFilter(textFieldApellido.getText(), 2));
+	        	filters.add(RowFilter.regexFilter(textFieldNickname.getText(), 3));
+	        	filters.add(RowFilter.regexFilter(comboBoxRol.getActionListeners().toString(), 4));
 //	            rf = RowFilter.regexFilter(textNombre.getText(), 1);
 	        	rf = RowFilter.andFilter(filters);
 	        } catch (java.util.regex.PatternSyntaxException e) {
