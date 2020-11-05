@@ -35,10 +35,13 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JPasswordField passwordFieldPass;
 	private JPasswordField passwordFieldRepetirContrasenia;
 	private JTextField textFieldCedula;
+	private JButton btnGuardar;
+	private JComboBox comboBoxRol;
 	
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
+	private Long id;
 	
 
 	/**
@@ -71,6 +74,22 @@ public class AltaUsuario implements IFrame<Usuario> {
 			}
 		});
 	}
+	
+	@Override
+	public void setFields(Usuario o) {
+		id = o.getId();
+		comboBoxRol.getSelectedIndex();
+		textNombre.setText(o.getNombre());
+		textApellido.setText(o.getApellido());
+		textFieldEmail.setText(o.getEmail());
+		passwordFieldPass.setText(o.getClave());
+		textFieldCedula.setText(o.getDocumento());
+		btnGuardar.setText("Modificar");
+		
+		
+	}
+		
+	
 
 	/**
 	 * Create the application.
@@ -285,9 +304,5 @@ public class AltaUsuario implements IFrame<Usuario> {
 		
 	}
 
-	@Override
-	public void setFields(Usuario o) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
