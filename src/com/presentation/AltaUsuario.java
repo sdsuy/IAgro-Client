@@ -134,7 +134,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 			comboBoxRol.addItem(rol.getNombre());
 		}
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(74, 365, 106, 37);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
