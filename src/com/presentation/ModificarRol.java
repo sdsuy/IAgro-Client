@@ -158,11 +158,11 @@ public class ModificarRol implements IFrame<Rol> {
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result = iagro.create(rol);
 					if(result) {
-						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
+						JOptionPane.showConfirmDialog(null,"Modificado Rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
 						limpiarRol();
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No se pudo crear el Rol","Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No se pudo Modificar el Rol","Error", JOptionPane.ERROR_MESSAGE);
 					}
 				
 				}
