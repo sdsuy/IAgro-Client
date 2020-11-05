@@ -22,6 +22,8 @@ import com.entities.Rol;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.ImageIcon;
@@ -40,6 +42,8 @@ public class ListarRoles implements IFrame<Rol> {
 	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
+	
+	Long id;
 
 	/**
 	 * Launch the application.
@@ -78,6 +82,11 @@ public class ListarRoles implements IFrame<Rol> {
 	 */
 	public ListarRoles() {
 		initialize();
+	}
+	@Override
+	public void setFields(Rol o) {
+		
+		
 	}
 	
 	/**
@@ -144,6 +153,7 @@ public class ListarRoles implements IFrame<Rol> {
 				
 				Rol rolDelete = iagro.readRol(table.getValueAt(table.getSelectedRow(),0).toString());
 				boolean result = iagro.delete(rolDelete.getId(), Rol.class);
+				
 				if(result) {
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
 				}
@@ -159,7 +169,10 @@ public class ListarRoles implements IFrame<Rol> {
 		JButton btnModificar = new JButton("Modificar Seleccionado");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int selectedRow = table.getSelectedRow();
+				Rol rolUpdate = iagro.readRol(table.getValueAt(selectedRow, 0).toString());
+				iagro.show(Rol.class, rolUpdate);
+				frame.dispose();
 			}
 		});
 		btnModificar.setBounds(478, 194, 165, 23);
@@ -169,6 +182,29 @@ public class ListarRoles implements IFrame<Rol> {
 		textFieldNombre.setBounds(320, 174, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
+		
+		textFieldNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+					
+				});
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setBounds(285, 149, 47, 14);
@@ -215,9 +251,5 @@ public class ListarRoles implements IFrame<Rol> {
         sorter.setRowFilter(rf);
     }
 
-	@Override
-	public void setFields(Rol o) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

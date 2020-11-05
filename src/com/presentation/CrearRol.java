@@ -39,8 +39,10 @@ public class CrearRol implements IFrame<Rol> {
 	private JTextField textFieldNombre;
 	private JTextArea textAreaDescripcion;
 	private JList listFuncionalidades;
+	private JButton btnGuardar;
 	
 	private List<String> selectedNombresFuncionalidades = new ArrayList<>();
+	Long id;
 
 	
 	
@@ -78,6 +80,14 @@ public class CrearRol implements IFrame<Rol> {
 			}
 		});
 	}
+	@Override
+	public void setFields(Rol o) {
+		id = o.getId();
+		textFieldNombre.setText(o.getNombre());
+		textAreaDescripcion.setText(o.getDescripcion());
+		btnGuardar.setText("Modificar");
+		
+	}
 
 	/**
 	 * Create the application.
@@ -91,6 +101,7 @@ public class CrearRol implements IFrame<Rol> {
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
 	public CrearRol(IAgro iagro) {
+		id = 0L;
 		this.iagro = iagro;
 		initialize();
 	}
@@ -144,7 +155,7 @@ public class CrearRol implements IFrame<Rol> {
 		listFuncionalidades.setBounds(291, 135, 170, 148);
 		desktopPane.add(listFuncionalidades);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -157,6 +168,15 @@ public class CrearRol implements IFrame<Rol> {
 					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result = iagro.create(rol);
+					if (id>0) {
+						System.out.println("ID for update: " + id);
+						rol.setId(id);
+						result = iagro.update(rol);
+					} else {
+						System.out.println("ID for create: " + id);
+						result = iagro.create(rol);
+
+					}
 					if(result) {
 						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
 						limpiarRol();
@@ -209,9 +229,5 @@ public class CrearRol implements IFrame<Rol> {
 //		listFuncionalidades.setToolTipText("");
 	}
 
-	@Override
-	public void setFields(Rol o) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
