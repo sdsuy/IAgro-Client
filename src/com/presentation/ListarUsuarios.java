@@ -207,33 +207,6 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		lblFondo.setBounds(0, 0, 653, 417);
 		desktopPane.add(lblFondo);
 	}
-	 class ModeloTabla extends AbstractTableModel {
-	    	
-	    	private String[] columnNames;
-	    	private Object[][] data;
-
-	    	public ModeloTabla(String[] columnNames, Object[][] data) {
-				super();
-				this.columnNames = columnNames;
-				this.data = data;
-			}
-
-			public int getColumnCount() {
-	    		return columnNames.length;
-	    	}
-
-	    	public int getRowCount() {
-	    		return data.length;
-	    	}
-
-	    	public String getColumnName(int col) {
-	    		return columnNames[col];
-	    	}
-
-			public Object getValueAt(int row, int col) {
-	    		return data[row][col];
-	    	}
-	    }
 	 
 	 /** 
 	     * Update the row filter regular expression from the expression in
