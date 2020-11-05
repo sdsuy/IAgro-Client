@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
@@ -146,9 +147,16 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 				
 				int selectedRow = table.getSelectedRow();
 				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
-				iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				boolean result = iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
 				model.setData(iagro.matrixFuncionalidades());
 				model.refresh();
+				if(result) {
+					limpiar();
+					JOptionPane.showMessageDialog(null, "Se logro eliminar la Funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se logro eliminar la Funcionalidad","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}
 		});
@@ -213,7 +221,7 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 	}
 	
 	public void limpiarFuncionalidad() {
-		textFieldNombre.setText("");
+		limpiar();
 	}
 	
 	/** 
@@ -232,5 +240,8 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
             return;
         }
         sorter.setRowFilter(rf);
+    }
+    void limpiar() {
+    	textFieldNombre.setText("");
     }
 }
