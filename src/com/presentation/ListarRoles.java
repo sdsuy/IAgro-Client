@@ -9,6 +9,8 @@ import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -112,11 +114,6 @@ public class ListarRoles implements IFrame<Rol> {
 		
 		Object[][] datos = iagro.matrixRoles();
 		
-		for (Rol rol : roles) {
-			datos[(roles.indexOf(rol))][0] = rol.getNombre();
-			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
-		}
-		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
@@ -147,7 +144,13 @@ public class ListarRoles implements IFrame<Rol> {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Rol rolDelete = iagro.readRol(table.getValueAt(table.getSelectedRow(),0).toString());
-				iagro.delete(rolDelete.getId(), Rol.class);
+				boolean result = iagro.delete(rolDelete.getId(), Rol.class);
+				if(result) {
+					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se logro eliminar el Rol","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}
 		});
@@ -225,9 +228,9 @@ public class ListarRoles implements IFrame<Rol> {
         //If current expression doesn't parse, don't update.
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
-        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
-        	rf = RowFilter.andFilter(filters);
+//        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1);
+//        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
