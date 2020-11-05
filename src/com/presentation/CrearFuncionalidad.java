@@ -23,13 +23,15 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class CrearFuncionalidad implements IFrame {
+public class CrearFuncionalidad implements IFrame<Funcionalidad> {
 
 	private JFrame frame;
 	private JTextField textNombre;
 	private JTextArea textArea;
+	private JButton btnGuardar;
 	
 	private IAgro iagro;
+	private Long id;
 
 	/**
 	 * Launch the application.
@@ -62,6 +64,15 @@ public class CrearFuncionalidad implements IFrame {
 			}
 		});
 	}
+
+	@Override
+	public void setFields(Funcionalidad o) {
+		id = o.getId();
+		textNombre.setText(o.getNombre());
+		textArea.setText(o.getDescripcion());
+		btnGuardar.setText("Modificar");
+	}
+	
 
 	/**
 	 * Create the application.
@@ -108,7 +119,7 @@ public class CrearFuncionalidad implements IFrame {
 		textArea.setBounds(177, 131, 154, 120);
 		desktopPane.add(textArea);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -121,7 +132,15 @@ public class CrearFuncionalidad implements IFrame {
 					Funcionalidad funcionalidad = new Funcionalidad();
 					funcionalidad.setNombre(textNombre.getText().toUpperCase());
 					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
-					boolean result = iagro.create(funcionalidad);
+					boolean result;
+					if(id > 0) {
+						System.out.println("ID for update: " + id);
+						funcionalidad.setId(id);
+						result = iagro.update(funcionalidad);
+					} else {
+						System.out.println("ID for create: " + id);
+						result = iagro.create(funcionalidad);
+					}
 					if(result) {
 						JOptionPane.showMessageDialog(null, "Se creo con exito la funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
 						limpiar();
