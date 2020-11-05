@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 
 import com.application.IAgro;
+import com.entities.Funcionalidad;
 import com.entities.Rol;
 import com.presentation.ListarUsuarios.ModeloTabla;
 
@@ -142,6 +143,14 @@ public class ListarRoles implements IFrame {
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Rol rolDelete = iagro.readRol(table.getValueAt(table.getSelectedRow(),0).toString());
+				iagro.delete(rolDelete.getId(), Rol.class);
+				
+			}
+		});
 		btnEliminar.setBounds(478, 136, 165, 23);
 		desktopPane.add(btnEliminar);
 		
