@@ -148,9 +148,9 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 				int selectedRow = table.getSelectedRow();
 				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
 				boolean result = iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
-				model.setData(iagro.matrixFuncionalidades());
-				model.refresh();
 				if(result) {
+					model.setData(iagro.matrixFuncionalidades());
+					model.refresh();
 					limpiar();
 					JOptionPane.showMessageDialog(null, "Se logro eliminar la Funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
 				}
