@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class ModificarFuncionalidad implements IFrame {
+public class ModificarFuncionalidad implements IFrame<Funcionalidad> {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -160,5 +160,11 @@ public class ModificarFuncionalidad implements IFrame {
 	public void limpiar() {
 		textNombre.setText("");
 		textArea.setText("");
+	}
+
+	@Override
+	public void setFields(Funcionalidad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

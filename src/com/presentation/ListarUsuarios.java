@@ -30,7 +30,7 @@ import javax.swing.table.TableRowSorter;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class ListarUsuarios implements IFrame {
+public class ListarUsuarios implements IFrame<Usuario> {
 
 	private JFrame frame;
 	private JTable table;
@@ -264,4 +264,10 @@ public class ListarUsuarios implements IFrame {
 	    	textFieldApellido.setText("");
 	    	textFieldNickname.setText("");
 	    }
+
+		@Override
+		public void setFields(Usuario o) {
+			// TODO Auto-generated method stub
+			
+		}
 }

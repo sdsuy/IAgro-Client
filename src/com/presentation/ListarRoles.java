@@ -30,7 +30,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
-public class ListarRoles implements IFrame {
+public class ListarRoles implements IFrame<Rol> {
 
 	private JFrame frame;
 	private JTable table;
@@ -233,4 +233,10 @@ public class ListarRoles implements IFrame {
         }
         sorter.setRowFilter(rf);
     }
+
+	@Override
+	public void setFields(Rol o) {
+		// TODO Auto-generated method stub
+		
+	}
 }

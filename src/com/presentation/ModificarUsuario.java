@@ -26,7 +26,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-public class ModificarUsuario implements IFrame {
+public class ModificarUsuario implements IFrame<Usuario> {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -220,6 +220,12 @@ public class ModificarUsuario implements IFrame {
 		textFieldEmail.setText("");
 		textApellido.setText("");
 		textNombre.setText("");
+		
+	}
+
+	@Override
+	public void setFields(Usuario o) {
+		// TODO Auto-generated method stub
 		
 	}
 }
