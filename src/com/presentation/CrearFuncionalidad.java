@@ -86,6 +86,7 @@ public class CrearFuncionalidad implements IFrame<Funcionalidad> {
 	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
 	public CrearFuncionalidad(IAgro iagro) {
+		id = 0L;
 		this.iagro = iagro;
 		initialize();
 	}
