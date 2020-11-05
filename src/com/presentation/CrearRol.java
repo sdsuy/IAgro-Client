@@ -206,6 +206,6 @@ public class CrearRol implements IFrame {
 	public void limpiarRol() {
 		textFieldNombre.setText("");
 		textAreaDescripcion.setText("");
-		listFuncionalidades.setToolTipText("");
+//		listFuncionalidades.setToolTipText("");
 	}
 }
