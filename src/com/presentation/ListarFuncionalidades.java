@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class ListarFuncionalidades implements IFrame {
+public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 
 	private JFrame frame;
 	private JTable table;
@@ -85,6 +85,12 @@ public class ListarFuncionalidades implements IFrame {
 	public ListarFuncionalidades(IAgro iagro) {
 		this.iagro = iagro;
 		initialize();
+	}
+
+	@Override
+	public void setFields(Funcionalidad o) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -150,6 +156,13 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionada");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Funcionalidad funcionalidadUpdate = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
+				iagro.show(CrearFuncionalidad.class, funcionalidadUpdate);
+			}
+		});
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
