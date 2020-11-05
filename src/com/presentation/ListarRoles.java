@@ -18,7 +18,6 @@ import javax.swing.RowFilter;
 import com.application.IAgro;
 import com.entities.Funcionalidad;
 import com.entities.Rol;
-import com.presentation.ListarUsuarios.ModeloTabla;
 
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -196,33 +195,7 @@ public class ListarRoles implements IFrame<Rol> {
 		textFieldNombre.setText("");
 	}
 	
-	class ModeloTabla extends AbstractTableModel {
-    	
-    	private String[] columnNames;
-    	private Object[][] data;
-
-    	public ModeloTabla(String[] columnNames, Object[][] data) {
-			super();
-			this.columnNames = columnNames;
-			this.data = data;
-		}
-
-		public int getColumnCount() {
-    		return columnNames.length;
-    	}
-
-    	public int getRowCount() {
-    		return data.length;
-    	}
-
-    	public String getColumnName(int col) {
-    		return columnNames[col];
-    	}
-
-		public Object getValueAt(int row, int col) {
-    		return data[row][col];
-    	}
-    }
+	
 	
 	/** 
      * Update the row filter regular expression from the expression in
