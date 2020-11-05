@@ -140,6 +140,14 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionada");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(table.getSelectedRow(),0).toString());
+				iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				
+			}
+		});
 		btnEliminar.setBounds(478, 136, 165, 23);
 		desktopPane.add(btnEliminar);
 		
