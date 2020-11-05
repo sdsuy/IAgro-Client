@@ -99,7 +99,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	}
 	
 	/**
-	 * Create the application with IAgro.
+	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
 	public AltaUsuario(IAgro iagro) {
 		id = 0L;
