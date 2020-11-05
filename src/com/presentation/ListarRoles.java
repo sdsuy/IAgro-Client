@@ -110,7 +110,7 @@ public class ListarRoles implements IFrame<Rol> {
 		int x = roles.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
+		Object[][] datos = iagro.matrixRoles();
 		
 		for (Rol rol : roles) {
 			datos[(roles.indexOf(rol))][0] = rol.getNombre();
