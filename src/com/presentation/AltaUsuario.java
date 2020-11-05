@@ -124,7 +124,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblRol.setBounds(112, 83, 56, 14);
 		desktopPane.add(lblRol);
 		
-		JComboBox comboBoxRol = new JComboBox();
+		comboBoxRol = new JComboBox();
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
