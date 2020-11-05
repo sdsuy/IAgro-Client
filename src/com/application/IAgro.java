@@ -242,15 +242,11 @@ public class IAgro {
 	}
 	
 	public Object[][] matrixFuncionalidades() {
-		refresh(Funcionalidad.class);
-		
 		Object[][] datos = new Object[funcionalidades.size()][2];
-		
 		for (Funcionalidad funcionalidad : funcionalidades) {
 			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
 			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
 		}
-		
 		return datos;
 	}
 
