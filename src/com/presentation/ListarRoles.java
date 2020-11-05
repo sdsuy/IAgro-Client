@@ -158,6 +158,11 @@ public class ListarRoles implements IFrame<Rol> {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
