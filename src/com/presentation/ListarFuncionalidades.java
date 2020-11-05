@@ -20,6 +20,8 @@ import com.entities.Funcionalidad;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.event.ActionListener;
@@ -161,6 +163,25 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
+		textFieldNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+					
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+				});
+		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(202, 161, 100, 14);
 		desktopPane.add(lblNombre);
@@ -190,9 +211,9 @@ public class ListarFuncionalidades implements IFrame {
         //If current expression doesn't parse, don't update.
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
-        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
-        	rf = RowFilter.andFilter(filters);
+//        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1);
+//        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
