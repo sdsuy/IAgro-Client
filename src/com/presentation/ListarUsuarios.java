@@ -145,6 +145,14 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
+				iagro.show(AltaUsuario.class, usuarioUpdate);
+				frame.dispose();
+			}
+		});
 		btnModificar.setBounds(478, 192, 165, 23);
 		desktopPane.add(btnModificar);
 		
