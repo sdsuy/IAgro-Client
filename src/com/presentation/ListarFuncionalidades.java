@@ -20,7 +20,6 @@ import com.entities.Funcionalidad;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.event.ActionListener;
@@ -106,13 +105,7 @@ public class ListarFuncionalidades implements IFrame {
 		int x = funcionalidades.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
-		
-		for (Funcionalidad funcionalidad : funcionalidades) {
-			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
-			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
-		}
-		
+		Object[][] datos = iagro.matrixFuncionalidades();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
@@ -143,8 +136,11 @@ public class ListarFuncionalidades implements IFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(table.getSelectedRow(),0).toString());
+				int selectedRow = table.getSelectedRow();
+				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
 				iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				model.setData(iagro.matrixFuncionalidades());
+				model.refresh();
 				
 			}
 		});
@@ -184,34 +180,6 @@ public class ListarFuncionalidades implements IFrame {
 	public void limpiarFuncionalidad() {
 		textFieldNombre.setText("");
 	}
-	
-	class ModeloTabla extends AbstractTableModel {
-    	
-    	private String[] columnNames;
-    	private Object[][] data;
-
-    	public ModeloTabla(String[] columnNames, Object[][] data) {
-			super();
-			this.columnNames = columnNames;
-			this.data = data;
-		}
-
-		public int getColumnCount() {
-    		return columnNames.length;
-    	}
-
-    	public int getRowCount() {
-    		return data.length;
-    	}
-
-    	public String getColumnName(int col) {
-    		return columnNames[col];
-    	}
-
-		public Object getValueAt(int row, int col) {
-    		return data[row][col];
-    	}
-    }
 	
 	/** 
      * Update the row filter regular expression from the expression in
