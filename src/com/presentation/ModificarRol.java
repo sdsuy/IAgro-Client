@@ -33,7 +33,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class ModificarRol implements IFrame {
+public class ModificarRol implements IFrame<Rol> {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
@@ -158,11 +158,11 @@ public class ModificarRol implements IFrame {
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result = iagro.create(rol);
 					if(result) {
-						JOptionPane.showConfirmDialog(null,"Creado rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
+						JOptionPane.showConfirmDialog(null,"Modificado Rol con exito","Exito", JOptionPane.DEFAULT_OPTION);
 						limpiarRol();
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "No se pudo crear el Rol","Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No se pudo Modificar el Rol","Error", JOptionPane.ERROR_MESSAGE);
 					}
 				
 				}
@@ -202,6 +202,12 @@ public class ModificarRol implements IFrame {
 		textFieldNombre.setText("");
 		textAreaDescripcion.setText("");
 		listFuncionalidades.setToolTipText("");
+	}
+
+	@Override
+	public void setFields(Rol o) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

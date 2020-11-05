@@ -9,6 +9,8 @@ import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -16,7 +18,6 @@ import javax.swing.RowFilter;
 import com.application.IAgro;
 import com.entities.Funcionalidad;
 import com.entities.Rol;
-import com.presentation.ListarUsuarios.ModeloTabla;
 
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -30,7 +31,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
-public class ListarRoles implements IFrame {
+public class ListarRoles implements IFrame<Rol> {
 
 	private JFrame frame;
 	private JTable table;
@@ -110,12 +111,7 @@ public class ListarRoles implements IFrame {
 		int x = roles.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
-		
-		for (Rol rol : roles) {
-			datos[(roles.indexOf(rol))][0] = rol.getNombre();
-			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
-		}
+		Object[][] datos = iagro.matrixRoles();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
@@ -147,7 +143,13 @@ public class ListarRoles implements IFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Rol rolDelete = iagro.readRol(table.getValueAt(table.getSelectedRow(),0).toString());
-				iagro.delete(rolDelete.getId(), Rol.class);
+				boolean result = iagro.delete(rolDelete.getId(), Rol.class);
+				if(result) {
+					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se logro eliminar el Rol","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}
 		});
@@ -155,6 +157,11 @@ public class ListarRoles implements IFrame {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
@@ -188,33 +195,7 @@ public class ListarRoles implements IFrame {
 		textFieldNombre.setText("");
 	}
 	
-	class ModeloTabla extends AbstractTableModel {
-    	
-    	private String[] columnNames;
-    	private Object[][] data;
-
-    	public ModeloTabla(String[] columnNames, Object[][] data) {
-			super();
-			this.columnNames = columnNames;
-			this.data = data;
-		}
-
-		public int getColumnCount() {
-    		return columnNames.length;
-    	}
-
-    	public int getRowCount() {
-    		return data.length;
-    	}
-
-    	public String getColumnName(int col) {
-    		return columnNames[col];
-    	}
-
-		public Object getValueAt(int row, int col) {
-    		return data[row][col];
-    	}
-    }
+	
 	
 	/** 
      * Update the row filter regular expression from the expression in
@@ -225,12 +206,18 @@ public class ListarRoles implements IFrame {
         //If current expression doesn't parse, don't update.
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
-        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
-        	rf = RowFilter.andFilter(filters);
+//        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1);
+//        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
         sorter.setRowFilter(rf);
     }
+
+	@Override
+	public void setFields(Rol o) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -26,7 +26,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-public class ModificarUsuario implements IFrame {
+public class ModificarUsuario implements IFrame<Usuario> {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -111,9 +111,9 @@ public class ModificarUsuario implements IFrame {
 			comboBoxRol.addItem(rol.getNombre());
 		}
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(74, 365, 106, 37);
-		btnGuardar.addActionListener(new ActionListener() {
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(74, 365, 106, 37);
+		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				// Patr�n para validar el email
@@ -155,7 +155,7 @@ public class ModificarUsuario implements IFrame {
 		        }
 			}
 		});
-		desktopPane.add(btnGuardar);
+		desktopPane.add(btnModificar);
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(178, 108, 98, 20);
@@ -202,7 +202,7 @@ public class ModificarUsuario implements IFrame {
 		btnCancelar.setBounds(242, 365, 106, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTitulo = new JLabel("Alta de Usuario");
+		JLabel lblTitulo = new JLabel("Modificar Usuario");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(112, 15, 256, 57);
 		desktopPane.add(lblTitulo);
@@ -220,6 +220,12 @@ public class ModificarUsuario implements IFrame {
 		textFieldEmail.setText("");
 		textApellido.setText("");
 		textNombre.setText("");
+		
+	}
+
+	@Override
+	public void setFields(Usuario o) {
+		// TODO Auto-generated method stub
 		
 	}
 }

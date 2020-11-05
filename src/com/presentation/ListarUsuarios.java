@@ -30,7 +30,7 @@ import javax.swing.table.TableRowSorter;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class ListarUsuarios implements IFrame {
+public class ListarUsuarios implements IFrame<Usuario> {
 
 	private JFrame frame;
 	private JTable table;
@@ -113,25 +113,14 @@ public class ListarUsuarios implements IFrame {
 		int x = usuarios.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
-		
-		for (Usuario usuario : usuarios) {
-			datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
-			datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
-			datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
-			datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
-			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
-			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
-			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getNombre();
-		}
+		Object[][] datos = iagro.matrixUsuarios();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		table.setBounds(10, 246, 633, 161);
+//		table.setBounds(10, 246, 633, 161);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 246, 633, 161);
@@ -156,6 +145,14 @@ public class ListarUsuarios implements IFrame {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionado");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
+				iagro.show(AltaUsuario.class, usuarioUpdate);;
+				frame.dispose();
+			}
+		});
 		btnModificar.setBounds(478, 192, 165, 23);
 		desktopPane.add(btnModificar);
 		
@@ -210,33 +207,6 @@ public class ListarUsuarios implements IFrame {
 		lblFondo.setBounds(0, 0, 653, 417);
 		desktopPane.add(lblFondo);
 	}
-	 class ModeloTabla extends AbstractTableModel {
-	    	
-	    	private String[] columnNames;
-	    	private Object[][] data;
-
-	    	public ModeloTabla(String[] columnNames, Object[][] data) {
-				super();
-				this.columnNames = columnNames;
-				this.data = data;
-			}
-
-			public int getColumnCount() {
-	    		return columnNames.length;
-	    	}
-
-	    	public int getRowCount() {
-	    		return data.length;
-	    	}
-
-	    	public String getColumnName(int col) {
-	    		return columnNames[col];
-	    	}
-
-			public Object getValueAt(int row, int col) {
-	    		return data[row][col];
-	    	}
-	    }
 	 
 	 /** 
 	     * Update the row filter regular expression from the expression in
@@ -264,4 +234,10 @@ public class ListarUsuarios implements IFrame {
 	    	textFieldApellido.setText("");
 	    	textFieldNickname.setText("");
 	    }
+
+		@Override
+		public void setFields(Usuario o) {
+			// TODO Auto-generated method stub
+			
+		}
 }

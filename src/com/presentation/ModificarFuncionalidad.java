@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class ModificarFuncionalidad implements IFrame {
+public class ModificarFuncionalidad implements IFrame<Funcionalidad> {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -123,11 +123,11 @@ public class ModificarFuncionalidad implements IFrame {
 					funcionalidad.setDescripcion(textArea.getText().toUpperCase());
 					boolean result = iagro.create(funcionalidad);
 					if(result) {
-						JOptionPane.showMessageDialog(null, "Se creo con exito la funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
+						JOptionPane.showMessageDialog(null, "Se Modifico con exito la funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
 						limpiar();
 					}
 					else {
-						JOptionPane.showMessageDialog(null,"No se pudo crear la funcionalidad","Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,"No se pudo Modificar la funcionalidad","Error", JOptionPane.ERROR_MESSAGE);
 					}
 					
 				}
@@ -160,5 +160,11 @@ public class ModificarFuncionalidad implements IFrame {
 	public void limpiar() {
 		textNombre.setText("");
 		textArea.setText("");
+	}
+
+	@Override
+	public void setFields(Funcionalidad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

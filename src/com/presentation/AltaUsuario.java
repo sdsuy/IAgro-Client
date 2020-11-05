@@ -26,7 +26,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-public class AltaUsuario implements IFrame {
+public class AltaUsuario implements IFrame<Usuario> {
 
 	private JFrame frame;
 	private JTextField textNombre;
@@ -35,10 +35,13 @@ public class AltaUsuario implements IFrame {
 	private JPasswordField passwordFieldPass;
 	private JPasswordField passwordFieldRepetirContrasenia;
 	private JTextField textFieldCedula;
+	private JButton btnGuardar;
+	private JComboBox comboBoxRol;
 	
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
+	private Long id;
 	
 
 	/**
@@ -71,6 +74,22 @@ public class AltaUsuario implements IFrame {
 			}
 		});
 	}
+	
+	@Override
+	public void setFields(Usuario o) {
+		id = o.getId();
+		comboBoxRol.getSelectedIndex();
+		textNombre.setText(o.getNombre());
+		textApellido.setText(o.getApellido());
+		textFieldEmail.setText(o.getEmail());
+		textFieldCedula.setText(o.getDocumento());
+		passwordFieldPass.setText(o.getClave());
+		textFieldNickname.setText(o.getNickname());
+		btnGuardar.setText("Modificar");
+		
+	}
+		
+	
 
 	/**
 	 * Create the application.
@@ -80,9 +99,10 @@ public class AltaUsuario implements IFrame {
 	}
 	
 	/**
-	 * Create the application with IAgro.
+	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
 	public AltaUsuario(IAgro iagro) {
+		id = 0L;
 		this.iagro = iagro;
 		initialize();
 	}
@@ -104,7 +124,7 @@ public class AltaUsuario implements IFrame {
 		lblRol.setBounds(112, 83, 56, 14);
 		desktopPane.add(lblRol);
 		
-		JComboBox comboBoxRol = new JComboBox();
+		comboBoxRol = new JComboBox();
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
@@ -114,7 +134,7 @@ public class AltaUsuario implements IFrame {
 			comboBoxRol.addItem(rol.getNombre());
 		}
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(74, 365, 106, 37);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,6 +193,14 @@ public class AltaUsuario implements IFrame {
 		        	if(repClave.equals(passwordFieldPass.getText())){
 		        	
 		        		boolean result = iagro.create(user);
+		        		if (id > 0) {
+							System.out.println("ID for update: " + id);
+							user.setId(id);
+							result = iagro.update(user);
+						} else {
+							System.out.println("ID for update: " + id);
+							result = iagro.create(user);
+						}
 		        		if(result) {
 		        		limpiar();
 		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
@@ -284,4 +312,6 @@ public class AltaUsuario implements IFrame {
 		textNombre.setText("");
 		
 	}
+
+	
 }

@@ -1,7 +1,10 @@
 package com.presentation;
 
-public interface IFrame {
+import com.entities.Base;
+
+public interface IFrame<T> {
 	
 	void start();
+	void setFields(T o);
 
 }

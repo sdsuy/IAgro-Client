@@ -33,7 +33,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class CrearRol implements IFrame {
+public class CrearRol implements IFrame<Rol> {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
@@ -207,5 +207,11 @@ public class CrearRol implements IFrame {
 		textFieldNombre.setText("");
 		textAreaDescripcion.setText("");
 //		listFuncionalidades.setToolTipText("");
+	}
+
+	@Override
+	public void setFields(Rol o) {
+		// TODO Auto-generated method stub
+		
 	}
 }
