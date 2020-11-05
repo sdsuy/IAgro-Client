@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
@@ -20,7 +21,8 @@ import com.entities.Funcionalidad;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import javax.swing.table.AbstractTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.event.ActionListener;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class ListarFuncionalidades implements IFrame {
+public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 
 	private JFrame frame;
 	private JTable table;
@@ -86,6 +88,12 @@ public class ListarFuncionalidades implements IFrame {
 		initialize();
 	}
 
+	@Override
+	public void setFields(Funcionalidad o) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -106,13 +114,7 @@ public class ListarFuncionalidades implements IFrame {
 		int x = funcionalidades.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
-		
-		for (Funcionalidad funcionalidad : funcionalidades) {
-			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
-			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
-		}
-		
+		Object[][] datos = iagro.matrixFuncionalidades();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
@@ -143,8 +145,18 @@ public class ListarFuncionalidades implements IFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(table.getSelectedRow(),0).toString());
-				iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				int selectedRow = table.getSelectedRow();
+				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
+				boolean result = iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				if(result) {
+					model.setData(iagro.matrixFuncionalidades());
+					model.refresh();
+					limpiar();
+					JOptionPane.showMessageDialog(null, "Se logro eliminar la Funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se logro eliminar la Funcionalidad","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}
 		});
@@ -152,6 +164,14 @@ public class ListarFuncionalidades implements IFrame {
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionada");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Funcionalidad funcionalidadUpdate = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
+				iagro.show(CrearFuncionalidad.class, funcionalidadUpdate);
+				frame.dispose();
+			}
+		});
 		btnModificar.setBounds(478, 194, 165, 23);
 		desktopPane.add(btnModificar);
 		
@@ -164,6 +184,25 @@ public class ListarFuncionalidades implements IFrame {
 		textFieldNombre.setBounds(312, 158, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
+		
+		textFieldNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+					
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+				});
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(202, 161, 100, 14);
@@ -182,36 +221,8 @@ public class ListarFuncionalidades implements IFrame {
 	}
 	
 	public void limpiarFuncionalidad() {
-		textFieldNombre.setText("");
+		limpiar();
 	}
-	
-	class ModeloTabla extends AbstractTableModel {
-    	
-    	private String[] columnNames;
-    	private Object[][] data;
-
-    	public ModeloTabla(String[] columnNames, Object[][] data) {
-			super();
-			this.columnNames = columnNames;
-			this.data = data;
-		}
-
-		public int getColumnCount() {
-    		return columnNames.length;
-    	}
-
-    	public int getRowCount() {
-    		return data.length;
-    	}
-
-    	public String getColumnName(int col) {
-    		return columnNames[col];
-    	}
-
-		public Object getValueAt(int row, int col) {
-    		return data[row][col];
-    	}
-    }
 	
 	/** 
      * Update the row filter regular expression from the expression in
@@ -222,12 +233,15 @@ public class ListarFuncionalidades implements IFrame {
         //If current expression doesn't parse, don't update.
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
-        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
-        	rf = RowFilter.andFilter(filters);
+//        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1);
+//        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
         sorter.setRowFilter(rf);
+    }
+    void limpiar() {
+    	textFieldNombre.setText("");
     }
 }
