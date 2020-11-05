@@ -82,10 +82,10 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textNombre.setText(o.getNombre());
 		textApellido.setText(o.getApellido());
 		textFieldEmail.setText(o.getEmail());
-		passwordFieldPass.setText(o.getClave());
 		textFieldCedula.setText(o.getDocumento());
+		passwordFieldPass.setText(o.getClave());
+		textFieldNickname.setText(o.getNickname());
 		btnGuardar.setText("Modificar");
-		
 		
 	}
 		
@@ -193,6 +193,14 @@ public class AltaUsuario implements IFrame<Usuario> {
 		        	if(repClave.equals(passwordFieldPass.getText())){
 		        	
 		        		boolean result = iagro.create(user);
+		        		if (id > 0) {
+							System.out.println("ID for update: " + id);
+							user.setId(id);
+							result = iagro.update(user);
+						} else {
+							System.out.println("ID for update: " + id);
+							result = iagro.create(user);
+						}
 		        		if(result) {
 		        		limpiar();
 		        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
