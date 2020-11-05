@@ -96,11 +96,22 @@ public class IAgro {
 		principal.start();
 	}
 	
+	/**
+	 * 
+	 * Metodo para iniciar un frame sin objeto pre cargado
+	 * @param c
+	 */
 	public void show(Class c) {
 		IFrame frame = getFrame(c);
 		frame.start();
 	}
 	
+	/**
+	 * 
+	 * Metodo para iniciar un frame con objeto pre cargado
+	 * @param c
+	 * @param o
+	 */
 	public void show(Class c, Object o) {
 		IFrame frame = getFrame(c);
 		frame.setFields(o);
