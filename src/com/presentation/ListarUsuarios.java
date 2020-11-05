@@ -113,25 +113,14 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		int x = usuarios.size();
 		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
-		
-		for (Usuario usuario : usuarios) {
-			datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
-			datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
-			datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
-			datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
-			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
-			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
-			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getNombre();
-		}
+		Object[][] datos = iagro.matrixUsuarios();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		table.setBounds(10, 246, 633, 161);
+//		table.setBounds(10, 246, 633, 161);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 246, 633, 161);
