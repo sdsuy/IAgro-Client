@@ -101,6 +101,12 @@ public class IAgro {
 		frame.start();
 	}
 	
+	public void show(Class c, Object o) {
+		IFrame frame = getFrame(c);
+		frame.setFields(o);
+		frame.start();
+	}
+	
 	private IFrame getFrame(Class c) {
 		if(c.equals(AltaUsuario.class)) {
 			altaUsuario = new AltaUsuario(this);
