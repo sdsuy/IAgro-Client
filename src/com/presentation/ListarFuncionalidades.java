@@ -161,6 +161,7 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 				int selectedRow = table.getSelectedRow();
 				Funcionalidad funcionalidadUpdate = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
 				iagro.show(CrearFuncionalidad.class, funcionalidadUpdate);
+				frame.dispose();
 			}
 		});
 		btnModificar.setBounds(478, 194, 165, 23);
