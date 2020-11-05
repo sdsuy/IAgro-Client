@@ -241,6 +241,30 @@ public class IAgro {
 		return funcionalidad;
 	}
 	
+	public Object[][] matrixUsuarios() {
+		Object[][] datos = new Object[usuarios.size()][8];
+		for (Usuario usuario : usuarios) {
+			datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
+			datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
+			datos[(usuarios.indexOf(usuario))][2] = usuario.getApellido();
+			datos[(usuarios.indexOf(usuario))][3] = usuario.getDocumento();
+			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
+			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
+			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
+			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getNombre();
+		}
+		return datos;
+	}
+	
+	public Object[][] matrixRoles() {
+		Object[][] datos = new Object[roles.size()][2];
+		for (Rol rol : roles) {
+			datos[(roles.indexOf(rol))][0] = rol.getNombre();
+			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
+		}
+		return datos;
+	}
+	
 	public Object[][] matrixFuncionalidades() {
 		Object[][] datos = new Object[funcionalidades.size()][2];
 		for (Funcionalidad funcionalidad : funcionalidades) {
