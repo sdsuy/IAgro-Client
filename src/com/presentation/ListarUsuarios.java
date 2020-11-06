@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
-import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,7 +26,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
@@ -42,7 +40,6 @@ public class ListarUsuarios implements IFrame<Usuario> {
 	private JTextField textFieldNickname;
 	List<Usuario> usuarios;
 	private TableRowSorter<ModeloTabla> sorter;
-	private JTable tableUsuarios;
 	
 	private JComboBox comboBoxRol;
 	
@@ -229,14 +226,58 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		desktopPane.add(textFieldApellido);
 		textFieldApellido.setColumns(10);
 		
+		textFieldApellido.getDocument().addDocumentListener(
+				new DocumentListener() {
+					
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+				});
+		
 		textFieldNickname = new JTextField();
 		textFieldNickname.setBounds(337, 179, 86, 20);
 		desktopPane.add(textFieldNickname);
 		textFieldNickname.setColumns(10);
 		
-		JComboBox comboBoxRol = new JComboBox();
+		textFieldNickname.getDocument().addDocumentListener(
+				new DocumentListener() {
+					
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+				});
+		
+		comboBoxRol = new JComboBox(new String[]{"","ADMINISTRADOR","EXPERTO","COMUN"});
 		comboBoxRol.setBounds(337, 203, 86, 22);
 		desktopPane.add(comboBoxRol);
+		
+		comboBoxRol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				filterColumns();
+			}
+		});
 		
 		JLabel lblTitulo = new JLabel("Usuarios");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
@@ -259,10 +300,11 @@ public class ListarUsuarios implements IFrame<Usuario> {
 	        //If current expression doesn't parse, don't update.
 	        try {
 	        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(4);
-	        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-	        	filters.add(RowFilter.regexFilter(textFieldApellido.getText(), 2));
-	        	filters.add(RowFilter.regexFilter(textFieldNickname.getText(), 3));
-	        	filters.add(RowFilter.regexFilter(comboBoxRol.getActionListeners().toString(), 4));
+	        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(textFieldApellido.getText(), 2)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(textFieldNickname.getText(), 5)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(comboBoxRol.getSelectedItem().toString(), 7));
+//	        	filters.add(RowFilter.regexFilter(comboBoxRol.getActionListeners().toString(), 4));
 //	            rf = RowFilter.regexFilter(textNombre.getText(), 1);
 	        	rf = RowFilter.andFilter(filters);
 	        } catch (java.util.regex.PatternSyntaxException e) {
