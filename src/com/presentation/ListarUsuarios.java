@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -181,6 +183,29 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		textFieldNombre.setBounds(337, 130, 86, 20);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
+		
+		textFieldNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+					
+				});
 		
 		textFieldApellido = new JTextField();
 		textFieldApellido.setBounds(337, 154, 86, 20);
