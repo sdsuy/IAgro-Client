@@ -153,10 +153,10 @@ public class ListarUsuarios implements IFrame<Usuario> {
 					model.setData(iagro.matrixRoles());
 					model.refresh();
 					limpiarFiltros();
-					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No se logro eliminar El Rol","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
