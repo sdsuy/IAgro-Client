@@ -37,6 +37,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JTextField textFieldCedula;
 	private JButton btnGuardar;
 	private JComboBox comboBoxRol;
+	private JLabel lblTitulo;
 	
 	
 	private IAgro iagro;
@@ -86,6 +87,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		btnGuardar.setText("Modificar");
+		lblTitulo.setText("Modificar Usuario");
 		
 	}
 		
@@ -192,7 +194,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		        	repClave=passwordFieldRepetirContrasenia.getText();
 		        	if(repClave.equals(passwordFieldPass.getText())){
 		        	
-		        		boolean result = iagro.create(user);
+		        		boolean result;
 		        		if (id > 0) {
 							System.out.println("ID for update: " + id);
 							user.setId(id);
@@ -291,7 +293,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblNombreDeUsuario.setBounds(39, 282, 129, 16);
 		desktopPane.add(lblNombreDeUsuario);
 		
-		JLabel lblTitulo = new JLabel("Alta de Usuario");
+		lblTitulo = new JLabel("Alta de Usuario");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(112, 15, 256, 57);
 		desktopPane.add(lblTitulo);
