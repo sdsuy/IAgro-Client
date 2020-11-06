@@ -40,6 +40,7 @@ public class CrearRol implements IFrame<Rol> {
 	private JTextArea textAreaDescripcion;
 	private JList listFuncionalidades;
 	private JButton btnGuardar;
+	private JLabel lblTitulo;
 	
 	private List<String> selectedNombresFuncionalidades = new ArrayList<>();
 	Long id;
@@ -86,6 +87,7 @@ public class CrearRol implements IFrame<Rol> {
 		textFieldNombre.setText(o.getNombre());
 		textAreaDescripcion.setText(o.getDescripcion());
 		btnGuardar.setText("Modificar");
+		lblTitulo.setText("Modificar Rol");
 		
 	}
 
@@ -200,7 +202,7 @@ public class CrearRol implements IFrame<Rol> {
 		btnCancelar.setBounds(185, 294, 89, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTitulo = new JLabel("Crear Roles");
+		lblTitulo = new JLabel("Crear Roles");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(10, 11, 451, 65);
