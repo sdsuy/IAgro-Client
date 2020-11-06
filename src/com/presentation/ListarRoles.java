@@ -117,8 +117,8 @@ public class ListarRoles implements IFrame<Rol> {
 		roles = iagro.getRoles();
 		String[] columnas = iagro.getColumnasRoles();
 		
-		int x = roles.size();
-		int y = columnas.length;
+//		int x = roles.size();
+//		int y = columnas.length;
 		
 		Object[][] datos = iagro.matrixRoles();
 		
@@ -246,7 +246,7 @@ public class ListarRoles implements IFrame<Rol> {
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
 //        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
-            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1);
+            rf = RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 0);
 //        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
