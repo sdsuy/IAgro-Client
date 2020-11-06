@@ -168,7 +168,7 @@ public class CrearRol implements IFrame<Rol> {
 					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result;
-					if (id>0) {
+					if (id > 0) {
 						System.out.println("ID for update: " + id);
 						rol.setId(id);
 						result = iagro.update(rol);
