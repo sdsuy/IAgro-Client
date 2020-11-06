@@ -9,6 +9,7 @@ import java.awt.ScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
@@ -143,6 +144,22 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar Seleccionado");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Usuario userDelete = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
+				boolean result = iagro.delete(userDelete.getId(), Usuario.class);
+				if(result) {
+					model.setData(iagro.matrixRoles());
+					model.refresh();
+					limpiarFiltros();
+					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se logro eliminar El Rol","Error",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnEliminar.setBounds(478, 138, 165, 23);
 		desktopPane.add(btnEliminar);
 		
