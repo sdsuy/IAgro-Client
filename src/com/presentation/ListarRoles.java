@@ -171,7 +171,7 @@ public class ListarRoles implements IFrame<Rol> {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
 				Rol rolUpdate = iagro.readRol(table.getValueAt(selectedRow, 0).toString());
-				iagro.show(Rol.class, rolUpdate);
+				iagro.show(CrearRol.class, rolUpdate);
 				frame.dispose();
 			}
 		});
