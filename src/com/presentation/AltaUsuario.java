@@ -182,13 +182,13 @@ public class AltaUsuario implements IFrame<Usuario> {
 		        	iagro.readRol(nomRol);
 		        	Usuario user = new Usuario();
 		        	user.setRol(iagro.readRol(nomRol));
-		        	user.setApellido(textApellido.getText());
-		        	user.setNombre(textNombre.getText());
-		        	user.setDocumento(textFieldCedula.getText());
+		        	user.setApellido(textApellido.getText().toUpperCase());
+		        	user.setNombre(textNombre.getText().toUpperCase());
+		        	user.setDocumento(textFieldCedula.getText().toUpperCase());
 		        	user.setClave(passwordFieldPass.getText());
-		        	user.setEmail(textFieldEmail.getText());
+		        	user.setEmail(textFieldEmail.getText().toUpperCase());
 		        	user.setClave(passwordFieldPass.getText());
-		        	user.setNickname(textFieldNickname.getText());
+		        	user.setNickname(textFieldNickname.getText().toUpperCase());
 		        	
 		        	//Compruebo que la contrasenias sean iguales.
 		        	repClave=passwordFieldRepetirContrasenia.getText();
