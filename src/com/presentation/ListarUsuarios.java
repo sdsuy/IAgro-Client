@@ -150,7 +150,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
-				Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
+				Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
 				iagro.show(AltaUsuario.class, usuarioUpdate);;
 				frame.dispose();
 			}
