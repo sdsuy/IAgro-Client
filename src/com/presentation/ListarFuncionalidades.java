@@ -111,8 +111,8 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 		funcionalidades = iagro.getFuncionalidades();
 		String [] columnas = iagro.getColumnasFuncionalidad();
 		
-		int x = funcionalidades.size();
-		int y = columnas.length;
+//		int x = funcionalidades.size();
+//		int y = columnas.length;
 		
 		Object[][] datos = iagro.matrixFuncionalidades();
 		
