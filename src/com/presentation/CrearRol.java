@@ -166,8 +166,8 @@ public class CrearRol implements IFrame<Rol> {
 				}
 				else {
 					Rol rol = new Rol();
-					rol.setNombre(textFieldNombre.getText().toUpperCase());
-					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase());
+					rol.setNombre(textFieldNombre.getText().toUpperCase().toUpperCase());
+					rol.setDescripcion(textAreaDescripcion.getText().toUpperCase().toUpperCase());
 					rol.setFuncionalidades(selectedFuncionalidades(selectedNombresFuncionalidades));
 					boolean result;
 					if (id > 0) {
