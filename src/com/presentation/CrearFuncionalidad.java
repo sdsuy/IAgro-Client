@@ -29,6 +29,7 @@ public class CrearFuncionalidad implements IFrame<Funcionalidad> {
 	private JTextField textNombre;
 	private JTextArea textArea;
 	private JButton btnGuardar;
+	private JLabel lblTitulo;
 	
 	private IAgro iagro;
 	private Long id;
@@ -71,6 +72,8 @@ public class CrearFuncionalidad implements IFrame<Funcionalidad> {
 		textNombre.setText(o.getNombre());
 		textArea.setText(o.getDescripcion());
 		btnGuardar.setText("Modificar");
+		lblTitulo.setText("Modificar Funcionalidad");
+		
 	}
 	
 
@@ -165,7 +168,7 @@ public class CrearFuncionalidad implements IFrame<Funcionalidad> {
 		btnCancelar.setBounds(228, 290, 106, 37);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTitulo = new JLabel("Crear Funcionalidades");
+		lblTitulo = new JLabel("Crear Funcionalidades");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
 		lblTitulo.setBounds(0, 11, 341, 71);
