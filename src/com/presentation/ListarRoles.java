@@ -151,10 +151,13 @@ public class ListarRoles implements IFrame<Rol> {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				int selectedRow = table.getSelectedRow();
 				Rol rolDelete = iagro.readRol(table.getValueAt(table.getSelectedRow(),0).toString());
 				boolean result = iagro.delete(rolDelete.getId(), Rol.class);
-				
 				if(result) {
+					model.setData(iagro.matrixRoles());
+					model.refresh();
+					limpiarRoles();
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Rol","Exito",JOptionPane.DEFAULT_OPTION);
 				}
 				else {
