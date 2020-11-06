@@ -30,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.DefaultComboBoxModel;
 
 public class ListarUsuarios implements IFrame<Usuario> {
 
@@ -268,14 +269,16 @@ public class ListarUsuarios implements IFrame<Usuario> {
 						filterColumns();
 					}
 				});
-		
-		comboBoxRol = new JComboBox(new String[]{"","ADMINISTRADOR","EXPERTO","COMUN"});
+		String[]rol ={"","ADMINISTRADOR","EXPERTO","COMUN"};
+		comboBoxRol = new JComboBox(rol);
+//		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {""}));
 		comboBoxRol.setBounds(337, 203, 86, 22);
 		desktopPane.add(comboBoxRol);
 		
 		comboBoxRol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				filterColumns();
+				iagro.readRol(comboBoxRol.getSelectedItem().toString());
 			}
 		});
 		
