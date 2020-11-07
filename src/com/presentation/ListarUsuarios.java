@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 
 import com.application.IAgro;
+import com.entities.Rol;
 import com.entities.Usuario;
 
 import javax.swing.JComboBox;
@@ -269,16 +270,21 @@ public class ListarUsuarios implements IFrame<Usuario> {
 						filterColumns();
 					}
 				});
-		String[]rol ={"","ADMINISTRADOR","EXPERTO","COMUN"};
-		comboBoxRol = new JComboBox(rol);
+//		String[]rol ={""};
+		
+		comboBoxRol = new JComboBox();
 //		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {""}));
 		comboBoxRol.setBounds(337, 203, 86, 22);
 		desktopPane.add(comboBoxRol);
-		
+		comboBoxRol.addItem("");
+		List<Rol> roles = iagro.getRoles();
+		for (Rol rol : roles) {
+			comboBoxRol.addItem(rol.getNombre());
+		}
 		comboBoxRol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				filterColumns();
-				iagro.readRol(comboBoxRol.getSelectedItem().toString());
+				
 			}
 		});
 		
