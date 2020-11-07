@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+import javax.swing.ListSelectionModel;
 
 import com.application.IAgro;
 import com.entities.Funcionalidad;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
@@ -92,6 +94,7 @@ public class CrearRol implements IFrame<Rol> {
 		
 		int[] indices = new int[o.getFuncionalidades().size()];
 		int n = 0;
+		ListSelectionModel selectionModel = new DefaultListSelectionModel();
 		for(Funcionalidad funaux: o.getFuncionalidades()) {
 			
 			indices[n] = listModel.indexOf(funaux.getNombre());
