@@ -3,6 +3,7 @@ package com.application;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.entities.Base;
 import com.entities.Funcionalidad;
 import com.entities.Rol;
 import com.entities.Usuario;
@@ -180,6 +181,11 @@ public class IAgro {
 		boolean result =  bean.create(o);
 		if(result) refresh(o.getClass());
 		return result;
+	}
+	
+	public Base read(Long id, Class c) {
+		IBean bean = getBean(c);
+		return (Base)bean.read(id);
 	}
 	
 	public boolean update(Object o) {
