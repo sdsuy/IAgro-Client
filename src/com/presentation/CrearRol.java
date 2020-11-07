@@ -93,11 +93,11 @@ public class CrearRol implements IFrame<Rol> {
 		int[] indices = new int[o.getFuncionalidades().size()];
 		int n = 0;
 		for(Funcionalidad funaux: o.getFuncionalidades()) {
-			System.out.println(funaux.getNombre());
+			
 			indices[n] = listModel.indexOf(funaux.getNombre());
 			n++;
 		}
-		
+		listFuncionalidades.setSelectedIndices(indices);
 	}
 
 	/**
