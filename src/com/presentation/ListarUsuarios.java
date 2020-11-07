@@ -149,7 +149,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 				Usuario userDelete = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
 				boolean result = iagro.delete(userDelete.getId(), Usuario.class);
 				if(result) {
-					model.setData(iagro.matrixRoles());
+					model.setData(iagro.matrixUsuarios());
 					model.refresh();
 					limpiarFiltros();
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
