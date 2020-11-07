@@ -160,7 +160,7 @@ public class Login {
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login colaborativo.png")));
+		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/img/Login v2.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
 	}
