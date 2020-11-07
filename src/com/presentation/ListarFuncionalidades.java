@@ -17,6 +17,7 @@ import javax.swing.RowFilter;
 
 import com.application.IAgro;
 import com.entities.Funcionalidad;
+import com.entities.Usuario;
 
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -119,6 +120,7 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
+		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
 		
@@ -141,6 +143,30 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 		btnLimpiar.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnLimpiar);
 		
+		JButton btnDisponibilidad = new JButton("Chequear disponibilidad");
+		btnDisponibilidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				Funcionalidad funcionalidadCheck = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
+				Usuario authUser = iagro.getAuthUser(); // hago un login para refrescar el usuario logueado
+				iagro.login(authUser.getNickname(), authUser.getClave());
+				boolean access = false;
+				for(Funcionalidad funcionalidad: authUser.getRol().getFuncionalidades()) {
+					if(funcionalidadCheck.getNombre().equals(funcionalidad.getNombre())) access = true;
+					System.out.println(funcionalidad.getNombre());
+				}
+				if(access) {
+					JOptionPane.showMessageDialog(null, "El usuario " + authUser.getNickname() + " tiene acceso a esta funcionalidad", "Acceso", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "El usuario " + authUser.getNickname() + " NO posee acceso a esta funcionalidad", "Acceso", JOptionPane.WARNING_MESSAGE);
+				}
+				System.out.println(access);
+			}
+		});
+		btnDisponibilidad.setToolTipText("Comprobar que la funcionalidad seleccionada esta disponible para mi rol");
+		btnDisponibilidad.setBounds(478, 191, 165, 23);
+		desktopPane.add(btnDisponibilidad);
+		
 		JButton btnEliminar = new JButton("Eliminar Seleccionada");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -160,7 +186,7 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 				
 			}
 		});
-		btnEliminar.setBounds(478, 136, 165, 23);
+		btnEliminar.setBounds(478, 123, 165, 23);
 		desktopPane.add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar Seleccionada");
@@ -172,7 +198,7 @@ public class ListarFuncionalidades implements IFrame<Funcionalidad> {
 				frame.dispose();
 			}
 		});
-		btnModificar.setBounds(478, 194, 165, 23);
+		btnModificar.setBounds(478, 157, 165, 23);
 		desktopPane.add(btnModificar);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
