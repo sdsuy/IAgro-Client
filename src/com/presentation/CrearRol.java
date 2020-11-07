@@ -3,26 +3,21 @@ package com.presentation;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JToolBar;
 
 import com.application.IAgro;
 import com.entities.Funcionalidad;
 import com.entities.Rol;
-import com.service.FuncionalidadBean;
-import com.service.RolBean;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -90,20 +85,21 @@ public class CrearRol implements IFrame<Rol> {
 		btnGuardar.setText("Modificar");
 		lblTitulo.setText("Modificar Rol");
 		
-		/*for(Funcionalidad funcionalidad: ((Rol) iagro.read(o.getId(), Rol.class)).getFuncionalidades()) {
-			listModel.addElement(funcionalidad.getNombre());
-		}*/
-		
-		List<Funcionalidad> funcionalidades = ((Rol) iagro.read(o.getId(), Rol.class)).getFuncionalidades();
-		
-		int[] indices = new int[funcionalidades.size()];
-		int n = 0;
-		for(Funcionalidad funaux: funcionalidades) {
-			
-			indices[n] = listModel.indexOf(funaux.getNombre());
-			n++;
+		o = (Rol)iagro.read(o.getId(), Rol.class); // vuelvo a buscar el rol para obtener las funcionalidades
+
+		try {
+			int[] indices = new int[o.getFuncionalidades().size()];
+			int n = 0;
+			for(Funcionalidad funcionalidad: o.getFuncionalidades()) {
+				indices[n] = listModel.indexOf(funcionalidad.getNombre());
+				n++;
+			}
+			listFuncionalidades.setSelectedIndices(indices);
+		} catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(null, "El rol " + o.getNombre() + " no tiene funcionalidades", "Rol", JOptionPane.WARNING_MESSAGE);
+			System.out.println("El rol " + o.getNombre() + " no tiene funcionalidades");
 		}
-		listFuncionalidades.setSelectedIndices(indices);
+		
 	}
 
 	/**
@@ -161,7 +157,7 @@ public class CrearRol implements IFrame<Rol> {
 			listModel.addElement(funcionalidad.getNombre());
 		}
 		
-		JList listFuncionalidades = new JList(listModel);
+		listFuncionalidades = new JList(listModel);
 		listFuncionalidades.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(!e.getValueIsAdjusting()) {
