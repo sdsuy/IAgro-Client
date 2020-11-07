@@ -41,6 +41,7 @@ public class CrearRol implements IFrame<Rol> {
 	private JList listFuncionalidades;
 	private JButton btnGuardar;
 	private JLabel lblTitulo;
+	private DefaultListModel<String> listModel;
 	
 	private List<String> selectedNombresFuncionalidades = new ArrayList<>();
 	Long id;
@@ -88,6 +89,14 @@ public class CrearRol implements IFrame<Rol> {
 		textAreaDescripcion.setText(o.getDescripcion());
 		btnGuardar.setText("Modificar");
 		lblTitulo.setText("Modificar Rol");
+		
+		int[] indices = new int[o.getFuncionalidades().size()];
+		int n = 0;
+		for(Funcionalidad funaux: o.getFuncionalidades()) {
+			System.out.println(funaux.getNombre());
+			indices[n] = listModel.indexOf(funaux.getNombre());
+			n++;
+		}
 		
 	}
 
@@ -141,7 +150,7 @@ public class CrearRol implements IFrame<Rol> {
 		lblFuncionalidades.setBounds(291, 108, 132, 14);
 		desktopPane.add(lblFuncionalidades);
 		
-		DefaultListModel<String> listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<>();
 		for(Funcionalidad funcionalidad: iagro.getFuncionalidades()) {
 			listModel.addElement(funcionalidad.getNombre());
 		}
