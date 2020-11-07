@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
-import javax.swing.ListSelectionModel;
 
 import com.application.IAgro;
 import com.entities.Funcionalidad;
@@ -19,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultListModel;
-import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
@@ -92,10 +90,15 @@ public class CrearRol implements IFrame<Rol> {
 		btnGuardar.setText("Modificar");
 		lblTitulo.setText("Modificar Rol");
 		
-		int[] indices = new int[o.getFuncionalidades().size()];
+		/*for(Funcionalidad funcionalidad: ((Rol) iagro.read(o.getId(), Rol.class)).getFuncionalidades()) {
+			listModel.addElement(funcionalidad.getNombre());
+		}*/
+		
+		List<Funcionalidad> funcionalidades = ((Rol) iagro.read(o.getId(), Rol.class)).getFuncionalidades();
+		
+		int[] indices = new int[funcionalidades.size()];
 		int n = 0;
-		ListSelectionModel selectionModel = new DefaultListSelectionModel();
-		for(Funcionalidad funaux: o.getFuncionalidades()) {
+		for(Funcionalidad funaux: funcionalidades) {
 			
 			indices[n] = listModel.indexOf(funaux.getNombre());
 			n++;
