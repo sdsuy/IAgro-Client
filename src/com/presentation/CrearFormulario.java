@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
 
 public class CrearFormulario {
 
@@ -64,5 +65,9 @@ public class CrearFormulario {
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setBounds(324, 79, 75, 14);
 		desktopPane.add(lblDescripcion);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(10, 210, 127, 40);
+		desktopPane.add(btnGuardar);
 	}
 }
