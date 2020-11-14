@@ -99,7 +99,7 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 669, 395);
+		frame.setBounds(100, 100, 669, 430);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -125,18 +125,20 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 		
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 73, 633, 161);
+		scrollPane.setBounds(10, 72, 633, 161);
 		desktopPane.add(scrollPane);
 //		scrollPane.add();
 		
-		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(10, 11, 80, 23);
+		JButton btnMenu = new JButton("");
+		btnMenu.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonMenu.png")));
+		btnMenu.setBounds(10, 11, 98, 33);
 		desktopPane.add(btnMenu);
 		
 		
 		
 		
-		JButton btnEliminar = new JButton("Eliminar Seleccionado");
+		JButton btnEliminar = new JButton("");
+		btnEliminar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/EliminarSeleccionado.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -155,22 +157,17 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 				
 			}
 		});
-		btnEliminar.setBounds(478, 282, 165, 31);
+		btnEliminar.setBounds(420, 289, 211, 42);
 		desktopPane.add(btnEliminar);
 		
-		JLabel lblTitulo = new JLabel("Formularios");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(137, 0, 350, 94);
-		desktopPane.add(lblTitulo);
-		
-		JButton btnMostrar = new JButton("Mostrar Seleccionado");
-		btnMostrar.setBounds(10, 282, 153, 31);
+		JButton btnMostrar = new JButton("");
+		btnMostrar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonMostarSeleccionado.png")));
+		btnMostrar.setBounds(10, 289, 211, 42);
 		desktopPane.add(btnMostrar);
 		
 		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/IAgro icon.png")));
-		lblFondo.setBounds(0, 0, 653, 356);
+		lblFondo.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/ListarFormularios.png")));
+		lblFondo.setBounds(173, 0, 297, 391);
 		desktopPane.add(lblFondo);
 	}
 	

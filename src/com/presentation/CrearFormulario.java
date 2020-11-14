@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class CrearFormulario {
 
@@ -54,12 +55,13 @@ public class CrearFormulario {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(10, 104, 127, 20);
+		textFieldNombre.setBounds(10, 104, 137, 31);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(47, 79, 46, 14);
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNombre.setBounds(47, 79, 67, 21);
 		desktopPane.add(lblNombre);
 		
 		JTextArea textArea = new JTextArea();
@@ -67,22 +69,23 @@ public class CrearFormulario {
 		desktopPane.add(textArea);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setBounds(324, 79, 75, 14);
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDescripcion.setBounds(310, 79, 100, 21);
 		desktopPane.add(lblDescripcion);
 		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/Guardar.png")));
+		JButton btnGuardar = new JButton("");
+		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(10, 159, 137, 40);
 		desktopPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("");
+		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
+		btnCancelar.setBounds(10, 210, 137, 40);
+		desktopPane.add(btnCancelar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
 		lblFondo.setBounds(97, 0, 254, 261);
 		desktopPane.add(lblFondo);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/Cancelar.png")));
-		btnCancelar.setBounds(10, 210, 137, 40);
-		desktopPane.add(btnCancelar);
 	}
 }
