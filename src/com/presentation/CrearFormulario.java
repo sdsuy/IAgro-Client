@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class CrearFormulario {
 
@@ -70,16 +71,18 @@ public class CrearFormulario {
 		desktopPane.add(lblDescripcion);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(10, 152, 127, 40);
+		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/Guardar.png")));
+		btnGuardar.setBounds(10, 159, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
-		lblFondo.setBounds(90, 0, 254, 261);
+		lblFondo.setBounds(97, 0, 254, 261);
 		desktopPane.add(lblFondo);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(10, 210, 127, 40);
+		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/Cancelar.png")));
+		btnCancelar.setBounds(10, 210, 137, 40);
 		desktopPane.add(btnCancelar);
 	}
 }
