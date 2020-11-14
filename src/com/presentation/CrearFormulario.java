@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class CrearFormulario {
 
@@ -47,6 +49,7 @@ public class CrearFormulario {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textFieldNombre = new JTextField();
@@ -59,7 +62,7 @@ public class CrearFormulario {
 		desktopPane.add(lblNombre);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(263, 104, 161, 146);
+		textArea.setBounds(275, 104, 149, 146);
 		desktopPane.add(textArea);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
@@ -67,7 +70,16 @@ public class CrearFormulario {
 		desktopPane.add(lblDescripcion);
 		
 		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(10, 210, 127, 40);
+		btnGuardar.setBounds(10, 152, 127, 40);
 		desktopPane.add(btnGuardar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
+		lblFondo.setBounds(90, 0, 254, 261);
+		desktopPane.add(lblFondo);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(10, 210, 127, 40);
+		desktopPane.add(btnCancelar);
 	}
 }
