@@ -279,7 +279,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		comboBoxRol.addItem("");
 		List<Rol> roles = iagro.getRoles();
 		for (Rol rol : roles) {
-			comboBoxRol.addItem(rol.getNombre());
+			comboBoxRol.addItem(rol);
 		}
 		comboBoxRol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -133,7 +133,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		// iagro.refresh(Rol.class);//trae en memoria // no seria necesario porque los carga menu principal
 		List<Rol> roles = iagro.getRoles();
 		for (Rol rol : roles) {
-			comboBoxRol.addItem(rol.getNombre());
+			comboBoxRol.addItem(rol);
 		}
 		
 		btnGuardar = new JButton("Guardar");
@@ -179,9 +179,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 		        	
 		        	String nomRol = comboBoxRol.getSelectedItem().toString();
 		        	
-		        	iagro.readRol(nomRol);
+//		        	iagro.readRol(nomRol);
 		        	Usuario user = new Usuario();
-		        	user.setRol(iagro.readRol(nomRol));
+//		        	user.setRol(iagro.readRol(nomRol));
 		        	user.setApellido(textApellido.getText().toUpperCase());
 		        	user.setNombre(textNombre.getText().toUpperCase());
 		        	user.setDocumento(textFieldCedula.getText().toUpperCase());
