@@ -4,21 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.entities.Base;
-import com.entities.Funcionalidad;
 import com.entities.Rol;
 import com.entities.Usuario;
-import com.presentation.CrearFuncionalidad;
-import com.presentation.CrearRol;
 import com.presentation.IFrame;
-import com.presentation.ListarFuncionalidades;
-import com.presentation.ListarRoles;
 import com.presentation.ListarUsuarios;
 import com.presentation.AltaUsuario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
-import com.remote.FuncionalidadBo;
-import com.remote.RolBo;
 import com.remote.UsuarioBo;
 import com.service.IBean;
 
@@ -31,11 +24,7 @@ public class IAgro {
 	private Login login; // login
 	private MenuPrincipal principal; // menu principal
 	private AltaUsuario altaUsuario; // alta usuario
-	private CrearRol crearRol; // crear rol
-	private CrearFuncionalidad crearFuncionalidad; // crear rol
 	private ListarUsuarios listarUsuarios; // listar usuarios
-	private ListarRoles listarRoles; // listar roles
-	private ListarFuncionalidades listarFuncionalidades; // listar funcionalidades
 	
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
@@ -43,8 +32,6 @@ public class IAgro {
 	
 	private AuthBo auth; // autenticacion de usuarios
 	private UsuarioBo usuarioBo; // usuarios
-	private RolBo rolBo; // roles
-	private FuncionalidadBo funcionalidadBo; // funcionalidades
 
 	//***********************************************
 	// Listados ultra pesados con todos los datos para que la busqueda sea rapida
@@ -52,7 +39,6 @@ public class IAgro {
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 	private List<Rol> roles; // listado de roles del sistema
-	private List<Funcionalidad> funcionalidades; // listado de funcionalidades del sistema
 
 	/**
 	 * 
@@ -79,8 +65,6 @@ public class IAgro {
 	private void start() {
 		auth = new AuthBo();
 		usuarioBo = new UsuarioBo();
-		rolBo = new RolBo();
-		funcionalidadBo = new FuncionalidadBo();
 		refresh(Usuario.class);
 		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
@@ -92,8 +76,6 @@ public class IAgro {
 	
 	public void menuPrincipal() {
 		principal = new MenuPrincipal(this);
-		refresh(Rol.class);
-		refresh(Funcionalidad.class);
 		principal.start();
 	}
 	
@@ -123,21 +105,9 @@ public class IAgro {
 		if(c.equals(AltaUsuario.class)) {
 			altaUsuario = new AltaUsuario(this);
 			return altaUsuario;
-		} else if(c.equals(CrearRol.class)) {
-			crearRol = new CrearRol(this);
-			return crearRol;
-		} else if(c.equals(CrearFuncionalidad.class)) {
-			crearFuncionalidad = new CrearFuncionalidad(this);
-			return crearFuncionalidad;
-		} else if(c.equals(ListarUsuarios.class)) {
+		}  else if(c.equals(ListarUsuarios.class)) {
 			listarUsuarios = new ListarUsuarios(this);
 			return listarUsuarios;
-		} else if(c.equals(ListarRoles.class)) {
-			listarRoles = new ListarRoles(this);
-			return listarRoles;
-		} else if(c.equals(ListarFuncionalidades.class)) {
-			listarFuncionalidades = new ListarFuncionalidades(this);
-			return listarFuncionalidades;
 		}
 		return null;
 	}
@@ -208,18 +178,12 @@ public class IAgro {
 			usuarios = bean.readAll();
 		} else if(c.equals(Rol.class)) {
 			roles = bean.readAll();
-		} else if(c.equals(Funcionalidad.class)) {
-			funcionalidades = bean.readAll();
-		}
+		} 
 	}
 	
 	private IBean getBean(Class c) {
 		if(c.equals(Usuario.class)) {
 			return usuarioBo;
-		} else if(c.equals(Rol.class)) {
-			return rolBo;
-		} else if(c.equals(Funcionalidad.class)) {
-			return funcionalidadBo;
 		}
 		return null;
 	}
@@ -236,32 +200,12 @@ public class IAgro {
 		return roles;
 	}
 	
-	public List<Funcionalidad> getFuncionalidades() {
-		return funcionalidades;
-	}
-	
 	public Usuario readUsuario(String documento) {
 		Usuario usuario = usuarios.stream()
 				.filter(u -> u.getDocumento().equals(documento))
 				.collect(Collectors.toList())
 				.get(0);
 		return usuario;
-	}
-	
-	public Rol readRol(String nombre) {
-		Rol rol = roles.stream()
-				.filter(r -> r.getNombre().equals(nombre))
-				.collect(Collectors.toList())
-				.get(0);
-		return rol;
-	}
-	
-	public Funcionalidad readFuncionalidad(String nombre) {
-		Funcionalidad funcionalidad = funcionalidades.stream()
-				.filter(f -> f.getNombre().equals(nombre))
-				.collect(Collectors.toList())
-				.get(0);
-		return funcionalidad;
 	}
 	
 	public Object[][] matrixUsuarios() {
@@ -274,25 +218,7 @@ public class IAgro {
 			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
 			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
 			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getNombre();
-		}
-		return datos;
-	}
-	
-	public Object[][] matrixRoles() {
-		Object[][] datos = new Object[roles.size()][2];
-		for (Rol rol : roles) {
-			datos[(roles.indexOf(rol))][0] = rol.getNombre();
-			datos[(roles.indexOf(rol))][1] = rol.getDescripcion();
-		}
-		return datos;
-	}
-	
-	public Object[][] matrixFuncionalidades() {
-		Object[][] datos = new Object[funcionalidades.size()][2];
-		for (Funcionalidad funcionalidad : funcionalidades) {
-			datos[(funcionalidades.indexOf(funcionalidad))][0] = funcionalidad.getNombre();
-			datos[(funcionalidades.indexOf(funcionalidad))][1] = funcionalidad.getDescripcion();
+			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
 		}
 		return datos;
 	}
