@@ -131,7 +131,7 @@ public class MenuPrincipal {
 		JButton btnCrearFuncionalidades = new JButton("Crear");
 		btnCrearFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iagro.show(CrearFuncionalidad.class);
+				
 			}
 		});
 		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
@@ -140,7 +140,7 @@ public class MenuPrincipal {
 		JButton btnListarFuncionalidades = new JButton("Listar");
 		btnListarFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iagro.show(ListarFuncionalidades.class);
+				
 			}
 		});
 		btnListarFuncionalidades.setBounds(6, 45, 89, 23);
@@ -165,7 +165,7 @@ public class MenuPrincipal {
 		JButton btnCrearRoles = new JButton("Crear");
 		btnCrearRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iagro.show(CrearRol.class);
+				
 			}
 		});
 		btnCrearRoles.setBounds(10, 11, 107, 23);
@@ -174,7 +174,7 @@ public class MenuPrincipal {
 		JButton btnListarRoles = new JButton("Listar");
 		btnListarRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iagro.show(ListarRoles.class);
+				
 			}
 		});
 		btnListarRoles.setBounds(10, 45, 107, 23);
