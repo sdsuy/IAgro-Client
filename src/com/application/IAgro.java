@@ -11,6 +11,7 @@ import com.presentation.IFrame;
 import com.presentation.ListarFormularios;
 import com.presentation.ListarUsuarios;
 import com.presentation.AltaUsuario;
+import com.presentation.CrearFormulario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
@@ -27,6 +28,7 @@ public class IAgro {
 	private MenuPrincipal principal; // menu principal
 	private AltaUsuario altaUsuario; // alta usuario
 	private ListarUsuarios listarUsuarios; // listar usuarios
+	private CrearFormulario crearFormulario; // crear formulario
 	private ListarFormularios listarFormularios; // listar formularios
 	
 	//***********************************************
