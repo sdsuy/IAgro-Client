@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.entities.Base;
+import com.entities.Formulario;
 import com.entities.Rol;
 import com.entities.Usuario;
 import com.presentation.IFrame;
+import com.presentation.ListarFormularios;
 import com.presentation.ListarUsuarios;
 import com.presentation.AltaUsuario;
 import com.presentation.Login;
@@ -25,6 +27,7 @@ public class IAgro {
 	private MenuPrincipal principal; // menu principal
 	private AltaUsuario altaUsuario; // alta usuario
 	private ListarUsuarios listarUsuarios; // listar usuarios
+	private ListarFormularios listarFormularios; // listar formularios
 	
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
@@ -39,6 +42,7 @@ public class IAgro {
 	
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 	private List<Rol> roles; // listado de roles del sistema
+	private List<Formulario> formularios; //listado de formularios del sistema
 
 	/**
 	 * 
@@ -121,8 +125,8 @@ public class IAgro {
 		return columnas;
 	}
 	
-	public String [] getColumnasFuncionalidad() {
-		String [] columnas = {"NOMBRE","DESCRIPCION"};
+	public String [] getColumnasFormulario() {
+		String [] columnas = {"ID","NOMBRE","CASILLA","MET_MUESTREO","EST_MUESTREO","EQUIPAMIENTO","RESUMEN","DEPARTAMENTO","FECHA","ZONA","TIP_MUESTREO","GEOPUNTO","LOCALIDAD"};
 		return columnas;
 	}
 	
@@ -200,12 +204,25 @@ public class IAgro {
 		return roles;
 	}
 	
+	public List<Formulario> getFormulario(){
+		return formularios;
+	}
+	
 	public Usuario readUsuario(String documento) {
 		Usuario usuario = usuarios.stream()
 				.filter(u -> u.getDocumento().equals(documento))
 				.collect(Collectors.toList())
 				.get(0);
 		return usuario;
+	}
+	
+	public Formulario readFormulario(String titulo) {
+		Formulario formul = formularios.stream()
+				.filter(u -> u.getNombre().equals(titulo))
+				.collect(Collectors.toList())
+				.get(0);
+		
+		return formul;
 	}
 	
 	public Object[][] matrixUsuarios() {
@@ -219,6 +236,27 @@ public class IAgro {
 			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
 			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
 			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
+		}
+		return datos;
+	}
+	
+	public Object[][] matrixFormularios(){
+		Object[][] datos = new Object[formularios.size()][12];
+		for (Formulario form : formularios) {
+			datos[(formularios.indexOf(form))][0] = form.getId_formulario();
+			datos[(formularios.indexOf(form))][1] = form.getNombre();
+			datos[(formularios.indexOf(form))][2] = form.getCasillas();
+			datos[(formularios.indexOf(form))][3] = form.getMet_muestreo();
+			datos[(formularios.indexOf(form))][4] = form.getEst_muestreo();
+			datos[(formularios.indexOf(form))][5] = form.getEquipamiento();
+			datos[(formularios.indexOf(form))][6] = form.getResumen();
+			datos[(formularios.indexOf(form))][7] = form.getDepartamento();
+			datos[(formularios.indexOf(form))][8] = form.getFecha();
+			datos[(formularios.indexOf(form))][9] = form.getZona();
+			datos[(formularios.indexOf(form))][10] = form.getTip_muestreo();
+			datos[(formularios.indexOf(form))][11] = form.getGeopunto();
+			datos[(formularios.indexOf(form))][12] = form.getLocalidad();
+			
 		}
 		return datos;
 	}
