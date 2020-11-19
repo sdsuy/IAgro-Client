@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 
 import com.application.IAgro;
-import com.entities.Funcionalidad;
+import com.entities.Formulario;
 import com.entities.Usuario;
 
 import javax.swing.ImageIcon;
@@ -31,11 +31,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class ListarFormularios implements IFrame<Funcionalidad> {
+public class ListarFormularios implements IFrame<Formulario> {
 
 	private JFrame frame;
 	private JTable table;
-	List<Funcionalidad> funcionalidades;
+	List<Formulario> formularios;
 	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
@@ -89,7 +89,7 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 	}
 
 	@Override
-	public void setFields(Funcionalidad o) {
+	public void setFields(Formulario o) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -108,13 +108,13 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		funcionalidades = iagro.getFuncionalidades();
-		String [] columnas = iagro.getColumnasFuncionalidad();
+		formularios = iagro.getFormulario();
+		String [] columnas = iagro.getColumnasFormulario();
 		
-//		int x = funcionalidades.size();
-//		int y = columnas.length;
+		int x = formularios.size();
+		int y = columnas.length;
 		
-		Object[][] datos = iagro.matrixFuncionalidades();
+		Object[][] datos = iagro.matrixFormularios();
 		
 		ModeloTabla model = new ModeloTabla(columnas, datos);
 		
@@ -143,16 +143,16 @@ public class ListarFormularios implements IFrame<Funcionalidad> {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				int selectedRow = table.getSelectedRow();
-				Funcionalidad funcionalidadDelete = iagro.readFuncionalidad(table.getValueAt(selectedRow, 0).toString());
-				boolean result = iagro.delete(funcionalidadDelete.getId(), Funcionalidad.class);
+				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
+				boolean result = iagro.delete(formularioDelete.getId_formulario(), Formulario.class);
 				if(result) {
-					model.setData(iagro.matrixFuncionalidades());
+					model.setData(iagro.matrixFormularios());
 					model.refresh();
 					
-					JOptionPane.showMessageDialog(null, "Se logro eliminar la Funcionalidad","Exito",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No se logro eliminar la Funcionalidad","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No se logro eliminar el Formulario","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
