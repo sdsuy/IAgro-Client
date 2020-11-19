@@ -45,11 +45,35 @@ public class CrearFormulario {
 			}
 		});
 	}
+	
+	/**
+	 * Start the application.
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public CrearFormulario() {
+		initialize();
+	}
+	
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public CrearFormulario(IAgro iagro) {
+		id = 0L;
+		this.iagro = iagro;
 		initialize();
 	}
 
