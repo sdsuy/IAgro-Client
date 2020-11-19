@@ -7,17 +7,28 @@ import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import com.application.IAgro;
+import com.entities.Formulario;
+
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearFormulario {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
+	private Long id;
+	private IAgro iagro;
+	private JTextArea textArea;
+	
 
 	/**
 	 * Launch the application.
@@ -64,7 +75,7 @@ public class CrearFormulario {
 		lblNombre.setBounds(47, 79, 67, 21);
 		desktopPane.add(lblNombre);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setBounds(275, 104, 149, 146);
 		desktopPane.add(textArea);
 		
@@ -74,6 +85,54 @@ public class CrearFormulario {
 		desktopPane.add(lblDescripcion);
 		
 		JButton btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textFieldNombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Debe ingresar un nombre al Formulario","Error",JOptionPane.ERROR_MESSAGE);
+	
+				}
+				else if(textFieldNombre.getText().contains("1")||
+						textFieldNombre.getText().contains("2")||
+						textFieldNombre.getText().contains("3")||
+						textFieldNombre.getText().contains("4")||
+						textFieldNombre.getText().contains("5")||
+						textFieldNombre.getText().contains("6")||
+						textFieldNombre.getText().contains("7")||
+						textFieldNombre.getText().contains("8")||
+						textFieldNombre.getText().contains("9")||
+						textFieldNombre.getText().contains("0")) {
+					JOptionPane.showMessageDialog(null, "Debe ingresar solamente Texto","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else if(textFieldNombre.getText().contains("!")||
+						textFieldNombre.getText().contains("@")||
+						textFieldNombre.getText().contains("~")||
+						textFieldNombre.getText().contains("`")||
+						textFieldNombre.getText().contains("#")||
+						textFieldNombre.getText().contains("%")||
+						textFieldNombre.getText().contains("^")||
+						textFieldNombre.getText().contains("&")||
+						textFieldNombre.getText().contains("*")) {
+					JOptionPane.showMessageDialog(null, "Debe ingresar solamente Texto","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				Formulario form = new Formulario();
+				form.setNombre(textFieldNombre.getText().toUpperCase());
+				form.setResumen(textArea.getText().toUpperCase());
+					boolean result;
+					if(id>0) {
+						System.out.println("ID for update "+id);
+						form.setId_formulario(id);
+						result=iagro.update(form);
+					}
+					else {
+						System.out.println("ID for create "+id);
+						result=iagro.create(form);
+					}
+					if(result) {
+						limpiar();
+						JOptionPane.showMessageDialog(null, "Se ha creado el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+					}
+			}
+		});
 		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(10, 159, 137, 40);
 		desktopPane.add(btnGuardar);
@@ -87,5 +146,10 @@ public class CrearFormulario {
 		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
 		lblFondo.setBounds(97, 0, 254, 261);
 		desktopPane.add(lblFondo);
+	}
+	public void limpiar() {
+		textFieldNombre.setText("");
+		textArea.setText("");
+
 	}
 }
