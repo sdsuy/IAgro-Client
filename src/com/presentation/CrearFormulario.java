@@ -138,6 +138,12 @@ public class CrearFormulario {
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiar();
+				
+			}
+		});
 		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.setBounds(10, 210, 137, 40);
 		desktopPane.add(btnCancelar);
