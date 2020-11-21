@@ -117,7 +117,7 @@ public class MenuPrincipal {
 		desktopPane.add(desktopPaneFuncionalidades);
 		desktopPaneFuncionalidades.setVisible(false);
 		
-		JButton btnFuncionalidades = new JButton("Funcionalidades");
+		JButton btnFuncionalidades = new JButton("Formulario");
 		btnFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
