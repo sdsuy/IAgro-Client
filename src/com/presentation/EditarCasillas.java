@@ -58,11 +58,6 @@ public class EditarCasillas {
 		btnAgregar.setBounds(263, 286, 232, 42);
 		desktopPane.add(btnAgregar);
 		
-		JButton btnVolver = new JButton("");
-		btnVolver.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonVolver.png")));
-		btnVolver.setBounds(10, 11, 98, 33);
-		desktopPane.add(btnVolver);
-		
 		JList list = new JList();
 		list.setBounds(263, 112, 232, 163);
 		desktopPane.add(list);
@@ -166,7 +161,12 @@ public class EditarCasillas {
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(170, 389, 137, 40);
+		btnGuardar.setBounds(312, 389, 137, 40);
 		desktopPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("");
+		btnCancelar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonCancelar.png")));
+		btnCancelar.setBounds(57, 389, 137, 40);
+		desktopPane.add(btnCancelar);
 	}
 }

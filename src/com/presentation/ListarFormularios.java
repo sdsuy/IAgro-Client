@@ -157,12 +157,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 				
 			}
 		});
-		btnEliminar.setBounds(420, 270, 211, 42);
+		btnEliminar.setBounds(10, 328, 211, 42);
 		desktopPane.add(btnEliminar);
 		
 		JButton btnMostrar = new JButton("");
 		btnMostrar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonMostarSeleccionado.png")));
-		btnMostrar.setBounds(10, 289, 211, 42);
+		btnMostrar.setBounds(10, 275, 211, 42);
 		desktopPane.add(btnMostrar);
 		
 		JLabel lblFondo = new JLabel("");
@@ -172,7 +172,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		JButton btnEliminarCasillas = new JButton("");
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
-		btnEliminarCasillas.setBounds(446, 323, 185, 42);
+		btnEliminarCasillas.setBounds(447, 299, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
 	}
 	

@@ -97,12 +97,12 @@ public class CrearCasilla {
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(10, 295, 137, 40);
+		btnGuardar.setBounds(54, 295, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
 		btnCancelar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(287, 295, 137, 40);
+		btnCancelar.setBounds(236, 295, 137, 40);
 		desktopPane.add(btnCancelar);
 		
 		JLabel lblTipoDeCasilla = new JLabel("Tipo de Casilla:");
