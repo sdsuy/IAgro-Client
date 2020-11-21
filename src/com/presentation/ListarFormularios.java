@@ -170,10 +170,10 @@ public class ListarFormularios implements IFrame<Formulario> {
 		lblFondo.setBounds(173, 0, 297, 391);
 		desktopPane.add(lblFondo);
 		
-		JButton btnEliminar_1 = new JButton("");
-		btnEliminar_1.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/Eliminar Casillas.png")));
-		btnEliminar_1.setBounds(420, 323, 211, 42);
-		desktopPane.add(btnEliminar_1);
+		JButton btnEliminarCasillas = new JButton("");
+		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/Eliminar Casillas.png")));
+		btnEliminarCasillas.setBounds(420, 323, 211, 42);
+		desktopPane.add(btnEliminarCasillas);
 	}
 	
 	
