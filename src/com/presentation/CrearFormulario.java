@@ -30,11 +30,6 @@ public class CrearFormulario {
 	private Long id;
 	private IAgro iagro;
 	private JTextArea textArea;
-	private JTextField textFieldMetodoDeMuetreo;
-	private JTextField textFieldEstacionDeMuestreo;
-	private JTextField textFieldDepartamento;
-	private JTextField textFieldCantidad;
-	private JTextField textFieldUbicacion;
 	
 
 	/**
@@ -89,7 +84,7 @@ public class CrearFormulario {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 847, 453);
+		frame.setBounds(100, 100, 499, 368);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -107,12 +102,12 @@ public class CrearFormulario {
 		desktopPane.add(lblNombre);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(670, 247, 149, 158);
+		textArea.setBounds(321, 111, 149, 158);
 		desktopPane.add(textArea);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDescripcion.setBounds(696, 222, 100, 21);
+		lblDescripcion.setBounds(347, 86, 100, 21);
 		desktopPane.add(lblDescripcion);
 		
 		JButton btnGuardar = new JButton("");
@@ -165,7 +160,7 @@ public class CrearFormulario {
 			}
 		});
 		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(358, 365, 137, 40);
+		btnGuardar.setBounds(288, 283, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
@@ -176,90 +171,27 @@ public class CrearFormulario {
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(197, 365, 137, 40);
+		btnCancelar.setBounds(63, 283, 137, 40);
 		desktopPane.add(btnCancelar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
-		lblFondo.setBounds(285, 11, 254, 261);
+		lblFondo.setBounds(122, 11, 254, 261);
 		desktopPane.add(lblFondo);
 		
-		JList listCasillas = new JList();
-		listCasillas.setBounds(505, 247, 149, 158);
-		desktopPane.add(listCasillas);
-		
-		JLabel lblCasillas = new JLabel("Casillas");
-		lblCasillas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillas.setBounds(549, 222, 74, 21);
-		desktopPane.add(lblCasillas);
-		
 		JComboBox comboBoxTipo = new JComboBox();
-		comboBoxTipo.setBounds(505, 164, 149, 31);
+		comboBoxTipo.setBounds(10, 179, 149, 31);
 		desktopPane.add(comboBoxTipo);
 		
 		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo:");
 		lblTipoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeMuestreo.setBounds(505, 138, 137, 21);
+		lblTipoDeMuestreo.setBounds(10, 153, 137, 21);
 		desktopPane.add(lblTipoDeMuestreo);
 		
-		JLabel lblMtodoDeMuestreo = new JLabel("M\u00E9todo de Muestreo:");
-		lblMtodoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblMtodoDeMuestreo.setBounds(10, 150, 166, 21);
-		desktopPane.add(lblMtodoDeMuestreo);
-		
-		textFieldMetodoDeMuetreo = new JTextField();
-		textFieldMetodoDeMuetreo.setColumns(10);
-		textFieldMetodoDeMuetreo.setBounds(10, 176, 137, 31);
-		desktopPane.add(textFieldMetodoDeMuetreo);
-		
-		JLabel lblEstacionDeMuestreo = new JLabel("Estaci\u00F3n de Muestreo:");
-		lblEstacionDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEstacionDeMuestreo.setBounds(10, 218, 166, 21);
-		desktopPane.add(lblEstacionDeMuestreo);
-		
-		textFieldEstacionDeMuestreo = new JTextField();
-		textFieldEstacionDeMuestreo.setColumns(10);
-		textFieldEstacionDeMuestreo.setBounds(10, 244, 137, 31);
-		desktopPane.add(textFieldEstacionDeMuestreo);
-		
-		JLabel lblDepartamento = new JLabel("Depatamento:");
-		lblDepartamento.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDepartamento.setBounds(201, 218, 166, 21);
-		desktopPane.add(lblDepartamento);
-		
-		textFieldDepartamento = new JTextField();
-		textFieldDepartamento.setColumns(10);
-		textFieldDepartamento.setBounds(201, 244, 137, 31);
-		desktopPane.add(textFieldDepartamento);
-		
-		JLabel lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCantidad.setBounds(201, 86, 166, 21);
-		desktopPane.add(lblCantidad);
-		
-		textFieldCantidad = new JTextField();
-		textFieldCantidad.setColumns(10);
-		textFieldCantidad.setBounds(201, 112, 137, 31);
-		desktopPane.add(textFieldCantidad);
-		
-		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n:");
-		lblUbicacion.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUbicacion.setBounds(201, 150, 166, 21);
-		desktopPane.add(lblUbicacion);
-		
-		textFieldUbicacion = new JTextField();
-		textFieldUbicacion.setColumns(10);
-		textFieldUbicacion.setBounds(201, 176, 137, 31);
-		desktopPane.add(textFieldUbicacion);
-		
-		JLabel lblImagen = new JLabel("Im\u00E1gen:");
-		lblImagen.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblImagen.setBounds(706, 138, 166, 21);
-		desktopPane.add(lblImagen);
-		
-		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBounds(701, 167, 89, 23);
-		desktopPane.add(btnNewButton);
+		JButton btnMenu = new JButton("");
+		btnMenu.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonMenu.png")));
+		btnMenu.setBounds(10, 11, 98, 33);
+		desktopPane.add(btnMenu);
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
