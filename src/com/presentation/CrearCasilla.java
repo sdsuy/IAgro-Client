@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JComboBox;
 
 public class CrearCasilla {
 
@@ -48,7 +49,7 @@ public class CrearCasilla {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 325);
+		frame.setBounds(100, 100, 450, 385);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -56,7 +57,7 @@ public class CrearCasilla {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 70, 100, 26);
+		textField.setBounds(10, 70, 116, 26);
 		desktopPane.add(textField);
 		textField.setColumns(10);
 		
@@ -71,7 +72,7 @@ public class CrearCasilla {
 		desktopPane.add(lblUnidadDeMedida);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(297, 71, 127, 145);
+		textArea.setBounds(297, 71, 127, 207);
 		desktopPane.add(textArea);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
@@ -91,23 +92,31 @@ public class CrearCasilla {
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(10, 132, 100, 26);
+		textField_1.setBounds(10, 132, 116, 26);
 		desktopPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(10, 190, 100, 26);
+		textField_2.setBounds(10, 190, 116, 26);
 		desktopPane.add(textField_2);
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(10, 235, 137, 40);
+		btnGuardar.setBounds(10, 295, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
 		btnCancelar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(287, 235, 137, 40);
+		btnCancelar.setBounds(287, 295, 137, 40);
 		desktopPane.add(btnCancelar);
+		
+		JLabel lblTipoDeCasilla = new JLabel("Tipo de Casilla:");
+		lblTipoDeCasilla.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTipoDeCasilla.setBounds(10, 227, 150, 14);
+		desktopPane.add(lblTipoDeCasilla);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 252, 116, 26);
+		desktopPane.add(comboBox);
 	}
-
 }
