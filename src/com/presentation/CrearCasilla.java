@@ -115,8 +115,8 @@ public class CrearCasilla {
 		lblTipoDeCasilla.setBounds(10, 227, 150, 14);
 		desktopPane.add(lblTipoDeCasilla);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(10, 252, 116, 26);
-		desktopPane.add(comboBox);
+		JComboBox comboBoxTipo = new JComboBox();
+		comboBoxTipo.setBounds(10, 252, 116, 26);
+		desktopPane.add(comboBoxTipo);
 	}
 }

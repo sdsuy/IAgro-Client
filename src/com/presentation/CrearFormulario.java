@@ -188,9 +188,9 @@ public class CrearFormulario {
 		lblCasillas.setBounds(326, 79, 74, 21);
 		desktopPane.add(lblCasillas);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(10, 187, 137, 31);
-		desktopPane.add(comboBox);
+		JComboBox comboBoxTipo = new JComboBox();
+		comboBoxTipo.setBounds(10, 187, 137, 31);
+		desktopPane.add(comboBoxTipo);
 		
 		JLabel lblTipoDeFormulario = new JLabel("Tipo de Formulario");
 		lblTipoDeFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
