@@ -82,13 +82,8 @@ public class CrearCasilla {
 		
 		JLabel lblTipoDeDato = new JLabel("Tipo de Dato:");
 		lblTipoDeDato.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeDato.setBounds(10, 169, 150, 14);
+		lblTipoDeDato.setBounds(10, 169, 98, 14);
 		desktopPane.add(lblTipoDeDato);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/CrearCasilla.png")));
-		lblFondo.setBounds(120, 0, 184, 261);
-		desktopPane.add(lblFondo);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
@@ -112,11 +107,40 @@ public class CrearCasilla {
 		
 		JLabel lblTipoDeCasilla = new JLabel("Tipo de Casilla:");
 		lblTipoDeCasilla.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeCasilla.setBounds(10, 227, 150, 14);
+		lblTipoDeCasilla.setBounds(10, 227, 116, 14);
 		desktopPane.add(lblTipoDeCasilla);
 		
 		JComboBox comboBoxTipo = new JComboBox();
 		comboBoxTipo.setBounds(10, 252, 116, 26);
 		desktopPane.add(comboBoxTipo);
+		
+		JLabel lblObligatorio = new JLabel("*");
+		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio.setForeground(Color.RED);
+		lblObligatorio.setBounds(124, 227, 17, 14);
+		desktopPane.add(lblObligatorio);
+		
+		JLabel lblObligatorio_1 = new JLabel("*");
+		lblObligatorio_1.setForeground(Color.RED);
+		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_1.setBounds(118, 169, 17, 14);
+		desktopPane.add(lblObligatorio_1);
+		
+		JLabel lblObligatorio_2 = new JLabel("*");
+		lblObligatorio_2.setForeground(Color.RED);
+		lblObligatorio_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_2.setBounds(149, 107, 17, 14);
+		desktopPane.add(lblObligatorio_2);
+		
+		JLabel lblObligatorio_3 = new JLabel("*");
+		lblObligatorio_3.setForeground(Color.RED);
+		lblObligatorio_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_3.setBounds(92, 52, 17, 14);
+		desktopPane.add(lblObligatorio_3);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/CrearCasilla.png")));
+		lblFondo.setBounds(120, 0, 184, 261);
+		desktopPane.add(lblFondo);
 	}
 }

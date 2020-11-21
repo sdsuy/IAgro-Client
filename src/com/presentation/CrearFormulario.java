@@ -97,13 +97,13 @@ public class CrearFormulario {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(40, 111, 137, 31);
+		textFieldNombre.setBounds(10, 111, 137, 31);
 		desktopPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNombre.setBounds(40, 86, 67, 21);
+		lblNombre.setBounds(10, 86, 67, 21);
 		desktopPane.add(lblNombre);
 		
 		textArea = new JTextArea();
@@ -204,22 +204,22 @@ public class CrearFormulario {
 		
 		JLabel lblMtodoDeMuestreo = new JLabel("M\u00E9todo de Muestreo:");
 		lblMtodoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblMtodoDeMuestreo.setBounds(40, 150, 166, 21);
+		lblMtodoDeMuestreo.setBounds(10, 150, 166, 21);
 		desktopPane.add(lblMtodoDeMuestreo);
 		
 		textFieldMetodoDeMuetreo = new JTextField();
 		textFieldMetodoDeMuetreo.setColumns(10);
-		textFieldMetodoDeMuetreo.setBounds(40, 176, 137, 31);
+		textFieldMetodoDeMuetreo.setBounds(10, 176, 137, 31);
 		desktopPane.add(textFieldMetodoDeMuetreo);
 		
 		JLabel lblEstacionDeMuestreo = new JLabel("Estaci\u00F3n de Muestreo:");
 		lblEstacionDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEstacionDeMuestreo.setBounds(40, 218, 166, 21);
+		lblEstacionDeMuestreo.setBounds(10, 218, 166, 21);
 		desktopPane.add(lblEstacionDeMuestreo);
 		
 		textFieldEstacionDeMuestreo = new JTextField();
 		textFieldEstacionDeMuestreo.setColumns(10);
-		textFieldEstacionDeMuestreo.setBounds(40, 244, 137, 31);
+		textFieldEstacionDeMuestreo.setBounds(10, 244, 137, 31);
 		desktopPane.add(textFieldEstacionDeMuestreo);
 		
 		JLabel lblDepartamento = new JLabel("Depatamento:");
