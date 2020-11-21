@@ -9,8 +9,9 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import java.awt.Color;
+import javax.swing.JLabel;
 
-public class ListarCasillas {
+public class EliminarCasillas {
 
 	private JFrame frame;
 
@@ -21,7 +22,7 @@ public class ListarCasillas {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListarCasillas window = new ListarCasillas();
+					EliminarCasillas window = new EliminarCasillas();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +34,7 @@ public class ListarCasillas {
 	/**
 	 * Create the application.
 	 */
-	public ListarCasillas() {
+	public EliminarCasillas() {
 		initialize();
 	}
 
@@ -42,7 +43,7 @@ public class ListarCasillas {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 299, 522);
+		frame.setBounds(100, 100, 299, 479);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -50,18 +51,23 @@ public class ListarCasillas {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JButton btnEliminar = new JButton("");
-		btnEliminar.setIcon(new ImageIcon(ListarCasillas.class.getResource("/img/EliminarSeleccionado.png")));
-		btnEliminar.setBounds(38, 430, 211, 42);
+		btnEliminar.setIcon(new ImageIcon(EliminarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
+		btnEliminar.setBounds(27, 384, 232, 42);
 		desktopPane.add(btnEliminar);
 		
 		JButton btnVolver = new JButton("");
-		btnVolver.setIcon(new ImageIcon(ListarCasillas.class.getResource("/img/BotonVolver.png")));
+		btnVolver.setIcon(new ImageIcon(EliminarCasillas.class.getResource("/img/BotonVolver.png")));
 		btnVolver.setBounds(10, 11, 98, 33);
 		desktopPane.add(btnVolver);
 		
 		JList list = new JList();
-		list.setBounds(27, 155, 232, 250);
+		list.setBounds(27, 112, 232, 250);
 		desktopPane.add(list);
+		
+		JLabel lblTitulo = new JLabel("");
+		lblTitulo.setIcon(new ImageIcon(EliminarCasillas.class.getResource("/img/ListarCasillas.png")));
+		lblTitulo.setBounds(86, 55, 124, 70);
+		desktopPane.add(lblTitulo);
 	}
 
 }
