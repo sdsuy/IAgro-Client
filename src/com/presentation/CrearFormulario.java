@@ -20,6 +20,8 @@ import com.entities.Formulario;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class CrearFormulario {
 
@@ -82,7 +84,7 @@ public class CrearFormulario {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 626, 386);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -100,12 +102,12 @@ public class CrearFormulario {
 		desktopPane.add(lblNombre);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(275, 104, 149, 146);
+		textArea.setBounds(447, 104, 149, 232);
 		desktopPane.add(textArea);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDescripcion.setBounds(310, 79, 100, 21);
+		lblDescripcion.setBounds(473, 79, 100, 21);
 		desktopPane.add(lblDescripcion);
 		
 		JButton btnGuardar = new JButton("");
@@ -158,7 +160,7 @@ public class CrearFormulario {
 			}
 		});
 		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(10, 159, 137, 40);
+		btnGuardar.setBounds(10, 245, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
@@ -169,13 +171,31 @@ public class CrearFormulario {
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(10, 210, 137, 40);
+		btnCancelar.setBounds(10, 296, 137, 40);
 		desktopPane.add(btnCancelar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/CrearFormulario.png")));
 		lblFondo.setBounds(97, 0, 254, 261);
 		desktopPane.add(lblFondo);
+		
+		JList listCasillas = new JList();
+		listCasillas.setBounds(282, 104, 149, 232);
+		desktopPane.add(listCasillas);
+		
+		JLabel lblCasillas = new JLabel("Casillas");
+		lblCasillas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillas.setBounds(326, 79, 74, 21);
+		desktopPane.add(lblCasillas);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 187, 137, 31);
+		desktopPane.add(comboBox);
+		
+		JLabel lblTipoDeFormulario = new JLabel("Tipo de Formulario");
+		lblTipoDeFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTipoDeFormulario.setBounds(10, 164, 137, 21);
+		desktopPane.add(lblTipoDeFormulario);
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
