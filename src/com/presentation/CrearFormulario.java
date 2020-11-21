@@ -192,10 +192,10 @@ public class CrearFormulario {
 		comboBoxTipo.setBounds(10, 187, 137, 31);
 		desktopPane.add(comboBoxTipo);
 		
-		JLabel lblTipoDeFormulario = new JLabel("Tipo de Formulario");
-		lblTipoDeFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeFormulario.setBounds(10, 164, 137, 21);
-		desktopPane.add(lblTipoDeFormulario);
+		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo");
+		lblTipoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTipoDeMuestreo.setBounds(10, 166, 137, 21);
+		desktopPane.add(lblTipoDeMuestreo);
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
