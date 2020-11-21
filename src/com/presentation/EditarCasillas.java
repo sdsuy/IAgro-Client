@@ -46,7 +46,7 @@ public class EditarCasillas {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 521, 479);
+		frame.setBounds(100, 100, 521, 516);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -55,7 +55,7 @@ public class EditarCasillas {
 		
 		JButton btnAgregar = new JButton("");
 		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
-		btnAgregar.setBounds(263, 286, 232, 42);
+		btnAgregar.setBounds(263, 336, 232, 42);
 		desktopPane.add(btnAgregar);
 		
 		JList list = new JList();
@@ -161,12 +161,17 @@ public class EditarCasillas {
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(312, 389, 137, 40);
+		btnGuardar.setBounds(313, 426, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
 		btnCancelar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(57, 389, 137, 40);
+		btnCancelar.setBounds(58, 426, 137, 40);
 		desktopPane.add(btnCancelar);
+		
+		JButton btnAgregar_1 = new JButton("");
+		btnAgregar_1.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
+		btnAgregar_1.setBounds(263, 283, 232, 42);
+		desktopPane.add(btnAgregar_1);
 	}
 }
