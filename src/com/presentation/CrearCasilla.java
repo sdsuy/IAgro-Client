@@ -7,6 +7,7 @@ import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 
+import com.application.IAgro;
 import com.entities.Casilla;
 import com.entities.Usuario;
 
@@ -24,6 +25,8 @@ public class CrearCasilla implements IFrame<Casilla> {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private IAgro iagro;
+	private Long id;
 
 	/**
 	 * Launch the application.
@@ -40,11 +43,19 @@ public class CrearCasilla implements IFrame<Casilla> {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
 	public CrearCasilla() {
+		initialize();
+	}
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public CrearCasilla(IAgro iagro) {
+		id = 0L;
+		this.iagro = iagro;
 		initialize();
 	}
 
@@ -147,10 +158,21 @@ public class CrearCasilla implements IFrame<Casilla> {
 		lblFondo.setBounds(120, 0, 184, 261);
 		desktopPane.add(lblFondo);
 	}
-
+	
+	/**
+	 * Start the application.
+	 */
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 
