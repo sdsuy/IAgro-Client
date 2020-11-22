@@ -181,7 +181,7 @@ public class MenuPrincipal {
 		btnCrearRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.show(CrearCasilla.class);
 			}
 		});
 		btnCrearRoles.setBounds(10, 11, 100, 33);
