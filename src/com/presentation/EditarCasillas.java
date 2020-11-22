@@ -144,24 +144,6 @@ public class EditarCasillas {
 		lblObligatorio_2.setBounds(110, 181, 15, 14);
 		desktopPane.add(lblObligatorio_2);
 		
-		JLabel lblObligatorio_3 = new JLabel("*");
-		lblObligatorio_3.setForeground(Color.RED);
-		lblObligatorio_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_3.setBounds(86, 206, 15, 14);
-		desktopPane.add(lblObligatorio_3);
-		
-		JLabel lblObligatorio_4 = new JLabel("*");
-		lblObligatorio_4.setForeground(Color.RED);
-		lblObligatorio_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_4.setBounds(86, 231, 15, 14);
-		desktopPane.add(lblObligatorio_4);
-		
-		JLabel lblObligatorio_5 = new JLabel("*");
-		lblObligatorio_5.setForeground(Color.RED);
-		lblObligatorio_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_5.setBounds(74, 256, 15, 14);
-		desktopPane.add(lblObligatorio_5);
-		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(455, 426, 137, 40);
