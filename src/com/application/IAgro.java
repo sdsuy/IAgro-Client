@@ -8,9 +8,12 @@ import com.entities.Formulario;
 import com.entities.Rol;
 import com.entities.Usuario;
 import com.presentation.IFrame;
+import com.presentation.ListarActividades;
 import com.presentation.ListarFormularios;
 import com.presentation.ListarUsuarios;
 import com.presentation.AltaUsuario;
+import com.presentation.CrearActividad;
+import com.presentation.CrearCasilla;
 import com.presentation.CrearFormulario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
@@ -30,6 +33,9 @@ public class IAgro {
 	private ListarUsuarios listarUsuarios; // listar usuarios
 	private CrearFormulario crearFormulario; // crear formulario
 	private ListarFormularios listarFormularios; // listar formularios
+	private CrearCasilla crearCasilla;
+	private CrearActividad crearActividad;
+	private ListarActividades listarActividades;
 	
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
@@ -114,6 +120,21 @@ public class IAgro {
 		}  else if(c.equals(ListarUsuarios.class)) {
 			listarUsuarios = new ListarUsuarios(this);
 			return listarUsuarios;
+		} else if(c.equals(CrearFormulario.class)) {
+			crearFormulario = new CrearFormulario(this);
+			return crearFormulario;
+		} else if(c.equals(ListarFormularios.class)) {
+			listarFormularios = new ListarFormularios(this);
+			return listarFormularios;
+		} else if(c.equals(CrearCasilla.class)) {
+			crearCasilla = new CrearCasilla(this);
+			return crearCasilla;
+		} else if(c.equals(CrearActividad.class)) {
+			crearActividad = new CrearActividad(this);
+			return crearActividad;
+		} else if(c.equals(ListarActividades.class)) {
+			listarActividades = new ListarActividades(this);
+			return listarActividades;
 		}
 		return null;
 	}
