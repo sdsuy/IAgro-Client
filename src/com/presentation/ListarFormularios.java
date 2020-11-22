@@ -100,7 +100,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 669, 472);
+		frame.setBounds(100, 100, 669, 422);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -158,13 +158,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 				
 			}
 		});
-		btnEliminar.setBounds(10, 328, 211, 42);
+		btnEliminar.setBounds(432, 296, 211, 42);
 		desktopPane.add(btnEliminar);
-		
-		JButton btnMostrar = new JButton("");
-		btnMostrar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonMostarSeleccionado.png")));
-		btnMostrar.setBounds(10, 275, 211, 42);
-		desktopPane.add(btnMostrar);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/ListarFormularios.png")));
@@ -173,7 +168,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		JButton btnEliminarCasillas = new JButton("");
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
-		btnEliminarCasillas.setBounds(447, 299, 185, 42);
+		btnEliminarCasillas.setBounds(10, 296, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
