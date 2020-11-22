@@ -277,14 +277,15 @@ public class ListarUsuarios implements IFrame<Usuario> {
 //		String[]rol ={""};
 		
 		comboBoxRol = new JComboBox();
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Elegir Rol", "Administrador", "Experto", "Comun"}));
 //		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {""}));
-		comboBoxRol.setBounds(337, 203, 86, 22);
+		comboBoxRol.setBounds(337, 203, 101, 22);
 		desktopPane.add(comboBoxRol);
-		comboBoxRol.addItem("");
-		List<Rol> roles = iagro.getRoles();
-		for (Rol rol : roles) {
-			comboBoxRol.addItem(rol);
-		}
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/Usuarios.png")));
+		lblFondo.setBounds(188, 11, 280, 224);
+		desktopPane.add(lblFondo);
 		comboBoxRol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				filterColumns();
