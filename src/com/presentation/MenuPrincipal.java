@@ -75,7 +75,7 @@ public class MenuPrincipal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 519);
+		frame.setBounds(100, 100, 826, 519);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -84,7 +84,7 @@ public class MenuPrincipal {
 		
 		desktopPaneUsuarios = new JDesktopPane();
 		desktopPaneUsuarios.setBackground(new Color(173, 216, 230));
-		desktopPaneUsuarios.setBounds(75, 210, 100, 81);
+		desktopPaneUsuarios.setBounds(51, 210, 100, 81);
 		desktopPane.add(desktopPaneUsuarios);
 		desktopPaneUsuarios.setVisible(false);
 		
@@ -96,7 +96,7 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnUsuarios.setBounds(30, 133, 182, 59);
+		btnUsuarios.setBounds(10, 133, 182, 59);
 		desktopPane.add(btnUsuarios);
 		
 		JButton btnAltaUsuario = new JButton("Alta");
@@ -119,11 +119,11 @@ public class MenuPrincipal {
 		
 		desktopPaneFuncionalidades = new JDesktopPane();
 		desktopPaneFuncionalidades.setBackground(new Color(173, 216, 230));
-		desktopPaneFuncionalidades.setBounds(321, 210, 100, 81);
+		desktopPaneFuncionalidades.setBounds(255, 210, 100, 81);
 		desktopPane.add(desktopPaneFuncionalidades);
 		desktopPaneFuncionalidades.setVisible(false);
 		
-		JButton btnFuncionalidades = new JButton("Formulario");
+		JButton btnFuncionalidades = new JButton("Formularios");
 		btnFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -131,7 +131,7 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnFuncionalidades.setBounds(279, 133, 182, 59);
+		btnFuncionalidades.setBounds(214, 133, 182, 59);
 		desktopPane.add(btnFuncionalidades);
 		
 		JButton btnCrearFuncionalidades = new JButton("Crear");
@@ -154,11 +154,11 @@ public class MenuPrincipal {
 		
 		desktopPaneRoles = new JDesktopPane();
 		desktopPaneRoles.setBackground(new Color(173, 216, 230));
-		desktopPaneRoles.setBounds(562, 210, 127, 81);
+		desktopPaneRoles.setBounds(444, 211, 127, 44);
 		desktopPane.add(desktopPaneRoles);
 		desktopPaneRoles.setVisible(false);
 		
-		JButton btnRoles = new JButton("Roles");
+		JButton btnRoles = new JButton("Casillas");
 		btnRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -166,7 +166,7 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnRoles.setBounds(527, 133, 182, 59);
+		btnRoles.setBounds(416, 133, 182, 59);
 		desktopPane.add(btnRoles);
 		
 		JButton btnCrearRoles = new JButton("Crear");
@@ -178,15 +178,6 @@ public class MenuPrincipal {
 		btnCrearRoles.setBounds(10, 11, 107, 23);
 		desktopPaneRoles.add(btnCrearRoles);
 		
-		JButton btnListarRoles = new JButton("Listar");
-		btnListarRoles.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnListarRoles.setBounds(10, 45, 107, 23);
-		desktopPaneRoles.add(btnListarRoles);
-		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -194,13 +185,30 @@ public class MenuPrincipal {
 				frame.dispose(); // cierro principal
 			}
 		});
-		btnLogout.setBounds(635, 11, 89, 23);
+		btnLogout.setBounds(726, 11, 89, 23);
 		desktopPane.add(btnLogout);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/MenuPrincipal.png")));
-		lblFondo.setBounds(139, 0, 471, 480);
+		lblFondo.setBounds(177, 0, 471, 480);
 		desktopPane.add(lblFondo);
+		
+		JButton btnActividadesDeCamp = new JButton("Actividades de Camp");
+		btnActividadesDeCamp.setBounds(619, 133, 182, 59);
+		desktopPane.add(btnActividadesDeCamp);
+		
+		JDesktopPane desktopPane_1 = new JDesktopPane();
+		desktopPane_1.setBackground(new Color(173, 216, 230));
+		desktopPane_1.setBounds(641, 210, 138, 81);
+		desktopPane.add(desktopPane_1);
+		
+		JButton btnCrearActividad = new JButton("Crear");
+		btnCrearActividad.setBounds(27, 11, 89, 23);
+		desktopPane_1.add(btnCrearActividad);
+		
+		JButton btnListarActividad = new JButton("Listar");
+		btnListarActividad.setBounds(27, 47, 89, 23);
+		desktopPane_1.add(btnListarActividad);
 		
 		
 		

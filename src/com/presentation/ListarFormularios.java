@@ -168,7 +168,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		JButton btnEliminarCasillas = new JButton("");
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
-		btnEliminarCasillas.setBounds(10, 296, 185, 42);
+		btnEliminarCasillas.setBounds(10, 262, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
@@ -189,5 +189,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
 		btnLimpiar.setBounds(532, 73, 100, 35);
 		desktopPane.add(btnLimpiar);
+		
+		JButton btnActividades = new JButton("Actividades de campo");
+		btnActividades.setBounds(7, 315, 188, 42);
+		desktopPane.add(btnActividades);
 	}
 }
