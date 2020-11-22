@@ -7,6 +7,7 @@ import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
+import com.application.IAgro;
 import com.entities.Actividad;
 import com.entities.Usuario;
 
@@ -18,7 +19,8 @@ import javax.swing.JLabel;
 public class ListarActividades implements IFrame<Actividad>{
 
 	private JFrame frame;
-
+	private IAgro iagro;
+	private Long id;
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +41,13 @@ public class ListarActividades implements IFrame<Actividad>{
 	 * Create the application.
 	 */
 	public ListarActividades() {
+		initialize();
+	}
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public ListarActividades(IAgro iagro) {
+		this.iagro = iagro;
 		initialize();
 	}
 
@@ -70,7 +79,15 @@ public class ListarActividades implements IFrame<Actividad>{
 
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 

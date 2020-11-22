@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
+import com.application.IAgro;
 import com.entities.Actividad;
 import com.entities.Usuario;
 
@@ -18,6 +19,8 @@ import javax.swing.JButton;
 public class CrearActividad implements IFrame<Actividad> {
 
 	private JFrame frame;
+	private IAgro iagro;
+	private Long id;
 
 	/**
 	 * Launch the application.
@@ -39,6 +42,15 @@ public class CrearActividad implements IFrame<Actividad> {
 	 * Create the application.
 	 */
 	public CrearActividad() {
+		initialize();
+	}
+	
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public CrearActividad(IAgro iagro) {
+		id = 0L;
+		this.iagro = iagro;
 		initialize();
 	}
 
@@ -74,7 +86,15 @@ public class CrearActividad implements IFrame<Actividad> {
 
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 
