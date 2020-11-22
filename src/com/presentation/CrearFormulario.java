@@ -140,10 +140,12 @@ public class CrearFormulario implements IFrame<Formulario> {
 						textFieldNombre.getText().contains("*")) {
 					JOptionPane.showMessageDialog(null, "Debe ingresar solamente Texto","Error",JOptionPane.ERROR_MESSAGE);
 				}
+				else {
 				Formulario form = new Formulario();
 				form.setNombre(textFieldNombre.getText().toUpperCase());
 				form.setResumen(textArea.getText().toUpperCase());
 					boolean result;
+					
 					if(id>0) {
 						System.out.println("ID for update "+id);
 						form.setId(id);
@@ -157,6 +159,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 						limpiar();
 						JOptionPane.showMessageDialog(null, "Se ha creado el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 					}
+				}
 			}
 		});
 		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
