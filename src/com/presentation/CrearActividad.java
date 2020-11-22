@@ -74,10 +74,6 @@ public class CrearActividad implements IFrame<Actividad> {
 		comboBox.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBox);
 		
-		JButton btnNewButton = new JButton("Mostrar");
-		btnNewButton.setBounds(269, 95, 89, 23);
-		desktopPane.add(btnNewButton);
-		
 		JLabel lblNewLabel_1 = new JLabel("Aqui se mostrara las casillas del formulario para completar");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(10, 151, 494, 228);
