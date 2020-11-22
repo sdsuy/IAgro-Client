@@ -180,7 +180,7 @@ public class CrearFormulario {
 		desktopPane.add(lblFondo);
 		
 		JComboBox comboBoxTipo = new JComboBox();
-		comboBoxTipo.setBounds(10, 179, 149, 31);
+		comboBoxTipo.setBounds(10, 179, 137, 31);
 		desktopPane.add(comboBoxTipo);
 		
 		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo:");

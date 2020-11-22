@@ -39,6 +39,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -99,7 +100,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 669, 430);
+		frame.setBounds(100, 100, 669, 472);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -125,7 +126,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 72, 633, 161);
+		scrollPane.setBounds(10, 115, 633, 136);
 		desktopPane.add(scrollPane);
 //		scrollPane.add();
 		
@@ -174,7 +175,24 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
 		btnEliminarCasillas.setBounds(447, 299, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
+		
+		JLabel lblFiltros = new JLabel("Filtrar");
+		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFiltros.setBounds(85, 67, 47, 14);
+		desktopPane.add(lblFiltros);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(30, 94, 66, 14);
+		desktopPane.add(lblNombre);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(95, 91, 86, 20);
+		desktopPane.add(textField);
+		
+		JButton btnLimpiar = new JButton("");
+		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
+		btnLimpiar.setBounds(532, 73, 100, 35);
+		desktopPane.add(btnLimpiar);
 	}
-	
-	
 }
