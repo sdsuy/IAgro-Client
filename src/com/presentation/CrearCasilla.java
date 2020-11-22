@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+
+import com.entities.Casilla;
+import com.entities.Usuario;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
@@ -14,7 +18,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JComboBox;
 
-public class CrearCasilla {
+public class CrearCasilla implements IFrame<Casilla> {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -142,5 +146,17 @@ public class CrearCasilla {
 		lblFondo.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/CrearCasilla.png")));
 		lblFondo.setBounds(120, 0, 184, 261);
 		desktopPane.add(lblFondo);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFields(Casilla o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

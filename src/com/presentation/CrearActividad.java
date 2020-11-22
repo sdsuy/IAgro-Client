@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+
+import com.entities.Actividad;
+import com.entities.Usuario;
+
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -11,7 +15,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class CrearActividad {
+public class CrearActividad implements IFrame<Actividad> {
 
 	private JFrame frame;
 
@@ -66,5 +70,17 @@ public class CrearActividad {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(10, 151, 494, 228);
 		desktopPane.add(lblNewLabel_1);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFields(Actividad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }
