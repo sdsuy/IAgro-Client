@@ -89,6 +89,7 @@ public class MenuPrincipal {
 		desktopPaneUsuarios.setVisible(false);
 		
 		JButton btnUsuarios = new JButton("Usuarios");
+		btnUsuarios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonUsuarios.png")));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

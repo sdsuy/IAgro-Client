@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class ListarActividades {
 
@@ -42,19 +43,24 @@ public class ListarActividades {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 668, 424);
+		frame.setBounds(100, 100, 668, 446);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JScrollPane scrollPane = new JScrollPane((Component) null);
-		scrollPane.setBounds(10, 165, 633, 136);
+		scrollPane.setBounds(10, 116, 633, 175);
 		desktopPane.add(scrollPane);
 		
 		JButton btnModificar = new JButton("");
 		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
 		btnModificar.setBounds(20, 321, 229, 42);
 		desktopPane.add(btnModificar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
+		lblFondo.setBounds(91, 0, 486, 414);
+		desktopPane.add(lblFondo);
 	}
 }
