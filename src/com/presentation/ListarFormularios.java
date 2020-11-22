@@ -145,7 +145,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 				
 				int selectedRow = table.getSelectedRow();
 				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
-				boolean result = iagro.delete(formularioDelete.getId_formulario(), Formulario.class);
+				boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
 				if(result) {
 					model.setData(iagro.matrixFormularios());
 					model.refresh();

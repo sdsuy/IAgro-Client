@@ -245,7 +245,7 @@ public class IAgro {
 	public Object[][] matrixFormularios(){
 		Object[][] datos = new Object[formularios.size()][12];
 		for (Formulario form : formularios) {
-			datos[(formularios.indexOf(form))][0] = form.getId_formulario();
+			datos[(formularios.indexOf(form))][0] = form.getId();
 			datos[(formularios.indexOf(form))][1] = form.getNombre();
 			datos[(formularios.indexOf(form))][2] = form.getCasillas();
 			datos[(formularios.indexOf(form))][3] = form.getMet_muestreo();

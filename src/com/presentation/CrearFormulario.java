@@ -146,7 +146,7 @@ public class CrearFormulario {
 					boolean result;
 					if(id>0) {
 						System.out.println("ID for update "+id);
-						form.setId_formulario(id);
+						form.setId(id);
 						result=iagro.update(form);
 					}
 					else {
