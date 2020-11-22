@@ -15,6 +15,8 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListarActividades implements IFrame<Actividad>{
 
@@ -75,6 +77,17 @@ public class ListarActividades implements IFrame<Actividad>{
 		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
 		lblFondo.setBounds(91, 0, 486, 414);
 		desktopPane.add(lblFondo);
+		
+		JButton btnMenu = new JButton("");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				frame.dispose();
+			}
+		});
+		btnMenu.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonMenu.png")));
+		btnMenu.setBounds(0, 11, 92, 33);
+		desktopPane.add(btnMenu);
 	}
 
 	@Override

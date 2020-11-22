@@ -130,6 +130,12 @@ public class ListarUsuarios implements IFrame<Usuario> {
 //		scrollPane.add(table);
 		
 		JButton btnMenu = new JButton("");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				frame.dispose();
+			}
+		});
 		btnMenu.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonMenu.png")));
 		btnMenu.setBounds(10, 11, 100, 34);
 		desktopPane.add(btnMenu);

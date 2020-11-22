@@ -131,6 +131,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 //		scrollPane.add();
 		
 		JButton btnMenu = new JButton("");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				frame.dispose();
+			}
+		});
 		btnMenu.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonMenu.png")));
 		btnMenu.setBounds(10, 11, 98, 33);
 		desktopPane.add(btnMenu);
