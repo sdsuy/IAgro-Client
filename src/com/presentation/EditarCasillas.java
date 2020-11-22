@@ -97,16 +97,19 @@ public class EditarCasillas {
 		desktopPane.add(lblImgen);
 		
 		JCheckBox chckbxMetodo = new JCheckBox("New check box");
+		chckbxMetodo.setEnabled(false);
 		chckbxMetodo.setSelected(true);
 		chckbxMetodo.setBounds(10, 127, 21, 23);
 		desktopPane.add(chckbxMetodo);
 		
 		JCheckBox chckbxEstacion = new JCheckBox("New check box");
+		chckbxEstacion.setEnabled(false);
 		chckbxEstacion.setSelected(true);
 		chckbxEstacion.setBounds(10, 152, 21, 23);
 		desktopPane.add(chckbxEstacion);
 		
 		JCheckBox chckbxDepartamento = new JCheckBox("New check box");
+		chckbxDepartamento.setEnabled(false);
 		chckbxDepartamento.setSelected(true);
 		chckbxDepartamento.setBounds(10, 177, 21, 23);
 		desktopPane.add(chckbxDepartamento);

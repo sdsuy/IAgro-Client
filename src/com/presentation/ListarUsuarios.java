@@ -129,8 +129,9 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		desktopPane.add(scrollPane);
 //		scrollPane.add(table);
 		
-		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(10, 11, 84, 23);
+		JButton btnMenu = new JButton("");
+		btnMenu.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonMenu.png")));
+		btnMenu.setBounds(10, 11, 100, 34);
 		desktopPane.add(btnMenu);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
@@ -142,7 +143,8 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnLimpiar.setBounds(10, 149, 108, 39);
 		desktopPane.add(btnLimpiar);
 		
-		JButton btnEliminar = new JButton("Eliminar Seleccionado");
+		JButton btnEliminar = new JButton("");
+		btnEliminar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/EliminarSeleccionado.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
@@ -159,10 +161,11 @@ public class ListarUsuarios implements IFrame<Usuario> {
 				}
 			}
 		});
-		btnEliminar.setBounds(478, 138, 165, 23);
+		btnEliminar.setBounds(448, 105, 201, 44);
 		desktopPane.add(btnEliminar);
 		
-		JButton btnModificar = new JButton("Modificar Seleccionado");
+		JButton btnModificar = new JButton("");
+		btnModificar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonModificarSeleccionado.png")));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
@@ -171,13 +174,13 @@ public class ListarUsuarios implements IFrame<Usuario> {
 				frame.dispose();
 			}
 		});
-		btnModificar.setBounds(478, 192, 165, 23);
+		btnModificar.setBounds(448, 166, 201, 44);
 		desktopPane.add(btnModificar);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setBounds(277, 105, 47, 14);
 		desktopPane.add(lblFiltros);
-		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(202, 132, 100, 14);
