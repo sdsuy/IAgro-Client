@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 
-public class CrearFormulario {
+public class CrearFormulario implements IFrame<Formulario> {
 
 	private JFrame frame;
 	private JTextField textFieldNombre;
@@ -209,5 +209,11 @@ public class CrearFormulario {
 		textFieldNombre.setText("");
 		textArea.setText("");
 
+	}
+
+	@Override
+	public void setFields(Formulario o) {
+		
+		
 	}
 }
