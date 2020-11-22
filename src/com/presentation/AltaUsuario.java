@@ -89,7 +89,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		btnGuardar.setText("Modificar");
-		lblTitulo.setText("Modificar Usuario");
+//		lblTitulo.setText("Modificar Usuario");
 		
 	}
 		
