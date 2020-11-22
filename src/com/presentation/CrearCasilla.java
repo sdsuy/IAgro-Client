@@ -105,10 +105,10 @@ public class CrearCasilla {
 		btnCancelar.setBounds(236, 295, 137, 40);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTipoDeCasilla = new JLabel("Tipo de Casilla:");
-		lblTipoDeCasilla.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeCasilla.setBounds(10, 227, 116, 14);
-		desktopPane.add(lblTipoDeCasilla);
+		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo:");
+		lblTipoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTipoDeMuestreo.setBounds(10, 227, 129, 14);
+		desktopPane.add(lblTipoDeMuestreo);
 		
 		JComboBox comboBoxTipo = new JComboBox();
 		comboBoxTipo.setBounds(10, 252, 116, 26);
@@ -117,7 +117,7 @@ public class CrearCasilla {
 		JLabel lblObligatorio = new JLabel("*");
 		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblObligatorio.setForeground(Color.RED);
-		lblObligatorio.setBounds(124, 227, 17, 14);
+		lblObligatorio.setBounds(149, 227, 17, 14);
 		desktopPane.add(lblObligatorio);
 		
 		JLabel lblObligatorio_1 = new JLabel("*");

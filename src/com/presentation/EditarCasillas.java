@@ -46,7 +46,7 @@ public class EditarCasillas {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 521, 516);
+		frame.setBounds(100, 100, 731, 516);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -55,16 +55,16 @@ public class EditarCasillas {
 		
 		JButton btnAgregar = new JButton("");
 		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
-		btnAgregar.setBounds(263, 336, 232, 42);
+		btnAgregar.setBounds(455, 293, 232, 42);
 		desktopPane.add(btnAgregar);
 		
 		JList list = new JList();
-		list.setBounds(263, 112, 232, 163);
+		list.setBounds(199, 130, 232, 144);
 		desktopPane.add(list);
 		
 		JLabel lblTitulo = new JLabel("");
 		lblTitulo.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/ListarCasillas.png")));
-		lblTitulo.setBounds(183, 31, 124, 70);
+		lblTitulo.setBounds(293, 17, 124, 70);
 		desktopPane.add(lblTitulo);
 		
 		JLabel lblCasillasObligatorias = new JLabel("Casillas Default:");
@@ -161,17 +161,31 @@ public class EditarCasillas {
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(313, 426, 137, 40);
+		btnGuardar.setBounds(455, 426, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
 		btnCancelar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(58, 426, 137, 40);
+		btnCancelar.setBounds(107, 426, 137, 40);
 		desktopPane.add(btnCancelar);
 		
 		JButton btnAgregar_1 = new JButton("");
 		btnAgregar_1.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
-		btnAgregar_1.setBounds(263, 283, 232, 42);
+		btnAgregar_1.setBounds(199, 293, 232, 42);
 		desktopPane.add(btnAgregar_1);
+		
+		JLabel lblCasillasFormulario = new JLabel("Casillas del Formulario:");
+		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillasFormulario.setBounds(227, 98, 177, 21);
+		desktopPane.add(lblCasillasFormulario);
+		
+		JList list_1 = new JList();
+		list_1.setBounds(455, 130, 232, 144);
+		desktopPane.add(list_1);
+		
+		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
+		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillasDisponibles.setBounds(492, 99, 156, 21);
+		desktopPane.add(lblCasillasDisponibles);
 	}
 }

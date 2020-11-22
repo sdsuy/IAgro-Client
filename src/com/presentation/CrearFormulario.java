@@ -192,6 +192,18 @@ public class CrearFormulario {
 		btnMenu.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonMenu.png")));
 		btnMenu.setBounds(10, 11, 98, 33);
 		desktopPane.add(btnMenu);
+		
+		JLabel lblObligatorio = new JLabel("*");
+		lblObligatorio.setForeground(Color.RED);
+		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio.setBounds(79, 86, 17, 14);
+		desktopPane.add(lblObligatorio);
+		
+		JLabel lblObligatorio_1 = new JLabel("*");
+		lblObligatorio_1.setForeground(Color.RED);
+		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_1.setBounds(142, 154, 17, 14);
+		desktopPane.add(lblObligatorio_1);
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
