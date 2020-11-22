@@ -199,16 +199,12 @@ public class MenuPrincipal {
 		
 		JDesktopPane desktopPane_1 = new JDesktopPane();
 		desktopPane_1.setBackground(new Color(173, 216, 230));
-		desktopPane_1.setBounds(641, 210, 138, 81);
+		desktopPane_1.setBounds(641, 210, 138, 44);
 		desktopPane.add(desktopPane_1);
 		
 		JButton btnCrearActividad = new JButton("Crear");
 		btnCrearActividad.setBounds(27, 11, 89, 23);
 		desktopPane_1.add(btnCrearActividad);
-		
-		JButton btnListarActividad = new JButton("Listar");
-		btnListarActividad.setBounds(27, 47, 89, 23);
-		desktopPane_1.add(btnListarActividad);
 		
 		
 		

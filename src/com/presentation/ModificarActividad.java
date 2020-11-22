@@ -3,14 +3,15 @@ package com.presentation;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JDesktopPane;
+import javax.swing.JToolBar;
 import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import java.awt.Component;
+import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 
-public class ListarActividades {
+public class ModificarActividad {
 
 	private JFrame frame;
 
@@ -21,7 +22,7 @@ public class ListarActividades {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListarActividades window = new ListarActividades();
+					ModificarActividad window = new ModificarActividad();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +34,7 @@ public class ListarActividades {
 	/**
 	 * Create the application.
 	 */
-	public ListarActividades() {
+	public ModificarActividad() {
 		initialize();
 	}
 
@@ -42,19 +43,15 @@ public class ListarActividades {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 668, 424);
+		frame.setBounds(100, 100, 549, 447);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		JScrollPane scrollPane = new JScrollPane((Component) null);
-		scrollPane.setBounds(10, 165, 633, 136);
-		desktopPane.add(scrollPane);
-		
-		JButton btnModificar = new JButton("");
-		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
-		btnModificar.setBounds(20, 321, 229, 42);
-		desktopPane.add(btnModificar);
+		JLabel lblNewLabel_1 = new JLabel("Aqui se mostrara todas las casillas del formulario asociado a la actividad de campo completadas con la info ingresada");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel_1.setBounds(10, 93, 494, 228);
+		desktopPane.add(lblNewLabel_1);
 	}
 }
