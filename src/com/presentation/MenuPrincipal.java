@@ -19,8 +19,9 @@ public class MenuPrincipal {
 
 	private JFrame frame;
 	JDesktopPane desktopPaneUsuarios;
-	JDesktopPane desktopPaneFuncionalidades;
-	JDesktopPane desktopPaneRoles;
+	JDesktopPane desktopPaneFormularios;
+	JDesktopPane desktopPaneCasillas;
+	JDesktopPane desktopPaneActividades;
 	
 	private IAgro iagro;
 
@@ -120,56 +121,56 @@ public class MenuPrincipal {
 		btnListarUsuarios.setBounds(6, 55, 100, 33);
 		desktopPaneUsuarios.add(btnListarUsuarios);
 		
-		desktopPaneFuncionalidades = new JDesktopPane();
-		desktopPaneFuncionalidades.setBackground(new Color(173, 216, 230));
-		desktopPaneFuncionalidades.setBounds(250, 203, 116, 98);
-		desktopPane.add(desktopPaneFuncionalidades);
-		desktopPaneFuncionalidades.setVisible(false);
+		desktopPaneFormularios = new JDesktopPane();
+		desktopPaneFormularios.setBackground(new Color(173, 216, 230));
+		desktopPaneFormularios.setBounds(250, 203, 116, 98);
+		desktopPane.add(desktopPaneFormularios);
+		desktopPaneFormularios.setVisible(false);
 		
 		JButton btnFuncionalidades = new JButton("");
 		btnFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonFormularios.png")));
 		btnFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				visibilidad(desktopPaneFuncionalidades);
+				visibilidad(desktopPaneFormularios);
 				
 			}
 		});
 		btnFuncionalidades.setBounds(214, 133, 181, 59);
 		desktopPane.add(btnFuncionalidades);
 		
-		JButton btnCrearFuncionalidades = new JButton("");
-		btnCrearFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
-		btnCrearFuncionalidades.addActionListener(new ActionListener() {
+		JButton btnCrearFormularios = new JButton("");
+		btnCrearFormularios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
+		btnCrearFormularios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.show(CrearFormulario.class);
 			}
 		});
-		btnCrearFuncionalidades.setBounds(6, 11, 100, 33);
-		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
+		btnCrearFormularios.setBounds(6, 11, 100, 33);
+		desktopPaneFormularios.add(btnCrearFormularios);
 		
-		JButton btnListarFuncionalidades = new JButton("");
-		btnListarFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
-		btnListarFuncionalidades.addActionListener(new ActionListener() {
+		JButton btnListarFormularios = new JButton("");
+		btnListarFormularios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
+		btnListarFormularios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnListarFuncionalidades.setBounds(6, 55, 100, 33);
-		desktopPaneFuncionalidades.add(btnListarFuncionalidades);
+		btnListarFormularios.setBounds(6, 55, 100, 33);
+		desktopPaneFormularios.add(btnListarFormularios);
 		
-		desktopPaneRoles = new JDesktopPane();
-		desktopPaneRoles.setBackground(new Color(173, 216, 230));
-		desktopPaneRoles.setBounds(445, 203, 127, 52);
-		desktopPane.add(desktopPaneRoles);
-		desktopPaneRoles.setVisible(false);
+		desktopPaneCasillas = new JDesktopPane();
+		desktopPaneCasillas.setBackground(new Color(173, 216, 230));
+		desktopPaneCasillas.setBounds(445, 203, 127, 52);
+		desktopPane.add(desktopPaneCasillas);
+		desktopPaneCasillas.setVisible(false);
 		
 		JButton btnRoles = new JButton("");
 		btnRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCasillas.png")));
 		btnRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				visibilidad(desktopPaneRoles);
+				visibilidad(desktopPaneCasillas);
 				
 			}
 		});
@@ -184,7 +185,7 @@ public class MenuPrincipal {
 			}
 		});
 		btnCrearRoles.setBounds(10, 11, 100, 33);
-		desktopPaneRoles.add(btnCrearRoles);
+		desktopPaneCasillas.add(btnCrearRoles);
 		
 		JButton btnLogout = new JButton("");
 		btnLogout.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonLogOut.png")));
@@ -197,15 +198,22 @@ public class MenuPrincipal {
 		btnLogout.setBounds(700, 11, 100, 33);
 		desktopPane.add(btnLogout);
 		
-		JButton btnActividadesDeCamp = new JButton("");
-		btnActividadesDeCamp.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonActividadesDeCampo.png")));
-		btnActividadesDeCamp.setBounds(619, 133, 181, 59);
-		desktopPane.add(btnActividadesDeCamp);
+		JButton btnActividades = new JButton("");
+		btnActividades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				visibilidad(desktopPaneActividades);
+				
+			}
+		});
+		btnActividades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonActividadesDeCampo.png")));
+		btnActividades.setBounds(619, 133, 181, 59);
+		desktopPane.add(btnActividades);
 		
-		JDesktopPane desktopPane_1 = new JDesktopPane();
-		desktopPane_1.setBackground(new Color(173, 216, 230));
-		desktopPane_1.setBounds(648, 203, 127, 52);
-		desktopPane.add(desktopPane_1);
+		desktopPaneActividades = new JDesktopPane();
+		desktopPaneActividades.setBackground(new Color(173, 216, 230));
+		desktopPaneActividades.setBounds(648, 203, 127, 52);
+		desktopPane.add(desktopPaneActividades);
 		
 		JButton btnCrearActividad = new JButton("");
 		btnCrearActividad.addActionListener(new ActionListener() {
@@ -215,7 +223,7 @@ public class MenuPrincipal {
 		});
 		btnCrearActividad.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearActividad.setBounds(10, 11, 100, 33);
-		desktopPane_1.add(btnCrearActividad);
+		desktopPaneActividades.add(btnCrearActividad);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(176, 0, 471, 480);
@@ -229,8 +237,9 @@ public class MenuPrincipal {
 	public void visibilidad(JDesktopPane visible) {
 		
 		desktopPaneUsuarios.setVisible(false);
-		desktopPaneFuncionalidades.setVisible(false);
-		desktopPaneRoles.setVisible(false);
+		desktopPaneFormularios.setVisible(false);
+		desktopPaneCasillas.setVisible(false);
+		desktopPaneActividades.setVisible(false);
 		visible.setVisible(true);
 
 	}
