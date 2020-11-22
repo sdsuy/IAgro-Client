@@ -84,11 +84,11 @@ public class MenuPrincipal {
 		
 		desktopPaneUsuarios = new JDesktopPane();
 		desktopPaneUsuarios.setBackground(new Color(173, 216, 230));
-		desktopPaneUsuarios.setBounds(51, 210, 100, 81);
+		desktopPaneUsuarios.setBounds(44, 203, 110, 98);
 		desktopPane.add(desktopPaneUsuarios);
 		desktopPaneUsuarios.setVisible(false);
 		
-		JButton btnUsuarios = new JButton("Usuarios");
+		JButton btnUsuarios = new JButton("");
 		btnUsuarios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonUsuarios.png")));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -97,34 +97,37 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnUsuarios.setBounds(10, 133, 182, 59);
+		btnUsuarios.setBounds(10, 133, 181, 59);
 		desktopPane.add(btnUsuarios);
 		
-		JButton btnAltaUsuario = new JButton("Alta");
+		JButton btnAltaUsuario = new JButton("");
+		btnAltaUsuario.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonAlta.png")));
 		btnAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.show(AltaUsuario.class);
 			}
 		});
-		btnAltaUsuario.setBounds(6, 11, 89, 23);
+		btnAltaUsuario.setBounds(6, 11, 100, 33);
 		desktopPaneUsuarios.add(btnAltaUsuario);
 		
-		JButton btnListarUsuarios = new JButton("Listar");
+		JButton btnListarUsuarios = new JButton("");
+		btnListarUsuarios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
 		btnListarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.show(ListarUsuarios.class);
 			}
 		});
-		btnListarUsuarios.setBounds(6, 45, 89, 23);
+		btnListarUsuarios.setBounds(6, 55, 100, 33);
 		desktopPaneUsuarios.add(btnListarUsuarios);
 		
 		desktopPaneFuncionalidades = new JDesktopPane();
 		desktopPaneFuncionalidades.setBackground(new Color(173, 216, 230));
-		desktopPaneFuncionalidades.setBounds(255, 210, 100, 81);
+		desktopPaneFuncionalidades.setBounds(250, 203, 116, 98);
 		desktopPane.add(desktopPaneFuncionalidades);
 		desktopPaneFuncionalidades.setVisible(false);
 		
-		JButton btnFuncionalidades = new JButton("Formularios");
+		JButton btnFuncionalidades = new JButton("");
+		btnFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonFormularios.png")));
 		btnFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -132,34 +135,37 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnFuncionalidades.setBounds(214, 133, 182, 59);
+		btnFuncionalidades.setBounds(214, 133, 181, 59);
 		desktopPane.add(btnFuncionalidades);
 		
-		JButton btnCrearFuncionalidades = new JButton("Crear");
+		JButton btnCrearFuncionalidades = new JButton("");
+		btnCrearFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnCrearFuncionalidades.setBounds(6, 11, 89, 23);
+		btnCrearFuncionalidades.setBounds(6, 11, 100, 33);
 		desktopPaneFuncionalidades.add(btnCrearFuncionalidades);
 		
-		JButton btnListarFuncionalidades = new JButton("Listar");
+		JButton btnListarFuncionalidades = new JButton("");
+		btnListarFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
 		btnListarFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnListarFuncionalidades.setBounds(6, 45, 89, 23);
+		btnListarFuncionalidades.setBounds(6, 55, 100, 33);
 		desktopPaneFuncionalidades.add(btnListarFuncionalidades);
 		
 		desktopPaneRoles = new JDesktopPane();
 		desktopPaneRoles.setBackground(new Color(173, 216, 230));
-		desktopPaneRoles.setBounds(444, 211, 127, 44);
+		desktopPaneRoles.setBounds(445, 203, 127, 52);
 		desktopPane.add(desktopPaneRoles);
 		desktopPaneRoles.setVisible(false);
 		
-		JButton btnRoles = new JButton("Casillas");
+		JButton btnRoles = new JButton("");
+		btnRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCasillas.png")));
 		btnRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -167,45 +173,49 @@ public class MenuPrincipal {
 				
 			}
 		});
-		btnRoles.setBounds(416, 133, 182, 59);
+		btnRoles.setBounds(416, 133, 181, 59);
 		desktopPane.add(btnRoles);
 		
-		JButton btnCrearRoles = new JButton("Crear");
+		JButton btnCrearRoles = new JButton("");
+		btnCrearRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearRoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnCrearRoles.setBounds(10, 11, 107, 23);
+		btnCrearRoles.setBounds(10, 11, 100, 33);
 		desktopPaneRoles.add(btnCrearRoles);
 		
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("");
+		btnLogout.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonLogOut.png")));
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.logout();
 				frame.dispose(); // cierro principal
 			}
 		});
-		btnLogout.setBounds(726, 11, 89, 23);
+		btnLogout.setBounds(700, 11, 100, 33);
 		desktopPane.add(btnLogout);
 		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/MenuPrincipal.png")));
-		lblFondo.setBounds(177, 0, 471, 480);
-		desktopPane.add(lblFondo);
-		
-		JButton btnActividadesDeCamp = new JButton("Actividades de Camp");
-		btnActividadesDeCamp.setBounds(619, 133, 182, 59);
+		JButton btnActividadesDeCamp = new JButton("");
+		btnActividadesDeCamp.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonActividadesDeCampo.png")));
+		btnActividadesDeCamp.setBounds(619, 133, 181, 59);
 		desktopPane.add(btnActividadesDeCamp);
 		
 		JDesktopPane desktopPane_1 = new JDesktopPane();
 		desktopPane_1.setBackground(new Color(173, 216, 230));
-		desktopPane_1.setBounds(641, 210, 138, 44);
+		desktopPane_1.setBounds(648, 203, 127, 52);
 		desktopPane.add(desktopPane_1);
 		
-		JButton btnCrearActividad = new JButton("Crear");
-		btnCrearActividad.setBounds(27, 11, 89, 23);
+		JButton btnCrearActividad = new JButton("");
+		btnCrearActividad.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
+		btnCrearActividad.setBounds(10, 11, 100, 33);
 		desktopPane_1.add(btnCrearActividad);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBounds(176, 0, 471, 480);
+		desktopPane.add(lblFondo);
+		lblFondo.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/MenuPrincipal.png")));
 		
 		
 		
