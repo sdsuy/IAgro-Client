@@ -11,6 +11,9 @@ import com.application.IAgro;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class MenuPrincipal {
 
@@ -72,13 +75,15 @@ public class MenuPrincipal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 500);
+		frame.setBounds(100, 100, 750, 519);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		desktopPaneUsuarios = new JDesktopPane();
+		desktopPaneUsuarios.setBackground(new Color(173, 216, 230));
 		desktopPaneUsuarios.setBounds(75, 210, 100, 81);
 		desktopPane.add(desktopPaneUsuarios);
 		desktopPaneUsuarios.setVisible(false);
@@ -113,6 +118,7 @@ public class MenuPrincipal {
 		desktopPaneUsuarios.add(btnListarUsuarios);
 		
 		desktopPaneFuncionalidades = new JDesktopPane();
+		desktopPaneFuncionalidades.setBackground(new Color(173, 216, 230));
 		desktopPaneFuncionalidades.setBounds(321, 210, 100, 81);
 		desktopPane.add(desktopPaneFuncionalidades);
 		desktopPaneFuncionalidades.setVisible(false);
@@ -147,6 +153,7 @@ public class MenuPrincipal {
 		desktopPaneFuncionalidades.add(btnListarFuncionalidades);
 		
 		desktopPaneRoles = new JDesktopPane();
+		desktopPaneRoles.setBackground(new Color(173, 216, 230));
 		desktopPaneRoles.setBounds(562, 210, 127, 81);
 		desktopPane.add(desktopPaneRoles);
 		desktopPaneRoles.setVisible(false);
@@ -189,6 +196,11 @@ public class MenuPrincipal {
 		});
 		btnLogout.setBounds(635, 11, 89, 23);
 		desktopPane.add(btnLogout);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/MenuPrincipal.png")));
+		lblFondo.setBounds(139, 0, 471, 480);
+		desktopPane.add(lblFondo);
 		
 		
 		
