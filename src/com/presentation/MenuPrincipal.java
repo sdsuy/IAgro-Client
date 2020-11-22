@@ -142,7 +142,7 @@ public class MenuPrincipal {
 		btnCrearFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.show(CrearFormulario.class);
 			}
 		});
 		btnCrearFuncionalidades.setBounds(6, 11, 100, 33);
