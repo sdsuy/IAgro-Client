@@ -279,6 +279,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiar();
+				frame.dispose();
 			}
 		});
 		btnCancelar.setBounds(260, 397, 147, 37);
