@@ -142,7 +142,7 @@ public class MenuPrincipal {
 		btnCrearFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearFuncionalidades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.show(CrearFormulario.class);
 			}
 		});
 		btnCrearFuncionalidades.setBounds(6, 11, 100, 33);
@@ -208,6 +208,11 @@ public class MenuPrincipal {
 		desktopPane.add(desktopPane_1);
 		
 		JButton btnCrearActividad = new JButton("");
+		btnCrearActividad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.show(CrearActividad.class);
+			}
+		});
 		btnCrearActividad.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearActividad.setBounds(10, 11, 100, 33);
 		desktopPane_1.add(btnCrearActividad);

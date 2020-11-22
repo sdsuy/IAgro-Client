@@ -6,12 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+
+import com.entities.Actividad;
+import com.entities.Usuario;
+
 import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class ListarActividades {
+public class ListarActividades implements IFrame<Actividad>{
 
 	private JFrame frame;
 
@@ -62,5 +66,17 @@ public class ListarActividades {
 		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
 		lblFondo.setBounds(91, 0, 486, 414);
 		desktopPane.add(lblFondo);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFields(Actividad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }
