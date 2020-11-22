@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.DefaultComboBoxModel;
 
 public class AltaUsuario implements IFrame<Usuario> {
 
@@ -37,12 +38,13 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JTextField textFieldCedula;
 	private JButton btnGuardar;
 	private JComboBox comboBoxRol;
-	private JLabel lblTitulo;
 	
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
 	private Long id;
+	private JTextField textFieldProfesion;
+	private JTextField textFieldInstituto;
 	
 
 	/**
@@ -114,7 +116,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 432, 460);
+		frame.setBounds(100, 100, 432, 480);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
@@ -127,6 +129,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(lblRol);
 		
 		comboBoxRol = new JComboBox();
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Comun", "Experto", "Administrador"}));
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
@@ -136,8 +139,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 			comboBoxRol.addItem(rol);
 		}
 		
-		btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(74, 365, 106, 37);
+		btnGuardar = new JButton("");
+		btnGuardar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(10, 397, 147, 37);
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -267,40 +271,54 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldRepetirContrasenia.setColumns(10);
 		
 		JLabel lblCedula = new JLabel("Cedula:");
-		lblCedula.setBounds(92, 191, 69, 14);
+		lblCedula.setBounds(99, 280, 69, 14);
 		desktopPane.add(lblCedula);
 		
 		textFieldCedula = new JTextField();
-		textFieldCedula.setBounds(178, 192, 98, 20);
+		textFieldCedula.setBounds(178, 277, 98, 20);
 		desktopPane.add(textFieldCedula);
 		textFieldCedula.setColumns(10);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("");
+		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiar();
 			}
 		});
-		btnCancelar.setBounds(242, 365, 106, 37);
+		btnCancelar.setBounds(260, 397, 147, 37);
 		desktopPane.add(btnCancelar);
 		
 		textFieldNickname = new JTextField();
 		textFieldNickname.setColumns(10);
-		textFieldNickname.setBounds(178, 280, 98, 20);
+		textFieldNickname.setBounds(178, 191, 98, 20);
 		desktopPane.add(textFieldNickname);
 		
-		JLabel lblNombreDeUsuario = new JLabel("lNombre De Usuario:");
-		lblNombreDeUsuario.setBounds(39, 282, 129, 16);
+		JLabel lblNombreDeUsuario = new JLabel("Nombre De Usuario:");
+		lblNombreDeUsuario.setBounds(39, 193, 129, 16);
 		desktopPane.add(lblNombreDeUsuario);
 		
-		lblTitulo = new JLabel("Alta de Usuario");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
-		lblTitulo.setBounds(112, 15, 256, 57);
-		desktopPane.add(lblTitulo);
+		JLabel lblProfesion = new JLabel("Profesi\u00F3n:");
+		lblProfesion.setBounds(92, 311, 66, 14);
+		desktopPane.add(lblProfesion);
+		
+		textFieldProfesion = new JTextField();
+		textFieldProfesion.setBounds(178, 308, 98, 20);
+		desktopPane.add(textFieldProfesion);
+		textFieldProfesion.setColumns(10);
+		
+		JLabel lblInstituto = new JLabel("Instituto:");
+		lblInstituto.setBounds(92, 311, 66, 14);
+		desktopPane.add(lblInstituto);
+		
+		textFieldInstituto = new JTextField();
+		textFieldInstituto.setBounds(178, 308, 98, 20);
+		desktopPane.add(textFieldInstituto);
+		textFieldInstituto.setColumns(10);
 		
 		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/IAgro icon.png")));
-		lblFondo.setBounds(0, 0, 416, 421);
+		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
+		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
 	}
 	
@@ -314,6 +332,4 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textNombre.setText("");
 		
 	}
-
-	
 }
