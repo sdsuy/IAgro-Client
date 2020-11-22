@@ -134,13 +134,14 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnMenu.setBounds(10, 11, 100, 34);
 		desktopPane.add(btnMenu);
 		
-		JButton btnLimpiar = new JButton("Limpiar");
+		JButton btnLimpiar = new JButton("");
+		btnLimpiar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonLimpiar.png")));
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiarFiltros();
 			}
 		});
-		btnLimpiar.setBounds(10, 149, 108, 39);
+		btnLimpiar.setBounds(10, 156, 100, 35);
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("");
@@ -290,17 +291,6 @@ public class ListarUsuarios implements IFrame<Usuario> {
 				
 			}
 		});
-		
-		JLabel lblTitulo = new JLabel("Usuarios");
-		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
-		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setBounds(120, 38, 412, 56);
-		desktopPane.add(lblTitulo);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/IAgro icon.png")));
-		lblFondo.setBounds(0, 0, 653, 417);
-		desktopPane.add(lblFondo);
 	}
 	 
 	 /** 
