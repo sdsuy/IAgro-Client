@@ -132,11 +132,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
-		// iagro.refresh(Rol.class);//trae en memoria // no seria necesario porque los carga menu principal
-		List<Rol> roles = iagro.getRoles();
-		for (Rol rol : roles) {
-			comboBoxRol.addItem(rol);
-		}
+		
 		
 		btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonGuardar (2).png")));
