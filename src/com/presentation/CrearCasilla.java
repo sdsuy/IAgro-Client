@@ -69,7 +69,7 @@ public class CrearCasilla implements IFrame<Casilla> {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 385);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));
