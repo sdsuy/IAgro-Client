@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 
 public class CrearActividad implements IFrame<Actividad> {
 
@@ -74,10 +75,13 @@ public class CrearActividad implements IFrame<Actividad> {
 		comboBox.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBox);
 		
-		JLabel lblNewLabel_1 = new JLabel("Aqui se mostrara las casillas del formulario para completar");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(10, 151, 494, 228);
-		desktopPane.add(lblNewLabel_1);
+		JDesktopPane desktopPane_1 = new JDesktopPane();
+		desktopPane_1.setBounds(10, 154, 513, 243);
+		desktopPane.add(desktopPane_1);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 513, 243);
+		desktopPane_1.add(scrollPane);
 	}
 
 	@Override

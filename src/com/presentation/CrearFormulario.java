@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class CrearFormulario implements IFrame<Formulario> {
 
@@ -183,6 +184,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		desktopPane.add(lblFondo);
 		
 		JComboBox comboBoxTipo = new JComboBox();
+		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"", "Suelo", "Agua", "Clima", "Biodiversidad"}));
 		comboBoxTipo.setBounds(10, 179, 137, 31);
 		desktopPane.add(comboBoxTipo);
 		

@@ -59,7 +59,7 @@ public class EditarCasillas {
 		desktopPane.add(btnAgregar);
 		
 		JList list = new JList();
-		list.setBounds(199, 130, 232, 144);
+		list.setBounds(199, 127, 232, 144);
 		desktopPane.add(list);
 		
 		JLabel lblTitulo = new JLabel("");
