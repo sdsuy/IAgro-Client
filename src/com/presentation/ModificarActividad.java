@@ -36,6 +36,18 @@ public class ModificarActividad implements IFrame<Actividad>{
 			}
 		});
 	}
+	
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -70,11 +82,7 @@ public class ModificarActividad implements IFrame<Actividad>{
 		desktopPane.add(lblNewLabel_1);
 	}
 
-	@Override
-	public void start() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void setFields(Actividad o) {

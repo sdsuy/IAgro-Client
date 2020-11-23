@@ -69,6 +69,12 @@ public class ListarActividades implements IFrame<Actividad>{
 		desktopPane.add(scrollPane);
 		
 		JButton btnModificar = new JButton("");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ModificarActividad.class);
+				frame.dispose();
+			}
+		});
 		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
 		btnModificar.setBounds(204, 320, 229, 42);
 		desktopPane.add(btnModificar);
