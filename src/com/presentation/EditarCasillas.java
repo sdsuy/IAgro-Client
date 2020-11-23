@@ -12,11 +12,16 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import com.application.IAgro;
+
 import javax.swing.JCheckBox;
 
 public class EditarCasillas {
 
 	private JFrame frame;
+	private Long id;
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -40,6 +45,16 @@ public class EditarCasillas {
 	public EditarCasillas() {
 		initialize();
 	}
+	
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public EditarCasillas(IAgro iagro) {
+		id = 0L;
+		this.iagro = iagro;
+		initialize();
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
