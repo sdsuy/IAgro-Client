@@ -18,6 +18,8 @@ import com.entities.Actividad;
 import com.entities.Casilla;
 
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EditarCasillas implements IFrame<Casilla>{
 
@@ -161,19 +163,19 @@ public class EditarCasillas implements IFrame<Casilla>{
 		JLabel lblObligatorio = new JLabel("*");
 		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblObligatorio.setForeground(Color.RED);
-		lblObligatorio.setBounds(137, 131, 15, 14);
+		lblObligatorio.setBounds(160, 131, 15, 14);
 		desktopPane.add(lblObligatorio);
 		
 		JLabel lblObligatorio_1 = new JLabel("*");
 		lblObligatorio_1.setForeground(Color.RED);
 		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_1.setBounds(146, 156, 15, 14);
+		lblObligatorio_1.setBounds(165, 156, 15, 14);
 		desktopPane.add(lblObligatorio_1);
 		
 		JLabel lblObligatorio_2 = new JLabel("*");
 		lblObligatorio_2.setForeground(Color.RED);
 		lblObligatorio_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_2.setBounds(110, 181, 15, 14);
+		lblObligatorio_2.setBounds(140, 181, 15, 14);
 		desktopPane.add(lblObligatorio_2);
 		
 		JButton btnGuardar = new JButton("");
@@ -182,6 +184,11 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
 		btnCancelar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.setBounds(107, 426, 137, 40);
 		desktopPane.add(btnCancelar);
@@ -211,6 +218,8 @@ public class EditarCasillas implements IFrame<Casilla>{
 		
 		
 	}
+	
+	
 
 	
 
