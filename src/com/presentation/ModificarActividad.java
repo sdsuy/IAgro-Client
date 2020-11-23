@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JToolBar;
 
 import com.application.IAgro;
+import com.entities.Actividad;
 
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
@@ -14,7 +15,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class ModificarActividad {
+public class ModificarActividad implements IFrame<Actividad>{
 
 	private JFrame frame;
 	private Long id;
@@ -67,5 +68,17 @@ public class ModificarActividad {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblNewLabel_1.setBounds(10, 93, 494, 228);
 		desktopPane.add(lblNewLabel_1);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFields(Actividad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

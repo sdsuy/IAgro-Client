@@ -8,6 +8,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 
 import com.application.IAgro;
+import com.entities.Actividad;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class MenuPrincipal {
+public class MenuPrincipal implements IFrame<Actividad>{
 
 	private JFrame frame;
 	JDesktopPane desktopPaneUsuarios;
@@ -242,5 +243,11 @@ public class MenuPrincipal {
 		desktopPaneActividades.setVisible(false);
 		visible.setVisible(true);
 
+	}
+
+	@Override
+	public void setFields(Actividad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

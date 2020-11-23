@@ -14,10 +14,11 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import com.application.IAgro;
+import com.entities.Actividad;
 
 import javax.swing.JCheckBox;
 
-public class EditarCasillas {
+public class EditarCasillas implements IFrame<Actividad>{
 
 	private JFrame frame;
 	private Long id;
@@ -187,5 +188,17 @@ public class EditarCasillas {
 		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCasillasDisponibles.setBounds(492, 99, 156, 21);
 		desktopPane.add(lblCasillasDisponibles);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFields(Actividad o) {
+		// TODO Auto-generated method stub
+		
 	}
 }
