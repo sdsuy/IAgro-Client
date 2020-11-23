@@ -82,6 +82,8 @@ public class IAgro {
 	private void start() {
 		auth = new AuthBo();
 		usuarioBo = new UsuarioBo();
+		formularioBo = new FormularioBo();
+		casillaBo = new CasillaBo();
 		refresh(Usuario.class);
 		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
