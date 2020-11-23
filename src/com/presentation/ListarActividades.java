@@ -69,8 +69,14 @@ public class ListarActividades implements IFrame<Actividad>{
 		desktopPane.add(scrollPane);
 		
 		JButton btnModificar = new JButton("");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ModificarActividad.class);
+				frame.dispose();
+			}
+		});
 		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
-		btnModificar.setBounds(20, 321, 229, 42);
+		btnModificar.setBounds(204, 320, 229, 42);
 		desktopPane.add(btnModificar);
 		
 		JLabel lblFondo = new JLabel("");
@@ -78,16 +84,16 @@ public class ListarActividades implements IFrame<Actividad>{
 		lblFondo.setBounds(91, 0, 486, 414);
 		desktopPane.add(lblFondo);
 		
-		JButton btnMenu = new JButton("");
-		btnMenu.addActionListener(new ActionListener() {
+		JButton btnVolver = new JButton("");
+		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				iagro.show(ListarFormularios.class);
 				frame.dispose();
 			}
 		});
-		btnMenu.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonMenu.png")));
-		btnMenu.setBounds(0, 11, 92, 33);
-		desktopPane.add(btnMenu);
+		btnVolver.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonVolver.png")));
+		btnVolver.setBounds(10, 363, 92, 33);
+		desktopPane.add(btnVolver);
 	}
 
 	@Override

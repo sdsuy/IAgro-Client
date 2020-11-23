@@ -39,7 +39,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 
 	/**
 	 * Launch the application.
@@ -109,7 +109,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		formularios = iagro.getFormulario();
+		/*formularios = iagro.getFormulario();
 		String [] columnas = iagro.getColumnasFormulario();
 		
 		int x = formularios.size();
@@ -123,7 +123,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		
+		*/
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 115, 633, 136);
@@ -133,7 +133,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		JButton btnMenu = new JButton("");
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				limpiar();
 				frame.dispose();
 			}
 		});
@@ -153,8 +153,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
 				boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
 				if(result) {
-					model.setData(iagro.matrixFormularios());
-					model.refresh();
+					//model.setData(iagro.matrixFormularios());
+					//model.refresh();
 					
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 				}
@@ -173,6 +173,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.add(lblFondo);
 		
 		JButton btnEliminarCasillas = new JButton("");
+		btnEliminarCasillas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(EditarCasillas.class);
+				frame.dispose();
+			}
+		});
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
 		btnEliminarCasillas.setBounds(10, 262, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
@@ -186,10 +192,10 @@ public class ListarFormularios implements IFrame<Formulario> {
 		lblNombre.setBounds(30, 94, 66, 14);
 		desktopPane.add(lblNombre);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(95, 91, 86, 20);
-		desktopPane.add(textField);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
+		textFieldNombre.setBounds(95, 91, 86, 20);
+		desktopPane.add(textFieldNombre);
 		
 		JButton btnLimpiar = new JButton("");
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
@@ -197,7 +203,18 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnActividades = new JButton("Actividades de campo");
+		btnActividades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ListarActividades.class);
+				frame.dispose();
+			}
+		});
 		btnActividades.setBounds(7, 315, 188, 42);
 		desktopPane.add(btnActividades);
+	}
+	
+	public void limpiar() {
+		textFieldNombre.setText("");
+
 	}
 }

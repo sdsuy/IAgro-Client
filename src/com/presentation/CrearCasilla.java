@@ -18,13 +18,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearCasilla implements IFrame<Casilla> {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldParametro;
+	private JTextField textFieldUnidadDeMedida;
+	private JTextField textFieldTipoDeDato;
+	private JTextArea textAreaDescripcion;
+	
 	private IAgro iagro;
 	private Long id;
 
@@ -71,24 +75,24 @@ public class CrearCasilla implements IFrame<Casilla> {
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 70, 116, 26);
-		desktopPane.add(textField);
-		textField.setColumns(10);
+		textFieldParametro = new JTextField();
+		textFieldParametro.setBounds(10, 70, 116, 26);
+		desktopPane.add(textFieldParametro);
+		textFieldParametro.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Parametro:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 52, 86, 14);
-		desktopPane.add(lblNewLabel);
+		JLabel lblParametro = new JLabel("Parametro:");
+		lblParametro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblParametro.setBounds(10, 52, 86, 14);
+		desktopPane.add(lblParametro);
 		
 		JLabel lblUnidadDeMedida = new JLabel("Unidad de medida:");
 		lblUnidadDeMedida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblUnidadDeMedida.setBounds(10, 107, 150, 14);
 		desktopPane.add(lblUnidadDeMedida);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(297, 71, 127, 207);
-		desktopPane.add(textArea);
+		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setBounds(297, 71, 127, 207);
+		desktopPane.add(textAreaDescripcion);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -100,15 +104,15 @@ public class CrearCasilla implements IFrame<Casilla> {
 		lblTipoDeDato.setBounds(10, 169, 98, 14);
 		desktopPane.add(lblTipoDeDato);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(10, 132, 116, 26);
-		desktopPane.add(textField_1);
+		textFieldUnidadDeMedida = new JTextField();
+		textFieldUnidadDeMedida.setColumns(10);
+		textFieldUnidadDeMedida.setBounds(10, 132, 116, 26);
+		desktopPane.add(textFieldUnidadDeMedida);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(10, 190, 116, 26);
-		desktopPane.add(textField_2);
+		textFieldTipoDeDato = new JTextField();
+		textFieldTipoDeDato.setColumns(10);
+		textFieldTipoDeDato.setBounds(10, 190, 116, 26);
+		desktopPane.add(textFieldTipoDeDato);
 		
 		JButton btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
@@ -116,6 +120,12 @@ public class CrearCasilla implements IFrame<Casilla> {
 		desktopPane.add(btnGuardar);
 		
 		JButton btnCancelar = new JButton("");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				limpiar();
+				frame.dispose();
+			}
+		});
 		btnCancelar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.setBounds(236, 295, 137, 40);
 		desktopPane.add(btnCancelar);
@@ -180,5 +190,12 @@ public class CrearCasilla implements IFrame<Casilla> {
 	public void setFields(Casilla o) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void limpiar() {
+		textFieldParametro.setText("");
+		textFieldUnidadDeMedida.setText("");
+		textFieldTipoDeDato.setText("");
+		textAreaDescripcion.setText("");
 	}
 }

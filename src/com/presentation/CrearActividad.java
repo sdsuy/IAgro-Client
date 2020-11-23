@@ -16,6 +16,9 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrearActividad implements IFrame<Actividad> {
 
@@ -60,20 +63,20 @@ public class CrearActividad implements IFrame<Actividad> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 549, 447);
+		frame.setBounds(100, 100, 549, 506);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		JLabel lblNewLabel = new JLabel("Formulario:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 97, 91, 14);
-		desktopPane.add(lblNewLabel);
+		JLabel lblFormulario = new JLabel("Formulario:");
+		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFormulario.setBounds(10, 97, 91, 14);
+		desktopPane.add(lblFormulario);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(111, 95, 134, 22);
-		desktopPane.add(comboBox);
+		JComboBox comboBoxFormulario = new JComboBox();
+		comboBoxFormulario.setBounds(111, 95, 134, 22);
+		desktopPane.add(comboBoxFormulario);
 		
 		JDesktopPane desktopPane_1 = new JDesktopPane();
 		desktopPane_1.setBounds(10, 154, 513, 243);
@@ -82,6 +85,21 @@ public class CrearActividad implements IFrame<Actividad> {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 513, 243);
 		desktopPane_1.add(scrollPane);
+		
+		JButton btnGuardar = new JButton("");
+		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(69, 416, 137, 40);
+		desktopPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
+		btnCancelar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonCancelar.png")));
+		btnCancelar.setBounds(321, 416, 137, 40);
+		desktopPane.add(btnCancelar);
 	}
 
 	@Override

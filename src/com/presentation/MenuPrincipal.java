@@ -8,6 +8,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JButton;
 
 import com.application.IAgro;
+import com.entities.Actividad;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class MenuPrincipal {
+public class MenuPrincipal  {
 
 	private JFrame frame;
 	JDesktopPane desktopPaneUsuarios;
@@ -153,7 +154,7 @@ public class MenuPrincipal {
 		btnListarFormularios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
 		btnListarFormularios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.show(ListarFormularios.class);
 			}
 		});
 		btnListarFormularios.setBounds(6, 55, 100, 33);
@@ -243,4 +244,6 @@ public class MenuPrincipal {
 		visible.setVisible(true);
 
 	}
+
+	
 }
