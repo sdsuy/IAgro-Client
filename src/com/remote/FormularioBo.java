@@ -16,7 +16,7 @@ public class FormularioBo implements IBean<Formulario> {
 
 	public FormularioBo() {
 		super();
-		context = "";
+		context = "ejb:/IAgro-Server/FormularioBean!com.service.FormularioBeanRemote";
 		try {
 			formularioBean = (FormularioBeanRemote)InitialContext.doLookup(context);
 		} catch (NamingException e) {

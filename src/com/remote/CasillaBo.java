@@ -16,7 +16,7 @@ public class CasillaBo implements IBean<Casilla> {
 
 	public CasillaBo() {
 		super();
-		context = "";
+		context = "ejb:/IAgro-Server/CasillaBean!com.service.CasillaBeanRemote";
 		try {
 			casillaBean = (CasillaBeanRemote)InitialContext.doLookup(context);
 		} catch (NamingException e) {
