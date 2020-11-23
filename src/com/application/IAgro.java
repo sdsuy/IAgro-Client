@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.entities.Base;
+import com.entities.Casilla;
 import com.entities.Formulario;
 import com.entities.Rol;
 import com.entities.Usuario;
@@ -18,6 +19,8 @@ import com.presentation.CrearFormulario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.remote.AuthBo;
+import com.remote.CasillaBo;
+import com.remote.FormularioBo;
 import com.remote.UsuarioBo;
 import com.service.IBean;
 
@@ -43,6 +46,8 @@ public class IAgro {
 	
 	private AuthBo auth; // autenticacion de usuarios
 	private UsuarioBo usuarioBo; // usuarios
+	private FormularioBo formularioBo;
+	private CasillaBo casillaBo;
 
 	//***********************************************
 	// Listados ultra pesados con todos los datos para que la busqueda sea rapida
@@ -211,6 +216,10 @@ public class IAgro {
 	private IBean getBean(Class c) {
 		if(c.equals(Usuario.class)) {
 			return usuarioBo;
+		} else if(c.equals(Formulario.class)) {
+			return formularioBo;
+		} else if(c.equals(Casilla.class)) {
+			return casillaBo;
 		}
 		return null;
 	}
