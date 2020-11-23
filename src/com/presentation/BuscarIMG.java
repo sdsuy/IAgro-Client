@@ -40,7 +40,7 @@ public class BuscarIMG {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 590, 437);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
