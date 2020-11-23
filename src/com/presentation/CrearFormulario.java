@@ -31,6 +31,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 	private Long id;
 	private IAgro iagro;
 	private JTextArea textAreaDescripcion;
+	private JComboBox comboBoxTipo;
 	
 
 	/**
@@ -183,7 +184,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		lblFondo.setBounds(122, 11, 254, 261);
 		desktopPane.add(lblFondo);
 		
-		JComboBox comboBoxTipo = new JComboBox();
+		comboBoxTipo = new JComboBox();
 		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"", "Suelo", "Agua", "Clima", "Biodiversidad"}));
 		comboBoxTipo.setBounds(10, 179, 137, 31);
 		desktopPane.add(comboBoxTipo);
