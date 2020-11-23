@@ -15,10 +15,11 @@ import javax.swing.JTextField;
 
 import com.application.IAgro;
 import com.entities.Actividad;
+import com.entities.Casilla;
 
 import javax.swing.JCheckBox;
 
-public class EditarCasillas implements IFrame<Actividad>{
+public class EditarCasillas implements IFrame<Casilla>{
 
 	private JFrame frame;
 	private Long id;
@@ -33,6 +34,21 @@ public class EditarCasillas implements IFrame<Actividad>{
 				try {
 					EditarCasillas window = new EditarCasillas();
 					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	/**
+	 * Start the application.
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -189,16 +205,14 @@ public class EditarCasillas implements IFrame<Actividad>{
 		lblCasillasDisponibles.setBounds(492, 99, 156, 21);
 		desktopPane.add(lblCasillasDisponibles);
 	}
-
+	
 	@Override
-	public void start() {
-		// TODO Auto-generated method stub
+	public void setFields(Casilla o) {
+		
 		
 	}
 
-	@Override
-	public void setFields(Actividad o) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
+	
 }

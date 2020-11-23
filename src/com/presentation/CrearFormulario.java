@@ -30,7 +30,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 	private JTextField textFieldNombre;
 	private Long id;
 	private IAgro iagro;
-	private JTextArea textArea;
+	private JTextArea textAreaDescripcion;
 	
 
 	/**
@@ -102,9 +102,9 @@ public class CrearFormulario implements IFrame<Formulario> {
 		lblNombre.setBounds(10, 86, 67, 21);
 		desktopPane.add(lblNombre);
 		
-		textArea = new JTextArea();
-		textArea.setBounds(321, 111, 149, 158);
-		desktopPane.add(textArea);
+		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setBounds(321, 111, 149, 158);
+		desktopPane.add(textAreaDescripcion);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -144,7 +144,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 				else {
 				Formulario form = new Formulario();
 				form.setNombre(textFieldNombre.getText().toUpperCase());
-				form.setResumen(textArea.getText().toUpperCase());
+				form.setResumen(textAreaDescripcion.getText().toUpperCase());
 					boolean result;
 					
 					if(id>0) {
@@ -212,7 +212,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
-		textArea.setText("");
+		textAreaDescripcion.setText("");
 
 	}
 

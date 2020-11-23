@@ -173,6 +173,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.add(lblFondo);
 		
 		JButton btnEliminarCasillas = new JButton("");
+		btnEliminarCasillas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(EditarCasillas.class);
+				frame.dispose();
+			}
+		});
 		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
 		btnEliminarCasillas.setBounds(10, 262, 185, 42);
 		desktopPane.add(btnEliminarCasillas);
