@@ -122,7 +122,8 @@ public class CrearCasilla implements IFrame<Casilla> {
 		JButton btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				limpiar();
+				frame.dispose();
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonCancelar.png")));
