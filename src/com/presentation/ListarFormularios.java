@@ -109,7 +109,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		formularios = iagro.getFormulario();
+		/*formularios = iagro.getFormulario();
 		String [] columnas = iagro.getColumnasFormulario();
 		
 		int x = formularios.size();
@@ -123,7 +123,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		
+		*/
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 115, 633, 136);
@@ -153,8 +153,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
 				boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
 				if(result) {
-					model.setData(iagro.matrixFormularios());
-					model.refresh();
+					//model.setData(iagro.matrixFormularios());
+					//model.refresh();
 					
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 				}

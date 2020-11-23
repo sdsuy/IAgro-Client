@@ -154,7 +154,7 @@ public class MenuPrincipal implements IFrame<Actividad>{
 		btnListarFormularios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
 		btnListarFormularios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.show(ListarFormularios.class);
 			}
 		});
 		btnListarFormularios.setBounds(6, 55, 100, 33);
