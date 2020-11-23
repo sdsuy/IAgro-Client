@@ -171,7 +171,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiar();
-				
+				frame.dispose();
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
