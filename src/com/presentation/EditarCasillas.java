@@ -186,6 +186,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		JButton btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ListarFormularios.class);
 				frame.dispose();
 			}
 		});

@@ -203,6 +203,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.add(btnLimpiar);
 		
 		JButton btnActividades = new JButton("Actividades de campo");
+		btnActividades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ListarActividades.class);
+				frame.dispose();
+			}
+		});
 		btnActividades.setBounds(7, 315, 188, 42);
 		desktopPane.add(btnActividades);
 	}
