@@ -193,11 +193,6 @@ public class CrearFormulario implements IFrame<Formulario> {
 		lblTipoDeMuestreo.setBounds(10, 153, 137, 21);
 		desktopPane.add(lblTipoDeMuestreo);
 		
-		JButton btnMenu = new JButton("");
-		btnMenu.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonMenu.png")));
-		btnMenu.setBounds(10, 11, 98, 33);
-		desktopPane.add(btnMenu);
-		
 		JLabel lblObligatorio = new JLabel("*");
 		lblObligatorio.setForeground(Color.RED);
 		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));

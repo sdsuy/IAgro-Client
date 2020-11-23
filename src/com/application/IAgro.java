@@ -42,7 +42,6 @@ public class IAgro {
 	private CrearActividad crearActividad;
 	private ListarActividades listarActividades;
 	private ModificarActividad modificarActividad;
-	private MenuPrincipal menuPrincipal;
 	private EditarCasillas editarCasilla;
 	
 	//***********************************************
@@ -148,9 +147,6 @@ public class IAgro {
 		} else if(c.equals(ModificarActividad.class)) {
 			modificarActividad = new ModificarActividad(this);
 			return modificarActividad;
-		} else if(c.equals(MenuPrincipal.class)) {
-			menuPrincipal = new MenuPrincipal(this);
-			return menuPrincipal;
 		} else if(c.equals(EditarCasillas.class)) {
 			editarCasilla = new EditarCasillas(this);
 			return editarCasilla;

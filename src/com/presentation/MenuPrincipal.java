@@ -16,7 +16,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
-public class MenuPrincipal implements IFrame<Actividad>{
+public class MenuPrincipal  {
 
 	private JFrame frame;
 	JDesktopPane desktopPaneUsuarios;
@@ -245,9 +245,5 @@ public class MenuPrincipal implements IFrame<Actividad>{
 
 	}
 
-	@Override
-	public void setFields(Actividad o) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
