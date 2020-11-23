@@ -18,6 +18,7 @@ import com.presentation.CrearCasilla;
 import com.presentation.CrearFormulario;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
+import com.presentation.ModificarActividad;
 import com.remote.AuthBo;
 import com.remote.CasillaBo;
 import com.remote.FormularioBo;
@@ -39,6 +40,8 @@ public class IAgro {
 	private CrearCasilla crearCasilla;
 	private CrearActividad crearActividad;
 	private ListarActividades listarActividades;
+	private ModificarActividad modificarActividad;
+	private MenuPrincipal menuPrincipal;
 	
 	//***********************************************
 	// Atributos para el manejo de la capa negocios
@@ -140,7 +143,13 @@ public class IAgro {
 		} else if(c.equals(ListarActividades.class)) {
 			listarActividades = new ListarActividades(this);
 			return listarActividades;
-		}
+		} else if(c.equals(ModificarActividad.class)) {
+			modificarActividad = new ModificarActividad(this);
+			return modificarActividad;
+		} else if(c.equals(MenuPrincipal.class)) {
+			menuPrincipal = new MenuPrincipal(this);
+			return menuPrincipal;
+		}	
 		return null;
 	}
 	public String [] getColumnas(){
