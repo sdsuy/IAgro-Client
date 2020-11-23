@@ -39,7 +39,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	private TableRowSorter<ModeloTabla> sorter;
 	
 	private IAgro iagro;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 
 	/**
 	 * Launch the application.
@@ -133,7 +133,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		JButton btnMenu = new JButton("");
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				limpiar();
 				frame.dispose();
 			}
 		});
@@ -186,10 +186,10 @@ public class ListarFormularios implements IFrame<Formulario> {
 		lblNombre.setBounds(30, 94, 66, 14);
 		desktopPane.add(lblNombre);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(95, 91, 86, 20);
-		desktopPane.add(textField);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
+		textFieldNombre.setBounds(95, 91, 86, 20);
+		desktopPane.add(textFieldNombre);
 		
 		JButton btnLimpiar = new JButton("");
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
@@ -199,5 +199,10 @@ public class ListarFormularios implements IFrame<Formulario> {
 		JButton btnActividades = new JButton("Actividades de campo");
 		btnActividades.setBounds(7, 315, 188, 42);
 		desktopPane.add(btnActividades);
+	}
+	
+	public void limpiar() {
+		textFieldNombre.setText("");
+
 	}
 }
