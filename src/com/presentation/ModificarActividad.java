@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ModificarActividad implements IFrame<Actividad>{
 
@@ -78,8 +81,24 @@ public class ModificarActividad implements IFrame<Actividad>{
 		
 		JLabel lblNewLabel_1 = new JLabel("Aqui se mostrara todas las casillas del formulario asociado a la actividad de campo completadas con la info ingresada");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblNewLabel_1.setBounds(10, 93, 494, 228);
+		lblNewLabel_1.setBounds(10, 34, 494, 228);
 		desktopPane.add(lblNewLabel_1);
+		
+		JButton btnGuardar = new JButton("");
+		btnGuardar.setIcon(new ImageIcon(ModificarActividad.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(25, 336, 137, 38);
+		desktopPane.add(btnGuardar);
+		
+		JButton btnCancelar = new JButton("");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				iagro.show(ListarActividades.class);
+				frame.dispose();
+			}
+		});
+		btnCancelar.setIcon(new ImageIcon(ModificarActividad.class.getResource("/img/BotonCancelar.png")));
+		btnCancelar.setBounds(343, 336, 137, 38);
+		desktopPane.add(btnCancelar);
 	}
 
 	
