@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+
+import com.application.IAgro;
+
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -14,6 +17,8 @@ import javax.swing.JButton;
 public class ModificarActividad {
 
 	private JFrame frame;
+	private Long id;
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -35,6 +40,15 @@ public class ModificarActividad {
 	 * Create the application.
 	 */
 	public ModificarActividad() {
+		initialize();
+	}
+	
+	/**
+	 * Constructor con la aplicacion de IAgro inyectada.
+	 */
+	public ModificarActividad(IAgro iagro) {
+		id = 0L;
+		this.iagro = iagro;
 		initialize();
 	}
 
