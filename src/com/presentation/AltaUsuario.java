@@ -38,7 +38,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JTextField textFieldCedula;
 	private JButton btnGuardar;
 	private JComboBox comboBoxRol;
-	
+	private JLabel lblProfesion;
+	private JLabel lblInstituto;
+	private JLabel lblCedula;
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
@@ -128,6 +130,19 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(lblRol);
 		
 		comboBoxRol = new JComboBox();
+		comboBoxRol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Mostramos diferentes entradas de datos segun el tipo de usuario a crear
+				if (comboBoxRol.getSelectedItem().toString() == "Experto") {
+					visibilidadUsuario("Experto");
+				}
+				
+				else if (comboBoxRol.getSelectedItem().toString() == "Administrador") {
+					visibilidadUsuario("Administrador");
+				}
+			}
+		});
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Comun", "Experto", "Administrador"}));
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
@@ -265,14 +280,16 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(passwordFieldRepetirContrasenia);
 		passwordFieldRepetirContrasenia.setColumns(10);
 		
-		JLabel lblCedula = new JLabel("Cedula:");
+		lblCedula = new JLabel("Cedula:");
 		lblCedula.setBounds(99, 280, 69, 14);
 		desktopPane.add(lblCedula);
+		lblCedula.setVisible(false);
 		
 		textFieldCedula = new JTextField();
 		textFieldCedula.setBounds(178, 277, 98, 20);
 		desktopPane.add(textFieldCedula);
 		textFieldCedula.setColumns(10);
+		textFieldCedula.setVisible(false);
 		
 		JButton btnCancelar = new JButton("");
 		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
@@ -294,28 +311,36 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblNombreDeUsuario.setBounds(39, 193, 129, 16);
 		desktopPane.add(lblNombreDeUsuario);
 		
-		JLabel lblProfesion = new JLabel("Profesi\u00F3n:");
+		lblProfesion = new JLabel("Profesi\u00F3n:");
 		lblProfesion.setBounds(92, 311, 66, 14);
 		desktopPane.add(lblProfesion);
+		lblProfesion.setVisible(false);
 		
 		textFieldProfesion = new JTextField();
 		textFieldProfesion.setBounds(178, 308, 98, 20);
 		desktopPane.add(textFieldProfesion);
 		textFieldProfesion.setColumns(10);
+		textFieldProfesion.setVisible(false);
 		
-		JLabel lblInstituto = new JLabel("Instituto:");
+		lblInstituto = new JLabel("Instituto:");
 		lblInstituto.setBounds(92, 311, 66, 14);
 		desktopPane.add(lblInstituto);
+		lblInstituto.setVisible(false);
 		
 		textFieldInstituto = new JTextField();
 		textFieldInstituto.setBounds(178, 308, 98, 20);
 		desktopPane.add(textFieldInstituto);
 		textFieldInstituto.setColumns(10);
+		textFieldInstituto.setVisible(false);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
+		
+		
+		
+		
 	}
 	
 	public void limpiar() {
@@ -326,6 +351,31 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textFieldEmail.setText("");
 		textApellido.setText("");
 		textNombre.setText("");
+		
+	}
+	
+	
+	public void visibilidadUsuario (String tipoUsuario) {
+		
+		if (tipoUsuario.equals("Experto")) {
+			lblInstituto.setVisible(false);
+			textFieldInstituto.setVisible(false);
+			
+			lblCedula.setVisible(true);
+			textFieldCedula.setVisible(true);
+			lblProfesion.setVisible(true);
+			textFieldProfesion.setVisible(true);
+		}
+		
+		else if (tipoUsuario.equals("Administrador")) {
+			lblProfesion.setVisible(false);
+			textFieldProfesion.setVisible(false);
+			
+			lblCedula.setVisible(true);
+			textFieldCedula.setVisible(true);
+			lblInstituto.setVisible(true);
+			textFieldInstituto.setVisible(true);
+		}
 		
 	}
 }
