@@ -7,6 +7,7 @@ import javax.swing.JToolBar;
 
 import com.application.IAgro;
 import com.entities.Rol;
+import com.entities.Roles;
 import com.entities.Usuario;
 
 import java.awt.BorderLayout;
@@ -128,7 +129,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(lblRol);
 		
 		comboBoxRol = new JComboBox();
-		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Comun", "Experto", "Administrador"}));
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {Roles.ADMINISTRADOR.name(), Roles.EXPERTO.name(), Roles.COMUN.name()}));
 		comboBoxRol.setBounds(178, 79, 98, 22);
 		desktopPane.add(comboBoxRol);
 		
@@ -181,6 +182,8 @@ public class AltaUsuario implements IFrame<Usuario> {
 //		        	iagro.readRol(nomRol);
 		        	Usuario user = new Usuario();
 //		        	user.setRol(iagro.readRol(nomRol));
+		        	// seteo el rol con el enumerado que tenga el valor seleccionado en el combobox de roles
+		        	user.setRol(Roles.valueOf(nomRol));
 		        	user.setApellido(textApellido.getText().toUpperCase());
 		        	user.setNombre(textNombre.getText().toUpperCase());
 		        	user.setDocumento(textFieldCedula.getText().toUpperCase());

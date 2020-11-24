@@ -17,6 +17,7 @@ import javax.swing.RowFilter;
 
 import com.application.IAgro;
 import com.entities.Rol;
+import com.entities.Roles;
 import com.entities.Usuario;
 
 import javax.swing.JComboBox;
@@ -283,7 +284,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 //		String[]rol ={""};
 		
 		comboBoxRol = new JComboBox();
-		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Elegir Rol", "Administrador", "Experto", "Comun"}));
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"", Roles.ADMINISTRADOR.name(), Roles.EXPERTO.name(), Roles.COMUN.name()}));
 //		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {""}));
 		comboBoxRol.setBounds(337, 203, 101, 22);
 		desktopPane.add(comboBoxRol);

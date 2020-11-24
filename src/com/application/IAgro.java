@@ -279,7 +279,7 @@ public class IAgro {
 			datos[(usuarios.indexOf(usuario))][4] = usuario.getClave();
 			datos[(usuarios.indexOf(usuario))][5] = usuario.getNickname();
 			datos[(usuarios.indexOf(usuario))][6] = usuario.getEmail();
-			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol();
+			datos[(usuarios.indexOf(usuario))][7] = usuario.getRol().getRol().name();
 		}
 		return datos;
 	}
