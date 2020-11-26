@@ -31,7 +31,6 @@ public class CrearFormulario implements IFrame<Formulario> {
 	private Long id;
 	private IAgro iagro;
 	private JTextArea textAreaDescripcion;
-	private JComboBox comboBoxTipo;
 	
 
 	/**
@@ -184,27 +183,11 @@ public class CrearFormulario implements IFrame<Formulario> {
 		lblFondo.setBounds(122, 11, 254, 261);
 		desktopPane.add(lblFondo);
 		
-		comboBoxTipo = new JComboBox();
-		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"", "Suelo", "Agua", "Clima", "Biodiversidad"}));
-		comboBoxTipo.setBounds(10, 179, 137, 31);
-		desktopPane.add(comboBoxTipo);
-		
-		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo:");
-		lblTipoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeMuestreo.setBounds(10, 153, 137, 21);
-		desktopPane.add(lblTipoDeMuestreo);
-		
 		JLabel lblObligatorio = new JLabel("*");
 		lblObligatorio.setForeground(Color.RED);
 		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblObligatorio.setBounds(79, 86, 17, 14);
 		desktopPane.add(lblObligatorio);
-		
-		JLabel lblObligatorio_1 = new JLabel("*");
-		lblObligatorio_1.setForeground(Color.RED);
-		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio_1.setBounds(142, 154, 17, 14);
-		desktopPane.add(lblObligatorio_1);
 	}
 	public void limpiar() {
 		textFieldNombre.setText("");
