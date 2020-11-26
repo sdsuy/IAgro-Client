@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.JTextArea;
 
@@ -28,6 +29,8 @@ public class Login {
 	private JPasswordField passwordFieldPass;
 	private JTextArea textArea;
 	private JLabel lblError;
+	private JButton btnEntrar;
+	private JCheckBox chckbxPass;
 	
 	private IAgro iagro;
 
@@ -109,7 +112,8 @@ public class Login {
 		lblError.setVisible(false);
 
 		
-		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar = new JButton("Entrar");
+		btnEntrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = textFieldUser.getText();
@@ -128,7 +132,8 @@ public class Login {
 		btnEntrar.setBounds(331, 335, 89, 23);
 		desktopPane.add(btnEntrar);
 		
-		JCheckBox chckbxPass = new JCheckBox("Mostrar la contrase\u00F1a");
+		chckbxPass = new JCheckBox("Mostrar la contrase\u00F1a");
+		chckbxPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxPass.setForeground(Color.LIGHT_GRAY);
 		chckbxPass.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
