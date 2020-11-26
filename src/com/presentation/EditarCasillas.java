@@ -26,6 +26,17 @@ public class EditarCasillas implements IFrame<Casilla>{
 	private JFrame frame;
 	private Long id;
 	private IAgro iagro;
+	private JButton btnAgregar;
+	private JButton btnGuardar;
+	private JList list;
+	private JCheckBox chckbxMetodo;
+	private JCheckBox chckbxEstacion;
+	private JCheckBox chckbxDepartamento;
+	private JCheckBox chckbxUbicacion;
+	private JCheckBox chckbxImagen;
+	private JButton btnCancelar;
+	private JButton btnAgregar_1;
+	private JList list_1;
 
 	/**
 	 * Launch the application.
@@ -87,12 +98,12 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		JButton btnAgregar = new JButton("");
+		btnAgregar = new JButton("");
 		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
 		btnAgregar.setBounds(455, 293, 232, 42);
 		desktopPane.add(btnAgregar);
 		
-		JList list = new JList();
+		list = new JList();
 		list.setBounds(199, 127, 232, 144);
 		desktopPane.add(list);
 		
@@ -126,29 +137,29 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblImgen.setBounds(37, 232, 124, 14);
 		desktopPane.add(lblImgen);
 		
-		JCheckBox chckbxMetodo = new JCheckBox("New check box");
+		chckbxMetodo = new JCheckBox("New check box");
 		chckbxMetodo.setEnabled(false);
 		chckbxMetodo.setSelected(true);
 		chckbxMetodo.setBounds(10, 127, 21, 23);
 		desktopPane.add(chckbxMetodo);
 		
-		JCheckBox chckbxEstacion = new JCheckBox("New check box");
+		chckbxEstacion = new JCheckBox("New check box");
 		chckbxEstacion.setEnabled(false);
 		chckbxEstacion.setSelected(true);
 		chckbxEstacion.setBounds(10, 152, 21, 23);
 		desktopPane.add(chckbxEstacion);
 		
-		JCheckBox chckbxDepartamento = new JCheckBox("New check box");
+		chckbxDepartamento = new JCheckBox("New check box");
 		chckbxDepartamento.setEnabled(false);
 		chckbxDepartamento.setSelected(true);
 		chckbxDepartamento.setBounds(10, 177, 21, 23);
 		desktopPane.add(chckbxDepartamento);
 		
-		JCheckBox chckbxUbicacion = new JCheckBox("New check box");
+		chckbxUbicacion = new JCheckBox("New check box");
 		chckbxUbicacion.setBounds(10, 202, 21, 23);
 		desktopPane.add(chckbxUbicacion);
 		
-		JCheckBox chckbxImagen = new JCheckBox("New check box");
+		chckbxImagen = new JCheckBox("New check box");
 		chckbxImagen.setBounds(10, 228, 21, 23);
 		desktopPane.add(chckbxImagen);
 		
@@ -170,12 +181,12 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblObligatorio_2.setBounds(140, 181, 15, 14);
 		desktopPane.add(lblObligatorio_2);
 		
-		JButton btnGuardar = new JButton("");
+		btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(455, 426, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ListarFormularios.class);
@@ -186,7 +197,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnCancelar.setBounds(107, 426, 137, 40);
 		desktopPane.add(btnCancelar);
 		
-		JButton btnAgregar_1 = new JButton("");
+		btnAgregar_1 = new JButton("");
 		btnAgregar_1.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
 		btnAgregar_1.setBounds(199, 293, 232, 42);
 		desktopPane.add(btnAgregar_1);
@@ -196,7 +207,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblCasillasFormulario.setBounds(227, 98, 177, 21);
 		desktopPane.add(lblCasillasFormulario);
 		
-		JList list_1 = new JList();
+		list_1 = new JList();
 		list_1.setBounds(455, 130, 232, 144);
 		desktopPane.add(list_1);
 		
