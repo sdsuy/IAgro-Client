@@ -12,6 +12,8 @@ import com.entities.Actividad;
 import com.entities.Usuario;
 
 import java.awt.Component;
+import java.awt.Cursor;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -23,6 +25,9 @@ public class ListarActividades implements IFrame<Actividad>{
 	private JFrame frame;
 	private IAgro iagro;
 	private Long id;
+	private JScrollPane scrollPane;
+	private JButton btnModificar;
+	private JButton btnVolver;
 	/**
 	 * Launch the application.
 	 */
@@ -64,11 +69,13 @@ public class ListarActividades implements IFrame<Actividad>{
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		JScrollPane scrollPane = new JScrollPane((Component) null);
+		scrollPane = new JScrollPane((Component) null);
+		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPane.setBounds(10, 116, 633, 175);
 		desktopPane.add(scrollPane);
 		
-		JButton btnModificar = new JButton("");
+		btnModificar = new JButton("");
+		btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ModificarActividad.class);
@@ -84,7 +91,8 @@ public class ListarActividades implements IFrame<Actividad>{
 		lblFondo.setBounds(91, 0, 486, 414);
 		desktopPane.add(lblFondo);
 		
-		JButton btnVolver = new JButton("");
+		btnVolver = new JButton("");
+		btnVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ListarFormularios.class);
