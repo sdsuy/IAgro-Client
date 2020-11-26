@@ -21,6 +21,8 @@ import com.entities.Usuario;
 
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -40,6 +42,12 @@ public class ListarFormularios implements IFrame<Formulario> {
 	
 	private IAgro iagro;
 	private JTextField textFieldNombre;
+	private JScrollPane scrollPane;
+	private JButton btnMenu;
+	private JButton btnEliminar;
+	private JButton btnEliminarCasillas;
+	private JButton btnLimpiar;
+	private JButton btnActividades;
 
 	/**
 	 * Launch the application.
@@ -125,12 +133,14 @@ public class ListarFormularios implements IFrame<Formulario> {
 		table.setRowSorter(sorter);
 		*/
 		
-		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane = new JScrollPane(table);
+		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPane.setBounds(10, 115, 633, 136);
 		desktopPane.add(scrollPane);
 //		scrollPane.add();
 		
-		JButton btnMenu = new JButton("");
+		btnMenu = new JButton("");
+		btnMenu.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limpiar();
@@ -144,7 +154,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		
 		
-		JButton btnEliminar = new JButton("");
+		btnEliminar = new JButton("");
+		btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEliminar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/EliminarSeleccionado.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -172,7 +183,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 		lblFondo.setBounds(185, 0, 297, 391);
 		desktopPane.add(lblFondo);
 		
-		JButton btnEliminarCasillas = new JButton("");
+		btnEliminarCasillas = new JButton("");
+		btnEliminarCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEliminarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(EditarCasillas.class);
@@ -197,12 +209,14 @@ public class ListarFormularios implements IFrame<Formulario> {
 		textFieldNombre.setBounds(95, 91, 86, 20);
 		desktopPane.add(textFieldNombre);
 		
-		JButton btnLimpiar = new JButton("");
+		btnLimpiar = new JButton("");
+		btnLimpiar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
 		btnLimpiar.setBounds(532, 73, 100, 35);
 		desktopPane.add(btnLimpiar);
 		
-		JButton btnActividades = new JButton("Actividades de campo");
+		btnActividades = new JButton("Actividades de campo");
+		btnActividades.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnActividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ListarActividades.class);
