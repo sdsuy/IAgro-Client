@@ -117,7 +117,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		/*formularios = iagro.getFormulario();
+		formularios = iagro.getFormulario();
 		String [] columnas = iagro.getColumnasFormulario();
 		
 		int x = formularios.size();
@@ -131,7 +131,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		
 		table = new JTable(model);
 		table.setRowSorter(sorter);
-		*/
+		
 		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -164,8 +164,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
 				boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
 				if(result) {
-					//model.setData(iagro.matrixFormularios());
-					//model.refresh();
+					model.setData(iagro.matrixFormularios());
+					model.refresh();
+					limpiar();
 					
 					JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 				}
@@ -209,6 +210,29 @@ public class ListarFormularios implements IFrame<Formulario> {
 		textFieldNombre.setBounds(95, 91, 86, 20);
 		desktopPane.add(textFieldNombre);
 		
+		textFieldNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+						
+					}
+
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+		
 		btnLimpiar = new JButton("");
 		btnLimpiar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
@@ -226,6 +250,24 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnActividades.setBounds(7, 315, 188, 42);
 		desktopPane.add(btnActividades);
 	}
+	 /** 
+     * Update the row filter regular expression from the expression in
+     * the text box.
+     */
+    private void filterColumns() {
+        RowFilter<ModeloTabla, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
+        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+        	
+        	rf = RowFilter.andFilter(filters);
+        	
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+        sorter.setRowFilter(rf);
+    }
 	
 	public void limpiar() {
 		textFieldNombre.setText("");
