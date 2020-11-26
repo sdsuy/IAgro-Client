@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -99,6 +101,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		btnAgregar = new JButton("");
+		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
 		btnAgregar.setBounds(455, 293, 232, 42);
 		desktopPane.add(btnAgregar);
@@ -138,28 +141,33 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(lblImgen);
 		
 		chckbxMetodo = new JCheckBox("New check box");
+		chckbxMetodo.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxMetodo.setEnabled(false);
 		chckbxMetodo.setSelected(true);
 		chckbxMetodo.setBounds(10, 127, 21, 23);
 		desktopPane.add(chckbxMetodo);
 		
 		chckbxEstacion = new JCheckBox("New check box");
+		chckbxEstacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxEstacion.setEnabled(false);
 		chckbxEstacion.setSelected(true);
 		chckbxEstacion.setBounds(10, 152, 21, 23);
 		desktopPane.add(chckbxEstacion);
 		
 		chckbxDepartamento = new JCheckBox("New check box");
+		chckbxDepartamento.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxDepartamento.setEnabled(false);
 		chckbxDepartamento.setSelected(true);
 		chckbxDepartamento.setBounds(10, 177, 21, 23);
 		desktopPane.add(chckbxDepartamento);
 		
 		chckbxUbicacion = new JCheckBox("New check box");
+		chckbxUbicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxUbicacion.setBounds(10, 202, 21, 23);
 		desktopPane.add(chckbxUbicacion);
 		
 		chckbxImagen = new JCheckBox("New check box");
+		chckbxImagen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		chckbxImagen.setBounds(10, 228, 21, 23);
 		desktopPane.add(chckbxImagen);
 		
@@ -182,11 +190,13 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(lblObligatorio_2);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(455, 426, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ListarFormularios.class);
@@ -198,6 +208,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(btnCancelar);
 		
 		btnAgregar_1 = new JButton("");
+		btnAgregar_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnAgregar_1.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
 		btnAgregar_1.setBounds(199, 293, 232, 42);
 		desktopPane.add(btnAgregar_1);
