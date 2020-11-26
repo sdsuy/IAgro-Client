@@ -28,7 +28,8 @@ public class CrearCasilla implements IFrame<Casilla> {
 	private JTextField textFieldUnidadDeMedida;
 	private JTextField textFieldTipoDeDato;
 	private JTextArea textAreaDescripcion;
-	
+	private JButton btnGuardar;
+	private JButton btnCancelar;
 	private IAgro iagro;
 	private Long id;
 
@@ -114,12 +115,13 @@ public class CrearCasilla implements IFrame<Casilla> {
 		textFieldTipoDeDato.setBounds(10, 190, 116, 26);
 		desktopPane.add(textFieldTipoDeDato);
 		
-		JButton btnGuardar = new JButton("");
+		btnGuardar = new JButton("");
+		
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(54, 295, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limpiar();
