@@ -25,6 +25,10 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JFrame frame;
 	private IAgro iagro;
 	private Long id;
+	private JComboBox comboBoxFormulario;
+	private JScrollPane scrollPane;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
 
 	/**
 	 * Launch the application.
@@ -74,7 +78,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblFormulario.setBounds(10, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 		
-		JComboBox comboBoxFormulario = new JComboBox();
+		comboBoxFormulario = new JComboBox();
 		comboBoxFormulario.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
 		
@@ -82,16 +86,16 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane_1.setBounds(10, 154, 513, 243);
 		desktopPane.add(desktopPane_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 513, 243);
 		desktopPane_1.add(scrollPane);
 		
-		JButton btnGuardar = new JButton("");
+		btnGuardar = new JButton("");
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
