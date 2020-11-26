@@ -17,6 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -116,12 +118,13 @@ public class CrearCasilla implements IFrame<Casilla> {
 		desktopPane.add(textFieldTipoDeDato);
 		
 		btnGuardar = new JButton("");
-		
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(54, 295, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limpiar();
