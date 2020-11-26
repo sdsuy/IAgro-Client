@@ -10,6 +10,8 @@ import com.entities.Actividad;
 import com.entities.Usuario;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -79,6 +81,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane.add(lblFormulario);
 		
 		comboBoxFormulario = new JComboBox();
+		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		comboBoxFormulario.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
 		
@@ -87,15 +90,18 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane.add(desktopPane_1);
 		
 		scrollPane = new JScrollPane();
+		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPane.setBounds(0, 0, 513, 243);
 		desktopPane_1.add(scrollPane);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
