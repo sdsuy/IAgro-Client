@@ -9,6 +9,8 @@ import com.application.IAgro;
 import com.entities.Actividad;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -23,6 +25,8 @@ public class ModificarActividad implements IFrame<Actividad>{
 	private JFrame frame;
 	private Long id;
 	private IAgro iagro;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
 
 	/**
 	 * Launch the application.
@@ -84,12 +88,14 @@ public class ModificarActividad implements IFrame<Actividad>{
 		lblNewLabel_1.setBounds(10, 34, 494, 228);
 		desktopPane.add(lblNewLabel_1);
 		
-		JButton btnGuardar = new JButton("");
+		btnGuardar = new JButton("");
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(ModificarActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(25, 336, 137, 38);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				iagro.show(ListarActividades.class);
