@@ -31,6 +31,8 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
 
@@ -41,6 +43,11 @@ public class ListarUsuarios implements IFrame<Usuario> {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldNickname;
+	private JScrollPane scrollPane;
+	private JButton btnMenu;
+	private JButton btnLimpiar;
+	private JButton btnEliminar;
+	private JButton btnModificar;
 	List<Usuario> usuarios;
 	private TableRowSorter<ModeloTabla> sorter;
 	
@@ -125,12 +132,14 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		table.setRowSorter(sorter);
 //		table.setBounds(10, 246, 633, 161);
 		
-		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane = new JScrollPane(table);
+		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPane.setBounds(10, 246, 633, 161);
 		desktopPane.add(scrollPane);
 //		scrollPane.add(table);
 		
-		JButton btnMenu = new JButton("");
+		btnMenu = new JButton("");
+		btnMenu.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -141,7 +150,8 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnMenu.setBounds(10, 11, 100, 34);
 		desktopPane.add(btnMenu);
 		
-		JButton btnLimpiar = new JButton("");
+		btnLimpiar = new JButton("");
+		btnLimpiar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnLimpiar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonLimpiar.png")));
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -151,7 +161,8 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnLimpiar.setBounds(10, 156, 100, 35);
 		desktopPane.add(btnLimpiar);
 		
-		JButton btnEliminar = new JButton("");
+		btnEliminar = new JButton("");
+		btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEliminar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/EliminarSeleccionado.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,7 +183,8 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnEliminar.setBounds(448, 105, 201, 44);
 		desktopPane.add(btnEliminar);
 		
-		JButton btnModificar = new JButton("");
+		btnModificar = new JButton("");
+		btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnModificar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonModificarSeleccionado.png")));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -284,6 +296,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 //		String[]rol ={""};
 		
 		comboBoxRol = new JComboBox();
+		comboBoxRol.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"", Roles.ADMINISTRADOR.name(), Roles.EXPERTO.name(), Roles.COMUN.name()}));
 //		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {""}));
 		comboBoxRol.setBounds(337, 203, 101, 22);
