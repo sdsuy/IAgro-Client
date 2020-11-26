@@ -12,6 +12,8 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.SwingConstants;
 
 import com.application.IAgro;
@@ -114,6 +116,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		desktopPane.add(lblDescripcion);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNombre.getText().isEmpty()) {
@@ -170,6 +173,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		desktopPane.add(btnGuardar);
 		
 		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiar();
