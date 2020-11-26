@@ -31,6 +31,8 @@ public class CrearFormulario implements IFrame<Formulario> {
 	private Long id;
 	private IAgro iagro;
 	private JTextArea textAreaDescripcion;
+	private JButton btnGuardar;
+	private JButton btnCancelar;
 	
 
 	/**
@@ -111,7 +113,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		lblDescripcion.setBounds(347, 86, 100, 21);
 		desktopPane.add(lblDescripcion);
 		
-		JButton btnGuardar = new JButton("");
+		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNombre.getText().isEmpty()) {
@@ -167,7 +169,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 		btnGuardar.setBounds(288, 283, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiar();
