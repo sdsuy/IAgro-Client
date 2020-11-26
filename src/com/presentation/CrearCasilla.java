@@ -130,21 +130,6 @@ public class CrearCasilla implements IFrame<Casilla> {
 		btnCancelar.setBounds(236, 295, 137, 40);
 		desktopPane.add(btnCancelar);
 		
-		JLabel lblTipoDeMuestreo = new JLabel("Tipo de Muestreo:");
-		lblTipoDeMuestreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTipoDeMuestreo.setBounds(10, 227, 129, 14);
-		desktopPane.add(lblTipoDeMuestreo);
-		
-		JComboBox comboBoxTipo = new JComboBox();
-		comboBoxTipo.setBounds(10, 252, 116, 26);
-		desktopPane.add(comboBoxTipo);
-		
-		JLabel lblObligatorio = new JLabel("*");
-		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblObligatorio.setForeground(Color.RED);
-		lblObligatorio.setBounds(149, 227, 17, 14);
-		desktopPane.add(lblObligatorio);
-		
 		JLabel lblObligatorio_1 = new JLabel("*");
 		lblObligatorio_1.setForeground(Color.RED);
 		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
