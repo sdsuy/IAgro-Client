@@ -24,6 +24,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
@@ -48,6 +50,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private Long id;
 	private JTextField textFieldProfesion;
 	private JTextField textFieldInstituto;
+	private JButton btnCancelar;
 	
 
 	/**
@@ -132,6 +135,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		
 		comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {Roles.ADMINISTRADOR.name(), Roles.EXPERTO.name(), Roles.COMUN.name()}));
+		comboBoxRol.setCursor(new Cursor(Cursor.HAND_CURSOR));
 //		comboBoxRol.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent arg0) {
 //				
@@ -152,6 +156,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		
 		
 		btnGuardar = new JButton("");
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(10, 397, 147, 37);
 		btnGuardar.addActionListener(new ActionListener() {
@@ -295,7 +300,8 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textFieldCedula.setColumns(10);
 		textFieldCedula.setVisible(false);
 		
-		JButton btnCancelar = new JButton("");
+		btnCancelar = new JButton("");
+		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -316,11 +322,12 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(lblNombreDeUsuario);
 		
 		lblProfesion = new JLabel("Profesi\u00F3n:");
-		lblProfesion.setBounds(92, 311, 66, 14);
+		lblProfesion.setBounds(91, 311, 66, 14);
 		desktopPane.add(lblProfesion);
 		lblProfesion.setVisible(false);
 		
 		textFieldProfesion = new JTextField();
+		textFieldProfesion.setCursor(new Cursor(Cursor.TEXT_CURSOR));
 		textFieldProfesion.setBounds(178, 308, 98, 20);
 		desktopPane.add(textFieldProfesion);
 		textFieldProfesion.setColumns(10);
