@@ -118,16 +118,12 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblDepartamento.setBounds(37, 181, 124, 14);
 		desktopPane.add(lblDepartamento);
 		
-		JLabel lblCantidad = new JLabel("Cantidad");
-		lblCantidad.setBounds(37, 206, 124, 14);
-		desktopPane.add(lblCantidad);
-		
 		JLabel lblUbicacin = new JLabel("Ubicaci\u00F3n");
-		lblUbicacin.setBounds(37, 231, 124, 14);
+		lblUbicacin.setBounds(37, 207, 124, 14);
 		desktopPane.add(lblUbicacin);
 		
 		JLabel lblImgen = new JLabel("Im\u00E1gen");
-		lblImgen.setBounds(37, 256, 124, 14);
+		lblImgen.setBounds(37, 232, 124, 14);
 		desktopPane.add(lblImgen);
 		
 		JCheckBox chckbxMetodo = new JCheckBox("New check box");
@@ -148,16 +144,12 @@ public class EditarCasillas implements IFrame<Casilla>{
 		chckbxDepartamento.setBounds(10, 177, 21, 23);
 		desktopPane.add(chckbxDepartamento);
 		
-		JCheckBox chckbxCantidad = new JCheckBox("New check box");
-		chckbxCantidad.setBounds(10, 201, 21, 23);
-		desktopPane.add(chckbxCantidad);
-		
 		JCheckBox chckbxUbicacion = new JCheckBox("New check box");
-		chckbxUbicacion.setBounds(10, 226, 21, 23);
+		chckbxUbicacion.setBounds(10, 202, 21, 23);
 		desktopPane.add(chckbxUbicacion);
 		
 		JCheckBox chckbxImagen = new JCheckBox("New check box");
-		chckbxImagen.setBounds(10, 252, 21, 23);
+		chckbxImagen.setBounds(10, 228, 21, 23);
 		desktopPane.add(chckbxImagen);
 		
 		JLabel lblObligatorio = new JLabel("*");
