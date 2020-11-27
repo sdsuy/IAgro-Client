@@ -91,7 +91,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		List<Formulario> formularios = iagro.getFormulario();
 		for (Formulario form : formularios) {
-			comboBoxFormulario.addItem(form);
+			comboBoxFormulario.addItem(form.getNombre());
 		}
 		
 		
