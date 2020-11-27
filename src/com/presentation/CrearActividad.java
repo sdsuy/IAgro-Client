@@ -7,6 +7,7 @@ import javax.swing.JToolBar;
 
 import com.application.IAgro;
 import com.entities.Actividad;
+import com.entities.Formulario;
 import com.entities.Usuario;
 
 import java.awt.BorderLayout;
@@ -20,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class CrearActividad implements IFrame<Actividad> {
@@ -31,6 +33,7 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JScrollPane scrollPane;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
+	private Formulario formulario;
 
 	/**
 	 * Launch the application.
@@ -79,11 +82,17 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFormulario.setBounds(10, 97, 91, 14);
 		desktopPane.add(lblFormulario);
+	
 		
 		comboBoxFormulario = new JComboBox();
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		comboBoxFormulario.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
+		List<Formulario> formularios = iagro.getFormulario();
+		for (Formulario form : formularios) {
+			comboBoxFormulario.addItem(form);
+		}
+		
 		
 		JDesktopPane desktopPane_1 = new JDesktopPane();
 		desktopPane_1.setBounds(10, 154, 513, 243);
