@@ -35,6 +35,7 @@ public class MenuPrincipal  {
 	private JButton btnLogout;
 	private JButton btnActividades;
 	private JButton btnCrearActividad;
+	private JButton btnUsuarios;
 	
 	private IAgro iagro;
 
@@ -103,7 +104,8 @@ public class MenuPrincipal  {
 		desktopPane.add(desktopPaneUsuarios);
 		desktopPaneUsuarios.setVisible(false);
 		
-		JButton btnUsuarios = new JButton("");
+		btnUsuarios = new JButton("");
+		btnUsuarios.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnUsuarios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonUsuarios.png")));
 		btnUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
