@@ -15,6 +15,8 @@ import java.awt.Cursor;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -107,13 +109,23 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		btnCancelar = new JButton("");
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+			public void actionPerformed(ActionEvent e) {
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							
+							frame.dispose();
+						}
+						   
+				
 			}
 		});
-		btnCancelar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(321, 416, 137, 40);
+		btnCancelar.setBounds(260, 397, 147, 37);
 		desktopPane.add(btnCancelar);
 	}
 

@@ -322,7 +322,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 			public void actionPerformed(ActionEvent e) {
 				
 				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
-						null, new Object[] { "SI", "NO"},   // null para YES, NO y CANCEL
+						null, new Object[] { "SI", "NO"},   
 						   null);
 
 						if (seleccion == 0) {
