@@ -52,6 +52,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JLabel lblObligatorio_5;
 	private JLabel lblObligatorio_6;
 	private JLabel lblObligatorio_7;
+	private JLabel lblFondo;
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
@@ -103,6 +104,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textFieldCedula.setText(o.getDocumento());
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
+		
 
 		
 	}
@@ -374,7 +376,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblObligatorio.setBounds(302, 79, 20, 14);
 		desktopPane.add(lblObligatorio);
 		
-		JLabel lblFondo = new JLabel("");
+		lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
