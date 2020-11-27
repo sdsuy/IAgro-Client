@@ -91,6 +91,7 @@ public class MenuPrincipal  {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 826, 519);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(173, 216, 230));

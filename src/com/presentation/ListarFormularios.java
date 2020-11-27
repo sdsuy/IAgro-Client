@@ -110,6 +110,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 669, 422);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setResizable(false);
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		

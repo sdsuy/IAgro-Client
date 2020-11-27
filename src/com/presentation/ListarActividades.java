@@ -65,6 +65,7 @@ public class ListarActividades implements IFrame<Actividad>{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 668, 446);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);

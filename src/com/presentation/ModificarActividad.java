@@ -79,6 +79,7 @@ public class ModificarActividad implements IFrame<Actividad>{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 549, 447);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);

@@ -30,7 +30,6 @@ public class CrearActividad implements IFrame<Actividad> {
 	private IAgro iagro;
 	private Long id;
 	private JComboBox comboBoxFormulario;
-	private JScrollPane scrollPane;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
 	private Formulario formulario;
@@ -74,6 +73,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 549, 506);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setResizable(false);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
@@ -93,16 +93,6 @@ public class CrearActividad implements IFrame<Actividad> {
 		for (Formulario form : formularios) {
 			comboBoxFormulario.addItem(form.getNombre());
 		}
-		
-		
-		JDesktopPane desktopPane_1 = new JDesktopPane();
-		desktopPane_1.setBounds(10, 154, 513, 243);
-		desktopPane.add(desktopPane_1);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		scrollPane.setBounds(0, 0, 513, 243);
-		desktopPane_1.add(scrollPane);
 		
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
