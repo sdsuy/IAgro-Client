@@ -307,8 +307,17 @@ public class AltaUsuario implements IFrame<Usuario> {
 		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limpiar();
-				frame.dispose();
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   // null para YES, NO y CANCEL
+						   null);
+
+						if (seleccion == 0) {
+							limpiar();
+							frame.dispose();
+						}
+						   
+				
 			}
 		});
 		btnCancelar.setBounds(260, 397, 147, 37);
@@ -350,16 +359,6 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
-		
-		JButton btnMenu = new JButton("");
-		btnMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-			}
-		});
-		btnMenu.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonMenu.png")));
-		btnMenu.setBounds(10, 352, 100, 34);
-		desktopPane.add(btnMenu);
 		
 		
 		
