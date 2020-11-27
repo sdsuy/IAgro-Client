@@ -167,18 +167,28 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnEliminar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/EliminarSeleccionado.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow = table.getSelectedRow();
-				Usuario userDelete = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
-				boolean result = iagro.delete(userDelete.getId(), Usuario.class);
-				if(result) {
-					model.setData(iagro.matrixUsuarios());
-					model.refresh();
-					limpiarFiltros();
-					JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
-				}
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							
+							int selectedRow = table.getSelectedRow();
+							Usuario userDelete = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
+							boolean result = iagro.delete(userDelete.getId(), Usuario.class);
+							if(result) {
+								model.setData(iagro.matrixUsuarios());
+								model.refresh();
+								limpiarFiltros();
+								JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
+							}
+							else {
+								JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
+							}
+							
+						}
+				
 			}
 		});
 		btnEliminar.setBounds(448, 105, 201, 44);
