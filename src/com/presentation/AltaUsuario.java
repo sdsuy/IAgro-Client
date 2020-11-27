@@ -194,14 +194,36 @@ public class AltaUsuario implements IFrame<Usuario> {
 					        
 					        Matcher mather = pattern.matcher(textFieldEmail.getText());
 					      
-					        //controlamos si hay algun campo vacio
+					        //controlamos si hay algun campo vacio para un comun
+					        
+					        
 					        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
 					        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
 					        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
 					        	
 					        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 					       
-					        }//controlamos si el mail tiene un formato invalido
+					        }
+					        
+                            //si es un usuario experto
+					        else if (comboBoxRol.getSelectedItem().toString() == Roles.EXPERTO.name()) {
+					        	
+					        	if(textFieldCedula.getText().isEmpty() || textFieldProfesion.getText().isEmpty()) {
+					        		
+					        		JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+					        	}
+					        }
+					        
+					        //si es un usuario admin
+                            else if (comboBoxRol.getSelectedItem().toString() == Roles.ADMINISTRADOR.name()) {
+					        	
+					        	if(textFieldCedula.getText().isEmpty() || textFieldInstituto.getText().isEmpty()) {
+					        		
+					        		JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+					        	}
+					        }
+					        
+					        //controlamos si el mail tiene un formato invalido
 					        else if (mather.find() == false) {
 								JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
 					        }
