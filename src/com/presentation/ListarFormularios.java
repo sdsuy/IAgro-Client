@@ -161,7 +161,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				int selectedRow = table.getSelectedRow();
-				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 2).toString());
+				Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
 				boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
 				if(result) {
 					model.setData(iagro.matrixFormularios());
@@ -221,13 +221,13 @@ public class ListarFormularios implements IFrame<Formulario> {
 
 					@Override
 					public void removeUpdate(DocumentEvent e) {
-						// TODO Auto-generated method stub
+						filterColumns();
 						
 					}
 
 					@Override
 					public void changedUpdate(DocumentEvent e) {
-						// TODO Auto-generated method stub
+						filterColumns();
 						
 					}
 					
