@@ -351,6 +351,16 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
 		
+		JButton btnMenu = new JButton("");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
+		btnMenu.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonMenu.png")));
+		btnMenu.setBounds(10, 352, 100, 34);
+		desktopPane.add(btnMenu);
+		
 		
 		
 		
