@@ -88,6 +88,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		comboBoxFormulario.setBounds(111, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
+		
 		List<Formulario> formularios = iagro.getFormulario();
 		for (Formulario form : formularios) {
 			comboBoxFormulario.addItem(form);
