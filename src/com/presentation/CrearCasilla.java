@@ -12,6 +12,8 @@ import com.entities.Casilla;
 import com.entities.Usuario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
@@ -118,6 +120,37 @@ public class CrearCasilla implements IFrame<Casilla> {
 		desktopPane.add(textFieldTipoDeDato);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textFieldUnidadDeMedida.getText().isEmpty() || textAreaDescripcion.getText().isEmpty()
+						|| textFieldTipoDeDato.getText().isEmpty() || textFieldParametro.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Debe completar todos lo campos Obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+
+				}else {
+					Casilla casilla = new Casilla();
+					casilla.setParametro(textFieldParametro.getText());
+					casilla.setUni_medida(textFieldUnidadDeMedida.getText());
+					casilla.setTipo(textFieldTipoDeDato.getText());
+					boolean result;
+					
+					if(id>0) {
+						System.out.println("ID for update "+id);
+						casilla.setId(id);
+						result=iagro.update(casilla);
+					}
+					else {
+						System.out.println("ID for create "+id);
+						result=iagro.create(casilla);
+					}
+					if(result) {
+						limpiar();
+						JOptionPane.showMessageDialog(null, "Se ha creado la Casilla","Exito",JOptionPane.DEFAULT_OPTION);
+					}
+				
+				}
+			} 
+			
+		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(54, 295, 137, 40);
