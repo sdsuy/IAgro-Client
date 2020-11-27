@@ -105,6 +105,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/ModificarUsuario.png")));
+		textFieldCedula.setText(o.getDocumento());
+		textFieldProfesion.setText(o.getProfesion());
+		textFieldInstituto.setText(o.getInstituto());
 		
 		
 
