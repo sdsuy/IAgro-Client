@@ -259,7 +259,7 @@ public class ListarFormularios implements IFrame<Formulario> {
         //If current expression doesn't parse, don't update.
         try {
         	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(1);
-        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1));
+        	filters.add(RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1));
         	
         	rf = RowFilter.andFilter(filters);
         	
