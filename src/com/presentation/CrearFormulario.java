@@ -150,6 +150,7 @@ public class CrearFormulario implements IFrame<Formulario> {
 				Formulario form = new Formulario();
 				form.setNombre(textFieldNombre.getText().toUpperCase());
 				form.setResumen(textAreaDescripcion.getText().toUpperCase());
+				form.setUsuario(iagro.getAuthUser());
 					boolean result;
 					
 					if(id>0) {
