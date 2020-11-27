@@ -171,19 +171,28 @@ public class CrearFormulario implements IFrame<Formulario> {
 			}
 		});
 		btnGuardar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(288, 283, 137, 40);
+		btnGuardar.setBounds(60, 283, 137, 40);
 		desktopPane.add(btnGuardar);
 		
 		btnCancelar = new JButton("");
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limpiar();
-				frame.dispose();
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							limpiar();
+							frame.dispose();
+						}
+
+
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearFormulario.class.getResource("/img/BotonCancelar.png")));
-		btnCancelar.setBounds(63, 283, 137, 40);
+		btnCancelar.setBounds(266, 283, 137, 40);
 		desktopPane.add(btnCancelar);
 		
 		JLabel lblFondo = new JLabel("");
