@@ -125,7 +125,7 @@ public class CrearActividad implements IFrame<Actividad> {
 				
 			}
 		});
-		btnCancelar.setBounds(260, 397, 147, 37);
+		btnCancelar.setBounds(286, 416, 147, 40);
 		desktopPane.add(btnCancelar);
 	}
 

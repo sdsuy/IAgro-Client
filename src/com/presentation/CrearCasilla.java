@@ -161,8 +161,15 @@ public class CrearCasilla implements IFrame<Casilla> {
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				limpiar();
-				frame.dispose();
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							limpiar();
+							frame.dispose();
+						}
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/BotonCancelar.png")));
