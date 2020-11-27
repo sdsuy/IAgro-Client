@@ -3,6 +3,7 @@ package com.application;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.entities.Actividad;
 import com.entities.Base;
 import com.entities.Casilla;
 import com.entities.Formulario;
@@ -98,6 +99,8 @@ public class IAgro {
 	//***********************************************
 	
 	public void menuPrincipal() {
+		refresh(Actividad.class);
+		refresh(Formulario.class);
 		principal = new MenuPrincipal(this);
 		principal.start();
 	}
@@ -166,7 +169,7 @@ public class IAgro {
 	}
 	
 	public String [] getColumnasFormulario() {
-		String [] columnas = {"ID","NOMBRE","CASILLA","MET_MUESTREO","EST_MUESTREO","EQUIPAMIENTO","RESUMEN","DEPARTAMENTO","FECHA","ZONA","TIP_MUESTREO","GEOPUNTO","LOCALIDAD"};
+		String [] columnas = {"ID","NOMBRE"};
 		return columnas;
 	}
 	
@@ -220,8 +223,8 @@ public class IAgro {
 		IBean bean = getBean(c);
 		if(c.equals(Usuario.class)) {
 			usuarios = bean.readAll();
-		} else if(c.equals(Rol.class)) {
-			roles = bean.readAll();
+		} else if(c.equals(Formulario.class)) {
+			formularios = bean.readAll();
 		} 
 	}
 	
@@ -260,9 +263,9 @@ public class IAgro {
 		return usuario;
 	}
 	
-	public Formulario readFormulario(String titulo) {
+	public Formulario readFormulario(String nombre) {
 		Formulario formul = formularios.stream()
-				.filter(u -> u.getNombre().equals(titulo))
+				.filter(f -> f.getNombre().equals(nombre))
 				.collect(Collectors.toList())
 				.get(0);
 		
@@ -285,22 +288,12 @@ public class IAgro {
 	}
 	
 	public Object[][] matrixFormularios(){
-		Object[][] datos = new Object[formularios.size()][12];
+		Object[][] datos = new Object[formularios.size()][2];
 		for (Formulario form : formularios) {
 			datos[(formularios.indexOf(form))][0] = form.getId();
 			datos[(formularios.indexOf(form))][1] = form.getNombre();
-			datos[(formularios.indexOf(form))][2] = form.getCasillas();
-			datos[(formularios.indexOf(form))][3] = form.getMet_muestreo();
-			datos[(formularios.indexOf(form))][4] = form.getEst_muestreo();
-			datos[(formularios.indexOf(form))][5] = form.getEquipamiento();
-			datos[(formularios.indexOf(form))][6] = form.getResumen();
-			datos[(formularios.indexOf(form))][7] = form.getDepartamento();
-			datos[(formularios.indexOf(form))][8] = form.getFecha();
-			datos[(formularios.indexOf(form))][9] = form.getZona();
-			datos[(formularios.indexOf(form))][10] = form.getTip_muestreo();
-			datos[(formularios.indexOf(form))][11] = form.getGeopunto();
-			datos[(formularios.indexOf(form))][12] = form.getLocalidad();
-			
+//			datos[(formularios.indexOf(form))][2] = form.getCasillas().size();
+
 		}
 		return datos;
 	}
