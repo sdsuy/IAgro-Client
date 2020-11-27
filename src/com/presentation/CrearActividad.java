@@ -105,6 +105,11 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane_1.add(scrollPane);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
