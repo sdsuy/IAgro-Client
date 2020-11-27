@@ -39,7 +39,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 	private JCheckBox chckbxUbicacion;
 	private JCheckBox chckbxImagen;
 	private JButton btnCancelar;
-	private JButton btnAgregar_1;
+	private JButton btnEliminar;
 	private JList list_1;
 
 	/**
@@ -104,6 +104,10 @@ public class EditarCasillas implements IFrame<Casilla>{
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		btnAgregar = new JButton("");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
 		btnAgregar.setBounds(455, 293, 232, 42);
@@ -220,11 +224,26 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnCancelar.setBounds(107, 426, 137, 40);
 		desktopPane.add(btnCancelar);
 		
-		btnAgregar_1 = new JButton("");
-		btnAgregar_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnAgregar_1.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
-		btnAgregar_1.setBounds(199, 293, 232, 42);
-		desktopPane.add(btnAgregar_1);
+		btnEliminar = new JButton("");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							
+							//aca el codigo para eliminar la casilla
+							
+						}
+				
+			}
+		});
+		btnEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnEliminar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonEliminarSeleccionada.png")));
+		btnEliminar.setBounds(199, 293, 232, 42);
+		desktopPane.add(btnEliminar);
 		
 		JLabel lblCasillasFormulario = new JLabel("Casillas del Formulario:");
 		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
