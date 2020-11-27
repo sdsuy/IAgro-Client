@@ -44,7 +44,14 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JLabel lblProfesion;
 	private JLabel lblInstituto;
 	private JLabel lblCedula;
-	
+	private JLabel lblObligatorio;
+	private JLabel lblObligatorio_1;
+	private JLabel lblObligatorio_2;
+	private JLabel lblObligatorio_3;
+	private JLabel lblObligatorio_4;
+	private JLabel lblObligatorio_5;
+	private JLabel lblObligatorio_6;
+	private JLabel lblObligatorio_7;
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
@@ -52,6 +59,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JTextField textFieldProfesion;
 	private JTextField textFieldInstituto;
 	private JButton btnCancelar;
+	
 	
 
 	/**
@@ -356,10 +364,58 @@ public class AltaUsuario implements IFrame<Usuario> {
 		textFieldInstituto.setColumns(10);
 		textFieldInstituto.setVisible(false);
 		
+		lblObligatorio = new JLabel("*");
+		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio.setForeground(Color.RED);
+		lblObligatorio.setBounds(302, 79, 20, 14);
+		desktopPane.add(lblObligatorio);
+		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
+		
+		lblObligatorio_1 = new JLabel("*");
+		lblObligatorio_1.setForeground(Color.RED);
+		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_1.setBounds(286, 111, 20, 14);
+		desktopPane.add(lblObligatorio_1);
+		
+		lblObligatorio_2 = new JLabel("*");
+		lblObligatorio_2.setForeground(Color.RED);
+		lblObligatorio_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_2.setBounds(286, 138, 20, 14);
+		desktopPane.add(lblObligatorio_2);
+		
+		lblObligatorio_3 = new JLabel("*");
+		lblObligatorio_3.setForeground(Color.RED);
+		lblObligatorio_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_3.setBounds(286, 194, 20, 14);
+		desktopPane.add(lblObligatorio_3);
+		
+		lblObligatorio_4 = new JLabel("*");
+		lblObligatorio_4.setForeground(Color.RED);
+		lblObligatorio_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_4.setBounds(286, 223, 20, 14);
+		desktopPane.add(lblObligatorio_4);
+		
+		lblObligatorio_5 = new JLabel("*");
+		lblObligatorio_5.setForeground(Color.RED);
+		lblObligatorio_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_5.setBounds(286, 251, 20, 14);
+		desktopPane.add(lblObligatorio_5);
+		
+		lblObligatorio_6 = new JLabel("*");
+		lblObligatorio_6.setForeground(Color.RED);
+		lblObligatorio_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_6.setBounds(286, 280, 20, 14);
+		desktopPane.add(lblObligatorio_6);
+		
+		lblObligatorio_7 = new JLabel("*");
+		lblObligatorio_7.setForeground(Color.RED);
+		lblObligatorio_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblObligatorio_7.setBounds(286, 311, 20, 14);
+		desktopPane.add(lblObligatorio_7);
 		
 		
 		
