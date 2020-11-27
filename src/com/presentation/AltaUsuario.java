@@ -45,6 +45,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JLabel lblInstituto;
 	private JLabel lblCedula;
 	
+	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
 	private Long id;
@@ -133,24 +134,25 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblRol.setBounds(112, 83, 56, 14);
 		desktopPane.add(lblRol);
 		
+		System.out.println(Roles.COMUN.toString());
+		
 		comboBoxRol = new JComboBox();
-		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {Roles.ADMINISTRADOR.name(), Roles.EXPERTO.name(), Roles.COMUN.name()}));
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"", Roles.COMUN.name(), Roles.EXPERTO.name(), Roles.ADMINISTRADOR.name()}));
 		comboBoxRol.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//		comboBoxRol.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				//Mostramos diferentes entradas de datos segun el tipo de usuario a crear
-//				if (comboBoxRol.getSelectedItem().toString() == "Experto") {
-//					visibilidadUsuario("Experto");
-//				}
-//				
-//				else if (comboBoxRol.getSelectedItem().toString() == "Administrador") {
-//					visibilidadUsuario("Administrador");
-//				}
-//			}
-//		});
-//		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Comun", "Experto", "Administrador"}));
-		comboBoxRol.setBounds(178, 79, 98, 22);
+		comboBoxRol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Mostramos diferentes entradas de datos segun el tipo de usuario a crear
+				if (comboBoxRol.getSelectedItem().equals(Roles.EXPERTO.name())) {
+					visibilidadUsuario("Experto");
+				}
+				
+				else if (comboBoxRol.getSelectedItem().toString() == Roles.ADMINISTRADOR.name()) {
+					visibilidadUsuario("Administrador");
+				}
+			}
+		});
+		comboBoxRol.setBounds(178, 79, 114, 22);
 		desktopPane.add(comboBoxRol);
 		
 		
@@ -348,6 +350,8 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
 		lblFondo.setBounds(74, -39, 332, 441);
 		desktopPane.add(lblFondo);
+		
+		
 		
 		
 		
