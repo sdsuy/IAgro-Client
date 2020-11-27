@@ -159,6 +159,10 @@ public class AltaUsuario implements IFrame<Usuario> {
 				else if (comboBoxRol.getSelectedItem().toString() == Roles.ADMINISTRADOR.name()) {
 					visibilidadUsuario("Administrador");
 				}
+				
+				else if (comboBoxRol.getSelectedItem().toString() == Roles.COMUN.name()) {
+					visibilidadUsuario("Comun");
+				}
 			}
 		});
 		comboBoxRol.setBounds(178, 79, 114, 22);
@@ -410,12 +414,15 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblObligatorio_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblObligatorio_6.setBounds(286, 280, 20, 14);
 		desktopPane.add(lblObligatorio_6);
+		lblObligatorio_6.setVisible(false);
+		
 		
 		lblObligatorio_7 = new JLabel("*");
 		lblObligatorio_7.setForeground(Color.RED);
 		lblObligatorio_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblObligatorio_7.setBounds(286, 311, 20, 14);
 		desktopPane.add(lblObligatorio_7);
+		lblObligatorio_7.setVisible(false);
 		
 		
 		
@@ -444,8 +451,11 @@ public class AltaUsuario implements IFrame<Usuario> {
 			
 			lblCedula.setVisible(true);
 			textFieldCedula.setVisible(true);
+			lblObligatorio_6.setVisible(true);
+			
 			lblProfesion.setVisible(true);
 			textFieldProfesion.setVisible(true);
+			lblObligatorio_7.setVisible(true);
 		}
 		
 		else if (tipoUsuario.equals("Administrador")) {
@@ -454,8 +464,24 @@ public class AltaUsuario implements IFrame<Usuario> {
 			
 			lblCedula.setVisible(true);
 			textFieldCedula.setVisible(true);
+			lblObligatorio_6.setVisible(true);
+			
 			lblInstituto.setVisible(true);
 			textFieldInstituto.setVisible(true);
+			lblObligatorio_7.setVisible(true);
+		}
+		
+		else if (tipoUsuario.equals("Comun")) {
+			lblInstituto.setVisible(false);
+			textFieldInstituto.setVisible(false);
+			
+			lblCedula.setVisible(false);
+			textFieldCedula.setVisible(false);
+			lblObligatorio_6.setVisible(false);
+			
+			lblProfesion.setVisible(false);
+			textFieldProfesion.setVisible(false);
+			lblObligatorio_7.setVisible(false);
 		}
 		
 	}
