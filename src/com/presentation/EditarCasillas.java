@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Cursor;
 
@@ -200,8 +202,18 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				iagro.show(ListarFormularios.class);
-				frame.dispose();
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Cancelar y salir al menu?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[] { "SI", "NO"},   
+						   null);
+
+						if (seleccion == 0) {
+							iagro.show(ListarFormularios.class);
+							frame.dispose();
+						}
+				
+				
+				
 			}
 		});
 		btnCancelar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonCancelar.png")));
