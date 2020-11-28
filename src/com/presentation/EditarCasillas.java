@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
@@ -111,6 +112,9 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnAgregar = new JButton("");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				DefaultListModel modelo = new DefaultListModel();
+				modelo.addElement(casillasDisponibles.getListSelectionListeners());
+				
 			}
 		});
 		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -135,7 +139,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		casillasDisponibles.setBounds(455, 130, 232, 144);
 		desktopPane.add(casillasDisponibles);
 		
-		casillasDisponibles.add(casillasFormulario);
+//		casillasDisponibles.add(casillasFormulario.getComponent(mode));
 		List<Casilla> casills = iagro.getCasillas();
 		for (Casilla cas : casills) {
 			casillasDisponibles.add(casillasDisponibles, cas.getParametro());
