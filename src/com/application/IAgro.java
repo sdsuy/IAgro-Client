@@ -255,9 +255,9 @@ public class IAgro {
 		return formularios;
 	}
 	
-	public Usuario readUsuario(String documento) {
+	public Usuario readUsuario(String id) {
 		Usuario usuario = usuarios.stream()
-				.filter(u -> u.getDocumento().equals(documento))
+				.filter(u -> u.getId().toString().equals(id))
 				.collect(Collectors.toList())
 				.get(0);
 		return usuario;
