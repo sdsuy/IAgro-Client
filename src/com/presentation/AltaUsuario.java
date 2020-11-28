@@ -53,6 +53,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	private JLabel lblObligatorio_6;
 	private JLabel lblObligatorio_7;
 	private JLabel lblFondo;
+	private JButton btnVolver;
 	
 	private IAgro iagro;
 	private JTextField textFieldNickname;
@@ -104,6 +105,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/ModificarUsuario.png")));
+		btnVolver.setVisible(true);
 		
 		if (comboBoxRol.getSelectedItem().equals(Roles.EXPERTO.name())) {
 			textFieldCedula.setText(o.getDocumento());
@@ -540,7 +542,19 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(lblObligatorio_7);
 		lblObligatorio_7.setVisible(false);
 		
-		
+		btnVolver = new JButton("");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				iagro.show(ListarFormularios.class);
+				frame.dispose();
+				
+			}
+		});
+		btnVolver.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonVolver.png")));
+		btnVolver.setBounds(10, 353, 92, 33);
+		desktopPane.add(btnVolver);
+		btnVolver.setVisible(false);
 		
 		
 		
