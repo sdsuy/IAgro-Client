@@ -112,8 +112,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnAgregar = new JButton("");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DefaultListModel modelo = new DefaultListModel();
-				modelo.addElement(casillasDisponibles.getListSelectionListeners());
+				 
 				
 			}
 		});
@@ -140,10 +139,10 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(casillasDisponibles);
 		
 //		casillasDisponibles.add(casillasFormulario.getComponent(mode));
-		List<Casilla> casills = iagro.getCasillas();
+		/*List<Casilla> casills = iagro.getCasillas();
 		for (Casilla cas : casills) {
 			casillasDisponibles.add(casillasDisponibles, cas.getParametro());
-		}
+		}*/
 		JLabel lblTitulo = new JLabel("");
 		lblTitulo.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/ListarCasillas.png")));
 		lblTitulo.setBounds(293, 17, 124, 70);
