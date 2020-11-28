@@ -200,7 +200,7 @@ public class CrearCasilla implements IFrame<Casilla> {
 		desktopPane.add(lblFondo);
 		
 		comboBoxTipoDato = new JComboBox();
-		comboBoxTipoDato.setModel(new DefaultComboBoxModel(new String[] {"", Tipos.BOOLEAN.name(), Tipos.DOUBLE.name(), Tipos.INTEGER.name(), Tipos.STRING.name()}));
+		comboBoxTipoDato.setModel(new DefaultComboBoxModel(new String[] {"", Tipos.BOOLEAN.getTipo(), Tipos.DOUBLE.getTipo(), Tipos.INTEGER.getTipo(), Tipos.STRING.getTipo()}));
 		comboBoxTipoDato.setBounds(10, 194, 116, 26);
 		desktopPane.add(comboBoxTipoDato);
 	}
