@@ -165,10 +165,10 @@ public class IAgro {
 		return columnas;
 	}
 	
-	public String[] getColumnasRoles() {
-		String[] columnas = {"NOMBRE","DESCRIPCION"};
-		return columnas;
-	}
+//	public String[] getColumnasRoles() {
+//		String[] columnas = {"NOMBRE","DESCRIPCION"};
+//		return columnas;
+//	}
 	
 	public String [] getColumnasFormulario() {
 		String [] columnas = {"ID","NOMBRE"};
@@ -263,9 +263,10 @@ public class IAgro {
 		return casillas;
 	}
 	
-	public Usuario readUsuario(String id) {
+	// metodos read para cuando NO es por ID
+	public Usuario readUsuario(String nickname) {
 		Usuario usuario = usuarios.stream()
-				.filter(u -> u.getId().toString().equals(id))
+				.filter(u -> u.getNickname().toString().equals(nickname))
 				.collect(Collectors.toList())
 				.get(0);
 		return usuario;
@@ -280,8 +281,9 @@ public class IAgro {
 		return formul;
 	}
 	
+	// matrices de datos para los JTable de los listados
 	public Object[][] matrixUsuarios() {
-		Object[][] datos = new Object[usuarios.size()][8];
+		Object[][] datos = new Object[usuarios.size()][getColumnas().length];
 		for (Usuario usuario : usuarios) {
 			datos[(usuarios.indexOf(usuario))][0] = usuario.getId();
 			datos[(usuarios.indexOf(usuario))][1] = usuario.getNombre();
@@ -296,7 +298,7 @@ public class IAgro {
 	}
 	
 	public Object[][] matrixFormularios(){
-		Object[][] datos = new Object[formularios.size()][2];
+		Object[][] datos = new Object[formularios.size()][getColumnasFormulario().length];
 		for (Formulario form : formularios) {
 			datos[(formularios.indexOf(form))][0] = form.getId();
 			datos[(formularios.indexOf(form))][1] = form.getNombre();
