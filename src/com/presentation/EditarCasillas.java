@@ -18,6 +18,7 @@ import java.awt.Cursor;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 
 import com.application.IAgro;
 import com.entities.Actividad;
@@ -151,7 +152,24 @@ public class EditarCasillas implements IFrame<Formulario>{
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Agrega el elemento seleccionado al JList casillasFormulario
-				
+				String selectedCasilla = casillasDisponibles.getSelectedValue().toString();
+//				List<String> listaCasillasFormulario = casillasFormulario.
+//				for(String parametro: listaNombresFuncionalidades.)
+				boolean existe = false;
+				for(int i=0; i < casillasFormulario.getModel().getSize(); i++) {
+					if(casillasFormulario.getModel().getElementAt(i).equals(selectedCasilla)) {
+						existe = true;
+					}
+				}
+				if(!existe) {
+					List<Casilla> casillas = formulario.getCasillas();
+					Casilla casillaNueva = iagro.readCasilla(selectedCasilla);
+					casillas.add(casillaNueva);
+					formularioModel.addElement(casillaNueva.getParametro());
+					formulario.setCasillas(casillas);
+				} else {
+					System.out.println("La casilla ya se encuentra en el formulario");
+				}
 			}
 		});
 		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
