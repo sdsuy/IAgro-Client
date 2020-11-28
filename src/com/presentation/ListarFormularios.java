@@ -198,7 +198,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEliminarCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEliminarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				iagro.show(EditarCasillas.class);
+				int selectedRow = table.getSelectedRow();
+				Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
+				iagro.show(EditarCasillas.class, formEditarCasillas);
 				frame.dispose();
 			}
 		});
