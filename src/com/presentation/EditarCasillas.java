@@ -42,8 +42,6 @@ public class EditarCasillas implements IFrame<Formulario>{
 	private JCheckBox chckbxMetodo;
 	private JCheckBox chckbxEstacion;
 	private JCheckBox chckbxDepartamento;
-	private JCheckBox chckbxUbicacion;
-	private JCheckBox chckbxImagen;
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	private JList casillasDisponibles;
@@ -183,9 +181,9 @@ public class EditarCasillas implements IFrame<Formulario>{
 		lblTitulo.setBounds(293, 17, 124, 70);
 		desktopPane.add(lblTitulo);
 		
-		JLabel lblCasillasObligatorias = new JLabel("Casillas Default:");
-		lblCasillasObligatorias.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillasObligatorias.setBounds(10, 99, 124, 21);
+		JLabel lblCasillasObligatorias = new JLabel("Casillas Default Obligatorias:");
+		lblCasillasObligatorias.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCasillasObligatorias.setBounds(10, 99, 187, 21);
 		desktopPane.add(lblCasillasObligatorias);
 		
 		JLabel lblNewLabel = new JLabel("M\u00E9todo de Muestreo");
@@ -199,14 +197,6 @@ public class EditarCasillas implements IFrame<Formulario>{
 		JLabel lblDepartamento = new JLabel("Departamento");
 		lblDepartamento.setBounds(37, 181, 124, 14);
 		desktopPane.add(lblDepartamento);
-		
-		JLabel lblUbicacin = new JLabel("Ubicaci\u00F3n");
-		lblUbicacin.setBounds(37, 207, 124, 14);
-		desktopPane.add(lblUbicacin);
-		
-		JLabel lblImgen = new JLabel("Im\u00E1gen");
-		lblImgen.setBounds(37, 232, 124, 14);
-		desktopPane.add(lblImgen);
 		
 		chckbxMetodo = new JCheckBox("New check box");
 		chckbxMetodo.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -228,16 +218,6 @@ public class EditarCasillas implements IFrame<Formulario>{
 		chckbxDepartamento.setSelected(true);
 		chckbxDepartamento.setBounds(10, 177, 21, 23);
 		desktopPane.add(chckbxDepartamento);
-		
-		chckbxUbicacion = new JCheckBox("New check box");
-		chckbxUbicacion.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		chckbxUbicacion.setBounds(10, 202, 21, 23);
-		desktopPane.add(chckbxUbicacion);
-		
-		chckbxImagen = new JCheckBox("New check box");
-		chckbxImagen.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		chckbxImagen.setBounds(10, 228, 21, 23);
-		desktopPane.add(chckbxImagen);
 		
 		JLabel lblObligatorio = new JLabel("*");
 		lblObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -301,12 +281,6 @@ public class EditarCasillas implements IFrame<Formulario>{
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
-						null, new Object[] { "SI", "NO"},   
-						   null);
-
-						if (seleccion == 0) {
-							
 							//aca el codigo para eliminar la casilla
 							String selectedCasilla = casillasFormulario.getSelectedValue().toString();
 							if(!selectedCasilla.equals("Metodo de muestreo") && !selectedCasilla.equals("Estacion de Muestreo") && !selectedCasilla.equals("Departamento")) {
@@ -321,10 +295,12 @@ public class EditarCasillas implements IFrame<Formulario>{
 									formulario.setCasillas(casillas);
 								}
 							} else {
-								System.out.println("La casilla seleccionada es obligatoria y no puede eliminarse");
+				
+								
+								JOptionPane.showMessageDialog(null, "La casilla seleccionada es obligatoria y no puede eliminarse","Error",JOptionPane.ERROR_MESSAGE);
 							}
 							
-						}
+						
 				
 			}
 		});
