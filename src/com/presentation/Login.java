@@ -117,7 +117,7 @@ public class Login {
 		btnEntrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username = textFieldUser.getText();
+				String username = textFieldUser.getText().toUpperCase();
 				String password = passwordFieldPass.getText();
 				iagro.login(username, password); // seteo el usuario autenticado
 				if(iagro.getAuthUser() != null) { // si se encuentra un usuario
