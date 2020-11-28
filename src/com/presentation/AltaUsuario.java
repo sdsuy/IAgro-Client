@@ -310,7 +310,14 @@ public class AltaUsuario implements IFrame<Usuario> {
 			        	user.setRol(Roles.valueOf(nomRol));
 			        	user.setApellido(textApellido.getText().toUpperCase());
 			        	user.setNombre(textNombre.getText().toUpperCase());
-			        	user.setDocumento(textFieldCedula.getText().toUpperCase());
+			        	
+			        	if (textFieldCedula.getText().isEmpty()) {
+			        		user.setDocumento("---");	
+			        	}
+			        	else {
+			        		user.setDocumento(textFieldCedula.getText().toUpperCase());
+			        	}
+			        	
 			        	user.setClave(passwordFieldPass.getText());
 			        	user.setEmail(textFieldEmail.getText().toUpperCase());
 			        	user.setClave(passwordFieldPass.getText());
