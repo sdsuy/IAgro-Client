@@ -117,7 +117,7 @@ public class Login {
 		btnEntrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username = textFieldUser.getText();
+				String username = textFieldUser.getText().toUpperCase();
 				String password = passwordFieldPass.getText();
 				iagro.login(username, password); // seteo el usuario autenticado
 				if(iagro.getAuthUser() != null) { // si se encuentra un usuario
@@ -174,7 +174,7 @@ public class Login {
 	public void mensajeEditarAdminPassword() {
 		
 		textArea.setVisible(true);
-		textArea.setText("Administrador Default: admin "+ "\r\nContrase\u00F1a Default: 1234 " );
+		textArea.setText("Administrador Default: ADMIN "+ "\r\nContrase\u00F1a Default: 1234 " );
 		
 	}
 	public void limpiar() {
