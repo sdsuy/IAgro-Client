@@ -98,18 +98,19 @@ public class AltaUsuario implements IFrame<Usuario> {
 	public void setFields(Usuario o) {
 		id = o.getId();
 		comboBoxRol.getSelectedIndex();
+		comboBoxRol.setSelectedItem(o.getRol().getRol().name());
 		textNombre.setText(o.getNombre());
 		textApellido.setText(o.getApellido());
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/ModificarUsuario.png")));
 		
-		if (o.getRol().equals(Roles.EXPERTO.name())) {
+		if (o.getRol().getRol().equals(Roles.EXPERTO.name())) {
 			textFieldCedula.setText(o.getDocumento());
 			textFieldProfesion.setText(o.getProfesion());
 		}
 		
-		else if (o.getRol().equals(Roles.ADMINISTRADOR.name())) {
+		else if (o.getRol().getRol().equals(Roles.ADMINISTRADOR.name())) {
 			textFieldCedula.setText(o.getDocumento());
 			textFieldInstituto.setText(o.getInstituto());
 		}
@@ -318,9 +319,31 @@ public class AltaUsuario implements IFrame<Usuario> {
 			        	}
 			        	
 			        	user.setClave(passwordFieldPass.getText());
-			        	user.setEmail(textFieldEmail.getText().toUpperCase());
+			        	
+			        	if (textFieldEmail.getText().isEmpty()) {
+			        		user.setEmail("---");	
+			        	}
+			        	else {
+			        		user.setEmail(textFieldEmail.getText().toUpperCase());
+			        	}
+			        	
+			        	
 			        	user.setClave(passwordFieldPass.getText());
 			        	user.setNickname(textFieldNickname.getText().toUpperCase());
+			        	
+			        	if (textFieldProfesion.getText().isEmpty()) {
+			        		user.setProfesion("---");	
+			        	}
+			        	else {
+			        		user.setProfesion(textFieldProfesion.getText().toUpperCase());
+			        	}
+			        	
+			        	if (textFieldInstituto.getText().isEmpty()) {
+			        		user.setInstituto("---");	
+			        	}
+			        	else {
+			        		user.setInstituto(textFieldInstituto.getText().toUpperCase());
+			        	}
 			        	
 			        	//Compruebo que la contrasenias sean iguales.
 			        	repClave=passwordFieldRepetirContrasenia.getText();
