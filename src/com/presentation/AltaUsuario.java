@@ -413,6 +413,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setBounds(178, 220, 98, 20);
 		desktopPane.add(passwordFieldPass);
 		passwordFieldPass.setColumns(10);
+		passwordFieldPass.setEchoChar('*');
 		
 		JLabel lblRepetirContrasenia = new JLabel("Repetir Contrase\u00F1a:");
 		lblRepetirContrasenia.setBounds(39, 251, 129, 14);
@@ -422,6 +423,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldRepetirContrasenia.setBounds(178, 248, 98, 20);
 		desktopPane.add(passwordFieldRepetirContrasenia);
 		passwordFieldRepetirContrasenia.setColumns(10);
+		passwordFieldRepetirContrasenia.setEchoChar('*');
 		
 		lblCedula = new JLabel("Cedula:");
 		lblCedula.setBounds(99, 280, 69, 14);
@@ -493,11 +495,6 @@ public class AltaUsuario implements IFrame<Usuario> {
 		lblObligatorio.setBounds(302, 79, 20, 14);
 		desktopPane.add(lblObligatorio);
 		
-		lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
-		lblFondo.setBounds(74, -39, 371, 441);
-		desktopPane.add(lblFondo);
-		
 		lblObligatorio_1 = new JLabel("*");
 		lblObligatorio_1.setForeground(Color.RED);
 		lblObligatorio_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -556,9 +553,34 @@ public class AltaUsuario implements IFrame<Usuario> {
 		btnVolver.setBounds(10, 353, 92, 33);
 		desktopPane.add(btnVolver);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
-		chckbxNewCheckBox.setBounds(302, 218, 128, 23);
-		desktopPane.add(chckbxNewCheckBox);
+		JCheckBox chckbxMostrarPass = new JCheckBox("Mostrar Contrase\u00F1a");
+		chckbxMostrarPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		chckbxMostrarPass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+                if (chckbxMostrarPass.isSelected()) {
+					
+                	passwordFieldPass.setEchoChar((char)0);
+                	passwordFieldRepetirContrasenia.setEchoChar((char)0);
+                	
+				}
+				
+				else {
+					passwordFieldPass.setEchoChar('*');
+					passwordFieldRepetirContrasenia.setEchoChar('*');
+				}
+				
+			}
+		});
+		chckbxMostrarPass.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		chckbxMostrarPass.setBounds(302, 218, 128, 23);
+		desktopPane.add(chckbxMostrarPass);
+		chckbxMostrarPass.setOpaque(false);
+		
+		lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
+		lblFondo.setBounds(74, -39, 371, 441);
+		desktopPane.add(lblFondo);
 		btnVolver.setVisible(false);
 		
 		
