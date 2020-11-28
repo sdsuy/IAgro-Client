@@ -310,40 +310,14 @@ public class AltaUsuario implements IFrame<Usuario> {
 			        	user.setRol(Roles.valueOf(nomRol));
 			        	user.setApellido(textApellido.getText().toUpperCase());
 			        	user.setNombre(textNombre.getText().toUpperCase());
-			        	
-			        	if (textFieldCedula.getText().isEmpty()) {
-			        		user.setDocumento("---");	
-			        	}
-			        	else {
-			        		user.setDocumento(textFieldCedula.getText().toUpperCase());
-			        	}
-			        	
-			        	user.setClave(passwordFieldPass.getText());
-			        	
-			        	if (textFieldEmail.getText().isEmpty()) {
-			        		user.setEmail("---");	
-			        	}
-			        	else {
-			        		user.setEmail(textFieldEmail.getText().toUpperCase());
-			        	}
-			        	
-			        	
+			        	user.setDocumento(textFieldCedula.getText().toUpperCase());
+                        user.setClave(passwordFieldPass.getText());
+			        	user.setEmail(textFieldEmail.getText().toUpperCase());
 			        	user.setClave(passwordFieldPass.getText());
 			        	user.setNickname(textFieldNickname.getText().toUpperCase());
+			        	user.setProfesion(textFieldProfesion.getText().toUpperCase());
+			        	user.setInstituto(textFieldInstituto.getText().toUpperCase());
 			        	
-			        	if (textFieldProfesion.getText().isEmpty()) {
-			        		user.setProfesion("---");	
-			        	}
-			        	else {
-			        		user.setProfesion(textFieldProfesion.getText().toUpperCase());
-			        	}
-			        	
-			        	if (textFieldInstituto.getText().isEmpty()) {
-			        		user.setInstituto("---");	
-			        	}
-			        	else {
-			        		user.setInstituto(textFieldInstituto.getText().toUpperCase());
-			        	}
 			        	
 			        	//Compruebo que la contrasenias sean iguales.
 			        	repClave=passwordFieldRepetirContrasenia.getText();
