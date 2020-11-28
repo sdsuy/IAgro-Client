@@ -257,6 +257,12 @@ public class EditarCasillas implements IFrame<Formulario>{
 		desktopPane.add(lblObligatorio_2);
 		
 		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean result;
+				result = iagro.create(formulario);
+			}
+		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(455, 426, 137, 40);
