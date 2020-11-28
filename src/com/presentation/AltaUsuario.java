@@ -115,9 +115,11 @@ public class AltaUsuario implements IFrame<Usuario> {
 			textFieldInstituto.setText(o.getInstituto());
 		}
 		
-		else if (!o.getEmail().isEmpty()) {
+		else if (o.getEmail() != null) {
 			textFieldEmail.setText(o.getEmail());
 		}
+		
+		
 		
 		
 		
