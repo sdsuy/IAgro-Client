@@ -29,6 +29,7 @@ import java.awt.Cursor;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 
 public class AltaUsuario implements IFrame<Usuario> {
 
@@ -554,6 +555,10 @@ public class AltaUsuario implements IFrame<Usuario> {
 		btnVolver.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonVolver.png")));
 		btnVolver.setBounds(10, 353, 92, 33);
 		desktopPane.add(btnVolver);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
+		chckbxNewCheckBox.setBounds(302, 218, 128, 23);
+		desktopPane.add(chckbxNewCheckBox);
 		btnVolver.setVisible(false);
 		
 		
