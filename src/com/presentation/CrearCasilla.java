@@ -131,7 +131,7 @@ public class CrearCasilla implements IFrame<Casilla> {
 					casilla.setUni_medida(textFieldUnidadDeMedida.getText());
 				
 					String nomCasilla = comboBoxTipoDato.getSelectedItem().toString();
-					casilla.setTipo(Tipos.valueOf(nomCasilla));
+					casilla.setTipo(Tipos.valueOfTipos(nomCasilla));
 					boolean result;
 					
 					if(id>0) {
