@@ -24,6 +24,10 @@ public class CasillaBo implements IBean<Casilla> {
 			e.printStackTrace();
 		}
 	}
+	
+	public void createDefault() {
+		casillaBean.createDefault();
+	}
 
 	@Override
 	public boolean create(Casilla o) {
