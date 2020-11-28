@@ -61,6 +61,7 @@ public class IAgro {
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 	private List<Rol> roles; // listado de roles del sistema
 	private List<Formulario> formularios; //listado de formularios del sistema
+	private List<Casilla> casillas;
 
 	/**
 	 * 
@@ -101,6 +102,7 @@ public class IAgro {
 	public void menuPrincipal() {
 		refresh(Actividad.class);
 		refresh(Formulario.class);
+		refresh(Casilla.class);
 		principal = new MenuPrincipal(this);
 		principal.start();
 	}
@@ -225,6 +227,8 @@ public class IAgro {
 			usuarios = bean.readAll();
 		} else if(c.equals(Formulario.class)) {
 			formularios = bean.readAll();
+		} else if(c.equals(Casilla.class)) {
+			casillas = bean.readAll();
 		} 
 	}
 	
@@ -253,6 +257,10 @@ public class IAgro {
 	
 	public List<Formulario> getFormulario(){
 		return formularios;
+	}
+	
+	public List<Casilla> getCasillas(){
+		return casillas;
 	}
 	
 	public Usuario readUsuario(String id) {
