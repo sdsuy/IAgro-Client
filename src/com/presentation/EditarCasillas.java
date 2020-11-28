@@ -35,7 +35,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 	private IAgro iagro;
 	private JButton btnAgregar;
 	private JButton btnGuardar;
-	private JList list;
+	private JList casillasFormulario;
 	private JCheckBox chckbxMetodo;
 	private JCheckBox chckbxEstacion;
 	private JCheckBox chckbxDepartamento;
@@ -43,7 +43,7 @@ public class EditarCasillas implements IFrame<Casilla>{
 	private JCheckBox chckbxImagen;
 	private JButton btnCancelar;
 	private JButton btnEliminar;
-	private JList list_1;
+	private JList casillasDisponibles;
 	private Formulario formulario;
 	private int mode;
 
@@ -118,15 +118,15 @@ public class EditarCasillas implements IFrame<Casilla>{
 		btnAgregar.setBounds(455, 293, 232, 42);
 		desktopPane.add(btnAgregar);
 		
-		list = new JList();
-		mode = list.getSelectionMode();
-		list.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		list.setBounds(199, 127, 232, 144);
-		desktopPane.add(list);
+		casillasFormulario = new JList();
+		mode = casillasFormulario.getSelectionMode();
+		casillasFormulario.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		casillasFormulario.setBounds(199, 127, 232, 144);
+		desktopPane.add(casillasFormulario);
 		
 		List<Casilla> casillas = iagro.getCasillas();
 		for (Casilla casilla : casillas) {
-			list.add(list, casilla.getParametro());
+			casillasFormulario.add(casillasFormulario, casilla.getParametro());
 		}
 		
 		
@@ -263,9 +263,11 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblCasillasFormulario.setBounds(227, 98, 177, 21);
 		desktopPane.add(lblCasillasFormulario);
 		
-		list_1 = new JList();
-		list_1.setBounds(455, 130, 232, 144);
-		desktopPane.add(list_1);
+		casillasDisponibles = new JList();
+		mode = casillasDisponibles.getSelectionMode();
+		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		casillasDisponibles.setBounds(455, 130, 232, 144);
+		desktopPane.add(casillasDisponibles);
 		
 		
 		
