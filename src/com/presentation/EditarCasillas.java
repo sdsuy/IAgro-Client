@@ -125,7 +125,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 		casillasDisponibles = new JList(disponiblesModel);
 		mode = casillasDisponibles.getSelectionMode();
 		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		casillasDisponibles.setBounds(455, 130, 232, 144);
+		casillasDisponibles.setBounds(483, 127, 232, 147);
 		desktopPane.add(casillasDisponibles);
 		
 //		casillasDisponibles.add(casillasFormulario.getComponent(mode));
@@ -143,7 +143,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 		casillasFormulario = new JList(formularioModel);
 		mode = casillasFormulario.getSelectionMode();
 		casillasFormulario.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		casillasFormulario.setBounds(199, 127, 232, 144);
+		casillasFormulario.setBounds(227, 127, 232, 144);
 		desktopPane.add(casillasFormulario);
 		
 		btnAgregar = new JButton("");
@@ -243,10 +243,10 @@ public class EditarCasillas implements IFrame<Formulario>{
 				boolean result;
 				result = iagro.update(formulario);
 				if(result) {
-					JOptionPane.showMessageDialog(null, "Se ha guardado la Casilla al Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showMessageDialog(null, "Se han agregado las Casillas al Formulario","Exito",JOptionPane.DEFAULT_OPTION);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "No se puede agregar la Casilla al Formulario","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "No se pudo agregar la Casilla al Formulario","Error",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -311,14 +311,37 @@ public class EditarCasillas implements IFrame<Formulario>{
 		
 		JLabel lblCasillasFormulario = new JLabel("Casillas del Formulario:");
 		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillasFormulario.setBounds(227, 98, 177, 21);
+		lblCasillasFormulario.setBounds(255, 98, 177, 21);
 		desktopPane.add(lblCasillasFormulario);
 		
 		
 		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
 		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillasDisponibles.setBounds(492, 99, 156, 21);
+		lblCasillasDisponibles.setBounds(520, 99, 156, 21);
 		desktopPane.add(lblCasillasDisponibles);
+		
+		JCheckBox chckbxUbicacion = new JCheckBox("New check box");
+		chckbxUbicacion.setEnabled(false);
+		chckbxUbicacion.setBounds(10, 241, 21, 23);
+		desktopPane.add(chckbxUbicacion);
+		
+		JCheckBox chckbxImagen = new JCheckBox("New check box");
+		chckbxImagen.setEnabled(false);
+		chckbxImagen.setBounds(10, 267, 21, 23);
+		desktopPane.add(chckbxImagen);
+		
+		JLabel lblCasillasBasicas = new JLabel("Casillas Basicas no Obligatorias:");
+		lblCasillasBasicas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCasillasBasicas.setBounds(10, 213, 187, 21);
+		desktopPane.add(lblCasillasBasicas);
+		
+		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");
+		lblUbicacion.setBounds(37, 245, 124, 14);
+		desktopPane.add(lblUbicacion);
+		
+		JLabel lblImgen = new JLabel("Im\u00E1gen");
+		lblImgen.setBounds(37, 271, 124, 14);
+		desktopPane.add(lblImgen);
 	}
 
 	@Override
@@ -340,5 +363,4 @@ public class EditarCasillas implements IFrame<Formulario>{
 			formularioModel.addElement(casilla.getParametro());
 		}
 	}
-	
 }
