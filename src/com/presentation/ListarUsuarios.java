@@ -199,10 +199,19 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnModificar.setIcon(new ImageIcon(ListarUsuarios.class.getResource("/img/BotonModificarSeleccionado.png")));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow = table.getSelectedRow();
-				Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
-				iagro.show(AltaUsuario.class, usuarioUpdate);;
-				frame.dispose();
+				
+				if (!iagro.getAuthUser().getRol().getRol().equals(Roles.ADMINISTRADOR)) {
+					JOptionPane.showMessageDialog(null, "Solo los usuarios Administradores pueden modificar Usuarios","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				else {
+					int selectedRow = table.getSelectedRow();
+					Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
+					iagro.show(AltaUsuario.class, usuarioUpdate);;
+					frame.dispose();
+				}
+				
+				
 			}
 		});
 		btnModificar.setBounds(448, 166, 201, 44);
