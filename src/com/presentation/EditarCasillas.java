@@ -129,7 +129,17 @@ public class EditarCasillas implements IFrame<Casilla>{
 			casillasFormulario.add(casillasFormulario, casilla.getParametro());
 		}
 		
+		casillasDisponibles = new JList();
+		mode = casillasDisponibles.getSelectionMode();
+		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		casillasDisponibles.setBounds(455, 130, 232, 144);
+		desktopPane.add(casillasDisponibles);
 		
+		casillasDisponibles.add(casillasFormulario);
+		List<Casilla> casills = iagro.getCasillas();
+		for (Casilla cas : casills) {
+			casillasDisponibles.add(casillasDisponibles, cas.getParametro());
+		}
 		JLabel lblTitulo = new JLabel("");
 		lblTitulo.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/ListarCasillas.png")));
 		lblTitulo.setBounds(293, 17, 124, 70);
@@ -262,13 +272,6 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCasillasFormulario.setBounds(227, 98, 177, 21);
 		desktopPane.add(lblCasillasFormulario);
-		
-		casillasDisponibles = new JList();
-		mode = casillasDisponibles.getSelectionMode();
-		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		casillasDisponibles.setBounds(455, 130, 232, 144);
-		desktopPane.add(casillasDisponibles);
-		
 		
 		
 		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
