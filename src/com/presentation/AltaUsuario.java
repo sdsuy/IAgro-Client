@@ -211,7 +211,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 					
 					case "COMUN" :
 						
-						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() ||
 				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
 				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
 							
@@ -224,7 +224,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 					
 					case "EXPERTO" :
 						
-						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() ||
 				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
 				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
 				        		|| textFieldProfesion.getText().isEmpty()) {
@@ -238,10 +238,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 					
 					case "ADMINISTRADOR" :
 						
-						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() ||
 				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
-				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
-				        		|| textFieldProfesion.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
+				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty() || textFieldCedula.getText().isEmpty()  
 				        		|| textFieldInstituto.getText().isEmpty()) {
 							
 							errorAdministrador = true;
