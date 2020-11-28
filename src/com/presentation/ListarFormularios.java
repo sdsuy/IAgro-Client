@@ -45,7 +45,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 	private JScrollPane scrollPane;
 	private JButton btnMenu;
 	private JButton btnEliminar;
-	private JButton btnEliminarCasillas;
+	private JButton btnEditarCasillas;
 	private JButton btnLimpiar;
 	private JButton btnActividades;
 
@@ -194,9 +194,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 		lblFondo.setBounds(185, 0, 297, 391);
 		desktopPane.add(lblFondo);
 		
-		btnEliminarCasillas = new JButton("");
-		btnEliminarCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnEliminarCasillas.addActionListener(new ActionListener() {
+		btnEditarCasillas = new JButton("");
+		btnEditarCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnEditarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int selectedRow = table.getSelectedRow();
 				Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
@@ -204,9 +204,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 				frame.dispose();
 			}
 		});
-		btnEliminarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
-		btnEliminarCasillas.setBounds(10, 262, 185, 42);
-		desktopPane.add(btnEliminarCasillas);
+		btnEditarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
+		btnEditarCasillas.setBounds(10, 262, 185, 42);
+		desktopPane.add(btnEditarCasillas);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
 		lblFiltros.setFont(new Font("Tahoma", Font.PLAIN, 16));
