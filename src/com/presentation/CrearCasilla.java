@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 
 import com.application.IAgro;
 import com.entities.Casilla;
+import com.entities.Roles;
+import com.entities.Tipos;
 import com.entities.Usuario;
 
 import javax.swing.JLabel;
@@ -24,18 +26,19 @@ import java.awt.Cursor;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class CrearCasilla implements IFrame<Casilla> {
 
 	private JFrame frame;
 	private JTextField textFieldParametro;
 	private JTextField textFieldUnidadDeMedida;
-	private JTextField textFieldTipoDeDato;
 	private JTextArea textAreaDescripcion;
 	private JButton btnGuardar;
 	private JButton btnCancelar;
 	private IAgro iagro;
 	private Long id;
+	private JComboBox comboBoxTipoDato;
 
 	/**
 	 * Launch the application.
@@ -115,23 +118,20 @@ public class CrearCasilla implements IFrame<Casilla> {
 		textFieldUnidadDeMedida.setBounds(10, 132, 116, 26);
 		desktopPane.add(textFieldUnidadDeMedida);
 		
-		textFieldTipoDeDato = new JTextField();
-		textFieldTipoDeDato.setColumns(10);
-		textFieldTipoDeDato.setBounds(10, 190, 116, 26);
-		desktopPane.add(textFieldTipoDeDato);
-		
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldUnidadDeMedida.getText().isEmpty() || textAreaDescripcion.getText().isEmpty()
-						|| textFieldTipoDeDato.getText().isEmpty() || textFieldParametro.getText().isEmpty()) {
+						|| comboBoxTipoDato.getToolkit().equals("") || textFieldParametro.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Debe completar todos lo campos Obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 
 				}else {
 					Casilla casilla = new Casilla();
 					casilla.setParametro(textFieldParametro.getText());
 					casilla.setUni_medida(textFieldUnidadDeMedida.getText());
-					casilla.setTipo(textFieldTipoDeDato.getText());
+				
+					String nomCasilla = comboBoxTipoDato.getSelectedItem().toString();
+					casilla.setTipo(Tipos.valueOf(nomCasilla));
 					boolean result;
 					
 					if(id>0) {
@@ -198,6 +198,11 @@ public class CrearCasilla implements IFrame<Casilla> {
 		lblFondo.setIcon(new ImageIcon(CrearCasilla.class.getResource("/img/CrearCasilla.png")));
 		lblFondo.setBounds(120, 0, 184, 261);
 		desktopPane.add(lblFondo);
+		
+		comboBoxTipoDato = new JComboBox();
+		comboBoxTipoDato.setModel(new DefaultComboBoxModel(new String[] {"", Tipos.BOOLEAN.name(), Tipos.DOUBLE.name(), Tipos.INTEGER.name(), Tipos.STRING.name()}));
+		comboBoxTipoDato.setBounds(10, 194, 116, 26);
+		desktopPane.add(comboBoxTipoDato);
 	}
 	
 	/**
@@ -226,7 +231,6 @@ public class CrearCasilla implements IFrame<Casilla> {
 	public void limpiar() {
 		textFieldParametro.setText("");
 		textFieldUnidadDeMedida.setText("");
-		textFieldTipoDeDato.setText("");
 		textAreaDescripcion.setText("");
 	}
 }
