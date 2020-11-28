@@ -42,6 +42,8 @@ public class EditarCasillas implements IFrame<Formulario>{
 	private JCheckBox chckbxMetodo;
 	private JCheckBox chckbxEstacion;
 	private JCheckBox chckbxDepartamento;
+	private JCheckBox chckbxUbicacion;
+	private JCheckBox chckbxImagen;
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	private JList casillasDisponibles;
@@ -49,6 +51,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 	private DefaultListModel<String> formularioModel;
 	private Formulario formulario;
 	private int mode;
+	
 
 	/**
 	 * Launch the application.
@@ -237,23 +240,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 		lblObligatorio_2.setBounds(140, 181, 15, 14);
 		desktopPane.add(lblObligatorio_2);
 		
-		btnGuardar = new JButton("");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				boolean result;
-				result = iagro.update(formulario);
-				if(result) {
-					JOptionPane.showMessageDialog(null, "Se han agregado las Casillas al Formulario","Exito",JOptionPane.DEFAULT_OPTION);
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "No se pudo agregar la Casilla al Formulario","Error",JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(455, 426, 137, 40);
-		desktopPane.add(btnGuardar);
+		
 		
 		btnCancelar = new JButton("");
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -277,6 +264,54 @@ public class EditarCasillas implements IFrame<Formulario>{
 		btnCancelar.setBounds(107, 426, 137, 40);
 		desktopPane.add(btnCancelar);
 		
+		
+		
+		JLabel lblCasillasFormulario = new JLabel("Casillas del Formulario:");
+		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillasFormulario.setBounds(255, 98, 177, 21);
+		desktopPane.add(lblCasillasFormulario);
+		
+		
+		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
+		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillasDisponibles.setBounds(520, 99, 156, 21);
+		desktopPane.add(lblCasillasDisponibles);
+		
+		chckbxUbicacion = new JCheckBox("New check box");
+		chckbxUbicacion.setEnabled(false);
+		chckbxUbicacion.setBounds(10, 241, 21, 23);
+		desktopPane.add(chckbxUbicacion);
+		
+		chckbxImagen = new JCheckBox("New check box");
+		chckbxImagen.setEnabled(false);
+		chckbxImagen.setBounds(10, 267, 21, 23);
+		desktopPane.add(chckbxImagen);
+		
+		
+		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean result;
+				result = iagro.update(formulario);
+				if(result) {
+					
+					JOptionPane.showMessageDialog(null, "Se han agregado las Casillas al Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+					
+					
+					
+					
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se pudo agregar la Casilla al Formulario","Error",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnGuardar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(455, 426, 137, 40);
+		desktopPane.add(btnGuardar);
+		
+		
 		btnEliminar = new JButton("");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -293,6 +328,11 @@ public class EditarCasillas implements IFrame<Formulario>{
 										casillas.add(casilla);
 									}
 									formulario.setCasillas(casillas);
+									
+									
+									
+									
+									
 								}
 							} else {
 				
@@ -309,26 +349,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 		btnEliminar.setBounds(199, 293, 232, 42);
 		desktopPane.add(btnEliminar);
 		
-		JLabel lblCasillasFormulario = new JLabel("Casillas del Formulario:");
-		lblCasillasFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillasFormulario.setBounds(255, 98, 177, 21);
-		desktopPane.add(lblCasillasFormulario);
 		
-		
-		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
-		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillasDisponibles.setBounds(520, 99, 156, 21);
-		desktopPane.add(lblCasillasDisponibles);
-		
-		JCheckBox chckbxUbicacion = new JCheckBox("New check box");
-		chckbxUbicacion.setEnabled(false);
-		chckbxUbicacion.setBounds(10, 241, 21, 23);
-		desktopPane.add(chckbxUbicacion);
-		
-		JCheckBox chckbxImagen = new JCheckBox("New check box");
-		chckbxImagen.setEnabled(false);
-		chckbxImagen.setBounds(10, 267, 21, 23);
-		desktopPane.add(chckbxImagen);
 		
 		JLabel lblCasillasBasicas = new JLabel("Casillas Basicas no Obligatorias:");
 		lblCasillasBasicas.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -342,6 +363,12 @@ public class EditarCasillas implements IFrame<Formulario>{
 		JLabel lblImgen = new JLabel("Im\u00E1gen");
 		lblImgen.setBounds(37, 271, 124, 14);
 		desktopPane.add(lblImgen);
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
