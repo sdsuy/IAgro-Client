@@ -45,7 +45,8 @@ public class EditarCasillas implements IFrame<Formulario>{
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	private JList casillasDisponibles;
-	private DefaultListModel<String> listModel;
+	private DefaultListModel<String> disponiblesModel;
+	private DefaultListModel<String> formularioModel;
 	private Formulario formulario;
 	private int mode;
 
@@ -110,35 +111,18 @@ public class EditarCasillas implements IFrame<Formulario>{
 		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		btnAgregar = new JButton("");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				 
-				
-			}
-		});
-		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
-		btnAgregar.setBounds(455, 293, 232, 42);
-		desktopPane.add(btnAgregar);
-		
-		casillasFormulario = new JList();
-		mode = casillasFormulario.getSelectionMode();
-		casillasFormulario.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		casillasFormulario.setBounds(199, 127, 232, 144);
-		desktopPane.add(casillasFormulario);
-		
 //		List<Casilla> casillas = iagro.getCasillas();
 //		for (Casilla casilla : casillas) {
 //			casillasFormulario.add(casillasFormulario, casilla.getParametro());
 //		}
 		
-		listModel = new DefaultListModel<>();
+		disponiblesModel = new DefaultListModel<>();
+		// obtengo todas las casillas del sistema registradas en IAgro
 		for(Casilla casilla: iagro.getCasillas()) {
-			listModel.addElement(casilla.getParametro());
+			disponiblesModel.addElement(casilla.getParametro());
 		}
 		
-		casillasDisponibles = new JList(listModel);
+		casillasDisponibles = new JList(disponiblesModel);
 		mode = casillasDisponibles.getSelectionMode();
 		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		casillasDisponibles.setBounds(455, 130, 232, 144);
@@ -149,6 +133,27 @@ public class EditarCasillas implements IFrame<Formulario>{
 		for (Casilla cas : casills) {
 			casillasDisponibles.add(casillasDisponibles, cas.getParametro());
 		}*/
+		
+		
+		
+		casillasFormulario = new JList();
+		mode = casillasFormulario.getSelectionMode();
+		casillasFormulario.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		casillasFormulario.setBounds(199, 127, 232, 144);
+		desktopPane.add(casillasFormulario);
+		
+		btnAgregar = new JButton("");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// Agrega el elemento seleccionado al JList casillasFormulario
+				
+			}
+		});
+		btnAgregar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnAgregar.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/BotonAgregarSeleccionada.png")));
+		btnAgregar.setBounds(455, 293, 232, 42);
+		desktopPane.add(btnAgregar);
+		
 		JLabel lblTitulo = new JLabel("");
 		lblTitulo.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/ListarCasillas.png")));
 		lblTitulo.setBounds(293, 17, 124, 70);
@@ -291,8 +296,8 @@ public class EditarCasillas implements IFrame<Formulario>{
 
 	@Override
 	public void setFields(Formulario o) {
-		// busco el formulario pasado para obtener todas sus casillas
-		o = (Formulario) iagro.read(o.getId(), Formulario.class);
+		// busco el formulario pasado para obtener todas sus casillas y lo guardo en formulario
+		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
 		// cargo todas las casillas del formulario en el JList casillasFormulario
 		
 	}
