@@ -154,7 +154,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 432, 480);
+		frame.setBounds(100, 100, 442, 480);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
 		
@@ -494,7 +494,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		
 		lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/CrearUsuario.png")));
-		lblFondo.setBounds(74, -39, 332, 441);
+		lblFondo.setBounds(74, -39, 371, 441);
 		desktopPane.add(lblFondo);
 		
 		lblObligatorio_1 = new JLabel("*");
