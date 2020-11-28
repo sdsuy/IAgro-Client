@@ -175,7 +175,10 @@ public class ListarUsuarios implements IFrame<Usuario> {
 						if (seleccion == 0) {
 							
 							int selectedRow = table.getSelectedRow();
-							Usuario userDelete = iagro.readUsuario(table.getValueAt(selectedRow, 3).toString());
+							String idString = table.getValueAt(selectedRow, 0).toString();
+							Long idLing = Long.valueOf(idString);
+							Usuario userDelete = (Usuario) iagro.read(idLing, Usuario.class);
+							//table.getValueAt(selectedRow, 0), Usuario.class
 							boolean result = iagro.delete(userDelete.getId(), Usuario.class);
 							if(result) {
 								model.setData(iagro.matrixUsuarios());
@@ -206,7 +209,9 @@ public class ListarUsuarios implements IFrame<Usuario> {
 				
 				else {
 					int selectedRow = table.getSelectedRow();
-					Usuario usuarioUpdate = iagro.readUsuario(table.getValueAt(selectedRow, 0).toString());
+					String idString = table.getValueAt(selectedRow, 0).toString();
+					Long idLing = Long.valueOf(idString);
+					Usuario usuarioUpdate = (Usuario) iagro.read(idLing, Usuario.class);
 					iagro.show(AltaUsuario.class, usuarioUpdate);;
 					frame.dispose();
 				}
