@@ -128,21 +128,21 @@ public class EditarCasillas implements IFrame<Formulario>{
 		casillasFormulario.setBounds(199, 127, 232, 144);
 		desktopPane.add(casillasFormulario);
 		
-		List<Casilla> casillas = iagro.getCasillas();
-		for (Casilla casilla : casillas) {
-			casillasFormulario.add(casillasFormulario, casilla.getParametro());
-		}
-		
-		casillasDisponibles = new JList();
-		mode = casillasDisponibles.getSelectionMode();
-		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
-		casillasDisponibles.setBounds(455, 130, 232, 144);
-		desktopPane.add(casillasDisponibles);
+//		List<Casilla> casillas = iagro.getCasillas();
+//		for (Casilla casilla : casillas) {
+//			casillasFormulario.add(casillasFormulario, casilla.getParametro());
+//		}
 		
 		listModel = new DefaultListModel<>();
 		for(Casilla casilla: iagro.getCasillas()) {
 			listModel.addElement(casilla.getParametro());
 		}
+		
+		casillasDisponibles = new JList(listModel);
+		mode = casillasDisponibles.getSelectionMode();
+		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		casillasDisponibles.setBounds(455, 130, 232, 144);
+		desktopPane.add(casillasDisponibles);
 		
 //		casillasDisponibles.add(casillasFormulario.getComponent(mode));
 		/*List<Casilla> casills = iagro.getCasillas();
