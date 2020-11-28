@@ -260,7 +260,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean result;
-				result = iagro.create(formulario);
+				result = iagro.update(formulario);
 			}
 		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
