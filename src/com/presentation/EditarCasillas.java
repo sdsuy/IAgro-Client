@@ -295,6 +295,21 @@ public class EditarCasillas implements IFrame<Formulario>{
 						if (seleccion == 0) {
 							
 							//aca el codigo para eliminar la casilla
+							String selectedCasilla = casillasFormulario.getSelectedValue().toString();
+							if(!selectedCasilla.equals("Metodo de muestreo") && !selectedCasilla.equals("Estacion de Muestreo") && !selectedCasilla.equals("Departamento")) {
+								int selectedIndex = casillasFormulario.getSelectedIndex();
+								if(selectedIndex != -1) {
+									formularioModel.remove(selectedIndex);
+									List<Casilla> casillas = new ArrayList<>();
+									for(int i=0; i < casillasFormulario.getModel().getSize(); i++) {
+										Casilla casilla = iagro.readCasilla(casillasFormulario.getModel().getElementAt(i).toString());
+										casillas.add(casilla);
+									}
+									formulario.setCasillas(casillas);
+								}
+							} else {
+								System.out.println("La casilla seleccionada es obligatoria y no puede eliminarse");
+							}
 							
 						}
 				
