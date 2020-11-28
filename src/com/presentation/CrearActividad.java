@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
 import com.application.IAgro;
@@ -26,6 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
@@ -41,7 +44,7 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JButton btnCancelar;
 	private Formulario formulario;
 	List<Casilla> casillas;
-	private TableRowSorter<ModeloTabla> sorter;
+//	private TableRowSorter<ModeloTabla> sorter;
 	private JTable table;
 	private JScrollPane scrollPane;
 
@@ -93,17 +96,6 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFormulario.setBounds(138, 97, 91, 14);
 		desktopPane.add(lblFormulario);
-	
-		
-		comboBoxFormulario = new JComboBox();
-		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		comboBoxFormulario.setBounds(253, 95, 134, 22);
-		desktopPane.add(comboBoxFormulario);
-		
-		List<Formulario> formularios = iagro.getFormulario();
-		for (Formulario form : formularios) {
-			comboBoxFormulario.addItem(form.getNombre());
-		}
 		
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
@@ -141,24 +133,121 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane_1.setBounds(10, 129, 523, 240);
 		desktopPane.add(desktopPane_1);
 		
+		casillas = iagro.getCasillas();
+//		String [] columnas = iagro.getColumnasCasilla();
+		String [] columnas = {"PARAMETRO", "UNIDAD", "DESCRIPCION", "TIPO", "VALOR"};
+		
+//		int x = casillas.size();
+		//int y = columnas.length;
+		
+//		Object[][] datos = iagro.matrixCasillas();
+		Object[][] datos = {
+	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", "I'm a string"},
+	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Date()},
+	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Integer(123)},
+	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Double(123.45)},
+	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", Boolean.TRUE}};
+//		
+//		ModeloTabla model = new ModeloTabla(columnas, datos);
+		ModeloActividad model = new ModeloActividad(columnas, datos);
+		
+		//sorter = new TableRowSorter<ModeloTabla>(model);
+		
+//		table = new JTable(model);
+		//table.setRowSorter(sorter);
+//		table = new JTable(datos, columnas) {
+		table = new JTable(model) {
+
+//            private static final long serialVersionUID = 1L;
+            private Class editingClass;
+
+            @Override
+            public TableCellRenderer getCellRenderer(int row, int column) {
+                editingClass = null;
+                int modelColumn = convertColumnIndexToModel(column);
+                if (modelColumn == 4) {
+                    Class rowClass = getModel().getValueAt(row, modelColumn).getClass();
+                    return getDefaultRenderer(rowClass);
+                } else {
+                    return super.getCellRenderer(row, column);
+                }
+            }
+
+            @Override
+            public TableCellEditor getCellEditor(int row, int column) {
+                editingClass = null;
+                int modelColumn = convertColumnIndexToModel(column);
+                if (modelColumn == 4) {
+                    editingClass = getModel().getValueAt(row, modelColumn).getClass();
+                    return getDefaultEditor(editingClass);
+                } else {
+                    return super.getCellEditor(row, column);
+                }
+            }
+            //  This method is also invoked by the editor when the value in the editor
+            //  component is saved in the TableModel. The class was saved when the
+            //  editor was invoked so the proper class can be created.
+
+            @Override
+            public Class getColumnClass(int column) {
+                return editingClass != null ? editingClass : super.getColumnClass(column);
+            }
+        };
+		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(0, 0, 523, 240);
 		desktopPane_1.add(scrollPane);
 		
-		casillas = iagro.getCasillas();
-		//String [] columnas = iagro.getColumnasCasilla();
+		comboBoxFormulario = new JComboBox();
+		comboBoxFormulario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(comboBoxFormulario.getSelectedItem());
+				formulario = iagro.readFormulario(comboBoxFormulario.getSelectedItem().toString()); // busco el formulario por nombre en la memoria
+				formulario = (Formulario) iagro.read(formulario.getId(), Formulario.class); // busco el formulario por id con todas las casillas
+				List<Casilla> casillas = formulario.getCasillas();
+				Object[][] datos = new Object[casillas.size()][columnas.length];
+				for(Casilla casilla: casillas) {
+					datos[(casillas.indexOf(casilla))][0] = casilla.getParametro().toString();
+					try {
+						datos[(casillas.indexOf(casilla))][1] = casilla.getUnidadMedida().toString();
+					} catch (NullPointerException ex) {
+						datos[(casillas.indexOf(casilla))][1] = "";
+					}
+					try {
+						datos[(casillas.indexOf(casilla))][2] = casilla.getDescripcion().toString();
+					} catch (NullPointerException ex) {
+						datos[(casillas.indexOf(casilla))][2] = "";
+					}
+					
+					datos[(casillas.indexOf(casilla))][3] = casilla.getTipo().getTipo().toString();
+					switch(casilla.getTipo()) {
+					case INTEGER:
+						datos[(casillas.indexOf(casilla))][4] = new Integer(0);
+						break;
+					case STRING:
+						datos[(casillas.indexOf(casilla))][4] = "";
+						break;
+					case DOUBLE:
+						datos[(casillas.indexOf(casilla))][4] = new Double(0.0);
+						break;
+					case BOOLEAN:
+						datos[(casillas.indexOf(casilla))][4] = Boolean.TRUE;
+						break;
+					}
+				}
+				model.setDatos(datos);
+				model.refresh();
+			}
+		});
+		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		comboBoxFormulario.setBounds(253, 95, 134, 22);
+		desktopPane.add(comboBoxFormulario);
 		
-		int x = casillas.size();
-		//int y = columnas.length;
+		List<Formulario> formularios = iagro.getFormulario();
+		for (Formulario form : formularios) {
+			comboBoxFormulario.addItem(form.getNombre());
+		}
 		
-		//Object[][] datos = iagro.matrixCasillas();
-		
-		//ModeloTabla model = new ModeloTabla(columnas, datos);
-		
-		//sorter = new TableRowSorter<ModeloTabla>(model);
-		
-		//table = new JTable(model);
-		//table.setRowSorter(sorter);
 	}
 
 	@Override
