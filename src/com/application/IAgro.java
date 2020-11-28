@@ -103,10 +103,11 @@ public class IAgro {
 		refresh(Actividad.class);
 		refresh(Formulario.class);
 		refresh(Casilla.class);
+		if(casillas.size() < 1) createDefault();
 		principal = new MenuPrincipal(this);
 		principal.start();
 	}
-	
+
 	/**
 	 * 
 	 * Metodo para iniciar un frame sin objeto pre cargado
@@ -193,6 +194,11 @@ public class IAgro {
 		auth.bootstrap();
 		refresh(Usuario.class);
 		login.mensajeEditarAdminPassword();
+	}
+	
+	private void createDefault() {
+		casillaBo.createDefault();
+		refresh(Casilla.class);
 	}
 	
 	public boolean create(Object o) {
