@@ -168,7 +168,8 @@ public class EditarCasillas implements IFrame<Formulario>{
 					formularioModel.addElement(casillaNueva.getParametro());
 					formulario.setCasillas(casillas);
 				} else {
-					System.out.println("La casilla ya se encuentra en el formulario");
+					JOptionPane.showMessageDialog(null, "La casilla ya se encuentra en el formulario","Error",JOptionPane.ERROR_MESSAGE);
+					//System.out.println("La casilla ya se encuentra en el formulario");
 				}
 			}
 		});
@@ -261,6 +262,12 @@ public class EditarCasillas implements IFrame<Formulario>{
 			public void actionPerformed(ActionEvent e) {
 				boolean result;
 				result = iagro.update(formulario);
+				if(result) {
+					JOptionPane.showMessageDialog(null, "Se ha guardado la Casilla al Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "No se puede agregar la Casilla al Formulario","Error",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
