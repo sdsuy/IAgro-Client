@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.DefaultListSelectionModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -20,9 +21,11 @@ import javax.swing.JTextField;
 import com.application.IAgro;
 import com.entities.Actividad;
 import com.entities.Casilla;
+import com.entities.Formulario;
 
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class EditarCasillas implements IFrame<Casilla>{
@@ -41,6 +44,8 @@ public class EditarCasillas implements IFrame<Casilla>{
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	private JList list_1;
+	private Formulario formulario;
+	private int mode;
 
 	/**
 	 * Launch the application.
@@ -114,8 +119,16 @@ public class EditarCasillas implements IFrame<Casilla>{
 		desktopPane.add(btnAgregar);
 		
 		list = new JList();
+		mode = list.getSelectionMode();
+		list.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(199, 127, 232, 144);
 		desktopPane.add(list);
+		
+		List<Casilla> casillas = iagro.getCasillas();
+		for (Casilla casilla : casillas) {
+			list.add(list, casilla.getParametro());
+		}
+		
 		
 		JLabel lblTitulo = new JLabel("");
 		lblTitulo.setIcon(new ImageIcon(EditarCasillas.class.getResource("/img/ListarCasillas.png")));
@@ -253,6 +266,8 @@ public class EditarCasillas implements IFrame<Casilla>{
 		list_1 = new JList();
 		list_1.setBounds(455, 130, 232, 144);
 		desktopPane.add(list_1);
+		
+		
 		
 		JLabel lblCasillasDisponibles = new JLabel("Casillas Disponibles:");
 		lblCasillasDisponibles.setFont(new Font("Tahoma", Font.PLAIN, 16));
