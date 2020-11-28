@@ -97,17 +97,6 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblFormulario.setBounds(138, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 		
-		btnGuardar = new JButton("");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(69, 416, 137, 40);
-		desktopPane.add(btnGuardar);
-		
 		btnCancelar = new JButton("");
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
@@ -247,6 +236,20 @@ public class CrearActividad implements IFrame<Actividad> {
 		for (Formulario form : formularios) {
 			comboBoxFormulario.addItem(form.getNombre());
 		}
+		
+		btnGuardar = new JButton("");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i < model.getRowCount(); i++) {
+					System.out.println(model.getValueAt(i, 4));
+				}
+				
+			}
+		});
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(69, 416, 137, 40);
+		desktopPane.add(btnGuardar);
 		
 	}
 
