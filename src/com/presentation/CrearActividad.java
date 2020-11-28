@@ -4,9 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JToolBar;
+import javax.swing.table.TableRowSorter;
 
 import com.application.IAgro;
 import com.entities.Actividad;
+import com.entities.Casilla;
 import com.entities.Formulario;
 import com.entities.Usuario;
 
@@ -21,10 +23,13 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
+import java.awt.Component;
 
 public class CrearActividad implements IFrame<Actividad> {
 
@@ -35,6 +40,10 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JButton btnGuardar;
 	private JButton btnCancelar;
 	private Formulario formulario;
+	List<Casilla> casillas;
+	private TableRowSorter<ModeloTabla> sorter;
+	private JTable table;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -82,13 +91,13 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		JLabel lblFormulario = new JLabel("Formulario:");
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFormulario.setBounds(10, 97, 91, 14);
+		lblFormulario.setBounds(138, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 	
 		
 		comboBoxFormulario = new JComboBox();
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		comboBoxFormulario.setBounds(111, 95, 134, 22);
+		comboBoxFormulario.setBounds(253, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
 		
 		List<Formulario> formularios = iagro.getFormulario();
@@ -127,6 +136,29 @@ public class CrearActividad implements IFrame<Actividad> {
 		});
 		btnCancelar.setBounds(286, 416, 147, 40);
 		desktopPane.add(btnCancelar);
+		
+		JDesktopPane desktopPane_1 = new JDesktopPane();
+		desktopPane_1.setBounds(10, 129, 523, 240);
+		desktopPane.add(desktopPane_1);
+		
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(0, 0, 523, 240);
+		desktopPane_1.add(scrollPane);
+		
+		casillas = iagro.getCasillas();
+		//String [] columnas = iagro.getColumnasCasilla();
+		
+		int x = casillas.size();
+		//int y = columnas.length;
+		
+		//Object[][] datos = iagro.matrixCasillas();
+		
+		//ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		//sorter = new TableRowSorter<ModeloTabla>(model);
+		
+		//table = new JTable(model);
+		//table.setRowSorter(sorter);
 	}
 
 	@Override
