@@ -343,9 +343,9 @@ public class ListarUsuarios implements IFrame<Usuario> {
 	        //If current expression doesn't parse, don't update.
 	        try {
 	        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(4);
-	        	filters.add(RowFilter.regexFilter(textFieldNombre.getText(), 1)); // .toUpperCase() CUANDO GUARDE UPPERCASE
-	        	filters.add(RowFilter.regexFilter(textFieldApellido.getText(), 2)); // .toUpperCase() CUANDO GUARDE UPPERCASE
-	        	filters.add(RowFilter.regexFilter(textFieldNickname.getText(), 5)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(textFieldNombre.getText().toUpperCase(), 1)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(textFieldApellido.getText().toUpperCase(), 2)); // .toUpperCase() CUANDO GUARDE UPPERCASE
+	        	filters.add(RowFilter.regexFilter(textFieldNickname.getText().toUpperCase(), 5)); // .toUpperCase() CUANDO GUARDE UPPERCASE
 	        	filters.add(RowFilter.regexFilter(comboBoxRol.getSelectedItem().toString(), 7));
 //	        	filters.add(RowFilter.regexFilter(comboBoxRol.getActionListeners().toString(), 4));
 //	            rf = RowFilter.regexFilter(textNombre.getText(), 1);
