@@ -45,6 +45,7 @@ public class EditarCasillas implements IFrame<Formulario>{
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	private JList casillasDisponibles;
+	private DefaultListModel<String> listModel;
 	private Formulario formulario;
 	private int mode;
 
@@ -137,6 +138,11 @@ public class EditarCasillas implements IFrame<Formulario>{
 		casillasDisponibles.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		casillasDisponibles.setBounds(455, 130, 232, 144);
 		desktopPane.add(casillasDisponibles);
+		
+		listModel = new DefaultListModel<>();
+		for(Casilla casilla: iagro.getCasillas()) {
+			listModel.addElement(casilla.getParametro());
+		}
 		
 //		casillasDisponibles.add(casillasFormulario.getComponent(mode));
 		/*List<Casilla> casills = iagro.getCasillas();
