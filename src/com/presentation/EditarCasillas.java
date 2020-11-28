@@ -29,7 +29,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class EditarCasillas implements IFrame<Casilla>{
+public class EditarCasillas implements IFrame<Formulario>{
 
 	private JFrame frame;
 	private Long id;
@@ -282,16 +282,13 @@ public class EditarCasillas implements IFrame<Casilla>{
 		lblCasillasDisponibles.setBounds(492, 99, 156, 21);
 		desktopPane.add(lblCasillasDisponibles);
 	}
-	
+
 	@Override
-	public void setFields(Casilla o) {
-		
+	public void setFields(Formulario o) {
+		// busco el formulario pasado para obtener todas sus casillas
+		o = (Formulario) iagro.read(o.getId(), Formulario.class);
+		// cargo todas las casillas del formulario en el JList casillasFormulario
 		
 	}
-	
-	
-
-	
-
 	
 }
