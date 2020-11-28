@@ -26,6 +26,7 @@ import com.entities.Formulario;
 
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -134,9 +135,13 @@ public class EditarCasillas implements IFrame<Formulario>{
 			casillasDisponibles.add(casillasDisponibles, cas.getParametro());
 		}*/
 		
+		formularioModel = new DefaultListModel<>();
+		// obtengo todas las casillas del formulario cargado
+//		for(Casilla casilla: formulario.getCasillas()) {
+//			formularioModel.addElement(casilla.getParametro());
+//		}
 		
-		
-		casillasFormulario = new JList();
+		casillasFormulario = new JList(formularioModel);
 		mode = casillasFormulario.getSelectionMode();
 		casillasFormulario.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
 		casillasFormulario.setBounds(199, 127, 232, 144);
@@ -299,7 +304,19 @@ public class EditarCasillas implements IFrame<Formulario>{
 		// busco el formulario pasado para obtener todas sus casillas y lo guardo en formulario
 		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
 		// cargo todas las casillas del formulario en el JList casillasFormulario
-		
+		if(formulario.getCasillas().size() < 1) {
+			System.out.println("El formulario no tiene casillas. Se creara uno con las casillas por defecto");
+			List<Casilla> casillas = new ArrayList<>();
+			casillas.add(iagro.readCasilla("Metodo de muestreo"));
+			casillas.add(iagro.readCasilla("Estacion de Muestreo"));
+			casillas.add(iagro.readCasilla("Departamento"));
+			formulario.setCasillas(casillas);
+		}
+//		formularioModel = new DefaultListModel<>();
+		// obtengo todas las casillas del formulario cargado
+		for(Casilla casilla: formulario.getCasillas()) {
+			formularioModel.addElement(casilla.getParametro());
+		}
 	}
 	
 }
