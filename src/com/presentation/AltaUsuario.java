@@ -105,6 +105,9 @@ public class AltaUsuario implements IFrame<Usuario> {
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/ModificarUsuario.png")));
+		
+		//if (comboBoxRol.getSelectedItem().toString() == Roles.ADMINISTRADOR.name())
+		
 		textFieldCedula.setText(o.getDocumento());
 		textFieldProfesion.setText(o.getProfesion());
 		textFieldInstituto.setText(o.getInstituto());
@@ -176,128 +179,187 @@ public class AltaUsuario implements IFrame<Usuario> {
 		desktopPane.add(comboBoxRol);
 		
 		
-		
 		btnGuardar = new JButton("");
-		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnGuardar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonGuardar (2).png")));
-		btnGuardar.setBounds(10, 397, 147, 37);
 		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				//Cuadro de dialogo si/no
 				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea guardar los cambios?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
 						null, new Object[] { "SI", "NO"},   
 						   null);
-
-						if (seleccion == 0) {
+				
+				//si el usuari apreta si
+				if (seleccion == 0) {
+					
+					boolean errorComun = false; 
+					boolean errorExperto = false;
+					boolean errorAdministrador = false;
+					
+		
+					
+					//controlamos si hay algun campo vacio SEGUN EL ROL
+					switch(comboBoxRol.getSelectedItem().toString()) {
+					
+					case "COMUN" :
+						
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
+				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
 							
-							// Patr�n para validar el email
-					        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-					                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-					        
-					        Matcher mather = pattern.matcher(textFieldEmail.getText());
-					      
-					        //controlamos si hay algun campo vacio para un comun
-					        
-					        
-					        if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
-					        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
-					        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty()) {
-					        	
-					        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
-					       
-					        }
-					        
-                            //si es un usuario experto
-					        else if (comboBoxRol.getSelectedItem().toString() == Roles.EXPERTO.name()) {
-					        	
-					        	if(textFieldCedula.getText().isEmpty() || textFieldProfesion.getText().isEmpty()) {
-					        		
-					        		JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
-					        	}
-					        }
-					        
-					        //si es un usuario admin
-                            else if (comboBoxRol.getSelectedItem().toString() == Roles.ADMINISTRADOR.name()) {
-					        	
-					        	if(textFieldCedula.getText().isEmpty() || textFieldInstituto.getText().isEmpty()) {
-					        		
-					        		JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
-					        	}
-					        }
-					        
-					        //controlamos si el mail tiene un formato invalido
-					        else if (mather.find() == false) {
-								JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
-					        }
-					        
-					        else if(passwordFieldPass.getText().length()<8 || !(
-					        		passwordFieldPass.getText().contains("0") ||
-					        		passwordFieldPass.getText().contains("1") ||
-					        		passwordFieldPass.getText().contains("2") ||
-					        		passwordFieldPass.getText().contains("3") ||
-					        		passwordFieldPass.getText().contains("4") ||
-					        		passwordFieldPass.getText().contains("5") ||
-					        		passwordFieldPass.getText().contains("6") ||
-					        		passwordFieldPass.getText().contains("7") ||
-					        		passwordFieldPass.getText().contains("8") ||
-					        		passwordFieldPass.getText().contains("9"))) {
-					        	
-								JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
-
-					        }
-					        else {
-					        	String repClave = "";
-					        	
-					        	String nomRol = comboBoxRol.getSelectedItem().toString();
-					        	
-//					        	iagro.readRol(nomRol);
-					        	Usuario user = new Usuario();
-//					        	user.setRol(iagro.readRol(nomRol));
-					        	// seteo el rol con el enumerado que tenga el valor seleccionado en el combobox de roles
-					        	user.setRol(Roles.valueOf(nomRol));
-					        	user.setApellido(textApellido.getText().toUpperCase());
-					        	user.setNombre(textNombre.getText().toUpperCase());
-					        	user.setDocumento(textFieldCedula.getText().toUpperCase());
-					        	user.setClave(passwordFieldPass.getText());
-					        	user.setEmail(textFieldEmail.getText().toUpperCase());
-					        	user.setClave(passwordFieldPass.getText());
-					        	user.setNickname(textFieldNickname.getText().toUpperCase());
-					        	
-					        	//Compruebo que la contrasenias sean iguales.
-					        	repClave=passwordFieldRepetirContrasenia.getText();
-					        	if(repClave.equals(passwordFieldPass.getText())){
-					        	
-					        		boolean result;
-					        		if (id > 0) {
-										System.out.println("ID for update: " + id);
-										user.setId(id);
-										result = iagro.update(user);
-									} else {
-										System.out.println("ID for update: " + id);
-										result = iagro.create(user);
-									}
-					        		if(result) {
-					        		limpiar();
-					        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
-					        		}
-					        		else {
-					        		JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
-					        		}
-					        	}
-					        	else {
-					        		JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
-					        	}
-					        	
-					        	
-					        }
+							errorComun = true;
+				        	
+				        	//JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+				       
+				        }
+					break;//comun
+					
+					case "EXPERTO" :
+						
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
+				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
+				        		|| textFieldProfesion.getText().isEmpty()) {
 							
-						}
+							errorExperto = true;
+				        	
+				        	//JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+				       
+				        }
+					break;//experto
+					
+					case "ADMINISTRADOR" :
+						
+						if(textNombre.getText().isEmpty() || textApellido.getText().isEmpty() || textFieldEmail.getText().isEmpty() ||
+				        		passwordFieldPass.getText().isEmpty() || passwordFieldRepetirContrasenia.getText().isEmpty() ||
+				        		comboBoxRol.getToolkit().equals("") || textFieldNickname.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
+				        		|| textFieldProfesion.getText().isEmpty() || textFieldCedula.getText().isEmpty() 
+				        		|| textFieldInstituto.getText().isEmpty()) {
+							
+							errorAdministrador = true;
+				        	
+				        	//JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+				       
+				        }
+					break;//administrador
+					
+					
+					}//fin del switch
+					
+					
+					
+					//controlamos si el mail tiene un formato invalido
+					
+					// Patron para validar el email
+			        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+			        
+			        Matcher mather = pattern.matcher(textFieldEmail.getText());
+					
+			        if (!textFieldEmail.getText().isEmpty() && mather.find() == false) {
+			        	
+			        	
+			        	
+						JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
+			        }//fin verificar mail
+			        
+			        //verificacion de pass
+			        else if(passwordFieldPass.getText().length()<8 || !(
+			        		passwordFieldPass.getText().contains("0") ||
+			        		passwordFieldPass.getText().contains("1") ||
+			        		passwordFieldPass.getText().contains("2") ||
+			        		passwordFieldPass.getText().contains("3") ||
+			        		passwordFieldPass.getText().contains("4") ||
+			        		passwordFieldPass.getText().contains("5") ||
+			        		passwordFieldPass.getText().contains("6") ||
+			        		passwordFieldPass.getText().contains("7") ||
+			        		passwordFieldPass.getText().contains("8") ||
+			        		passwordFieldPass.getText().contains("9"))) {
+			        	
+			        	
+			        	
+						JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
+
+			        }//fin verificar pass
+			        
+			        
+			        else if(errorComun == true || errorExperto == true || errorAdministrador == true) {
+			        	JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+			        }
+			        
+			        //si no se encontro un error sigue aqui
+			        
+			        else {
+			        	
+			        	String repClave = "";
+			        	
+			        	String nomRol = comboBoxRol.getSelectedItem().toString();
+			        	
+//			        	iagro.readRol(nomRol);
+			        	Usuario user = new Usuario();
+//			        	user.setRol(iagro.readRol(nomRol));
+			        	// seteo el rol con el enumerado que tenga el valor seleccionado en el combobox de roles
+			        	user.setRol(Roles.valueOf(nomRol));
+			        	user.setApellido(textApellido.getText().toUpperCase());
+			        	user.setNombre(textNombre.getText().toUpperCase());
+			        	user.setDocumento(textFieldCedula.getText().toUpperCase());
+			        	user.setClave(passwordFieldPass.getText());
+			        	user.setEmail(textFieldEmail.getText().toUpperCase());
+			        	user.setClave(passwordFieldPass.getText());
+			        	user.setNickname(textFieldNickname.getText().toUpperCase());
+			        	
+			        	//Compruebo que la contrasenias sean iguales.
+			        	repClave=passwordFieldRepetirContrasenia.getText();
+			        	if(repClave.equals(passwordFieldPass.getText())){
+			        	
+			        		boolean result;
+			        		if (id > 0) {
+								System.out.println("ID for update: " + id);
+								user.setId(id);
+								result = iagro.update(user);
+							} else {
+								System.out.println("ID for update: " + id);
+								result = iagro.create(user);
+							}
+			        		if(result) {
+			        		limpiar();
+			        		JOptionPane.showConfirmDialog(null, "Se ha guardado correctamente el usuario","Exito",JOptionPane.DEFAULT_OPTION);
+			        		}
+			        		else {
+			        		JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+			        		}
+			        	}//fin de comprobar pass iguales
+			        	
+			        	else {
+			        		JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+			        	}
+			        	
+			        	
+			        	
+			        	
+			        	
+			        	
+			        	
+			        	
+			        }// fin del si no se encontro un error
+					
+					
+					
+					
+				}
+				
+				
 				
 				
 			}
 		});
+		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnGuardar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonGuardar (2).png")));
+		btnGuardar.setBounds(10, 397, 147, 37);
 		desktopPane.add(btnGuardar);
+			
+		
+		
+		
 		
 		textNombre = new JTextField();
 		textNombre.setBounds(178, 108, 98, 20);
