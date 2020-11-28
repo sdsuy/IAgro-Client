@@ -287,6 +287,15 @@ public class IAgro {
 		return formul;
 	}
 	
+	public Casilla readCasilla(String parametro) {
+		Casilla casilla = casillas.stream()
+				.filter(f -> f.getParametro().equals(parametro))
+				.collect(Collectors.toList())
+				.get(0);
+		
+		return casilla;
+	}
+	
 	// matrices de datos para los JTable de los listados
 	public Object[][] matrixUsuarios() {
 		Object[][] datos = new Object[usuarios.size()][getColumnas().length];
