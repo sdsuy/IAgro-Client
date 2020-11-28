@@ -100,12 +100,23 @@ public class AltaUsuario implements IFrame<Usuario> {
 		comboBoxRol.getSelectedIndex();
 		textNombre.setText(o.getNombre());
 		textApellido.setText(o.getApellido());
-		textFieldEmail.setText(o.getEmail());
-		textFieldCedula.setText(o.getDocumento());
 		passwordFieldPass.setText(o.getClave());
 		textFieldNickname.setText(o.getNickname());
 		lblFondo.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/ModificarUsuario.png")));
 		
+		if (o.getRol().equals(Roles.EXPERTO.name())) {
+			textFieldCedula.setText(o.getDocumento());
+			textFieldProfesion.setText(o.getProfesion());
+		}
+		
+		else if (o.getRol().equals(Roles.ADMINISTRADOR.name())) {
+			textFieldCedula.setText(o.getDocumento());
+			textFieldInstituto.setText(o.getInstituto());
+		}
+		
+		else if (!o.getEmail().isEmpty()) {
+			textFieldEmail.setText(o.getEmail());
+		}
 		
 		
 		
