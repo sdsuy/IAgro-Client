@@ -239,6 +239,8 @@ public class IAgro {
 			formularios = bean.readAll();
 		} else if(c.equals(Casilla.class)) {
 			casillas = bean.readAll();
+		} else if(c.equals(Actividad.class)) {
+			actividades = bean.readAll();
 		} 
 	}
 	
