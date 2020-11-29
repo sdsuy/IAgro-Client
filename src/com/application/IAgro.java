@@ -355,8 +355,8 @@ public class IAgro {
 		Object[][] datos = new Object[actividades.size()][getColumnasActividad().length];
 		for (Actividad acti : actividades) {
 			datos[(actividades.indexOf(acti))][0] = acti.getUsuario().getNickname();
-			datos[(actividades.indexOf(acti))][1] = acti.getFecha();
-			datos[(actividades.indexOf(acti))][1] = acti.getHora();
+			datos[(actividades.indexOf(acti))][1] = acti.getFechaHora();
+			
 
 		}
 		return datos;
