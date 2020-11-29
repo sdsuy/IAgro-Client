@@ -308,6 +308,16 @@ public class IAgro {
 		return casilla;
 	}
 	
+	public Actividad readActividad(String parametro) {
+		Actividad actividad = actividades.stream()
+				.filter(f -> f.getUsuario().equals(parametro))
+				.collect(Collectors.toList())
+				.get(0);
+		
+		return actividad;
+	}
+	
+	
 	// matrices de datos para los JTable de los listados
 	public Object[][] matrixUsuarios() {
 		Object[][] datos = new Object[usuarios.size()][getColumnas().length];
