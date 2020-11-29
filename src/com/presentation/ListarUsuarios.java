@@ -174,20 +174,24 @@ public class ListarUsuarios implements IFrame<Usuario> {
 
 						if (seleccion == 0) {
 							
-							int selectedRow = table.getSelectedRow();
-							String idString = table.getValueAt(selectedRow, 0).toString();
-							Long idLing = Long.valueOf(idString);
-							Usuario userDelete = (Usuario) iagro.read(idLing, Usuario.class);
-							//table.getValueAt(selectedRow, 0), Usuario.class
-							boolean result = iagro.delete(userDelete.getId(), Usuario.class);
-							if(result) {
-								model.setData(iagro.matrixUsuarios());
-								model.refresh();
-								limpiarFiltros();
-								JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
-							}
-							else {
-								JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
+							try {
+								int selectedRow = table.getSelectedRow();
+								String idString = table.getValueAt(selectedRow, 0).toString();
+								Long idLing = Long.valueOf(idString);
+								Usuario userDelete = (Usuario) iagro.read(idLing, Usuario.class);
+								//table.getValueAt(selectedRow, 0), Usuario.class
+								boolean result = iagro.delete(userDelete.getId(), Usuario.class);
+								if(result) {
+									model.setData(iagro.matrixUsuarios());
+									model.refresh();
+									limpiarFiltros();
+									JOptionPane.showMessageDialog(null, "Se logro eliminar el Usuario","Exito",JOptionPane.DEFAULT_OPTION);
+								}
+								else {
+									JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
+								}
+							} catch (IndexOutOfBoundsException ex) {
+								// TODO: MOSTRAR MENSAJE QUE PRIMERO DEBE SELECCIONAR UN ELEMENTO DE LA LISTA
 							}
 							
 						}
@@ -203,19 +207,22 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (!iagro.getAuthUser().getRol().getRol().equals(Roles.ADMINISTRADOR)) {
-					JOptionPane.showMessageDialog(null, "Solo los usuarios Administradores pueden modificar Usuarios","Error",JOptionPane.ERROR_MESSAGE);
+				try {
+					if (!iagro.getAuthUser().getRol().getRol().equals(Roles.ADMINISTRADOR)) {
+						JOptionPane.showMessageDialog(null, "Solo los usuarios Administradores pueden modificar Usuarios","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					else {
+						int selectedRow = table.getSelectedRow();
+						String idString = table.getValueAt(selectedRow, 0).toString();
+						Long idLing = Long.valueOf(idString);
+						Usuario usuarioUpdate = (Usuario) iagro.read(idLing, Usuario.class);
+						iagro.show(AltaUsuario.class, usuarioUpdate);;
+						frame.dispose();
+					}
+				} catch (IndexOutOfBoundsException ex) {
+					// TODO: MOSTRAR MENSAJE QUE PRIMERO DEBE SELECCIONAR UN ELEMENTO DE LA LISTA
 				}
-				
-				else {
-					int selectedRow = table.getSelectedRow();
-					String idString = table.getValueAt(selectedRow, 0).toString();
-					Long idLing = Long.valueOf(idString);
-					Usuario usuarioUpdate = (Usuario) iagro.read(idLing, Usuario.class);
-					iagro.show(AltaUsuario.class, usuarioUpdate);;
-					frame.dispose();
-				}
-				
 				
 			}
 		});
