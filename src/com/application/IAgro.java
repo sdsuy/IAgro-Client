@@ -283,9 +283,11 @@ public class IAgro {
 		return casillas;
 	}
 	
-	public List<Formulario> getFormularios(){
-		return formularios;
+	public List<Actividad> getActividades(){
+		return actividades;
 	}
+	
+	
 	
 	// metodos read para cuando NO es por ID
 	public Usuario readUsuario(String nickname) {
