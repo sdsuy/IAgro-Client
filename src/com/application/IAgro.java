@@ -352,11 +352,11 @@ public class IAgro {
 	}
 	
 	public Object[][] matrixActividades(){
-		Object[][] datos = new Object[actividades.size()][getColumnasFormulario().length];
-		for (Formulario form : formularios) {
-			datos[(formularios.indexOf(form))][0] = form.getId();
-			datos[(formularios.indexOf(form))][1] = form.getNombre();
-//			datos[(formularios.indexOf(form))][2] = form.getCasillas().size();
+		Object[][] datos = new Object[actividades.size()][getColumnasActividad().length];
+		for (Actividad acti : actividades) {
+			datos[(actividades.indexOf(acti))][0] = acti.getUsuario().getNickname();
+			datos[(actividades.indexOf(acti))][1] = acti.getFecha();
+			datos[(actividades.indexOf(acti))][1] = acti.getHora();
 
 		}
 		return datos;
