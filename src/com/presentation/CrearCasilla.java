@@ -121,8 +121,7 @@ public class CrearCasilla implements IFrame<Casilla> {
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldUnidadDeMedida.getText().isEmpty() || textAreaDescripcion.getText().isEmpty()
-						|| comboBoxTipoDato.getToolkit().equals("") || textFieldParametro.getText().isEmpty()) {
+				if(textFieldUnidadDeMedida.getText().isEmpty() || comboBoxTipoDato.getToolkit().equals("") || textFieldParametro.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Debe completar todos lo campos Obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 
 				}else {
