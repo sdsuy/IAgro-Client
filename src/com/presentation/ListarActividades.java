@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableRowSorter;
 
 import com.application.IAgro;
 import com.entities.Actividad;
@@ -18,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListarActividades implements IFrame<Actividad>{
@@ -28,6 +31,9 @@ public class ListarActividades implements IFrame<Actividad>{
 	private JScrollPane scrollPane;
 	private JButton btnModificar;
 	private JButton btnVolver;
+	private List<Actividad> actividades;
+	private TableRowSorter<ModeloTabla> sorter;
+	private JTable table;
 	/**
 	 * Launch the application.
 	 */
@@ -69,6 +75,21 @@ public class ListarActividades implements IFrame<Actividad>{
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		actividades = iagro.getActividades();
+		String [] columnas = iagro.getColumnasActividad();
+		
+		int x = actividades.size();
+		int y = columnas.length;
+		
+		Object[][] datos = iagro.matrixActividades();
+		
+		ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		sorter = new TableRowSorter<ModeloTabla>(model);
+		
+		table = new JTable(model);
+		table.setRowSorter(sorter);
 		
 		scrollPane = new JScrollPane((Component) null);
 		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
