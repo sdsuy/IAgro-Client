@@ -321,7 +321,7 @@ public class IAgro {
 	
 	public Actividad readActividad(String parametro) {
 		Actividad actividad = actividades.stream()
-				.filter(f -> f.getUsuario().equals(parametro))
+				.filter(f -> f.getUsuario().getNickname().equals(parametro))
 				.collect(Collectors.toList())
 				.get(0);
 		
