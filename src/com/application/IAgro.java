@@ -21,6 +21,7 @@ import com.presentation.EditarCasillas;
 import com.presentation.Login;
 import com.presentation.MenuPrincipal;
 import com.presentation.ModificarActividad;
+import com.remote.ActividadBo;
 import com.remote.AuthBo;
 import com.remote.CasillaBo;
 import com.remote.FormularioBo;
@@ -53,6 +54,7 @@ public class IAgro {
 	private UsuarioBo usuarioBo; // usuarios
 	private FormularioBo formularioBo;
 	private CasillaBo casillaBo;
+	private ActividadBo actividadBo;
 
 	//***********************************************
 	// Listados ultra pesados con todos los datos para que la busqueda sea rapida
@@ -90,6 +92,7 @@ public class IAgro {
 		usuarioBo = new UsuarioBo();
 		formularioBo = new FormularioBo();
 		casillaBo = new CasillaBo();
+		actividadBo = new ActividadBo();
 		refresh(Usuario.class);
 		if(usuarios.size() < 1) bootstrap();
 		login.start(); // muestro la ventana de login con al menos 1 usuario por defecto cargado en la BD
@@ -245,6 +248,8 @@ public class IAgro {
 			return formularioBo;
 		} else if(c.equals(Casilla.class)) {
 			return casillaBo;
+		} else if(c.equals(Actividad.class)) {
+			return actividadBo;
 		}
 		return null;
 	}
