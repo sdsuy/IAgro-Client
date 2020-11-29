@@ -63,7 +63,8 @@ public class IAgro {
 	private List<Usuario> usuarios; // listado de usuarios del sistema
 	private List<Rol> roles; // listado de roles del sistema
 	private List<Formulario> formularios; //listado de formularios del sistema
-	private List<Casilla> casillas;
+	private List<Casilla> casillas; //listado de casillas del sistema
+	private List<Actividad> actividades;// listado de actividades del sistema
 
 	/**
 	 * 
