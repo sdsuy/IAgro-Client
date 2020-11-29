@@ -544,7 +544,7 @@ public class AltaUsuario implements IFrame<Usuario> {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				iagro.show(ListarFormularios.class);
+				iagro.show(ListarUsuarios.class);
 				frame.dispose();
 				
 			}
