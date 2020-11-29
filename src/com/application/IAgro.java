@@ -181,7 +181,7 @@ public class IAgro {
 	}
 	
 	public String [] getColumnasActividad() {
-		String [] columnas = {"CREADOR","FECHa", "HORA"};
+		String [] columnas = {"CREADOR","FECHA"};
 		return columnas;
 	}
 	
