@@ -11,6 +11,7 @@ import javax.swing.table.TableRowSorter;
 
 import com.application.IAgro;
 import com.entities.Actividad;
+import com.entities.Formulario;
 import com.entities.Usuario;
 
 import java.awt.Component;
@@ -23,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class ListarActividades implements IFrame<Actividad>{
+public class ListarActividades implements IFrame<Formulario>{
 
 	private JFrame frame;
 	private IAgro iagro;
@@ -31,9 +32,11 @@ public class ListarActividades implements IFrame<Actividad>{
 	private JScrollPane scrollPane;
 	private JButton btnModificar;
 	private JButton btnVolver;
-	private List<Actividad> actividades;
+	private List<Actividad> actividadesFormulario;
 	private TableRowSorter<ModeloTabla> sorter;
 	private JTable table;
+	private Formulario formulario;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -76,10 +79,12 @@ public class ListarActividades implements IFrame<Actividad>{
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		actividades = iagro.getActividades();
+		actividadesFormulario = formulario.getActividades();
+		
+		
 		String [] columnas = iagro.getColumnasActividad();
 		
-		int x = actividades.size();
+		int x = actividadesFormulario.size();
 		int y = columnas.length;
 		
 		Object[][] datos = iagro.matrixActividades();
@@ -141,8 +146,9 @@ public class ListarActividades implements IFrame<Actividad>{
 	}
 
 	@Override
-	public void setFields(Actividad o) {
-		// TODO Auto-generated method stub
+	public void setFields(Formulario o) {
+		
+		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
 		
 	}
 }
