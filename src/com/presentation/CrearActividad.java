@@ -12,6 +12,7 @@ import com.application.IAgro;
 import com.entities.Actividad;
 import com.entities.Casilla;
 import com.entities.Formulario;
+import com.entities.Informacion;
 import com.entities.Usuario;
 
 import java.awt.BorderLayout;
@@ -28,6 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -240,8 +242,18 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Actividad actividad = new Actividad();
+				List<Informacion> informaciones = new ArrayList<>();
+	
 				for(int i = 0; i < model.getRowCount(); i++) {
-					System.out.println(model.getValueAt(i, 4));
+				Informacion informacion = new Informacion();
+				
+				informacion.setCasilla(iagro.readCasilla((String) model.getValueAt(i, 0)));
+				informacion.setValor(model.getValueAt(i, 4).toString());	
+				informaciones.add(informacion);	
+				System.out.println(model.getValueAt(i, 4));
+					
 				}
 				
 			}
