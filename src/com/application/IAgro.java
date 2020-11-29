@@ -275,6 +275,10 @@ public class IAgro {
 		return casillas;
 	}
 	
+	public List<Formulario> getFormularios(){
+		return formularios;
+	}
+	
 	// metodos read para cuando NO es por ID
 	public Usuario readUsuario(String nickname) {
 		Usuario usuario = usuarios.stream()
