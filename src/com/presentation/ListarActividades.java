@@ -91,7 +91,7 @@ public class ListarActividades implements IFrame<Actividad>{
 		table = new JTable(model);
 		table.setRowSorter(sorter);
 		
-		scrollPane = new JScrollPane((Component) null);
+		scrollPane = new JScrollPane(table);
 		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPane.setBounds(10, 116, 633, 175);
 		desktopPane.add(scrollPane);
