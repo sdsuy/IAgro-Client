@@ -1,5 +1,8 @@
 package com.application;
 
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -181,7 +184,7 @@ public class IAgro {
 	}
 	
 	public String [] getColumnasActividad() {
-		String [] columnas = {"CREADOR","FECHA"};
+		String [] columnas = {"CREADOR","FECHA / HORA"};
 		return columnas;
 	}
 	
@@ -356,8 +359,15 @@ public class IAgro {
 	public Object[][] matrixActividades(){
 		Object[][] datos = new Object[actividades.size()][getColumnasActividad().length];
 		for (Actividad acti : actividades) {
+			
 			datos[(actividades.indexOf(acti))][0] = acti.getUsuario().getNickname();
-			datos[(actividades.indexOf(acti))][1] = acti.getFechaHora();
+			
+			LocalDateTime fechaHora = acti.getFechaHora();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd / HH:mm:ss");
+			String formatDateTime = fechaHora.format(formatter);
+			
+			
+			datos[(actividades.indexOf(acti))][1] = formatDateTime;
 			
 
 		}
