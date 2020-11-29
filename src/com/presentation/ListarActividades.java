@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -36,6 +37,8 @@ public class ListarActividades implements IFrame<Formulario>{
 	private TableRowSorter<ModeloTabla> sorter;
 	private JTable table;
 	private Formulario formulario;
+	ModeloTabla model;
+	Object[][] datos;
 	
 	/**
 	 * Launch the application.
@@ -79,17 +82,19 @@ public class ListarActividades implements IFrame<Formulario>{
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		actividadesFormulario = formulario.getActividades();
-		
+//		actividadesFormulario = formulario.getActividades();
 		
 		String [] columnas = iagro.getColumnasActividad();
 		
-		int x = actividadesFormulario.size();
-		int y = columnas.length;
+//		int x = actividadesFormulario.size();
+//		int y = columnas.length;
 		
-		Object[][] datos = iagro.matrixActividades();
+//		datos = iagro.matrixActividades();
+		Object[][] falso = {
+					{1, new Date()}
+	            };
 		
-		ModeloTabla model = new ModeloTabla(columnas, datos);
+		model = new ModeloTabla(columnas, falso);
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
 		
@@ -148,7 +153,11 @@ public class ListarActividades implements IFrame<Formulario>{
 	@Override
 	public void setFields(Formulario o) {
 		
-		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
+//		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
+		actividadesFormulario = iagro.getActividadesByForm(o); // busco las actvidades del formulario pasado como argumento
+		datos = iagro.matrixActividades(actividadesFormulario); // cargo los la matriz de datos con las actividades encontradas de ese formulario 
+		model.setData(datos); // actualizo el modelo de la tabla con la nueva matriz
+		model.refresh(); // refresco la tabla (antes de hacer visible el frame)
 		
 	}
 }
