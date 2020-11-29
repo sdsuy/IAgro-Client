@@ -126,7 +126,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		casillas = iagro.getCasillas();
 //		String [] columnas = iagro.getColumnasCasilla();
-		String [] columnas = {"PARAMETRO", "UNIDAD", "DESCRIPCION", "TIPO", "VALOR"};
+		String [] columnas = {"PARAMETRO", "UNIDAD", "DESCRIPCION", "TIPO", "INGRESE VALOR"};
 		
 //		int x = casillas.size();
 		//int y = columnas.length;
