@@ -242,7 +242,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				boolean result;
 				Actividad actividad = new Actividad();
 				List<Informacion> informaciones = new ArrayList<>();
 	
@@ -255,7 +255,14 @@ public class CrearActividad implements IFrame<Actividad> {
 				actividad.setInfo(informaciones);
 				actividad.setForm(formulario);
 				actividad.setUsuario(iagro.getAuthUser());
-				iagro.create(actividad);
+				
+				result=iagro.create(actividad);
+				if(result) {
+					JOptionPane.showMessageDialog(null, "Se creo con exito","Exito",JOptionPane.DEFAULT_OPTION);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Existe un error","Error",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
