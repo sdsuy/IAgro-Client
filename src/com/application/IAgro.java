@@ -290,7 +290,9 @@ public class IAgro {
 		return actividades;
 	}
 	
-	
+	public List<Actividad> getActividadesByForm(Formulario form){
+		return actividadBo.readAllByForm(form.getId());
+	}
 	
 	// metodos read para cuando NO es por ID
 	public Usuario readUsuario(String nickname) {
@@ -356,18 +358,17 @@ public class IAgro {
 		return datos;
 	}
 	
-	public Object[][] matrixActividades(){
-		Object[][] datos = new Object[actividades.size()][getColumnasActividad().length];
-		for (Actividad acti : actividades) {
+	public Object[][] matrixActividades(List<Actividad> actividadesFormulario){
+		Object[][] datos = new Object[actividadesFormulario.size()][getColumnasActividad().length];
+		for (Actividad acti : actividadesFormulario) {
 			
-			datos[(actividades.indexOf(acti))][0] = acti.getUsuario().getNickname();
+			datos[(actividadesFormulario.indexOf(acti))][0] = acti.getUsuario().getNickname();
 			
 			LocalDateTime fechaHora = acti.getFechaHora();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd / HH:mm:ss");
 			String formatDateTime = fechaHora.format(formatter);
 			
-			
-			datos[(actividades.indexOf(acti))][1] = formatDateTime;
+			datos[(actividadesFormulario.indexOf(acti))][1] = formatDateTime;
 			
 
 		}
