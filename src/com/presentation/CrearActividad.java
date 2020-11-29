@@ -249,12 +249,15 @@ public class CrearActividad implements IFrame<Actividad> {
 				for(int i = 0; i < model.getRowCount(); i++) {
 				Informacion informacion = new Informacion();
 				
-				informacion.setCasilla(iagro.readCasilla((String) model.getValueAt(i, 0)));
+				informacion.setCasilla(iagro.readCasilla(model.getValueAt(i, 0).toString()));
 				informacion.setValor(model.getValueAt(i, 4).toString());	
 				informaciones.add(informacion);	
 				System.out.println(model.getValueAt(i, 4));
 					
 				}
+				actividad.setInfo(informaciones);
+				actividad.setForm(formulario);
+				iagro.create(actividad);
 				
 			}
 		});
