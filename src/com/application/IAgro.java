@@ -180,6 +180,12 @@ public class IAgro {
 		return columnas;
 	}
 	
+	public String [] getColumnasActividad() {
+		String [] columnas = {"CREADOR","FECHa", "HORA"};
+		return columnas;
+	}
+	
+	
 	//**********************************************
 	// Metodos para el manejo de la capa de negocios
 	//**********************************************
@@ -344,5 +350,16 @@ public class IAgro {
 		}
 		return datos;
 	}
+	
+	public Object[][] matrixActividades(){
+		Object[][] datos = new Object[actividades.size()][getColumnasFormulario().length];
+		for (Formulario form : formularios) {
+			datos[(formularios.indexOf(form))][0] = form.getId();
+			datos[(formularios.indexOf(form))][1] = form.getNombre();
+//			datos[(formularios.indexOf(form))][2] = form.getCasillas().size();
+
+		}
+		return datos;
+	} 
 
 }
