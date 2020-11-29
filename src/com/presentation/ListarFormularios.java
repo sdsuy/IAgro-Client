@@ -255,8 +255,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnActividades.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnActividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				iagro.show(ListarActividades.class);
-				frame.dispose();
+				int selectedRow = table.getSelectedRow();
+				Formulario formActividades = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
+				iagro.show(ListarActividades.class, formActividades);
 			}
 		});
 		btnActividades.setBounds(7, 315, 188, 42);
