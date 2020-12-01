@@ -20,6 +20,8 @@ import java.awt.Cursor;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
@@ -116,8 +118,18 @@ public class ListarActividades implements IFrame<Formulario>{
 		btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				iagro.show(ModificarActividad.class);
-				frame.dispose();
+				
+				try {
+					
+					iagro.show(ModificarActividad.class);
+					frame.dispose();
+					
+					
+					
+				} catch (IndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un formulario para eliminar","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
