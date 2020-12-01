@@ -161,32 +161,37 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				try {
 				
+				int selectedRow = table.getSelectedRow();
 				
-				
-				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
-						null, new Object[] { "SI", "NO"},   
-						   null);
+					int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+							null, new Object[] { "SI", "NO"},   
+							   null);
 
-						if (seleccion == 0) {
-							
-							int selectedRow = table.getSelectedRow();
-							Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
-							boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
-							if(result) {
-								model.setData(iagro.matrixFormularios());
-								model.refresh();
-								limpiar();
+							if (seleccion == 0) {
 								
-								JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+								
+								Formulario formularioDelete = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
+								boolean result = iagro.delete(formularioDelete.getId(), Formulario.class);
+								if(result) {
+									model.setData(iagro.matrixFormularios());
+									model.refresh();
+									limpiar();
+									
+									JOptionPane.showMessageDialog(null, "Se logro eliminar el Formulario","Exito",JOptionPane.DEFAULT_OPTION);
+								}
+								else {
+									JOptionPane.showMessageDialog(null, "No se logro eliminar el Formulario","Error",JOptionPane.ERROR_MESSAGE);
+								}
+								
 							}
-							else {
-								JOptionPane.showMessageDialog(null, "No se logro eliminar el Formulario","Error",JOptionPane.ERROR_MESSAGE);
-							}
-							
-						}
+					
+				} catch (IndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un formulario para eliminar","Error",JOptionPane.ERROR_MESSAGE);
+				}
 			
-			}
+		 }
 		});
 		btnEliminar.setBounds(432, 296, 211, 42);
 		desktopPane.add(btnEliminar);
