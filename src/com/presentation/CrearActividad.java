@@ -35,7 +35,6 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
 import java.awt.Component;
-import java.awt.Color;
 
 public class CrearActividad implements IFrame<Actividad> {
 
@@ -51,7 +50,6 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private ModeloActividad model;
-	private JLabel lblError;
 
 	/**
 	 * Launch the application.
@@ -99,7 +97,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		JLabel lblFormulario = new JLabel("Formulario:");
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFormulario.setBounds(69, 97, 91, 14);
+		lblFormulario.setBounds(138, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 		
 		btnCancelar = new JButton("");
@@ -197,71 +195,44 @@ public class CrearActividad implements IFrame<Actividad> {
 		comboBoxFormulario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				lblError.setVisible(false);
-				
 				System.out.println(comboBoxFormulario.getSelectedItem());
+				formulario = iagro.readFormulario(comboBoxFormulario.getSelectedItem().toString()); // busco el formulario por nombre en la memoria
+				formulario = (Formulario) iagro.read(formulario.getId(), Formulario.class); // busco el formulario por id con todas las casillas
+				List<Casilla> casillas = formulario.getCasillas();
 				
-				if (comboBoxFormulario.getSelectedItem().toString().equals("")) {
-					
-				}
-				
-				else {
-					
-					
-					formulario = iagro.readFormulario(comboBoxFormulario.getSelectedItem().toString()); // busco el formulario por nombre en la memoria
-					formulario = (Formulario) iagro.read(formulario.getId(), Formulario.class); // busco el formulario por id con todas las casillas
-					List<Casilla> casillas = formulario.getCasillas();
-					
-					
-					for(Casilla c : casillas) {
-						if (c.getParametro().toString().equals("Metodo de muestreo") ||
-							c.getParametro().toString().equals("Estacion de Muestreo") ||
-							c.getParametro().toString().equals("Departamento") ||
-							c.getParametro().toString().equals("Ubicacion") ||
-							c.getParametro().toString().equals("Imagen")) {
-							
-							Object[][] datos = new Object[casillas.size()][columnas.length];
-							for(Casilla casilla: casillas) {
-								datos[(casillas.indexOf(casilla))][0] = casilla.getParametro().toString();
-								try {
-									datos[(casillas.indexOf(casilla))][1] = casilla.getUnidadMedida().toString();
-								} catch (NullPointerException ex) {
-									datos[(casillas.indexOf(casilla))][1] = "";
-								}
-								try {
-									datos[(casillas.indexOf(casilla))][2] = casilla.getDescripcion().toString();
-								} catch (NullPointerException ex) {
-									datos[(casillas.indexOf(casilla))][2] = "";
-								}
-								
-								datos[(casillas.indexOf(casilla))][3] = casilla.getTipo().getTipo().toString();
-								switch(casilla.getTipo()) {
-								case INTEGER:
-									datos[(casillas.indexOf(casilla))][4] = new Integer(0);
-									break;
-								case STRING:
-									datos[(casillas.indexOf(casilla))][4] = "";
-									break;
-								case DOUBLE:
-									datos[(casillas.indexOf(casilla))][4] = new Double(0.0);
-									break;
-								case BOOLEAN:
-									datos[(casillas.indexOf(casilla))][4] = Boolean.TRUE;
-									break;
-								}
-							}
-							model.setDatos(datos);
-							model.refresh();
-							
-						}
-						
-						else {
-							lblError.setVisible(true);
-						}
+				Object[][] datos = new Object[casillas.size()][columnas.length];
+				for(Casilla casilla: casillas) {
+					datos[(casillas.indexOf(casilla))][0] = casilla.getParametro().toString();
+					try {
+						datos[(casillas.indexOf(casilla))][1] = casilla.getUnidadMedida().toString();
+					} catch (NullPointerException ex) {
+						datos[(casillas.indexOf(casilla))][1] = "";
+					}
+					try {
+						datos[(casillas.indexOf(casilla))][2] = casilla.getDescripcion().toString();
+					} catch (NullPointerException ex) {
+						datos[(casillas.indexOf(casilla))][2] = "";
 					}
 					
-					
+					datos[(casillas.indexOf(casilla))][3] = casilla.getTipo().getTipo().toString();
+					switch(casilla.getTipo()) {
+					case INTEGER:
+						datos[(casillas.indexOf(casilla))][4] = new Integer(0);
+						break;
+					case STRING:
+						datos[(casillas.indexOf(casilla))][4] = "";
+						break;
+					case DOUBLE:
+						datos[(casillas.indexOf(casilla))][4] = new Double(0.0);
+						break;
+					case BOOLEAN:
+						datos[(casillas.indexOf(casilla))][4] = Boolean.TRUE;
+						break;
+					}
 				}
+				model.setDatos(datos);
+				model.refresh();
+				
 				
 				
 				
@@ -270,7 +241,7 @@ public class CrearActividad implements IFrame<Actividad> {
 			}
 		});
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		comboBoxFormulario.setBounds(170, 95, 134, 22);
+		comboBoxFormulario.setBounds(253, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
 		
 		List<Formulario> formularios = iagro.getFormulario();
@@ -330,12 +301,6 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
-		
-		lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
-		lblError.setForeground(Color.RED);
-		lblError.setBounds(314, 91, 201, 30);
-		desktopPane.add(lblError);
-		lblError.setVisible(false);
 		
 	}
 
