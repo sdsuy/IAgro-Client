@@ -32,7 +32,7 @@ public class MenuPrincipal  {
 	private JButton btnCrearFormularios;
 	private JButton btnRoles;
 	private JButton btnListarFormularios;
-	private JButton btnCrearRoles;
+	private JButton btnCrearCasillas;
 	private JButton btnLogout;
 	private JButton btnActividades;
 	private JButton btnCrearActividad;
@@ -203,16 +203,19 @@ public class MenuPrincipal  {
 		btnRoles.setBounds(416, 133, 181, 59);
 		desktopPane.add(btnRoles);
 		
-		btnCrearRoles = new JButton("");
-		btnCrearRoles.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnCrearRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
-		btnCrearRoles.addActionListener(new ActionListener() {
+		btnCrearCasillas = new JButton("");
+		btnCrearCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnCrearCasillas.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
+		btnCrearCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				visibilidadCasillas();
+				
 				iagro.show(CrearCasilla.class);
 			}
 		});
-		btnCrearRoles.setBounds(10, 11, 100, 33);
-		desktopPaneCasillas.add(btnCrearRoles);
+		btnCrearCasillas.setBounds(10, 11, 100, 33);
+		desktopPaneCasillas.add(btnCrearCasillas);
 		
 		btnLogout = new JButton("");
 		btnLogout.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -292,6 +295,17 @@ public class MenuPrincipal  {
     	if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
     		
     		btnCrearFormularios.setEnabled(false);
+    		
+    	}
+		
+		
+	}
+    
+    public void visibilidadCasillas() {
+    	
+    	if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+    		
+    		btnCrearCasillas.setEnabled(false);
     		
     	}
 		
