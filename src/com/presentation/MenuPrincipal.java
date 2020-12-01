@@ -9,6 +9,7 @@ import javax.swing.JButton;
 
 import com.application.IAgro;
 import com.entities.Actividad;
+import com.service.AuthBean;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,7 +28,7 @@ public class MenuPrincipal  {
 	JDesktopPane desktopPaneActividades;
 	private JButton btnAltaUsuario;
 	private JButton btnListarUsuarios;
-	private JButton btnFuncionalidades;
+	private JButton btnFormularios;
 	private JButton btnCrearFormularios;
 	private JButton btnRoles;
 	private JButton btnListarFormularios;
@@ -111,6 +112,7 @@ public class MenuPrincipal  {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				visibilidad(desktopPaneUsuarios);
+				visibilidadUsuarios();
 				
 			}
 		});
@@ -145,18 +147,20 @@ public class MenuPrincipal  {
 		desktopPane.add(desktopPaneFormularios);
 		desktopPaneFormularios.setVisible(false);
 		
-		btnFuncionalidades = new JButton("");
-		btnFuncionalidades.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnFuncionalidades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonFormularios.png")));
-		btnFuncionalidades.addActionListener(new ActionListener() {
+		btnFormularios = new JButton("");
+		btnFormularios.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnFormularios.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonFormularios.png")));
+		btnFormularios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				visibilidad(desktopPaneFormularios);
+				visibilidadFormularios();
 				
 			}
 		});
-		btnFuncionalidades.setBounds(214, 133, 181, 59);
-		desktopPane.add(btnFuncionalidades);
+		btnFormularios.setBounds(214, 133, 181, 59);
+		desktopPane.add(btnFormularios);
+		
 		
 		btnCrearFormularios = new JButton("");
 		btnCrearFormularios.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -258,6 +262,8 @@ public class MenuPrincipal  {
 		
 		
 		
+		
+		
 	}
 	
 	public void visibilidad(JDesktopPane visible) {
@@ -269,6 +275,30 @@ public class MenuPrincipal  {
 		visible.setVisible(true);
 
 	}
+	
+	public void visibilidadUsuarios() {
+		
+		if (!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR")) {
+			
+			btnAltaUsuario.setEnabled(false);
+			btnListarUsuarios.setEnabled(false);
+			
+		}
+		
+	}
+	
+    public void visibilidadFormularios() {
+    	
+    	if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+    		
+    		btnCrearFormularios.setEnabled(false);
+    		
+    	}
+		
+		
+	}
+	
+	
 
 	
 }
