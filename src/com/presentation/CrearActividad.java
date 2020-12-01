@@ -194,42 +194,62 @@ public class CrearActividad implements IFrame<Actividad> {
 		comboBoxFormulario.addItem("");
 		comboBoxFormulario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				System.out.println(comboBoxFormulario.getSelectedItem());
 				formulario = iagro.readFormulario(comboBoxFormulario.getSelectedItem().toString()); // busco el formulario por nombre en la memoria
 				formulario = (Formulario) iagro.read(formulario.getId(), Formulario.class); // busco el formulario por id con todas las casillas
 				List<Casilla> casillas = formulario.getCasillas();
-				Object[][] datos = new Object[casillas.size()][columnas.length];
-				for(Casilla casilla: casillas) {
-					datos[(casillas.indexOf(casilla))][0] = casilla.getParametro().toString();
-					try {
-						datos[(casillas.indexOf(casilla))][1] = casilla.getUnidadMedida().toString();
-					} catch (NullPointerException ex) {
-						datos[(casillas.indexOf(casilla))][1] = "";
-					}
-					try {
-						datos[(casillas.indexOf(casilla))][2] = casilla.getDescripcion().toString();
-					} catch (NullPointerException ex) {
-						datos[(casillas.indexOf(casilla))][2] = "";
+				
+				
+				for(Casilla c : casillas) {
+					if (c.getParametro().toString().equals("Metodo de muestreo") ||
+						c.getParametro().toString().equals("Estacion de Muestreo") ||
+						c.getParametro().toString().equals("Departamento") ||
+						c.getParametro().toString().equals("Ubicacion") ||
+						c.getParametro().toString().equals("Imagen")) {
+						
+						Object[][] datos = new Object[casillas.size()][columnas.length];
+						for(Casilla casilla: casillas) {
+							datos[(casillas.indexOf(casilla))][0] = casilla.getParametro().toString();
+							try {
+								datos[(casillas.indexOf(casilla))][1] = casilla.getUnidadMedida().toString();
+							} catch (NullPointerException ex) {
+								datos[(casillas.indexOf(casilla))][1] = "";
+							}
+							try {
+								datos[(casillas.indexOf(casilla))][2] = casilla.getDescripcion().toString();
+							} catch (NullPointerException ex) {
+								datos[(casillas.indexOf(casilla))][2] = "";
+							}
+							
+							datos[(casillas.indexOf(casilla))][3] = casilla.getTipo().getTipo().toString();
+							switch(casilla.getTipo()) {
+							case INTEGER:
+								datos[(casillas.indexOf(casilla))][4] = new Integer(0);
+								break;
+							case STRING:
+								datos[(casillas.indexOf(casilla))][4] = "";
+								break;
+							case DOUBLE:
+								datos[(casillas.indexOf(casilla))][4] = new Double(0.0);
+								break;
+							case BOOLEAN:
+								datos[(casillas.indexOf(casilla))][4] = Boolean.TRUE;
+								break;
+							}
+						}
+						model.setDatos(datos);
+						model.refresh();
+						
 					}
 					
-					datos[(casillas.indexOf(casilla))][3] = casilla.getTipo().getTipo().toString();
-					switch(casilla.getTipo()) {
-					case INTEGER:
-						datos[(casillas.indexOf(casilla))][4] = new Integer(0);
-						break;
-					case STRING:
-						datos[(casillas.indexOf(casilla))][4] = "";
-						break;
-					case DOUBLE:
-						datos[(casillas.indexOf(casilla))][4] = new Double(0.0);
-						break;
-					case BOOLEAN:
-						datos[(casillas.indexOf(casilla))][4] = Boolean.TRUE;
-						break;
+					else {
+						//label error
 					}
 				}
-				model.setDatos(datos);
-				model.refresh();
+				
+				
+				
 			}
 		});
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
