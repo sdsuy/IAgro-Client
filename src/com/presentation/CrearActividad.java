@@ -51,6 +51,7 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private ModeloActividad model;
+	private JLabel lblError;
 
 	/**
 	 * Launch the application.
@@ -245,7 +246,7 @@ public class CrearActividad implements IFrame<Actividad> {
 					}
 					
 					else {
-						//label error
+						lblError.setVisible(true);
 					}
 				}
 				
@@ -315,10 +316,11 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		JLabel lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
+		lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
 		lblError.setForeground(Color.RED);
 		lblError.setBounds(314, 91, 201, 30);
 		desktopPane.add(lblError);
+		lblError.setVisible(false);
 		
 	}
 
