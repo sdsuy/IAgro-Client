@@ -24,21 +24,27 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.table.TableModel;
+import java.awt.Font;
 
 public class ListarActividades implements IFrame<Formulario>{
 
 	private JFrame frame;
 	private IAgro iagro;
 	private Long id;
-	private JScrollPane scrollPane;
+	private JScrollPane scrollPaneRegistros;
 	private JButton btnModificar;
 	private JButton btnVolver;
 	private List<Actividad> actividadesFormulario;
 	private TableRowSorter<ModeloTabla> sorter;
-	private JTable table;
+	private TableRowSorter<ModeloTabla> sorterCasillas;
+	private JTable tableRegistros;
+	private JTable tableCasillas;
 	private Formulario formulario;
 	ModeloTabla model;
+	ModeloTabla modelCasillas;
 	Object[][] datos;
+	private JScrollPane scrollPaneCasillas;
 	
 	/**
 	 * Launch the application.
@@ -75,7 +81,7 @@ public class ListarActividades implements IFrame<Formulario>{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 668, 446);
+		frame.setBounds(100, 100, 689, 446);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
 		
@@ -98,13 +104,13 @@ public class ListarActividades implements IFrame<Formulario>{
 		
 		sorter = new TableRowSorter<ModeloTabla>(model);
 		
-		table = new JTable(model);
-		table.setRowSorter(sorter);
+		tableRegistros = new JTable(model);
+		tableRegistros.setRowSorter(sorter);
 		
-		scrollPane = new JScrollPane(table);
-		scrollPane.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		scrollPane.setBounds(10, 116, 633, 175);
-		desktopPane.add(scrollPane);
+		scrollPaneRegistros = new JScrollPane(tableRegistros);
+		scrollPaneRegistros.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		scrollPaneRegistros.setBounds(10, 116, 319, 175);
+		desktopPane.add(scrollPaneRegistros);
 		
 		btnModificar = new JButton("");
 		btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -115,13 +121,8 @@ public class ListarActividades implements IFrame<Formulario>{
 			}
 		});
 		btnModificar.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonModificarSeleccionada.png")));
-		btnModificar.setBounds(204, 320, 229, 42);
+		btnModificar.setBounds(222, 320, 229, 42);
 		desktopPane.add(btnModificar);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
-		lblFondo.setBounds(91, 0, 486, 414);
-		desktopPane.add(lblFondo);
 		
 		btnVolver = new JButton("");
 		btnVolver.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -134,6 +135,32 @@ public class ListarActividades implements IFrame<Formulario>{
 		btnVolver.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonVolver.png")));
 		btnVolver.setBounds(10, 363, 92, 33);
 		desktopPane.add(btnVolver);
+		
+        //modelCasillas = new ModeloTabla(columnas, datos);
+		
+		sorterCasillas = new TableRowSorter<ModeloTabla>(model);
+		
+		tableCasillas = new JTable(modelCasillas);
+		tableCasillas.setRowSorter(sorterCasillas);
+		
+		scrollPaneCasillas = new JScrollPane(tableCasillas);
+		scrollPaneCasillas.setBounds(339, 116, 334, 175);
+		desktopPane.add(scrollPaneCasillas);
+		
+		JLabel lblActividadesRegistradas = new JLabel("Actividaes Registradas:");
+		lblActividadesRegistradas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblActividadesRegistradas.setBounds(74, 91, 166, 20);
+		desktopPane.add(lblActividadesRegistradas);
+		
+		JLabel lblCasillas = new JLabel("Casillas:");
+		lblCasillas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCasillas.setBounds(475, 91, 71, 20);
+		desktopPane.add(lblCasillas);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
+		lblFondo.setBounds(95, 0, 486, 414);
+		desktopPane.add(lblFondo);
 	}
 
 	@Override
