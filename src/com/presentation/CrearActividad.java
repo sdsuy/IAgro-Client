@@ -35,6 +35,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollBar;
 import java.awt.Component;
+import java.awt.Color;
 
 public class CrearActividad implements IFrame<Actividad> {
 
@@ -97,7 +98,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		
 		JLabel lblFormulario = new JLabel("Formulario:");
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFormulario.setBounds(138, 97, 91, 14);
+		lblFormulario.setBounds(69, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 		
 		btnCancelar = new JButton("");
@@ -253,7 +254,7 @@ public class CrearActividad implements IFrame<Actividad> {
 			}
 		});
 		comboBoxFormulario.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		comboBoxFormulario.setBounds(253, 95, 134, 22);
+		comboBoxFormulario.setBounds(170, 95, 134, 22);
 		desktopPane.add(comboBoxFormulario);
 		
 		List<Formulario> formularios = iagro.getFormulario();
@@ -313,6 +314,11 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
+		
+		JLabel lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(314, 91, 201, 30);
+		desktopPane.add(lblError);
 		
 	}
 
