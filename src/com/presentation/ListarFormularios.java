@@ -161,7 +161,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				visibilidadEliminar();
+				
 				
 				
 				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
@@ -201,7 +201,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEditarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				visibilidadEditar();
+				
 				
 				int selectedRow = table.getSelectedRow();
 				Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
@@ -267,6 +267,11 @@ public class ListarFormularios implements IFrame<Formulario> {
 		});
 		btnActividades.setBounds(7, 315, 188, 42);
 		desktopPane.add(btnActividades);
+		
+		visibilidadEditar();
+		visibilidadEliminar();
+		
+		
 	}
 	 /** 
      * Update the row filter regular expression from the expression in
@@ -294,25 +299,34 @@ public class ListarFormularios implements IFrame<Formulario> {
 	
    public void visibilidadEliminar() {
 		
-		if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
-			
-			btnEliminar.setEnabled(false);
-			
-			
-		}
+	   if(iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+	   		
+	   		//No hacemos nada
+	   		
+	   	}
+	   
+	   else {
+		   btnEliminar.setEnabled(false);
+	   	}
+		
 		
 	}
    
    public void visibilidadEditar() {
 		
-		if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
-			
-			btnEditarCasillas.setEnabled(false);
-			
-			
-		}
+	   if(iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+	   		
+	   		//No hacemos nada
+	   		
+	   	}
+	   
+	   else {
+		   btnEditarCasillas.setEnabled(false);
+	   	}
 		
 	}
+   
+   
    
    
 }

@@ -30,7 +30,7 @@ public class MenuPrincipal  {
 	private JButton btnListarUsuarios;
 	private JButton btnFormularios;
 	private JButton btnCrearFormularios;
-	private JButton btnRoles;
+	private JButton btnCasillas;
 	private JButton btnListarFormularios;
 	private JButton btnCrearCasillas;
 	private JButton btnLogout;
@@ -190,18 +190,19 @@ public class MenuPrincipal  {
 		desktopPane.add(desktopPaneCasillas);
 		desktopPaneCasillas.setVisible(false);
 		
-		btnRoles = new JButton("");
-		btnRoles.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnRoles.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCasillas.png")));
-		btnRoles.addActionListener(new ActionListener() {
+		btnCasillas = new JButton("");
+		btnCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnCasillas.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCasillas.png")));
+		btnCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				visibilidad(desktopPaneCasillas);
+				visibilidadCasillas();
 				
 			}
 		});
-		btnRoles.setBounds(416, 133, 181, 59);
-		desktopPane.add(btnRoles);
+		btnCasillas.setBounds(416, 133, 181, 59);
+		desktopPane.add(btnCasillas);
 		
 		btnCrearCasillas = new JButton("");
 		btnCrearCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -209,7 +210,7 @@ public class MenuPrincipal  {
 		btnCrearCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				visibilidadCasillas();
+				
 				
 				iagro.show(CrearCasilla.class);
 			}
@@ -292,21 +293,30 @@ public class MenuPrincipal  {
 	
     public void visibilidadFormularios() {
     	
-    	if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+        if(iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
     		
-    		btnCrearFormularios.setEnabled(false);
+    		//No hacemos nada
     		
     	}
+        
+        else {
+        	btnCrearFormularios.setEnabled(false);
+    	}
 		
+    	
 		
 	}
     
     public void visibilidadCasillas() {
     	
-    	if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+    	if(iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
     		
+    		//No hacemos nada
+    		
+    	}
+    	
+    	else {
     		btnCrearCasillas.setEnabled(false);
-    		
     	}
 		
 		
