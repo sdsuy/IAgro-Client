@@ -28,6 +28,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.table.TableModel;
 import java.awt.Font;
+import javax.swing.JComboBox;
 
 public class ListarActividades implements IFrame<Formulario>{
 
@@ -47,6 +48,7 @@ public class ListarActividades implements IFrame<Formulario>{
 	ModeloTabla modelCasillas;
 	Object[][] datos;
 	private JScrollPane scrollPaneCasillas;
+	private JComboBox comboBoxFormulario;
 	
 	/**
 	 * Launch the application.
@@ -90,6 +92,12 @@ public class ListarActividades implements IFrame<Formulario>{
 		JDesktopPane desktopPane = new JDesktopPane();
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
+		
+		
+		
+		
+		
+		
 //		actividadesFormulario = formulario.getActividades();
 		
 		String [] columnas = iagro.getColumnasActividad();
@@ -111,7 +119,7 @@ public class ListarActividades implements IFrame<Formulario>{
 		
 		scrollPaneRegistros = new JScrollPane(tableRegistros);
 		scrollPaneRegistros.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		scrollPaneRegistros.setBounds(10, 116, 319, 175);
+		scrollPaneRegistros.setBounds(10, 152, 319, 139);
 		desktopPane.add(scrollPaneRegistros);
 		
 		btnModificar = new JButton("");
@@ -156,18 +164,45 @@ public class ListarActividades implements IFrame<Formulario>{
 		tableCasillas.setRowSorter(sorterCasillas);
 		
 		scrollPaneCasillas = new JScrollPane(tableCasillas);
-		scrollPaneCasillas.setBounds(339, 116, 334, 175);
+		scrollPaneCasillas.setBounds(339, 152, 334, 139);
 		desktopPane.add(scrollPaneCasillas);
 		
 		JLabel lblActividadesRegistradas = new JLabel("Actividaes Registradas:");
 		lblActividadesRegistradas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblActividadesRegistradas.setBounds(74, 91, 166, 20);
+		lblActividadesRegistradas.setBounds(76, 121, 166, 20);
 		desktopPane.add(lblActividadesRegistradas);
 		
 		JLabel lblCasillas = new JLabel("Casillas:");
 		lblCasillas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCasillas.setBounds(475, 91, 71, 20);
+		lblCasillas.setBounds(472, 121, 71, 20);
 		desktopPane.add(lblCasillas);
+		
+		JLabel lblFormulario = new JLabel("Formulario:");
+		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFormulario.setBounds(241, 79, 88, 20);
+		desktopPane.add(lblFormulario);
+		
+		comboBoxFormulario = new JComboBox();
+		comboBoxFormulario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				formulario = iagro.readFormulario(comboBoxFormulario.getSelectedItem().toString()); 
+				formulario = (Formulario) iagro.read(formulario.getId(), Formulario.class);
+				
+				actividadesFormulario = iagro.getActividadesByForm(formulario); // busco las actvidades del formulario seleccionado en el combobox
+				datos = iagro.matrixActividades(actividadesFormulario); // cargo los la matriz de datos con las actividades encontradas de ese formulario 
+				model.setData(datos); // actualizo el modelo de la tabla con la nueva matriz
+				model.refresh(); // refresco la tabla (antes de hacer visible el frame)
+				
+			}
+		});
+		comboBoxFormulario.setBounds(339, 80, 112, 22);
+		desktopPane.add(comboBoxFormulario);
+		
+		List<Formulario> formularios = iagro.getFormulario();
+		for (Formulario form : formularios) {
+			comboBoxFormulario.addItem(form.getNombre());
+		}
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/ActividadesDeCampo.png")));
@@ -193,10 +228,7 @@ public class ListarActividades implements IFrame<Formulario>{
 	public void setFields(Formulario o) {
 		
 //		formulario = (Formulario) iagro.read(o.getId(), Formulario.class);
-		actividadesFormulario = iagro.getActividadesByForm(o); // busco las actvidades del formulario pasado como argumento
-		datos = iagro.matrixActividades(actividadesFormulario); // cargo los la matriz de datos con las actividades encontradas de ese formulario 
-		model.setData(datos); // actualizo el modelo de la tabla con la nueva matriz
-		model.refresh(); // refresco la tabla (antes de hacer visible el frame)
+		
 		
 	}
 }
