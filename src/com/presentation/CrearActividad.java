@@ -49,6 +49,7 @@ public class CrearActividad implements IFrame<Actividad> {
 //	private TableRowSorter<ModeloTabla> sorter;
 	private JTable table;
 	private JScrollPane scrollPane;
+	private ModeloActividad model;
 
 	/**
 	 * Launch the application.
@@ -140,7 +141,7 @@ public class CrearActividad implements IFrame<Actividad> {
 	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", Boolean.TRUE}};
 //		
 //		ModeloTabla model = new ModeloTabla(columnas, datos);
-		ModeloActividad model = new ModeloActividad(columnas, datos);
+		model = new ModeloActividad(columnas, datos);
 		
 		//sorter = new TableRowSorter<ModeloTabla>(model);
 		
@@ -242,27 +243,49 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result;
-				Actividad actividad = new Actividad();
-				List<Informacion> informaciones = new ArrayList<>();
-	
-				for(int i = 0; i < model.getRowCount(); i++) {
-					Informacion informacion = new Informacion();
-					informacion.setCasilla(iagro.readCasilla(model.getValueAt(i, 0).toString()));
-					informacion.setValor(model.getValueAt(i, 4).toString());
-					informaciones.add(informacion);
-				}
-				actividad.setInfo(informaciones);
-				actividad.setForm(formulario);
-				actividad.setUsuario(iagro.getAuthUser());
 				
-				result=iagro.create(actividad);
-				if(result) {
-					JOptionPane.showMessageDialog(null, "Se creo con exito","Exito",JOptionPane.DEFAULT_OPTION);
+				int counter = 0;
+				
+				for(int i = 0; i < model.getRowCount(); i++) {
+					
+					if(model.getValueAt(i, 4).toString().equals("")) {
+						counter++;
+						JOptionPane.showMessageDialog(null, "Debe rellenar todas las casillas que se muestran","Error",JOptionPane.ERROR_MESSAGE);
+						
+						if(counter > 0) {
+							break;
+						}
+						
+					}
+					
+					else {
+						
+						boolean result;
+						Actividad actividad = new Actividad();
+						List<Informacion> informaciones = new ArrayList<>();
+			
+						for(int i2 = 0; i2 < model.getRowCount(); i2++) {
+							Informacion informacion = new Informacion();
+							informacion.setCasilla(iagro.readCasilla(model.getValueAt(i2, 0).toString()));
+							informacion.setValor(model.getValueAt(i2, 4).toString());
+							informaciones.add(informacion);
+						}
+						actividad.setInfo(informaciones);
+						actividad.setForm(formulario);
+						actividad.setUsuario(iagro.getAuthUser());
+						
+						result=iagro.create(actividad);
+						if(result) {
+							JOptionPane.showMessageDialog(null, "Se creo con exito","Exito",JOptionPane.DEFAULT_OPTION);
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Existe un error","Error",JOptionPane.ERROR_MESSAGE);
+						}
+						
+					}
 				}
-				else {
-					JOptionPane.showMessageDialog(null, "Existe un error","Error",JOptionPane.ERROR_MESSAGE);
-				}
+				
+				
 			}
 		});
 		btnGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
