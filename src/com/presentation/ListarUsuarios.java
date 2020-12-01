@@ -225,7 +225,7 @@ public class ListarUsuarios implements IFrame<Usuario> {
 						frame.dispose();
 					}
 				} catch (IndexOutOfBoundsException ex) {
-					// TODO: MOSTRAR MENSAJE QUE PRIMERO DEBE SELECCIONAR UN ELEMENTO DE LA LISTA
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un Usuario para modificar","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}

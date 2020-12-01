@@ -127,7 +127,7 @@ public class ListarActividades implements IFrame<Formulario>{
 					
 					
 				} catch (IndexOutOfBoundsException ex) {
-					JOptionPane.showMessageDialog(null, "Debe seleccinar un formulario para eliminar","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Debe seleccinar una actividad para modificar","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
