@@ -245,7 +245,7 @@ public class MenuPrincipal  {
 		
 		desktopPaneActividades = new JDesktopPane();
 		desktopPaneActividades.setBackground(new Color(173, 216, 230));
-		desktopPaneActividades.setBounds(648, 203, 127, 52);
+		desktopPaneActividades.setBounds(648, 203, 127, 98);
 		desktopPane.add(desktopPaneActividades);
 		
 		btnCrearActividad = new JButton("");
@@ -258,6 +258,17 @@ public class MenuPrincipal  {
 		btnCrearActividad.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonCrear.png")));
 		btnCrearActividad.setBounds(10, 11, 100, 33);
 		desktopPaneActividades.add(btnCrearActividad);
+		
+		JButton btnListarActividades = new JButton("");
+		btnListarActividades.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				iagro.show(ListarActividades.class);
+				
+			}
+		});
+		btnListarActividades.setBounds(10, 55, 100, 33);
+		desktopPaneActividades.add(btnListarActividades);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(176, 0, 471, 480);
@@ -321,8 +332,4 @@ public class MenuPrincipal  {
 		
 		
 	}
-	
-	
-
-	
 }
