@@ -161,6 +161,8 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				visibilidadEliminar();
+				
 				
 				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
 						null, new Object[] { "SI", "NO"},   
@@ -198,6 +200,9 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEditarCasillas.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEditarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				visibilidadEditar();
+				
 				int selectedRow = table.getSelectedRow();
 				Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
 				iagro.show(EditarCasillas.class, formEditarCasillas);
@@ -286,4 +291,28 @@ public class ListarFormularios implements IFrame<Formulario> {
 		textFieldNombre.setText("");
 
 	}
+	
+   public void visibilidadEliminar() {
+		
+		if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+			
+			btnEliminar.setEnabled(false);
+			
+			
+		}
+		
+	}
+   
+   public void visibilidadEditar() {
+		
+		if(!iagro.getAuthUser().getRol().getRol().name().equals("ADMINISTRADOR") || !iagro.getAuthUser().getRol().getRol().name().equals("EXPERTO")) {
+			
+			btnEditarCasillas.setEnabled(false);
+			
+			
+		}
+		
+	}
+   
+   
 }
