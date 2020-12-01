@@ -260,6 +260,7 @@ public class MenuPrincipal  {
 		desktopPaneActividades.add(btnCrearActividad);
 		
 		JButton btnListarActividades = new JButton("");
+		btnListarActividades.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/img/BotonListar.png")));
 		btnListarActividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
