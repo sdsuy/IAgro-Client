@@ -168,13 +168,15 @@ public class ListarUsuarios implements IFrame<Usuario> {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				try {
+				
 				int seleccion = JOptionPane.showOptionDialog(null, "Seguro desea Eliminar el Usuario?",  null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
 						null, new Object[] { "SI", "NO"},   
 						   null);
 
 						if (seleccion == 0) {
 							
-							try {
+							
 								int selectedRow = table.getSelectedRow();
 								String idString = table.getValueAt(selectedRow, 0).toString();
 								Long idLing = Long.valueOf(idString);
@@ -190,11 +192,13 @@ public class ListarUsuarios implements IFrame<Usuario> {
 								else {
 									JOptionPane.showMessageDialog(null, "No se logro eliminar El Usuario","Error",JOptionPane.ERROR_MESSAGE);
 								}
-							} catch (IndexOutOfBoundsException ex) {
-								// TODO: MOSTRAR MENSAJE QUE PRIMERO DEBE SELECCIONAR UN ELEMENTO DE LA LISTA
-							}
+							
 							
 						}
+						
+				} catch (IndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un formulario para eliminar","Error",JOptionPane.ERROR_MESSAGE);
+				}		
 				
 			}
 		});
