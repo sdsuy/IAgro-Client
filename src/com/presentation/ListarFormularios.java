@@ -47,7 +47,6 @@ public class ListarFormularios implements IFrame<Formulario> {
 	private JButton btnEliminar;
 	private JButton btnEditarCasillas;
 	private JButton btnLimpiar;
-	private JButton btnActividades;
 
 	/**
 	 * Launch the application.
@@ -221,7 +220,7 @@ public class ListarFormularios implements IFrame<Formulario> {
 			}
 		});
 		btnEditarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
-		btnEditarCasillas.setBounds(10, 262, 185, 42);
+		btnEditarCasillas.setBounds(10, 296, 185, 42);
 		desktopPane.add(btnEditarCasillas);
 		
 		JLabel lblFiltros = new JLabel("Filtrar");
@@ -266,28 +265,6 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnLimpiar.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonLimpiar.png")));
 		btnLimpiar.setBounds(532, 73, 100, 35);
 		desktopPane.add(btnLimpiar);
-		
-		btnActividades = new JButton("Actividades de campo");
-		btnActividades.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnActividades.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				try {
-					
-					int selectedRow = table.getSelectedRow();
-					Formulario formActividades = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
-					iagro.show(ListarActividades.class, formActividades);
-					
-				} catch (IndexOutOfBoundsException ex) {
-					JOptionPane.showMessageDialog(null, "Debe seleccinar un Formulario para listar las actividades de campo","Error",JOptionPane.ERROR_MESSAGE);
-				}
-				
-				
-				
-			}
-		});
-		btnActividades.setBounds(7, 315, 188, 42);
-		desktopPane.add(btnActividades);
 		
 		visibilidadEditar();
 		visibilidadEliminar();
