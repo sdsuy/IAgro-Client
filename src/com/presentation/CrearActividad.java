@@ -191,6 +191,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane_1.add(scrollPane);
 		
 		comboBoxFormulario = new JComboBox();
+		comboBoxFormulario.addItem("");
 		comboBoxFormulario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(comboBoxFormulario.getSelectedItem());
