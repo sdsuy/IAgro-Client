@@ -271,9 +271,19 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnActividades.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnActividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int selectedRow = table.getSelectedRow();
-				Formulario formActividades = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
-				iagro.show(ListarActividades.class, formActividades);
+				
+				try {
+					
+					int selectedRow = table.getSelectedRow();
+					Formulario formActividades = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
+					iagro.show(ListarActividades.class, formActividades);
+					
+				} catch (IndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un Formulario para listar las actividades de campo","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				
+				
+				
 			}
 		});
 		btnActividades.setBounds(7, 315, 188, 42);
