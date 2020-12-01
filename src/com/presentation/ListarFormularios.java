@@ -206,12 +206,18 @@ public class ListarFormularios implements IFrame<Formulario> {
 		btnEditarCasillas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				try {
+					
+					int selectedRow = table.getSelectedRow();
+					Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
+					iagro.show(EditarCasillas.class, formEditarCasillas);
+					frame.dispose();
+					
+				} catch (IndexOutOfBoundsException ex) {
+					JOptionPane.showMessageDialog(null, "Debe seleccinar un Formulario para editar las casillas","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 				
-				int selectedRow = table.getSelectedRow();
-				Formulario formEditarCasillas = iagro.readFormulario(table.getValueAt(selectedRow, 1).toString());
-				iagro.show(EditarCasillas.class, formEditarCasillas);
-				frame.dispose();
 			}
 		});
 		btnEditarCasillas.setIcon(new ImageIcon(ListarFormularios.class.getResource("/img/BotonEditarCasillas.png")));
