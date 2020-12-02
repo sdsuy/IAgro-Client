@@ -94,6 +94,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		frame.setResizable(false);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(173, 216, 230));
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JLabel lblFormulario = new JLabel("Formulario:");
