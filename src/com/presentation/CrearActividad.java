@@ -49,6 +49,7 @@ public class CrearActividad implements IFrame<Actividad> {
 //	private TableRowSorter<ModeloTabla> sorter;
 	private JTable table;
 	private JScrollPane scrollPane;
+	private JLabel lblAlPedo;
 
 	/**
 	 * Launch the application.
@@ -121,7 +122,7 @@ public class CrearActividad implements IFrame<Actividad> {
 		desktopPane.add(btnCancelar);
 		
 		JDesktopPane desktopPane_1 = new JDesktopPane();
-		desktopPane_1.setBounds(10, 129, 523, 240);
+		desktopPane_1.setBounds(10, 129, 523, 253);
 		desktopPane.add(desktopPane_1);
 		
 		casillas = iagro.getCasillas();
@@ -186,7 +187,7 @@ public class CrearActividad implements IFrame<Actividad> {
         };
 		
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(0, 0, 523, 240);
+		scrollPane.setBounds(0, 0, 523, 253);
 		desktopPane_1.add(scrollPane);
 		
 		comboBoxFormulario = new JComboBox();
@@ -231,6 +232,9 @@ public class CrearActividad implements IFrame<Actividad> {
 				model.setDatos(datos);
 				model.refresh();
 				
+			
+				
+				
 				
 				
 				
@@ -247,18 +251,30 @@ public class CrearActividad implements IFrame<Actividad> {
 			comboBoxFormulario.addItem(form.getNombre());
 		}
 		
+		
+		
 		btnGuardar = new JButton("");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				table.getSelectionModel().clearSelection();
+				
 				boolean result;
 				Actividad actividad = new Actividad();
 				List<Informacion> informaciones = new ArrayList<>();
+				
+				
+				if (table.isEditing()) table.getCellEditor().stopCellEditing();  //Importantisimo, sino no guarda el ultimo dato ingresado
+				
 	
 				for(int i = 0; i < model.getRowCount(); i++) {
 					Informacion informacion = new Informacion();
 					informacion.setCasilla(iagro.readCasilla(model.getValueAt(i, 0).toString()));
 					informacion.setValor(model.getValueAt(i, 4).toString());
 					informaciones.add(informacion);
+					
+					
+					
 				}
 				actividad.setInfo(informaciones);
 				actividad.setForm(formulario);
@@ -277,6 +293,10 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/BotonGuardar (2).png")));
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
+		
+		
+		
+		
 		
 	}
 
