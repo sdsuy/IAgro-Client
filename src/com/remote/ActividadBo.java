@@ -42,6 +42,10 @@ public class ActividadBo implements IBean<Actividad> {
 	public List<Actividad> readAllByForm(Long id) {
 		return actividadBean.readAllByForm(id);
 	}
+	
+	public Actividad readOneAndCasillasEInfo(Long id) {
+		return actividadBean.readOneAndCasillasEInfo(id);
+	}
 
 	@Override
 	public boolean update(Actividad o) {
