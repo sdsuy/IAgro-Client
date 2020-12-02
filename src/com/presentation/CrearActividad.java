@@ -51,6 +51,7 @@ public class CrearActividad implements IFrame<Actividad> {
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JLabel lblError;
+	private JLabel lblFondo;
 
 	/**
 	 * Launch the application.
@@ -345,6 +346,11 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblError.setForeground(Color.RED);
 		lblError.setBounds(267, 91, 266, 30);
 		desktopPane.add(lblError);
+		
+		lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/CrearActividad.png")));
+		lblFondo.setBounds(96, -7, 397, 118);
+		desktopPane.add(lblFondo);
 		lblError.setVisible(false);
 		
 		
