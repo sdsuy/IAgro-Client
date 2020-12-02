@@ -294,6 +294,10 @@ public class IAgro {
 		return actividadBo.readAllByForm(form.getId());
 	}
 	
+	public Actividad getActividadById(Actividad actividad){
+		return actividadBo.readOneAndCasillasEInfo(actividad.getId());
+	}
+	
 	// metodos read para cuando NO es por ID
 	public Usuario readUsuario(String nickname) {
 		Usuario usuario = usuarios.stream()
