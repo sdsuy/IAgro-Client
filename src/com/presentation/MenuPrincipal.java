@@ -247,6 +247,8 @@ public class MenuPrincipal  {
 		desktopPaneActividades.setBackground(new Color(173, 216, 230));
 		desktopPaneActividades.setBounds(648, 203, 127, 98);
 		desktopPane.add(desktopPaneActividades);
+		desktopPaneActividades.setVisible(false);
+		
 		
 		btnCrearActividad = new JButton("");
 		btnCrearActividad.setCursor(new Cursor(Cursor.HAND_CURSOR));
