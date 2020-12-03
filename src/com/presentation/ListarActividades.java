@@ -7,14 +7,17 @@ import javax.swing.JDesktopPane;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableRowSorter;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
 import com.application.IAgro;
 import com.entities.Actividad;
 import com.entities.Formulario;
-import com.entities.Usuario;
+import com.entities.Informacion;
+import com.entities.Roles;
 
-import java.awt.Component;
 import java.awt.Cursor;
 
 import javax.swing.JButton;
@@ -23,10 +26,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.awt.event.ActionEvent;
-import javax.swing.table.TableModel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 
@@ -39,16 +44,18 @@ public class ListarActividades implements IFrame<Formulario>{
 	private JButton btnModificar;
 	private JButton btnVolver;
 	private List<Actividad> actividadesFormulario;
-	private TableRowSorter<ModeloTabla> sorter;
-	private TableRowSorter<ModeloTabla> sorterCasillas;
+//	private TableRowSorter<ModeloTabla> sorter;
+//	private TableRowSorter<ModeloTabla> sorterCasillas;
 	private JTable tableRegistros;
 	private JTable tableCasillas;
 	private Formulario formulario;
 	ModeloTabla model;
-	ModeloTabla modelCasillas;
+//	ModeloTabla modelCasillas;
 	Object[][] datos;
 	private JScrollPane scrollPaneCasillas;
 	private JComboBox comboBoxFormulario;
+	private Actividad selectedActividad;
+	List<Informacion> informaciones;
 	
 	/**
 	 * Launch the application.
@@ -94,7 +101,70 @@ public class ListarActividades implements IFrame<Formulario>{
 		
 		
 		
+
 		
+        //modelCasillas = new ModeloTabla(columnas, datos);
+		
+//		sorterCasillas = new TableRowSorter<ModeloTabla>(model);
+		
+		// --- Tabla para las casillas y la INFO
+		
+		String [] columnasCasillas = {"PARAMETRO", "UNIDAD", "DESCRIPCION", "TIPO", "VALORES INGRESADOS"};
+		
+//		Object[][] datosCasillas = {
+//	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", "I'm a string"},
+//	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Date()},
+//	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Integer(123)},
+//	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", new Double(123.45)},
+//	            {"PARAMETRO", "UNIDAD DE MEDIDA", "DESCRIPCION", "TIPO", Boolean.TRUE}};
+		Object[][] datosCasillas = {{"", "", "", "", ""}};
+		
+		ModeloActividad modeloCasillas = new ModeloActividad(columnasCasillas, datosCasillas);
+		
+		tableCasillas = new JTable(modeloCasillas) {
+
+//          private static final long serialVersionUID = 1L;
+          private Class editingClass;
+
+          @Override
+          public TableCellRenderer getCellRenderer(int row, int column) {
+              editingClass = null;
+              int modelColumn = convertColumnIndexToModel(column);
+              if (modelColumn == 4) {
+                  Class rowClass = getModel().getValueAt(row, modelColumn).getClass();
+                  return getDefaultRenderer(rowClass);
+              } else {
+                  return super.getCellRenderer(row, column);
+              }
+          }
+
+          @Override
+          public TableCellEditor getCellEditor(int row, int column) {
+              editingClass = null;
+              int modelColumn = convertColumnIndexToModel(column);
+              if (modelColumn == 4) {
+                  editingClass = getModel().getValueAt(row, modelColumn).getClass();
+                  return getDefaultEditor(editingClass);
+              } else {
+                  return super.getCellEditor(row, column);
+              }
+          }
+          //  This method is also invoked by the editor when the value in the editor
+          //  component is saved in the TableModel. The class was saved when the
+          //  editor was invoked so the proper class can be created.
+
+          @Override
+          public Class getColumnClass(int column) {
+              return editingClass != null ? editingClass : super.getColumnClass(column);
+          }
+      };
+		
+		// --- FIN
+//		tableCasillas.setRowSorter(sorterCasillas);
+		
+		scrollPaneCasillas = new JScrollPane(tableCasillas);
+		scrollPaneCasillas.setBounds(339, 152, 334, 139);
+		desktopPane.add(scrollPaneCasillas);
 		
 		
 		
@@ -112,15 +182,92 @@ public class ListarActividades implements IFrame<Formulario>{
 		
 		model = new ModeloTabla(columnas, falso);
 		
-		sorter = new TableRowSorter<ModeloTabla>(model);
+//		sorter = new TableRowSorter<ModeloTabla>(model);
 		
 		tableRegistros = new JTable(model);
-		tableRegistros.setRowSorter(sorter);
+//		tableRegistros.setRowSorter(sorter);
 		
 		scrollPaneRegistros = new JScrollPane(tableRegistros);
 		scrollPaneRegistros.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		scrollPaneRegistros.setBounds(10, 152, 319, 139);
 		desktopPane.add(scrollPaneRegistros);
+		
+		tableRegistros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				
+				try {
+					if (!iagro.getAuthUser().getRol().getRol().equals(Roles.ADMINISTRADOR)) {
+						JOptionPane.showMessageDialog(null, "Solo los usuarios Administradores pueden modificar Usuarios","Error",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					else {
+						int selectedRow = tableRegistros.getSelectedRow();
+						String fecha = tableRegistros.getValueAt(selectedRow, 1).toString();
+//						Long idLing = Long.valueOf(idString);
+						System.out.println(fecha);
+
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd / HH:mm:ss"); // debe tener el mismo formato del matrix
+						
+						selectedActividad = actividadesFormulario.stream()
+								.filter(a -> a.getFechaHora().format(formatter).equals(fecha))
+								.collect(Collectors.toList())
+								.get(0);
+						System.out.println("Seleccion: " + selectedActividad.getFechaHora());
+						selectedActividad = iagro.getActividadById(selectedActividad);
+						for(Informacion info: selectedActividad.getInfo()) {
+							System.out.println(info.getValor());
+						}
+//						Usuario usuarioUpdate = (Usuario) iagro.read(idLing, Usuario.class);
+//						iagro.show(AltaUsuario.class, usuarioUpdate);;
+//						frame.dispose();
+						
+						informaciones = selectedActividad.getInfo();
+						Object[][] datosCasillas = new Object[informaciones.size()][columnasCasillas.length];
+						for(Informacion informacion: informaciones) {
+							datosCasillas[(informaciones.indexOf(informacion))][0] = informacion.getCasilla().getParametro().toString();
+							try {
+								datosCasillas[(informaciones.indexOf(informacion))][1] = informacion.getCasilla().getUnidadMedida().toString();
+							} catch (NullPointerException ex) {
+								datosCasillas[(informaciones.indexOf(informacion))][1] = "";
+							}
+							try {
+								datosCasillas[(informaciones.indexOf(informacion))][2] = informacion.getCasilla().getDescripcion().toString();
+							} catch (NullPointerException ex) {
+								datosCasillas[(informaciones.indexOf(informacion))][2] = "";
+							}
+							
+							datosCasillas[(informaciones.indexOf(informacion))][3] = informacion.getCasilla().getTipo().getTipo().toString();
+//							datosCasillas[(informaciones.indexOf(informacion))][4] = informacion.getValor();
+							switch(informacion.getCasilla().getTipo()) {
+							case INTEGER:
+								datosCasillas[(informaciones.indexOf(informacion))][4] = Integer.parseInt(informacion.getValor());
+								break;
+							case STRING:
+								datosCasillas[(informaciones.indexOf(informacion))][4] = informacion.getValor();
+								break;
+							case DOUBLE:
+								datosCasillas[(informaciones.indexOf(informacion))][4] = Double.parseDouble(informacion.getValor());
+								break;
+							case BOOLEAN:
+								datosCasillas[(informaciones.indexOf(informacion))][4] = Boolean.parseBoolean(informacion.getValor());
+								break;
+							}
+						}
+						modeloCasillas.setDatos(datosCasillas);
+						modeloCasillas.refresh();
+					}
+				} catch (IndexOutOfBoundsException ex) {
+					System.out.println("Seleccionar elemento de la lista");
+//					JOptionPane.showMessageDialog(null, "Debe seleccinar una Actividad para modificar","Error",JOptionPane.ERROR_MESSAGE);
+				}
+
+				
+				
+				
+			}
+		});
 		
 		btnModificar = new JButton("");
 		btnModificar.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -129,9 +276,24 @@ public class ListarActividades implements IFrame<Formulario>{
 				
 				try {
 					
-					iagro.show(ModificarActividad.class);
-					frame.dispose();
+//					iagro.show(ModificarActividad.class);
+//					frame.dispose();
+					boolean result;
+					for(int i = 0; i < modeloCasillas.getRowCount(); i++) {
+						informaciones.get(i).setCasilla(iagro.readCasilla(modeloCasillas.getValueAt(i, 0).toString())); // busco la casillas por la primer columna (parametro que unique)
+						informaciones.get(i).setValor(modeloCasillas.getValueAt(i, 4).toString()); // guardo el valor nuevo
+					}
+					selectedActividad.setInfo(informaciones);
+					selectedActividad.setForm(formulario);
+					selectedActividad.setUsuario(iagro.getAuthUser());
 					
+					result = iagro.update(selectedActividad);
+					if(result) {
+						JOptionPane.showMessageDialog(null, "Se modifica con exito","Exito",JOptionPane.DEFAULT_OPTION);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Existe un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
 					
 					
 				} catch (IndexOutOfBoundsException ex) {
@@ -155,17 +317,6 @@ public class ListarActividades implements IFrame<Formulario>{
 		btnVolver.setIcon(new ImageIcon(ListarActividades.class.getResource("/img/BotonVolver.png")));
 		btnVolver.setBounds(10, 363, 92, 33);
 		desktopPane.add(btnVolver);
-		
-        //modelCasillas = new ModeloTabla(columnas, datos);
-		
-		sorterCasillas = new TableRowSorter<ModeloTabla>(model);
-		
-		tableCasillas = new JTable(modelCasillas);
-		tableCasillas.setRowSorter(sorterCasillas);
-		
-		scrollPaneCasillas = new JScrollPane(tableCasillas);
-		scrollPaneCasillas.setBounds(339, 152, 334, 139);
-		desktopPane.add(scrollPaneCasillas);
 		
 		JLabel lblActividadesRegistradas = new JLabel("Actividaes Registradas:");
 		lblActividadesRegistradas.setFont(new Font("Tahoma", Font.PLAIN, 16));
