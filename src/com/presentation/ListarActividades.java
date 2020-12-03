@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,6 +54,8 @@ public class ListarActividades implements IFrame<Formulario>{
 	Object[][] datos;
 	private JScrollPane scrollPaneCasillas;
 	private JComboBox comboBoxFormulario;
+	private Actividad selectedActividad;
+	List<Informacion> informaciones;
 	
 	/**
 	 * Launch the application.
@@ -207,7 +210,7 @@ public class ListarActividades implements IFrame<Formulario>{
 
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd / HH:mm:ss"); // debe tener el mismo formato del matrix
 						
-						Actividad selectedActividad = actividadesFormulario.stream()
+						selectedActividad = actividadesFormulario.stream()
 								.filter(a -> a.getFechaHora().format(formatter).equals(fecha))
 								.collect(Collectors.toList())
 								.get(0);
@@ -220,7 +223,7 @@ public class ListarActividades implements IFrame<Formulario>{
 //						iagro.show(AltaUsuario.class, usuarioUpdate);;
 //						frame.dispose();
 						
-						List<Informacion> informaciones = selectedActividad.getInfo();
+						informaciones = selectedActividad.getInfo();
 						Object[][] datosCasillas = new Object[informaciones.size()][columnasCasillas.length];
 						for(Informacion informacion: informaciones) {
 							datosCasillas[(informaciones.indexOf(informacion))][0] = informacion.getCasilla().getParametro().toString();
@@ -273,9 +276,24 @@ public class ListarActividades implements IFrame<Formulario>{
 				
 				try {
 					
-					iagro.show(ModificarActividad.class);
-					frame.dispose();
+//					iagro.show(ModificarActividad.class);
+//					frame.dispose();
+					boolean result;
+					for(int i = 0; i < modeloCasillas.getRowCount(); i++) {
+						informaciones.get(i).setCasilla(iagro.readCasilla(modeloCasillas.getValueAt(i, 0).toString())); // busco la casillas por la primer columna (parametro que unique)
+						informaciones.get(i).setValor(modeloCasillas.getValueAt(i, 4).toString()); // guardo el valor nuevo
+					}
+					selectedActividad.setInfo(informaciones);
+					selectedActividad.setForm(formulario);
+					selectedActividad.setUsuario(iagro.getAuthUser());
 					
+					result = iagro.update(selectedActividad);
+					if(result) {
+						JOptionPane.showMessageDialog(null, "Se modifica con exito","Exito",JOptionPane.DEFAULT_OPTION);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Existe un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
 					
 					
 				} catch (IndexOutOfBoundsException ex) {
