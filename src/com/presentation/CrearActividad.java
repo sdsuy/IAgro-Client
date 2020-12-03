@@ -103,6 +103,12 @@ public class CrearActividad implements IFrame<Actividad> {
 		lblFormulario.setBounds(22, 97, 91, 14);
 		desktopPane.add(lblFormulario);
 		
+		lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(267, 91, 266, 30);
+		desktopPane.add(lblError);
+		lblError.setVisible(false);
+		
 		btnCancelar = new JButton("");
 		btnCancelar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnCancelar.setIcon(new ImageIcon(AltaUsuario.class.getResource("/img/BotonCancelar.png")));
@@ -226,6 +232,7 @@ public class CrearActividad implements IFrame<Actividad> {
 				
 				if (counterBasico == casillas.size()) {
 					
+					lblError.setVisible(false);
 					table.setVisible(true);
 					
 					Object[][] datos = new Object[casillas.size()][columnas.length];
@@ -342,16 +349,13 @@ public class CrearActividad implements IFrame<Actividad> {
 		btnGuardar.setBounds(69, 416, 137, 40);
 		desktopPane.add(btnGuardar);
 		
-		lblError = new JLabel("El Formulario seleccionado no es b\u00E1sico");
-		lblError.setForeground(Color.RED);
-		lblError.setBounds(267, 91, 266, 30);
-		desktopPane.add(lblError);
+		
 		
 		lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(CrearActividad.class.getResource("/img/CrearActividad.png")));
 		lblFondo.setBounds(96, -7, 397, 118);
 		desktopPane.add(lblFondo);
-		lblError.setVisible(false);
+		
 		
 		
 		
